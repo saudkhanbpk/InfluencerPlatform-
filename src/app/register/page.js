@@ -21,6 +21,7 @@ import { headers } from 'next/dist/client/components/headers';
 // import Link from 'next/link'
 
 const Register = () => {
+    console.log("baseurl:", baseUrl)
     const router = useRouter()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
