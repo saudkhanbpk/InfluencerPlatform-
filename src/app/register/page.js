@@ -14,8 +14,18 @@ import {
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Header from '../header/page';
+import { useRouter } from 'next/navigation'
 
-const Register = () => (
+
+const Register = () => {
+    const router = useRouter();
+
+    const handleNavigate = 
+    () => {
+        router.push('/')
+    }
+    return(
+
     <>
         <Header />
         <Box
@@ -29,7 +39,7 @@ const Register = () => (
 
             <Container maxWidth="xs">
                 <div>
-                    <Link
+                    <Link 
                         color="text.primary"
                         // component={RouterLink}
                         // href={paths.index}
@@ -44,7 +54,7 @@ const Register = () => (
                         <SvgIcon sx={{ mr: 1 }}>
                             <ArrowLeftIcon />
                         </SvgIcon>
-                        <Typography variant="subtitle2">
+                        <Typography variant="subtitle2" onClick={handleNavigate}>
                             Back
                         </Typography>
                     </Link>
@@ -196,5 +206,5 @@ const Register = () => (
         </Box>
     </>
 );
-
+}
 export default Register
