@@ -1,9 +1,54 @@
 'use client'
 import { Box, Button } from '@mui/material'
+import { baseUrl } from '../BaseUrl';
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import { useRouter } from 'next/navigation'
 
 const Greate = () => {
+    console.log("baseurl:", baseUrl)
+    const router = useRouter()
+
+    const [loading, setLoading] = useState(false)
+    useEffect(() => {
+
+        const currentURL = window.location.href;
+
+        // Parse the URL to get the query parameters
+        const url = new URL(currentURL);
+        const id = url.searchParams.get('id');
+
+        if (id) {
+            handleVerify(id)
+        }
+
+    }, [])
+
+    const handleVerify = (id) => {
+        setLoading(true)
+        let data = { _id: id }
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        };
+        axios.post(`${baseUrl}/api/user_verify`, data, config)
+            .then((response) => {
+                setLoading(false)
+                console.log(response.data);
+                // Handle the successful response
+            })
+            .catch((error) => {
+                setLoading(false)
+                console.error(error); // Handle the error
+            });
+
+    }
+    const getStart = () => {
+        router.push('/general-information')
+    }
+
     return (
         <div>
             <Box
@@ -80,13 +125,13 @@ const Greate = () => {
                                 sx={{
                                     mt: 3,
                                 }}>
-                                <Button sx={{width:'250px'}} variant="contained">Get started</Button>
+                                <Button sx={{ width: '250px' }} variant="contained" onClick={getStart}>Get started</Button>
                             </Box>
                             <Box
                                 sx={{
                                     mt: 3,
                                 }}>
-                                <Button sx={{width:'120px', ml:3}} variant="outlined">do it later</Button>
+                                <Button sx={{ width: '120px', ml: 3 }} variant="outlined">do it later</Button>
                             </Box>
                         </Box>
                     </Box>

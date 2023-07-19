@@ -17,7 +17,6 @@ import Header from '../header/page';
 import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation'
-import { headers } from 'next/dist/client/components/headers';
 // import Link from 'next/link'
 
 const Register = () => {
@@ -50,6 +49,7 @@ const Register = () => {
         router.push('/email')
 
     }
+ 
     return (
         <>
             <Header />
