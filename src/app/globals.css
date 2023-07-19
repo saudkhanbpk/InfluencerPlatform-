@@ -21,3 +21,23 @@ body {
   background-image: url('../../public/image/hero-bg.png');
   background-repeat: no-repeat;
 }
+.MuiAppBar-colorPrimary{
+  background-color: white !important;
+  color: gainsboro;
+}
+.MuiButton-colorInherit{
+  color: black !important;
+  /* border-radius: 1px solid red !important; */
+  } 
+  .landing{
+  background-image: url('../../public/image/hero-bg.png');
+  margin: 0 !important;
+  padding: 0 !important;
+ max-width:100%;
+  width: 100% !important;
+  }
+  .landimage{
+    width:auto !important;
+    height: auto !important;
+  }
+ 
