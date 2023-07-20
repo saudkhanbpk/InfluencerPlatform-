@@ -1,12 +1,10 @@
 'use client'
-import ArrowLeftIcon from '@untitled-ui/icons-react/build/esm/ArrowLeft';
 import {
     Box,
     Button,
     Card,
     CardContent,
     Container,
-    SvgIcon,
     Link,
     TextField,
     Typography
@@ -19,37 +17,33 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation'
 // import Link from 'next/link'
 
-const Register = () => {
+const Login = () => {
     console.log("baseurl:", baseUrl)
     const router = useRouter()
-    const [name, setName] = useState('')
+    const [error, setError] = useState('');
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        const data = {
-            name: name,
-            email: email,
-            password: password,
-            confirmPassword: confirmPassword
-        };
-        const config = {
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        };
-        axios.post(`${baseUrl}/api/register`, data, config)
-            .then((response) => {
-                console.log(response.data); // Handle the successful response
-            })
-            .catch((error) => {
-                console.error(error); // Handle the error
-            });
-        router.push('/email')
+        try {
+            const response = await axios.post(`${baseUrl}/api/login`, { email, password });
+            const { user, token } = response.data;
+
+            // Save the token and user data in local storage or cookies for authentication
+            // For example:
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(user));
+
+            // Redirect the user to the dashboard or homepage
+            // For example:
+            window.location.href = '/dashboard';
+        } catch (error) {
+            console.error('Signin failed:', error.response.data.msg);
+            setError(error.response.data.msg);
+        }
 
     }
- 
+
     return (
         <>
             <Header />
@@ -63,35 +57,6 @@ const Register = () => {
             >
 
                 <Container maxWidth="xs">
-                    <div>
-                        <Link
-                            color="text.primary"
-                            // component={RouterLink}
-                            // href={paths.index}
-                            sx={{
-                                alignItems: 'center',
-                                display: 'inline-flex',
-                                color: '#111927',
-                                pb: 2
-                            }}
-                        // underline="hover"
-                        >
-                            <SvgIcon sx={{ mr: 1 }}>
-                                <ArrowLeftIcon />
-                            </SvgIcon>
-                            <Typography variant="subtitle2">
-                                Back
-                            </Typography>
-                        </Link>
-                    </div>
-                    <Box sx={{
-                        fontSize: 25,
-                        pb: 4,
-                        fontWeight: 'bold',
-                        color: "#111927"
-                    }}>
-                        <h4>Brand account creation</h4>
-                    </Box>
                     <Card sx={{
                         borderRadius: '16px',
                         boxShadow: 2
@@ -115,24 +80,9 @@ const Register = () => {
                             >
                                 <div>
                                     <Typography variant="h4" sx={{ color: "#111927", fontWeight: 'bold' }}>
-                                        <h6>Register</h6>
+                                        <h6>Login</h6>
                                     </Typography>
-                                    <Box sx={{
-                                        mt: 1,
-                                        alignItems: 'center',
-                                        display: 'flex',
-                                    }}>
-                                        <Typography
-                                            color="text.secondary"
-                                            variant="body2"
-                                        >
-                                            Already have an account?
-                                            {' '}
-                                            <Link href="/login">
-                                                Log in
-                                            </Link>
-                                        </Typography>
-                                    </Box>
+
                                 </div>
 
                             </Box>
@@ -142,16 +92,9 @@ const Register = () => {
                                     mt: 3
                                 }}
                             >
+                                {error && <p style={{ color: 'red' }}>{error}</p>}
                                 <form onSubmit={handleSubmit}>
-                                    <TextField
-                                        fullWidth
-                                        label="Username"
-                                        margin="normal"
-                                        name="name"
-                                        type="text"
-                                        onChange={(e) => setName(e.target.value)}
 
-                                    />
                                     <TextField
                                         fullWidth
                                         label="Email Address"
@@ -168,15 +111,6 @@ const Register = () => {
                                         type="password"
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
-                                    <TextField
-                                        fullWidth
-                                        label="Confirm Password"
-                                        margin="normal"
-                                        name="password"
-                                        type="password"
-                                        onChange={(e) => setConfirmPassword(e.target.value)}
-                                    />
-
                                     <Box sx={{
                                         mt: 2, ml: 2,
                                         alignItems: 'center',
@@ -218,19 +152,11 @@ const Register = () => {
                                             color="primary"
 
                                         >
-                                            Register
+                                            Login
                                         </Button>
                                     </Box>
                                 </form>
                             </Box>
-                            {/* <Divider sx={{ my: 3 }} />
-                    <Link
-                        color="text.secondary"
-                        href="#"
-                        variant="body2"
-                    >
-                        Create new account
-                    </Link> */}
                         </CardContent>
                     </Card>
                 </Container>
@@ -239,4 +165,4 @@ const Register = () => {
     )
 };
 
-export default Register
+export default Login
