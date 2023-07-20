@@ -1,7 +1,11 @@
 'use client'
 import { Box, Button, Switch, TextField, Typography, Unstable_Grid2 as Grid } from '@mui/material';
+import { useState } from 'react';
 
-const SocialMedia = () => (
+const SocialMedia = () => {
+  const [instagram, setInstagram] = useState('')
+  // const [tiktok, settiktok] = useSt
+  return(
   <Box sx={{
     mt:10
   }}>
@@ -143,5 +147,6 @@ const SocialMedia = () => (
     </form>
   </Box>
   </Box>
-);
+)
+};
 export default SocialMedia

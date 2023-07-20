@@ -1,8 +1,13 @@
 'use client'
 import { Box, Button, Switch, TextField, Typography, Unstable_Grid2 as Grid } from '@mui/material';
+import axios from 'axios';
 import { useState } from 'react';
+import { baseUrl } from '../BaseUrl';
+import { useRouter } from 'next/navigation'
 
 const GeneralInfo = () => {
+  const router = useRouter()
+
   const [fname, setFname] = useState('')
   const [lname, setLname] = useState('')
   const [phone, setPhone] = useState('')
@@ -10,9 +15,38 @@ const GeneralInfo = () => {
   const [companywebsite, setCompanywebsite] = useState('')
   const [companyaddress, setCompanyaddress] = useState('')
 
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    const data = {
+      fname,
+      lname,
+      phone,
+      companyname,
+      companywebsite,
+      companyaddress
+    };
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    };
+      const response = await axios.post(`${baseUrl}/api/general_info`, data, config)
+        .then((response) => {
+          router.push('/company-information')
+          console.log(response.data);
+          const { newUser, token, msg } = response.data;
+          console.log(newUser);
+          console.log(token);
+          console.log(msg);
+          setMessage(msg);
+          localStorage.setItem('token', token);
+        })
+        .catch((error) => {
+          console.error(error); // Handle the error
+        });
+     
   }
   return (
     < Box sx={{ mt: 10 }
@@ -33,6 +67,7 @@ const GeneralInfo = () => {
 
 
         <form onSubmit={handleSubmit}>
+          <div>{message && <p>{message}</p>}</div>
           <div >
             <Typography variant="h4" sx={{ marginTop: '15px', marginBottom: '25px', fontFamily: 'plus jakarta sans', fontSize: '25', color: '#000000' }}>
               General Bussiness Information

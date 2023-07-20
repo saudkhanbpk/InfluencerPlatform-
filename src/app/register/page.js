@@ -27,7 +27,12 @@ const Register = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+
+        if (password !== confirmPassword) {
+            console.log("Passwords do not match.");
+            return;
+        }
         const data = {
             name: name,
             email: email,
@@ -49,7 +54,7 @@ const Register = () => {
         router.push('/email')
 
     }
- 
+
     return (
         <>
             <Header />
@@ -72,7 +77,7 @@ const Register = () => {
                                 alignItems: 'center',
                                 display: 'inline-flex',
                                 color: '#111927',
-                                pb: 2
+                                // pb: 2
                             }}
                         // underline="hover"
                         >
@@ -86,7 +91,7 @@ const Register = () => {
                     </div>
                     <Box sx={{
                         fontSize: 25,
-                        pb: 4,
+                        // pb: 4,
                         fontWeight: 'bold',
                         color: "#111927"
                     }}>
@@ -118,7 +123,7 @@ const Register = () => {
                                         <h6>Register</h6>
                                     </Typography>
                                     <Box sx={{
-                                        mt: 1,
+                                        // mt: 1,
                                         alignItems: 'center',
                                         display: 'flex',
                                     }}>
@@ -139,7 +144,7 @@ const Register = () => {
                             <Box
                                 sx={{
                                     flexGrow: 1,
-                                    mt: 3
+                                    // mt: 3
                                 }}
                             >
                                 <form onSubmit={handleSubmit}>
