@@ -18,7 +18,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation' 
 import ReCAPTCHA from "react-google-recaptcha";
-// import Link from 'next/link'
 
 const Register = () => {
     console.log("baseurl:", baseUrl)
