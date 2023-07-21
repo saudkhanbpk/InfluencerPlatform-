@@ -16,7 +16,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Header from '../header/page';
 import { useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/navigation' 
+import { useRouter } from 'next/navigation'
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Register = () => {
@@ -27,13 +27,35 @@ const Register = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
+    const [nameError, setNameError] = useState('');
+    const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (password !== confirmPassword) {
-            console.log("Passwords do not match.");
+        if (!name.trim()) {
+            setNameError('Name is required.');
             return;
+        } else {
+            setNameError('');
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email.trim()) {
+            setEmailError('Email is required.');
+            return;
+        } else if (!emailRegex.test(email)) {
+            setEmailError('Invalid email format.');
+            return;
+        } else {
+            setEmailError('');
+        }
+
+        if (password !== confirmPassword) {
+            setPasswordError('Passwords do not match.'); // Set the error message
+            return;
+        } else {
+            setPasswordError(''); // Clear the error message if passwords match
         }
         if (password.length < 8) {
             setPasswordError('Password must be at least 8 characters long.');
@@ -41,10 +63,10 @@ const Register = () => {
         } else {
             setPasswordError('');
         }
-         if (!/\d/.test(password)) {
-      setPasswordError('Password must contain at least one numeric digit.');
-      return;
-    }
+        if (!/\d/.test(password)) {
+            setPasswordError('Password must contain at least one numeric digit.');
+            return;
+        }
         const data = {
             name: name,
             email: email,
@@ -66,7 +88,7 @@ const Register = () => {
         router.push('/email')
 
     }
-    const onChange=()=>{
+    const onChange = () => {
         console.log("Captcha value:", value);
     }
 
@@ -173,6 +195,11 @@ const Register = () => {
                                         onChange={(e) => setName(e.target.value)}
 
                                     />
+                                    {nameError && (
+                                        <Typography sx={{ color: 'red' }}>
+                                            {nameError}
+                                        </Typography>
+                                    )}
                                     <TextField
                                         fullWidth
                                         label="Email Address"
@@ -181,6 +208,11 @@ const Register = () => {
                                         type="email"
                                         onChange={(e) => setEmail(e.target.value)}
                                     />
+                                    {emailError && (
+                                        <Typography sx={{ color: 'red' }}>
+                                            {emailError}
+                                        </Typography>
+                                    )}
                                     <TextField
                                         fullWidth
                                         label="Password"
@@ -194,6 +226,7 @@ const Register = () => {
                                             {passwordError}
                                         </Typography>
                                     )}
+
                                     <TextField
                                         fullWidth
                                         label="Confirm Password"
@@ -235,9 +268,9 @@ const Register = () => {
                                         </Typography>
                                     </Box> */}
                                     <ReCAPTCHA
-    sitekey="6LdKOUAnAAAAACtgTJzWt5yXL1mZ4ym08LXtODgw"
-    onChange={onChange}
-  />
+                                        sitekey="6LdKOUAnAAAAACtgTJzWt5yXL1mZ4ym08LXtODgw"
+                                        onChange={onChange}
+                                    />
 
                                     <Box sx={{ mt: 2 }}>
                                         <Button
