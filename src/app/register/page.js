@@ -16,9 +16,8 @@ import Checkbox from '@mui/material/Checkbox';
 import Header from '../header/page';
 import { useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation' 
 import ReCAPTCHA from "react-google-recaptcha";
-// import Link from 'next/link'
 
 const Register = () => {
     console.log("baseurl:", baseUrl)
@@ -27,6 +26,8 @@ const Register = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+
+    const [passwordError, setPasswordError] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -34,6 +35,16 @@ const Register = () => {
             console.log("Passwords do not match.");
             return;
         }
+        if (password.length < 8) {
+            setPasswordError('Password must be at least 8 characters long.');
+            return;
+        } else {
+            setPasswordError('');
+        }
+         if (!/\d/.test(password)) {
+      setPasswordError('Password must contain at least one numeric digit.');
+      return;
+    }
         const data = {
             name: name,
             email: email,
@@ -57,12 +68,12 @@ const Register = () => {
                 console.error(error); // Handle the error
             });
         router.push('/email')
-        
 
     }
     const onChange=()=>{
         console.log("Captcha value:", value);
     }
+
 
     return (
         <>
@@ -182,6 +193,11 @@ const Register = () => {
                                         type="password"
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
+                                    {passwordError && (
+                                        <Typography color="error" variant="body2">
+                                            {passwordError}
+                                        </Typography>
+                                    )}
                                     <TextField
                                         fullWidth
                                         label="Confirm Password"
