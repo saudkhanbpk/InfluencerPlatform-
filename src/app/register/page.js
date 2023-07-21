@@ -32,7 +32,6 @@ const Register = () => {
     const [passwordError, setPasswordError] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
-
         if (!name.trim()) {
             setNameError('Name is required.');
             return;
