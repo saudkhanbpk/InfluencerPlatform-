@@ -14,13 +14,17 @@ import {
 import { baseUrl } from '../BaseUrl';
 import Checkbox from '@mui/material/Checkbox';
 import Header from '../header/page';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation' 
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Register = () => {
-    console.log("baseurl:", baseUrl)
+    useEffect(() => {
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('userId');
+    }, []);
+    // console.log("baseurl:", baseUrl)
     const router = useRouter()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
