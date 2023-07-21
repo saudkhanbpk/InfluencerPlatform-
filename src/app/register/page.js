@@ -17,6 +17,7 @@ import Header from '../header/page';
 import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation'
+import ReCAPTCHA from "react-google-recaptcha";
 // import Link from 'next/link'
 
 const Register = () => {
@@ -52,7 +53,11 @@ const Register = () => {
                 console.error(error); // Handle the error
             });
         router.push('/email')
+        
 
+    }
+    const onChange=()=>{
+        console.log("Captcha value:", value);
     }
 
     return (
@@ -213,6 +218,10 @@ const Register = () => {
 
                                         </Typography>
                                     </Box>
+                                    <ReCAPTCHA
+    sitekey="6LdKOUAnAAAAACtgTJzWt5yXL1mZ4ym08LXtODgw"
+    onChange={onChange}
+  />
 
                                     <Box sx={{ mt: 2 }}>
                                         <Button
