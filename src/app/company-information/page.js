@@ -13,34 +13,37 @@ const CompanyInfo = () => {
   const [companyfounded, setCompanyfounded] = useState('')
   const [bio, setBio] = useState('')
 
+  const [message, setMessage] = useState('');
+
   const handelSubmit = async (e) => {
     e.preventDefault();
     const data = {
-     niche,
-     budget,
-     companysize,
-     companyfounded,
-     bio
+      niche,
+      budget,
+      companysize,
+      companyfounded,
+      bio
     };
     const config = {
       headers: {
         'Content-Type': 'application/json',
       }
     };
-      const response = await axios.post(`${baseUrl}/api/company_info`, data, config)
-        .then((response) => {
-          router.push('/social-handle')
-          console.log(response.data);
-          const { newUser, token, msg } = response.data;
-          console.log(newUser);
-          console.log(token);
-          console.log(msg);
-          setMessage(msg);
-          localStorage.setItem('token', token);
-        })
-        .catch((error) => {
-          console.error(error); // Handle the error
-        });
+    const response = await axios.post(`${baseUrl}/api/company_info`, data, config)
+      .then((response) => {
+        router.push('/social-handle')
+        console.log(response.data);
+        const { newUser, token, msg } = response.data;
+        console.log(newUser);
+        console.log(token);
+        console.log(msg);
+        setMessage(msg);
+        localStorage.setItem('token', token);
+      })
+      .catch((error) => {
+        console.error(error); // Handle the error
+        setMessage(error.response.data.message);
+      });
   }
   return (
     <Box
@@ -63,6 +66,13 @@ const CompanyInfo = () => {
 
 
         <form onSubmit={handelSubmit}>
+          <Typography
+            color="error"
+            sx={{ mt: 1, marginBottom: '15px' }}
+            variant="body1"
+          >
+            {message}
+          </Typography>
           <div >
             <Typography variant="h4" sx={{ marginTop: '15px', marginBottom: '25px', fontFamily: 'plus jakarta sans', fontSize: '25', color: '#000000' }}>
               General Bussiness Information

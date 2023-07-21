@@ -1,4 +1,5 @@
 'use client'
+import React from 'react';
 import { Box, Button, Switch, TextField, Typography, Unstable_Grid2 as Grid } from '@mui/material';
 import axios from 'axios';
 import { useState } from 'react';
@@ -32,21 +33,22 @@ const GeneralInfo = () => {
         'Content-Type': 'application/json',
       }
     };
-      const response = await axios.post(`${baseUrl}/api/general_info`, data, config)
-        .then((response) => {
-          router.push('/company-information')
-          console.log(response.data);
-          const { newUser, token, msg } = response.data;
-          console.log(newUser);
-          console.log(token);
-          console.log(msg);
-          setMessage(msg);
-          localStorage.setItem('token', token);
-        })
-        .catch((error) => {
-          console.error(error); // Handle the error
-        });
-     
+    const response = await axios.post(`${baseUrl}/api/general_info`, data, config)
+      .then((response) => {
+        router.push('/company-information')
+        console.log(response.data);
+        const { newUser, token, msg } = response.data;
+        console.log(newUser);
+        console.log(token);
+        console.log(msg);
+        setMessage(msg);
+        localStorage.setItem('token', token);
+      })
+      .catch((error) => {
+        console.error(error); // Handle the error
+        setMessage(error.response.data.message);
+      });
+
   }
   return (
     < Box sx={{ mt: 10 }
@@ -67,7 +69,13 @@ const GeneralInfo = () => {
 
 
         <form onSubmit={handleSubmit}>
-          <div>{message && <p>{message}</p>}</div>
+          <Typography
+            color="error"
+            sx={{ mt: 1, marginBottom: '15px' }}
+            variant="body1"
+          >
+            {message}
+          </Typography>
           <div >
             <Typography variant="h4" sx={{ marginTop: '15px', marginBottom: '25px', fontFamily: 'plus jakarta sans', fontSize: '25', color: '#000000' }}>
               General Bussiness Information
