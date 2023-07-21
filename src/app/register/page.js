@@ -16,7 +16,8 @@ import Checkbox from '@mui/material/Checkbox';
 import Header from '../header/page';
 import { useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation' 
+import ReCAPTCHA from "react-google-recaptcha";
 // import Link from 'next/link'
 
 const Register = () => {
@@ -41,10 +42,10 @@ const Register = () => {
         } else {
             setPasswordError('');
         }
-        if (!/\d/.test(password)) {
-            setPasswordError('Password must contain at least one numeric digit.');
-            return;
-          }
+         if (!/\d/.test(password)) {
+      setPasswordError('Password must contain at least one numeric digit.');
+      return;
+    }
         const data = {
             name: name,
             email: email,
@@ -66,6 +67,10 @@ const Register = () => {
         router.push('/email')
 
     }
+    const onChange=()=>{
+        console.log("Captcha value:", value);
+    }
+
 
     return (
         <>
@@ -216,7 +221,7 @@ const Register = () => {
                                             </Link>
                                         </Typography>
                                     </Box>
-                                    <Box sx={{
+                                    {/* <Box sx={{
                                         mt: 2, ml: 2,
                                         alignItems: 'center',
                                         display: 'flex',
@@ -229,7 +234,11 @@ const Register = () => {
                                             I’m not a robot
 
                                         </Typography>
-                                    </Box>
+                                    </Box> */}
+                                    <ReCAPTCHA
+    sitekey="6LdKOUAnAAAAACtgTJzWt5yXL1mZ4ym08LXtODgw"
+    onChange={onChange}
+  />
 
                                     <Box sx={{ mt: 2 }}>
                                         <Button
