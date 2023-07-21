@@ -17,30 +17,9 @@ import Header from '../header/page';
 import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation'
-import { BrandBox } from './style';
 // import Link from 'next/link'
 
 const Register = () => {
-    const formik = useFormik({
-        initialValues: {
-          name: "",
-          email: "",
-          password: "",
-          confirmpasswod: "",
-        },
-        validationSchema: Yup.object({
-          fullName: Yup.string().required("First Name"),
-          email: Yup.string()
-            .email("Invalid Email Address")
-            .required("Email Address"),
-          phoneNumber: Yup.string(),
-          message: Yup.string().required("Message"),
-        }),
-    
-        onSubmit: (values) => {
-          //handle values
-        },
-      });
     console.log("baseurl:", baseUrl)
     const router = useRouter()
     const [name, setName] = useState('')
@@ -122,9 +101,14 @@ const Register = () => {
                             </Typography>
                         </Link>
                     </div>
-                    <BrandBox>
+                    <Box sx={{
+                        fontSize: 25,
+                        // pb: 4,
+                        fontWeight: 'bold',
+                        color: "#111927"
+                    }}>
                         <h4>Brand account creation</h4>
-                    </BrandBox>
+                    </Box>
                     <Card sx={{
                         borderRadius: '16px',
                         boxShadow: 2
