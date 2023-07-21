@@ -204,7 +204,7 @@ const Register = () => {
                                             </Link>
                                         </Typography>
                                     </Box>
-                                    <Box sx={{
+                                    {/* <Box sx={{
                                         mt: 2, ml: 2,
                                         alignItems: 'center',
                                         display: 'flex',
@@ -217,7 +217,7 @@ const Register = () => {
                                             I’m not a robot
 
                                         </Typography>
-                                    </Box>
+                                    </Box> */}
                                     <ReCAPTCHA
     sitekey="6LdKOUAnAAAAACtgTJzWt5yXL1mZ4ym08LXtODgw"
     onChange={onChange}
