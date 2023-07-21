@@ -17,15 +17,38 @@ import Header from '../header/page';
 import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation'
+import { BrandBox } from './style';
 // import Link from 'next/link'
 
 const Register = () => {
+    const formik = useFormik({
+        initialValues: {
+          name: "",
+          email: "",
+          password: "",
+          confirmpasswod: "",
+        },
+        validationSchema: Yup.object({
+          fullName: Yup.string().required("First Name"),
+          email: Yup.string()
+            .email("Invalid Email Address")
+            .required("Email Address"),
+          phoneNumber: Yup.string(),
+          message: Yup.string().required("Message"),
+        }),
+    
+        onSubmit: (values) => {
+          //handle values
+        },
+      });
     console.log("baseurl:", baseUrl)
     const router = useRouter()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+
+    const [passwordError, setPasswordError] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -33,6 +56,16 @@ const Register = () => {
             console.log("Passwords do not match.");
             return;
         }
+        if (password.length < 8) {
+            setPasswordError('Password must be at least 8 characters long.');
+            return;
+        } else {
+            setPasswordError('');
+        }
+        if (!/\d/.test(password)) {
+            setPasswordError('Password must contain at least one numeric digit.');
+            return;
+          }
         const data = {
             name: name,
             email: email,
@@ -89,14 +122,9 @@ const Register = () => {
                             </Typography>
                         </Link>
                     </div>
-                    <Box sx={{
-                        fontSize: 25,
-                        // pb: 4,
-                        fontWeight: 'bold',
-                        color: "#111927"
-                    }}>
+                    <BrandBox>
                         <h4>Brand account creation</h4>
-                    </Box>
+                    </BrandBox>
                     <Card sx={{
                         borderRadius: '16px',
                         boxShadow: 2
@@ -173,6 +201,11 @@ const Register = () => {
                                         type="password"
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
+                                    {passwordError && (
+                                        <Typography color="error" variant="body2">
+                                            {passwordError}
+                                        </Typography>
+                                    )}
                                     <TextField
                                         fullWidth
                                         label="Confirm Password"
