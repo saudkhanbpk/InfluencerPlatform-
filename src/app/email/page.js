@@ -66,6 +66,7 @@ const confirEmail = () => {
               alignItems: "center",
               justifyContent: "center",
               fontSize: 18,
+              fontWeight:500
             }}
           >
             <p>john.doe@gmail.com</p>
@@ -78,7 +79,7 @@ const confirEmail = () => {
               mt: 3,
             }}
           >
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" sx={{backgroundColor:'#2970FF',borderRadius:'10px',textDecoration:'none'}}>
               Resend verification link
             </Button>
           </Box>
