@@ -24,7 +24,7 @@ const Navbar = () => {
         <Image src="/image/logo.png" alt="Logo" width={100} height={100} />
           <Box sx={{flexGrow: '4'}}></Box>
           <Button color="red">Home</Button>
-          <Button onClick={handleNavigate} color="inherit">Login</Button>
+          <Button onClick={handleNavigate} color="inherit">Register</Button>
         </Toolbar>
       </AppBar>
     </Box>
