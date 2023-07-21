@@ -257,20 +257,7 @@ const Register = () => {
                                             </Link>
                                         </Typography>
                                     </Box>
-                                    {/* <Box sx={{
-                                        mt: 2, ml: 2,
-                                        alignItems: 'center',
-                                        display: 'flex',
-                                    }}>
-                                        <Checkbox name="policy" />
-                                        <Typography
-                                            color="text.secondary"
-                                            variant="body2"
-                                        >
-                                            I’m not a robot
-
-                                        </Typography>
-                                    </Box> */}
+                                   
                                     <ReCAPTCHA
                                         sitekey="6LdKOUAnAAAAACtgTJzWt5yXL1mZ4ym08LXtODgw"
                                         onChange={onChange}
