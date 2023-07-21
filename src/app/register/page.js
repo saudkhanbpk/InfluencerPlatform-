@@ -48,6 +48,10 @@ const Register = () => {
         axios.post(`${baseUrl}/api/register`, data, config)
             .then((response) => {
                 console.log(response.data); // Handle the successful response
+                const { email, _id } = response.data.newUser; // Extract email and _id from the response
+        // Store the user email and _id in the local storage
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userId', _id);
             })
             .catch((error) => {
                 console.error(error); // Handle the error

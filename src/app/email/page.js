@@ -1,9 +1,16 @@
 'use client'
 import { Box, Button } from '@mui/material'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState, useEffect } from 'react'; 
 
 const confirEmail = () => {
+    const [userEmail, setUserEmail] = useState('');
+
+  useEffect(() => {
+    // Fetch the user email from local storage on component mount
+    const email = localStorage.getItem('userEmail');
+    setUserEmail(email); // Set the user email to the state variable
+  }, []);
     return (
         <div>
             <Box
@@ -64,7 +71,7 @@ const confirEmail = () => {
                             fontSize:18
                         }}
                     >
-                        <p>john.doe@gmail.com</p>
+                        <p>{userEmail}</p>
                     </Box>
                     <Box
                     sx={{
