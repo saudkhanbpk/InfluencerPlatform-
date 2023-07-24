@@ -1,22 +1,22 @@
 "use client";
 import ArrowLeftIcon from "@untitled-ui/icons-react/build/esm/ArrowLeft";
 import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Container,
-  SvgIcon,
-  Link,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { baseUrl } from "../BaseUrl";
-import Checkbox from "@mui/material/Checkbox";
-import Header from "../header/page";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useRouter } from "next/navigation";
+    Box,
+    Button,
+    Card,
+    CardContent,
+    Container,
+    SvgIcon,
+    Link,
+    TextField,
+    Typography
+} from '@mui/material';
+import { baseUrl } from '../BaseUrl';
+import Checkbox from '@mui/material/Checkbox';
+import Header from '../header/page';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useRouter } from 'next/navigation'
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Register = () => {
@@ -54,50 +54,49 @@ const Register = () => {
       setEmailError("");
     }
 
-    if (password !== confirmPassword) {
-      setPasswordError("Passwords do not match."); // Set the error message
-      return;
-    } else {
-      setPasswordError(""); // Clear the error message if passwords match
-    }
-    if (password.length < 8) {
-      setPasswordError("Password must be at least 8 characters long.");
-      return;
-    } else {
-      setPasswordError("");
-    }
-    if (!/\d/.test(password)) {
-      setPasswordError("Password must contain at least one numeric digit.");
-      return;
-    }
-    const data = {
-      name: name,
-      email: email,
-      password: password,
-      confirmPassword: confirmPassword,
-    };
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    axios
-      .post(`${baseUrl}/api/register`, data, config)
-      .then((response) => {
-        console.log(response.data); // Handle the successful response
-        const { email, _id } = response.data.newUser; // Extract email and _id from the response
-        // Store the user email and _id in the local storage
-        localStorage.setItem("userEmail", email);
-        localStorage.setItem("userId", _id);
-      })
-      .catch((error) => {
-        console.error(error); // Handle the error
-      });
-    router.push("/email");
-  };
-  const onChange = () => {
-    console.log("Captcha value:", value);
-  };
+        if (password !== confirmPassword) {
+            setPasswordError('Passwords do not match.'); // Set the error message
+            return;
+        } else {
+            setPasswordError(''); // Clear the error message if passwords match
+        }
+        if (password.length < 8) {
+            setPasswordError('Password must be at least 8 characters long.');
+            return;
+        } else {
+            setPasswordError('');
+        }
+        if (!/\d/.test(password)) {
+            setPasswordError('Password must contain at least one numeric digit.');
+            return;
+        }
+        const data = {
+            name: name,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword
+        };
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        };
+        axios.post(`${baseUrl}/api/register`, data, config)
+            .then((response) => {
+                console.log(response.data); // Handle the successful response
+                const { email, _id } = response.data.newUser; // Extract email and _id from the response
+                // Store the user email and _id in the local storage
+                localStorage.setItem('userEmail', email);
+                localStorage.setItem('userId', _id);
+                router.push('/email')
+            })
+            .catch((error) => {
+                console.error(error); // Handle the error
+            });
+          }
+          const onChange = () => {
+            console.log("Captcha value:", value);
+        }
 
   return (
     <>
@@ -217,7 +216,7 @@ const Register = () => {
                         lineHeight: "22px",
                         color: "#2970FF",
                         pl:'4px',pt:'1px'
-                      }}>Log in</Typography>
+                      }}><Link href="/login">Log in</Link></Typography>
                   </Box>
                 </div>
               </Box>
