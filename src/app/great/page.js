@@ -1,5 +1,5 @@
 'use client'
-import { Box, Button } from '@mui/material'
+import { Box, Button,Typography } from '@mui/material'
 import { baseUrl } from '../BaseUrl';
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
@@ -52,13 +52,13 @@ const Greate = () => {
     }
 
     return (
-        <div>
+        <Box>
             <Box
                 sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: "center",
-                    mt: 20,
+                    mt: 10,
 
                 }}
             >
@@ -71,16 +71,18 @@ const Greate = () => {
                 >
                     <Image
                         alt="Amplify"
-                        src="/image/logo.png"
+                        src="/image/logo2.png"
                         width={125}
                         height={40}
                     />
                 </Box>
             </Box>
-            <div
+            <Box
                 sx={{
                     display: 'flex',
                     // justifyContent: 'space-between',
+                    mt:3
+                    
                 }}
             >
                 <Box
@@ -102,14 +104,9 @@ const Greate = () => {
                         mt: 3
                     }}>
                     <Box>
-                        <Box
-                            sx={{
-                                fontWeight: "bold",
-                                fontSize: 25,
-
-                            }}
-                        >
-                            <h4>Great News!<br />Your brand has registered</h4>
+                        <Box>
+                            <Typography sx={{fontWeight: 700,
+                                fontSize: 32, lineHeight:'48px',fontFamily:'Plus Jakarta Sans',color:'#000000'}}>Great News!<br />Your brand has registered</Typography>
                         </Box>
                         <Box
                             sx={{
@@ -127,17 +124,17 @@ const Greate = () => {
                                 sx={{
                                     mt: 3,
                                 }}>
-                                <Button sx={{ width: '250px' }} variant="contained" onClick={getStart}>Get started</Button>
+                                <Button sx={{ width: '250px',borderRadius:'10px' }} variant="contained" onClick={getStart}>Get started</Button>
                             </Box>
                             <Box
                                 sx={{
                                     mt: 3,
                                 }}>
-                                <Button sx={{ width: '120px', ml: 3 }} variant="outlined">do it later</Button>
+                                <Button sx={{ ml: 3,borderRadius:'10px' }} variant="outlined">do it later</Button>
                             </Box>
                         </Box>
                     </Box>
-                    <Box>
+                    <Box sx={{ml:2}}>
                         <Image
                             src='/image/great.png'
                             width={192.02}
@@ -146,8 +143,8 @@ const Greate = () => {
                     </Box>
 
                 </Box>
-            </div>
-        </div>
+            </Box>
+        </Box>
     )
 }
 

@@ -173,7 +173,7 @@ const BrandProfile = () => {
                 width: "30%",
               }}
             >
-              <Box sx={{}}>
+              <Box>
                 <Typography sx={{ color: "#2970FF", fontWeight: 600 }}>
                 Canada Goose
                 </Typography>
@@ -191,52 +191,43 @@ const BrandProfile = () => {
                 >
                   Established since 2010
                 </Typography>
+                
+                <Box  sx={{
+                    display:'flex',
+                    backgroundColor: "#F9FAFF",
+                    borderRadius: "10px",
+                    padding:'5px',width:'100%',pl:'5px'
+                  }}>
+                <LocationOnOutlinedIcon
+                    sx={{ pt:'2', fontSize: "18px",
+                    color: "#2970FF",
+                    }}
+                  />
                 <Typography
                   sx={{
                     color: "#2970FF",
                     backgroundColor: "#F9FAFF",
                     borderRadius: "10px",
-                    mt: 1,
-                    p: 1,
+                    mt: 0,
+                    pl:'12px',
                     fontSize: "13px",
                     fontWeight: 400,
                     fontFamily: "inter",
+                    paddingBottom:'3px'
                   }}
                 >
-                  <LocationOnOutlinedIcon
+                  {/* <LocationOnOutlinedIcon
                     sx={{ mx: 1, fontSize: "18px", mb: 1 }}
-                  />{" "}
+                  /> */}
                   Toronto Canada
                 </Typography>
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  p: 1,
-                  height: "53px",
-                  width: "33%",
-                  mr: 1,
-                  border: "2px solid #2970FF",
-                  borderRadius: "10px",
-                }}
-              >
-                <Box sx={{ color: "#2970FF" }}>
-                  <Typography sx={{ fontSize: "10px" }}>Reach</Typography>
-                  <Typography sx={{ fontWeight: "700" }}>500K</Typography>
-                </Box>
-                <Box sx={{ ml: 2 }}>
-                  <TimelineIcon sx={{ fontSize: "34px" }} />
+
                 </Box>
               </Box>
+              
             </Box>
 
             <Box sx={{ display: "flex", mt: 3 }}>
-              <Box sx={{ color: "red", mx: 2 }}>
-                <FavoriteIcon sx={{ fontSize: "35px" }}></FavoriteIcon>
-              </Box>
-              <Box sx={{ color: "#2970FF", mx: 2 }}>
-                <GroupAddIcon sx={{ fontSize: "35px" }} />
-              </Box>
               <Box
                 sx={{
                   alignItems: "center",
@@ -244,7 +235,7 @@ const BrandProfile = () => {
                 }}
               >
                 <Button variant="outlined" color="primary">
-                  <PersonAddAltIcon sx={{ mr: 1 }} /> Invite to Project
+                  <FavoriteIcon sx={{ mr: 1 }} /> Favorite
                 </Button>
               </Box>
               <Box

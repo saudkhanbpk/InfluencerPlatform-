@@ -12,29 +12,34 @@ const confirEmail = () => {
     setUserEmail(email); // Set the user email to the state variable
   }, []);
     return (
-        <div>
+        <Box>
           <Box
             sx={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              mt:13
+              
             }}
           >
             <Image
               alt="Amplify"
-              src="/image/logo.png"
+              src="/image/logo2.png"
               width={125}
               height={40}
             />
           </Box>
           <Box
-            sx={{
+            
+          >
+          <Box sx={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              mt: 3,
-            }}
-          >
+              mt: 4,
+              lineHeight: "38.4px",
+
+            }}>
             <Typography
               variant="h4"
               sx={{
@@ -47,44 +52,24 @@ const confirEmail = () => {
             >
               Confirm your email address
             </Typography>
-                <div>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: "center",
-                        }}
-                    >
-                        <Image
-                            alt="Amplify"
-                            src="/image/logo.png"
-                            width={125}
-                            height={40}
-                        />
-                    </Box>
-                    <Box
-                        sx={{
-                            color: '#111927',
-                            display: 'flex',
-                            alignItems: "center",
-                            justifyContent: "center",
-                            fontWeight: 'bold',
-                            mt: 3,
-                            fontSize:32
 
-                        }}
-                    >
-                        <h4>Confirm your email address</h4>
-                    </Box>
+          </Box>
+            
+                <Box>
+                    
                     <Box
                         sx={{
                             color: '#6C737F',
-                            mt: 3,
-                            fontSize:18
+                            mt: 5,
+                            
+                            alignItems: "center",
+                            justifyContent: "center",
                         }}
                     >
-                        <p>Please verify your email address by clicking the link sent to
-                        </p>
+                        <Typography sx={{fontSize:'18px',fontWeight:400,lineHeight:"18.26px",textAlign:'center'}}>
+                        Please verify your email address by clicking the link sent to
+                        </Typography>
+                        
 
                     </Box>
                     <Box
@@ -96,25 +81,25 @@ const confirEmail = () => {
                             fontSize:18
                         }}
                     >
-                        <p>{userEmail}</p>
+                        <Typography sx={{fontSize:'18px',fontWeight:500,lineHeight:"18.26px",textAlign:'center'}}>{userEmail}</Typography>
                     </Box>
                     <Box
                     sx={{
                             display: 'flex',
                             alignItems: "center",
                             justifyContent: "center",
-                            mt:3,
+                            mt:5,
                             
                         }}
                     >
-                        <Button variant="contained" color="primary">
+                        <Button variant="contained" color="primary"  sx={{backgroundColor:'#2970FF',borderRadius:'10px',textDecoration:'none',width:'30%'}}>
                             Resend verification link
                         </Button>
                     </Box>
-                </div>
+                </Box>
 
             </Box>
-        </div>
+        </Box>
         ////////
     )
 }
