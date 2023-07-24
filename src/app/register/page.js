@@ -14,7 +14,7 @@ import {
 import { baseUrl } from '../BaseUrl';
 import Checkbox from '@mui/material/Checkbox';
 import Header from '../header/page';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation'
 import ReCAPTCHA from "react-google-recaptcha";
@@ -85,14 +85,15 @@ const Register = () => {
             .then((response) => {
                 console.log(response.data); // Handle the successful response
                 const { email, _id } = response.data.newUser; // Extract email and _id from the response
-        // Store the user email and _id in the local storage
-        localStorage.setItem('userEmail', email);
-        localStorage.setItem('userId', _id);
+                // Store the user email and _id in the local storage
+                localStorage.setItem('userEmail', email);
+                localStorage.setItem('userId', _id);
+                router.push('/email')
             })
             .catch((error) => {
                 console.error(error); // Handle the error
             });
-        router.push('/email')
+
 
     }
     const onChange = () => {
@@ -260,7 +261,7 @@ const Register = () => {
                                             </Link>
                                         </Typography>
                                     </Box>
-                                   
+
                                     <ReCAPTCHA
                                         sitekey="6LdKOUAnAAAAACtgTJzWt5yXL1mZ4ym08LXtODgw"
                                         onChange={onChange}
