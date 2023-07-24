@@ -88,11 +88,11 @@ const Register = () => {
         // Store the user email and _id in the local storage
         localStorage.setItem('userEmail', email);
         localStorage.setItem('userId', _id);
+        router.push('/email')
             })
             .catch((error) => {
                 console.error(error); // Handle the error
             });
-        router.push('/email')
 
     }
     const onChange = () => {
