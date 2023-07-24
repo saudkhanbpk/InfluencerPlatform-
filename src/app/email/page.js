@@ -9,7 +9,7 @@ const confirEmail = () => {
   useEffect(() => {
     // Fetch the user email from local storage on component mount
     const email = localStorage.getItem('userEmail');
-    setUserEmail(email); // Set the user email to the state variable
+    setUserEmail(email);
   }, []);
     return (
         <div>
