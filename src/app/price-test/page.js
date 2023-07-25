@@ -1,5 +1,5 @@
-"use client";
-import { Box, Button, Typography, Divider } from "@mui/material";
+'use client'
+import { Box, Button, Typography, Divider, Grid } from "@mui/material";
 import { publishable_Key } from '../BaseUrl';
 import Image from "next/image";
 import React, { useState } from 'react';
@@ -8,13 +8,12 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 const MySwal = withReactContent(Swal);
+
 const Registered = () => {
-  const publishableKey ="pk_test_51MW0sqA2UHtqGNuRS86jXELMgiNsywnlNaLJ1isdCq7yXbfvWKL2FisKTYAVPmBS4XY9EO4m0JRGOIELoiVnDThN00cq9qWeCS"
-  // console.log(publishableKey)
-  '';
+  const publishableKey = { publishable_Key };
   const [product, setProduct] = useState({
     name: 'Headphone',
-    price: 99,
+    price: 5,
   });
   const priceForStripe = product.price * 100;
 
@@ -25,6 +24,7 @@ const Registered = () => {
       time: 4000,
     });
   };
+
   const handleFailure = () => {
     MySwal.fire({
       icon: 'error',
@@ -32,6 +32,7 @@ const Registered = () => {
       time: 4000,
     });
   };
+
   const payNow = async token => {
     try {
       const response = await axios({
@@ -50,6 +51,7 @@ const Registered = () => {
       console.log(error);
     }
   };
+
   return (
     <Box>
       <Box
@@ -63,43 +65,32 @@ const Registered = () => {
         <Image alt="Amplify" src="/image/logo2.png" width={125} height={40} />
       </Box>
 
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          fontFamily: "Plus Jakarta Sans",
-          marginBottom: '40px'
-        }}
-      >
-        <Box
-          sx={{
-            width: "340px",
-            borderRadius: "16px",
-            marginTop: "30px",
-            fontFamily: "Plus Jakarta Sans",
-            backgroundColor: "#F9FAFF",
-            px: 2,
-            py: 2,
-            mr: "10px",
-          }}
-        >
-          <Box sx={{ width: '24', height: '25px' }}>
-            <Image
-              sx={{ position: "absolute" }}
-              alt="Amplify"
-              src="/image/pricelogo.png"
-              width={24}
-              height={26}
-            />
+      <Grid container spacing={2} justifyContent="center" >
+        <Grid>
+          <Box
+            sx={{
+              width: "100%",
+              borderRadius: "16px",
+              mt: "30px",
+              backgroundColor: "#F9FAFF",
+              p: 2,
+            }}
+          >
+            <Box sx={{ width: '24', height: '25px' }}>
+              <Image
+                sx={{ position: "absolute" }}
+                alt="Amplify"
+                src="/image/pricelogo.png"
+                width={24}
+                height={26}
+              />
+            </Box>
 
-          </Box>
-          <Box>
             <Typography
               variant="h4"
               sx={{
                 fontFamily: "Plus Jakarta Sans",
-                marginTop: "6px",
-                marginBottom: "2px",
+                my: 2,
                 fontSize: "32px",
                 fontWeight: "700",
                 lineHeight: '38px'
@@ -107,24 +98,20 @@ const Registered = () => {
             >
               0$
             </Typography>
-            <Box sx={{ my: '6px' }}>
-              <Typography
-                variant="h6"
-                sx={{
-                  fontFamily: "Plus Jakarta Sans",
-                  fontWeight: "700",
-                  fontSize: "18px",
-                  marginBottom: "2px",
-                  lineHeight: '22px'
-                }}
-              >
-                Free trial
-              </Typography>
 
-            </Box>
+            <Typography
+              variant="h6"
+              sx={{
+                fontFamily: "Plus Jakarta Sans",
+                fontWeight: "700",
+                fontSize: "18px",
+                mb: 2,
+                lineHeight: '22px'
+              }}
+            >
+              Free trial
+            </Typography>
 
-          </Box>
-          <Box sx={{ my: '6px' }}>
             <Typography
               variant="body2"
               sx={{
@@ -136,11 +123,9 @@ const Registered = () => {
               to familiarize yourself with our tools
             </Typography>
 
-          </Box>
+            <Divider sx={{ my: 2 }} />
 
-          <Divider sx={{ my: 2 }} />
-
-          <Box>
+            <Box>
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
               <Box sx={{ alignItems: 'center' }} >
                 <Image
@@ -260,7 +245,6 @@ const Registered = () => {
             </Box>
 
           </Box>
-
           <Box
             sx={{
               alignItems: "center",
@@ -282,36 +266,35 @@ const Registered = () => {
               Start free Trial
             </Button>
           </Box>
-        </Box>
-
-        <Box
-          sx={{
-            width: "340px",
-            borderRadius: "16px",
-            marginTop: "30px",
-            ml: "10px",
-            backgroundColor: "#F9FAFF",
-            px: 2,
-            py: 2,
-          }}
-        >
-          <Box sx={{ width: '24', height: '25px' }}>
-            <Image
-              sx={{ position: "absolute" }}
-              alt="Amplify"
-              src="/image/pricelogo.png"
-              width={24}
-              height={26}
-            />
-
           </Box>
-          <Box>
+
+        </Grid>
+
+        <Grid>
+          <Box
+            sx={{
+              width: "100%",
+              borderRadius: "16px",
+              mt: "30px",
+              backgroundColor: "#F9FAFF",
+              p: 2,
+            }}
+          >
+            <Box sx={{ width: '24', height: '25px' }}>
+              <Image
+                sx={{ position: "absolute" }}
+                alt="Amplify"
+                src="/image/pricelogo.png"
+                width={24}
+                height={26}
+              />
+            </Box>
+
             <Typography
               variant="h4"
               sx={{
                 fontFamily: "Plus Jakarta Sans",
-                marginTop: "6px",
-                marginBottom: "2px",
+                my: 2,
                 fontSize: "32px",
                 fontWeight: "700",
                 lineHeight: '38px'
@@ -326,26 +309,19 @@ const Registered = () => {
               </Typography>
             </Typography>
 
-          </Box>
-
-          <Box sx={{}}>
             <Typography
               variant="h6"
               sx={{
                 fontFamily: "Plus Jakarta Sans",
                 fontWeight: "700",
                 fontSize: "18px",
-                marginBottom: "2px",
+                mb: 2,
                 lineHeight: '22px'
               }}
             >
               Standard
             </Typography>
 
-          </Box>
-
-
-          <Box sx={{ my: '6px' }}>
             <Typography
               variant="body2"
               sx={{
@@ -357,118 +333,9 @@ const Registered = () => {
               to familiarize yourself with our tools
             </Typography>
 
-          </Box>
+            <Divider sx={{ my: 2 }} />
 
-          <Divider sx={{ my: 2 }} />
-
-          {/* <Box>
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Image
-                sx={{}}
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={11}
-              />
-              <Typography
-                variant="body2"
-                sx={{ fontFamily: "plus jakarta sans", fontSize: "14", ml: 2 }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Image
-                sx={{}}
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={11}
-              />
-              <Typography
-                variant="body2"
-                sx={{ fontFamily: "plus jakarta sans", fontSize: "14", ml: 2 }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Image
-                sx={{}}
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={11}
-              />
-              <Typography
-                variant="body2"
-                sx={{ fontFamily: "plus jakarta sans", fontSize: "14", ml: 2 }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Image
-                sx={{}}
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={11}
-              />
-              <Typography
-                variant="body2"
-                sx={{ fontFamily: "plus jakarta sans", fontSize: "14", ml: 2 }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Image
-                sx={{}}
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={11}
-              />
-              <Typography
-                variant="body2"
-                sx={{ fontFamily: "plus jakarta sans", fontSize: "14", ml: 2 }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Image
-                sx={{}}
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={11}
-              />
-              <Typography
-                variant="body2"
-                sx={{ fontFamily: "plus jakarta sans", fontSize: "14", ml: 2 }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Image
-                sx={{}}
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={11}
-              />
-              <Typography
-                variant="body2"
-                sx={{ fontFamily: "plus jakarta sans", fontSize: "14", ml: 2 }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-          </Box> */}
-          <Box>
+           <Box>
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
               <Box sx={{ alignItems: 'center' }} >
                 <Image
@@ -588,7 +455,6 @@ const Registered = () => {
             </Box>
 
           </Box>
-
           <Box
             sx={{
               alignItems: "center",
@@ -598,18 +464,6 @@ const Registered = () => {
               mb: 2,
             }}
           >
-            {/* <Button
-              variant="outlined"
-              color="primary"
-              sx={{
-                width: "90%",
-                color: "#6366F1",
-                border: "1px solid #6366F1",
-                borderRadius: "10px",
-              }}
-            >
-              Start free Trial
-            </Button> */}
             <StripeCheckout
               sx={{
                 width: "100%",
@@ -619,15 +473,15 @@ const Registered = () => {
               label="Paid Now"
               name="Pay With Credit Card"
               billingAddress
-              // shippingAddress
               amount={priceForStripe}
               description={`Your total is $${product.price}`}
               token={payNow}
             />
           </Box>
-        </Box>
+          </Box>
 
-      </Box>
+        </Grid>
+      </Grid>
     </Box>
   );
 };
