@@ -1,5 +1,6 @@
-"use client";
-import ArrowLeftIcon from "@untitled-ui/icons-react/build/esm/ArrowLeft";
+'use client'
+import React from 'react';
+import ArrowLeftIcon from '@untitled-ui/icons-react/build/esm/ArrowLeft';
 import {
     Box,
     Button,
@@ -20,16 +21,16 @@ import { useRouter } from 'next/navigation'
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Register = () => {
-  useEffect(() => {
-    localStorage.removeItem("userEmail");
-    localStorage.removeItem("userId");
-  }, []);
-  // console.log("baseurl:", baseUrl)
-  const router = useRouter();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+    useEffect(() => {
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('userId');
+    }, []);
+    // console.log("baseurl:", baseUrl)
+    const router = useRouter()
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
 
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
