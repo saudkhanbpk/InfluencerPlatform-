@@ -1,4 +1,5 @@
 'use client'
+import React from 'react';
 import ArrowLeftIcon from '@untitled-ui/icons-react/build/esm/ArrowLeft';
 import {
     Box,
@@ -24,7 +25,7 @@ const Register = () => {
         localStorage.removeItem('userEmail');
         localStorage.removeItem('userId');
     }, []);
-    // console.log("baseurl:", baseUrl)
+    console.log("baseurl:", baseUrl)
     const router = useRouter()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
