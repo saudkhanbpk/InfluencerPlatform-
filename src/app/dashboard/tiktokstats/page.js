@@ -1,5 +1,5 @@
-"use client";
-import React, { useState } from "react";
+'use client'
+import React from 'react'
 import { makeStyles } from "@mui/styles";
 import Link from "next/link";
 import { Box, Button, Divider } from "@mui/material";
@@ -30,14 +30,8 @@ import SouthAmericaIcon from "@mui/icons-material/SouthAmerica";
 import Image from "next/image";
 import PersonAddAltSharpIcon from "@mui/icons-material/PersonAddAltSharp";
 import GroupSharpIcon from "@mui/icons-material/GroupSharp";
-import Youtube from "./youtubestats/page";
-import Tiktokstats from "./tiktokstats/page";
-import Twitterstats from "./twitterstats/page";
-import Pintereststats from "./pinterest/page";
-
 
 const useStyles = makeStyles((theme) => ({
-
   cardContainer: {
     display: "flex",
     width: "100%",
@@ -119,502 +113,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProfileDashboard = () => {
+
+
+
+
+const Tiktokstats = () => {
+
   const classes = useStyles();
-  const [overview , setOverview] = useState(0)
 
-  const handledata=(num)=>{
-    setOverview(num)
-  }
   return (
-    <Box className={classes.container} sx={{ position: "relative" }}>
-      <img
-        src="/image/cover.png"
-        alt="Cover Image"
-        className={classes.coverImage}
-      />
-      <Button
-        variant="small"
-        sx={{
-          borderRadius: "20px",
-          color: "black",
-          backgroundColor: "#E0E0E0",
-          position: "absolute",
-          top: "80%",
-          right: "20px",
-          fontFamily: "Inter",
-          fontWeight: "600",
-          fontSize: "13px",
-        }}
-      >
-        Change Cover
-      </Button>
-      <Box>
-        <Box
-          sx={{
-            // border: "2px solid green",
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <Box className={classes.profileImage}>
-            <img
-              src="/image/profile.png"
-              alt="Profile Image"
-              className={classes.profileImageImg}
-            />
-          </Box>
-          <Box
-            sx={{ display: "flex", justifyContent: "space-between" }}
-            className={classes.profilename}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                p: 2,
-                justifyContent: "space-between",
-                width: "30%",
-              }}
-            >
-              <Box sx={{}}>
-                <Typography sx={{ color: "#2970FF", fontWeight: 600 }}>
-                  @therock <VerifiedIcon sx={{ color: "#2970FF" }} />
-                </Typography>
-                <Typography
-                  variant="overline"
-                  sx={{
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    fontFamily: "inter",
-                    color: "#6C737F",
-                    lineHeight: "30px",
-                    pt: 1,
-                    mb: 1,
-                  }}
-                >
-                  SOCIAL MEDIA INFLUENCER
-                </Typography>
-                <Typography
-                  sx={{
-                    color: "#2970FF",
-                    backgroundColor: "#F9FAFF",
-                    borderRadius: "10px",
-                    mt: 1,
-                    p: 1,
-                    fontSize: "13px",
-                    fontWeight: 400,
-                    fontFamily: "inter",
-                  }}
-                >
-                  <LocationOnOutlinedIcon
-                    sx={{ mx: 1, fontSize: "18px", mb: 1 }}
-                  />{" "}
-                  Toronto Canada
-                </Typography>
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  p: 1,
-                  height: "53px",
-                  width: "33%",
-                  mr: 1,
-                  border: "2px solid #2970FF",
-                  borderRadius: "10px",
-                }}
-              >
-                <Box sx={{ color: "#2970FF" }}>
-                  <Typography sx={{ fontSize: "10px" }}>Reach</Typography>
-                  <Typography sx={{ fontWeight: "700" }}>500K</Typography>
-                </Box>
-                <Box sx={{ ml: 2 }}>
-                  <TimelineIcon sx={{ fontSize: "34px" }} />
-                </Box>
-              </Box>
-            </Box>
-
-            <Box sx={{ display: "flex", mt: 3 }}>
-              <Box sx={{ color: "red", mx: 2 }}>
-                <FavoriteIcon sx={{ fontSize: "35px" }}></FavoriteIcon>
-              </Box>
-              <Box sx={{ color: "#2970FF", mx: 2 }}>
-                <GroupAddIcon sx={{ fontSize: "35px" }} />
-              </Box>
-              <Box
-                sx={{
-                  alignItems: "center",
-                  mr: 2,
-                }}
-              >
-                <Button variant="outlined" color="primary">
-                  <PersonAddAltIcon sx={{ mr: 1 }} /> Invite to Project
-                </Button>
-              </Box>
-              <Box
-                sx={{
-                  alignItems: "center",
-                }}
-              >
-                <Button variant="contained" color="primary">
-                  <QuestionAnswerIcon sx={{ mr: 1 }} /> Send Message
-                </Button>
-                <Box sx={{ pt: 3, mb: 1, height: "20px", color: "#111927" }}>
-                  <Typography
-                    sx={{
-                      fontSize: "18px",
-                      pb: 1,
-                      width: "111px",
-                      fontWeight: 600,
-                      fontFamily: "inter",
-                      color: "#6C737F",
-                      lineHeight: "21.78px",
-                    }}
-                  >
-                    Quick Links
-                  </Typography>
-                  <Box sx={{ display: "flex" }}>
-                    <InstagramIcon sx={{ color: "#FF004F", mx: 1 }} />{" "}
-                    <FaTiktok sx={{ mx: 1, mt: 2 }} />{" "}
-                    <YouTubeIcon sx={{ color: "#FF004F", mx: 1 }} />{" "}
-                    <TwitterIcon sx={{ color: "#1DA1F2", mx: 1 }} />{" "}
-                    <PinterestIcon sx={{ color: "#EE0505", mx: 1 }} />{" "}
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-      </Box>
-      <Box sx={{ mx: "13px",color:'#2970FF'}}>
-      <Box sx={{display: "flex"}}>
-            <Typography sx={{borderBottom:'1px solid #2970FF',pb:'3px'}}>Overview</Typography>
-
-      </Box>
-          </Box>
-      <Divider></Divider>
-      <Box sx={{ display: "flex" }}>
-        <Box
-          sx={{ width: "75%", borderRight: "1px solid #F2F4F7", p: 1, pr: 3 }}
-        >
-          <Box sx={{ my: 2 }}>
-            <Typography
-              variant="H6"
-              sx={{
-                fontWeight: 700,
-                fontSize: "18px",
-                fontFamily: "Inter",
-                fontFamily: "Plus Jakarta Sans",
-              }}
-            >
-              Biography
-            </Typography>
-          </Box>
-          <Box sx={{ marginBottom: "25px" }}>
-            <Typography
-              variant="body1"
-              sx={{
-                lineHeight: "32px",
-                color: "#6C737F",
-                fontWeight: 500,
-                fontSize: "18px",
-                fontFamily: "Inter",
-                fontFamily: "Inter",
-              }}
-            >
-              Hey there, thanks for checking out my page! I'm a social media
-              influencer who loves to connect with people from all over the
-              world. My passion is to inspire others to live their best lives
-              and to chase their dreams. Through my content, I hope to motivate
-              and uplift my followers, while also sharing my own personal
-              journey and experiences. I'm committed to creating high-quality
-              content that resonates with my followers and promotes products
-              that I genuinely believe in. So, if you're interested in working
-              together, feel free to reach out and let's see what we can create
-              together!
-            </Typography>
-          </Box>
-          <Divider></Divider>
-          <Box sx={{ display: "flex", marginTop: "30px" }}>
-            <Box sx={{ width: "50%", pt: "5", pr: "60px" }}>
-              <Box sx={{ p: 1, pl: 0, pr: "10px" }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <AccountCircleIcon sx={{ mr: 2 }} /> The Rock
-                </Typography>
-              </Box>
-              <Divider></Divider>
-              <Box sx={{ p: 1, pl: 0, mr: "10px" }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <LanguageOutlinedIcon sx={{ mr: 2 }} /> www.therock.com
-                </Typography>
-              </Box>
-              <Divider></Divider>
-
-              <Box sx={{ p: 1, pl: 0 }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <PhoneOutlinedIcon sx={{ mr: 2 }} /> +92313524856
-                </Typography>
-              </Box>
-              <Divider></Divider>
-
-              <Box sx={{ p: 1, pl: 0 }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <HomeOutlinedIcon sx={{ mr: 2 }} /> Toronto, Ontario, Canada
-                </Typography>
-              </Box>
-              <Divider></Divider>
-            </Box>
-
-            <Divider></Divider>
-
-            <Box sx={{ width: "50%", pr: "60px" }}>
-              <Box sx={{ p: 1, pl: 0 }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <LanguageOutlinedIcon sx={{ mr: 2 }} /> Languages:
-                  English/Arabic
-                </Typography>
-              </Box>
-              <Divider></Divider>
-
-              <Box sx={{ p: 1, pl: 0 }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <MaleOutlinedIcon sx={{ mr: 2 }} /> Gender: Male
-                </Typography>
-              </Box>
-              <Divider></Divider>
-
-              <Box sx={{ p: 1, pl: 0 }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <EightteenMpOutlinedIcon sx={{ mr: 2 }} /> Age: 52
-                </Typography>
-              </Box>
-              <Divider></Divider>
-
-              <Box sx={{ p: 1, pl: 0 }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <SouthAmericaIcon sx={{ mr: 2 }} /> Ethnicity: Asian
-                </Typography>
-              </Box>
-              <Divider></Divider>
-            </Box>
-          </Box>
-        </Box>
-        <Divider></Divider>
-        <Box sx={{ width: "25%", pl: 3, p: 1, pr: 3 }}>
-          <Box sx={{ my: 2 }}>
-            <Typography
-              variant="H6"
-              sx={{
-                fontWeight: 700,
-                fontSize: "18px",
-                fontFamily: "Inter",
-                fontFamily: "Plus Jakarta Sans",
-              }}
-            >
-              Niche
-            </Typography>
-          </Box>
-
-          <Box
-            sx={{
-              alignItems: "center",
-              justifyContent: "center",
-              mt: 3,
-            }}
-          >
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: "rgba(99, 102, 241, 0.12)",color:'black', width: "100%" }}
-            >
-              Clothing
-            </Button>
-          </Box>
-          <Box
-            sx={{
-              alignItems: "center",
-              justifyContent: "center",
-              mt: 3,
-            }}
-          >
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: "rgba(99, 102, 241, 0.12)",color:'black', width: "100%" }}
-            >
-              Men Fashion
-            </Button>
-          </Box>
-
-          <Box sx={{ marginTop: "20px" }}>
-            <Box sx={{ my: 2 }}>
-              <Typography
-                variant="H6"
-                sx={{
-                  fontWeight: 700,
-                  fontSize: "18px",
-                  fontFamily: "Inter",
-                  fontFamily: "Plus Jakarta Sans",
-                }}
-              >
-                Social Media links
-              </Typography>
-            </Box>
-            <Box sx={{ p: 1, pl: 0, pr: "10px" }}>
-              <Typography
-                sx={{
-                  color: "#111927",
-                  fontFamily: "Inter",
-                  fontSize: "16px",
-                  fontWeight: 500,
-                  lineHeight: "25px",
-                  letterSpacing: "0px",
-                  textAlign: "left",
-                }}
-              >
-                <InstagramIcon sx={{ mr: 2, color: "#F90000" }} />{" "}
-                www.instagram.com/therock
-              </Typography>
-            </Box>
-            <Divider></Divider>
-
-            <Box sx={{ p: 1, pl: 0, pr: "10px" }}>
-              <Typography
-                sx={{
-                  color: "#111927",
-                  fontFamily: "Inter",
-                  fontSize: "16px",
-                  fontWeight: 500,
-                  lineHeight: "25px",
-                  letterSpacing: "0px",
-                  textAlign: "left",
-                }}
-              >
-                <YouTubeIcon sx={{ mr: 2, color: "#F90000" }} />{" "}
-                www.youtube.com/therock
-              </Typography>
-            </Box>
-            <Divider></Divider>
-
-            <Box sx={{ p: 1, pl: 0, pr: "10px" }}>
-              <Typography
-                sx={{
-                  color: "#111927",
-                  fontFamily: "Inter",
-                  fontSize: "16px",
-                  fontWeight: 500,
-                  lineHeight: "25px",
-                  letterSpacing: "0px",
-                  textAlign: "left",
-                }}
-              >
-                <TwitterIcon sx={{ mr: 2, color: "#1DA1F2" }} />{" "}
-                www.twitter.com/therock
-              </Typography>
-            </Box>
-            <Divider></Divider>
-
-            <Box sx={{ p: 1, pl: 0, pr: "10px" }}>
-              <Typography
-                sx={{
-                  color: "#111927",
-                  fontFamily: "Inter",
-                  fontSize: "16px",
-                  fontWeight: 500,
-                  lineHeight: "25px",
-                  letterSpacing: "0px",
-                  textAlign: "left",
-                }}
-              >
-                <PinterestIcon sx={{ mr: 2, color: "#F90000" }} />{" "}
-                www.pinterest.com/therock
-              </Typography>
-            </Box>
-            <Divider></Divider>
-          </Box>
-        </Box>
-      </Box>
-      <Divider sx={{ mt: "80px" }}></Divider>
-
+    <div>
       <Box sx={{}}>
-        <Box sx={{ my: 2 }}>
+        {/* <Box sx={{ my: 2 }}>
           <Typography
             variant="H6"
             sx={{
@@ -628,27 +138,24 @@ const ProfileDashboard = () => {
           </Typography>
         </Box>
         <Box sx={{ display: "flex" }}>
-          <Box sx={{ mx: "13px", }}>
-            <Typography  className={`${overview === 0 && "youtubestats"} `} onClick={()=>handledata(0)}>Instagram statistics</Typography>  
+          <Box sx={{ mx: "13px",color:'#2970FF' }}>
+            <Typography sx={{borderBottom:'1px solid #2970FF',pb:'3px'}}>Instagram statistics</Typography>  
           </Box>
           <Box sx={{ mx: "13px" }}>
-            <Typography className={`${overview === 1 && "youtubestats"} `}  onClick={()=>handledata(1)}>Youtube statistics</Typography>
+            <Typography href="#">Youtube statistics</Typography>
           </Box>
           <Box sx={{ mx: "13px" }}>
-            <Typography  className={`${overview === 2 && "youtubestats"} `}   onClick={()=>handledata(2)}>tiktok statistics</Typography>
+            <Typography href="#">tiktok statistics</Typography>
           </Box>
           <Box sx={{ mx: "13px" }}>
-            <Typography  className={`${overview === 3 && "youtubestats"} `}  onClick={()=>handledata(3)}>Twitter statistics</Typography>
+            <Typography href="#">Twitter statistics</Typography>
           </Box>
           <Box sx={{ mx: "13px" }}>
-            <Typography  className={`${overview === 4 && "youtubestats"} `}  onClick={()=>handledata(4)}>Pinetrest statistics</Typography>
+            <Typography href="#">Pinetrest statistics</Typography>
           </Box>
         </Box>
 
-        <Divider></Divider>
-
-{
-  overview === 0 && 
+        <Divider></Divider> */}
         <Box sx={{ p: "15px" }}>
           <Box
             display="flex"
@@ -661,7 +168,7 @@ const ProfileDashboard = () => {
                 <Box className="flex flex-row items-center px-7">
                   <Box className={classes.imageContainer}>
                     <Image
-                      src="/image/grouped.png"
+                      src="/image/addperson.png"
                       width={"84"}
                       height={"84"}
                     ></Image>
@@ -680,7 +187,7 @@ const ProfileDashboard = () => {
                           textAlign: "left",
                         }}
                       >
-                        Followers Count
+                        Subscribers
                       </Typography>
 
                       <Typography
@@ -903,8 +410,8 @@ const ProfileDashboard = () => {
                           textAlign: "left",
                         }}
                       >
-                        <FiberManualRecordSharpIcon fontSize="10px" /> High
-                        Average Comments
+                        <FiberManualRecordSharpIcon fontSize="10px" />High Average
+                        Comments
                       </Typography>
                     </Box>
                     <Typography
@@ -930,6 +437,155 @@ const ProfileDashboard = () => {
                   <Box className={classes.imageContainer}>
                     {/* <FaUserCheck sx={{ fontSize:"80px", color: "#4466F2" }} /> */}
                     <Image
+                      src="/image/share.png"
+                      width={"84"}
+                      height={"84"}
+                    ></Image>
+                  </Box>
+                  <Box className={classes.greenBox}>
+                    <Box>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          color: "#9D9D9D",
+                          fontFamily: "Inter",
+                          fontSize: "14px",
+                          fontWeight: "400",
+                          lineHeight: "19px",
+                          letterSpacing: "0.08em",
+                          textAlign: "left",
+                        }}
+                      >
+                        Average Shared
+                      </Typography>
+
+                      <Typography
+                        sx={{
+                          color: "#4466F2",
+                          fontFamily: "Inter",
+                          fontSize: "40px",
+                          fontWeight: "700",
+                          lineHeight: "49px",
+                          letterSpacing: "9%",
+                          textAlign: "left",
+                        }}
+                      >
+                        1.5 %
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          color: "#008EAD",
+                          fontFamily: "Inter",
+                          fontSize: "10px",
+                          fontWeight: "600",
+                          lineHeight: "17px",
+                          letterSpacing: "8%",
+                          textAlign: "left",
+                        }}
+                      >
+                        <FiberManualRecordSharpIcon fontSize="12px" />
+                        High average comments
+                      </Typography>
+                    </Box>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#4466F2",
+                        fontFamily: "Inter",
+                        fontSize: "12px",
+                        fontWeight: "600",
+                        lineHeight: "15px",
+                        letterSpacing: "8%",
+                        textAlign: "left",
+                        marginTop: "8px",
+                      }}
+                    >
+                      Details <ExpandMoreIcon />
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+              <Box className={classes.card}>
+                <Box className="flex flex-row items-center px-7">
+                  <Box className={classes.imageContainer}>
+                    {/* <FaUserCheck sx={{ fontSize:"80px", color: "#4466F2" }} /> */}
+                    <Image
+                      src="/image/play.png"
+                      width={"84"}
+                      height={"84"}
+                    ></Image>
+                  </Box>
+                  <Box className={classes.greenBox}>
+                    <Box>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          color: "#9D9D9D",
+                          fontFamily: "Inter",
+                          fontSize: "14px",
+                          fontWeight: "400",
+                          lineHeight: "19px",
+                          letterSpacing: "0.08em",
+                          textAlign: "left",
+                        }}
+                      >
+                        Average Plays
+                      </Typography>
+
+                      <Typography
+                        sx={{
+                          color: "#4466F2",
+                          fontFamily: "Inter",
+                          fontSize: "40px",
+                          fontWeight: "700",
+                          lineHeight: "49px",
+                          letterSpacing: "9%",
+                          textAlign: "left",
+                          width:'30px'
+                        }}
+                      >
+                        65%
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          color: "#008EAD",
+                          fontFamily: "Inter",
+                          fontSize: "10px",
+                          fontWeight: "600",
+                          lineHeight: "17px",
+                          letterSpacing: "8%",
+                          textAlign: "left",
+                        }}
+                      >
+                        <FiberManualRecordSharpIcon fontSize="12px" /> High average Comments
+                      </Typography>
+                    </Box>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#4466F2",
+                        fontFamily: "Inter",
+                        fontSize: "12px",
+                        fontWeight: "600",
+                        lineHeight: "15px",
+                        letterSpacing: "8%",
+                        textAlign: "left",
+                        marginTop: "8px",
+                      }}
+                    >
+                      Details <ExpandMoreIcon />
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+            <Box className={classes.cardContainer}>
+              <Box className={classes.card}>
+                <Box className="flex flex-row items-center px-7">
+                  <Box className={classes.imageContainer}>
+                    <Image
                       src="/image/connect.png"
                       width={"84"}
                       height={"84"}
@@ -949,7 +605,7 @@ const ProfileDashboard = () => {
                           textAlign: "left",
                         }}
                       >
-                        Engagment Rate
+                       Engagement Rate
                       </Typography>
 
                       <Typography
@@ -977,8 +633,7 @@ const ProfileDashboard = () => {
                           textAlign: "left",
                         }}
                       >
-                        <FiberManualRecordSharpIcon fontSize="12px" /> Average
-                        Engagement rate
+                        <FiberManualRecordSharpIcon fontSize="10px" /> Average Engagement Rate
                       </Typography>
                     </Box>
                     <Typography
@@ -1004,7 +659,7 @@ const ProfileDashboard = () => {
                   <Box className={classes.imageContainer}>
                     {/* <FaUserCheck sx={{ fontSize:"80px", color: "#4466F2" }} /> */}
                     <Image
-                      src="/image/comment.png"
+                      src="/image/heartsearch.png"
                       width={"84"}
                       height={"84"}
                     ></Image>
@@ -1023,7 +678,7 @@ const ProfileDashboard = () => {
                           textAlign: "left",
                         }}
                       >
-                        Like/Comment Ratio
+                        Total Likes
                       </Typography>
 
                       <Typography
@@ -1037,289 +692,67 @@ const ProfileDashboard = () => {
                           textAlign: "left",
                         }}
                       >
-                        7 %
+                        3.2 m
                       </Typography>
+                      
+                    </Box>
+                    
+                  </Box>
+                </Box>
+              </Box>
+              <Box className={classes.card}>
+                <Box className="flex flex-row items-center px-7">
+                  <Box className={classes.imageContainer}>
+                    {/* <FaUserCheck sx={{ fontSize:"80px", color: "#4466F2" }} /> */}
+                    <Image
+                      src="/image/record.png"
+                      width={"84"}
+                      height={"84"}
+                    ></Image>
+                  </Box>
+                  <Box className={classes.greenBox}>
+                    <Box>
                       <Typography
                         variant="body1"
                         sx={{
-                          color: "#008EAD",
+                          color: "#9D9D9D",
                           fontFamily: "Inter",
-                          fontSize: "10px",
-                          fontWeight: "600",
-                          lineHeight: "17px",
-                          letterSpacing: "8%",
+                          fontSize: "14px",
+                          fontWeight: "400",
+                          lineHeight: "19px",
+                          letterSpacing: "0.08em",
                           textAlign: "left",
                         }}
                       >
-                        <FiberManualRecordSharpIcon fontSize="12px" /> Very High
-                        Balance
+                        Media Count
                       </Typography>
+
+                      <Typography
+                        sx={{
+                          color: "#4466F2",
+                          fontFamily: "Inter",
+                          fontSize: "40px",
+                          fontWeight: "700",
+                          lineHeight: "49px",
+                          letterSpacing: "9%",
+                          textAlign: "left",
+                        }}
+                      >
+                        100+
+                      </Typography>
+                      
                     </Box>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "#4466F2",
-                        fontFamily: "Inter",
-                        fontSize: "12px",
-                        fontWeight: "600",
-                        lineHeight: "15px",
-                        letterSpacing: "8%",
-                        textAlign: "left",
-                        marginTop: "8px",
-                      }}
-                    >
-                      Details <ExpandMoreIcon />
-                    </Typography>
+                    
                   </Box>
                 </Box>
               </Box>
             </Box>
-            <Box className={classes.cardContainer}>
-              <Box className={classes.card}>
-                <Box className="flex flex-row items-center px-7">
-                  <Box className={classes.imageContainer}>
-                    <Image
-                      src="/image/like.png"
-                      width={"84"}
-                      height={"84"}
-                    ></Image>
-                  </Box>
-                  <Box className={classes.greenBox}>
-                    <Box>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#9D9D9D",
-                          fontFamily: "Inter",
-                          fontSize: "14px",
-                          fontWeight: "400",
-                          lineHeight: "19px",
-                          letterSpacing: "0.08em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Like Spread
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          color: "#4466F2",
-                          fontFamily: "Inter",
-                          fontSize: "40px",
-                          fontWeight: "700",
-                          lineHeight: "49px",
-                          letterSpacing: "9%",
-                          textAlign: "left",
-                        }}
-                      >
-                        8 %
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#008EAD",
-                          fontFamily: "Inter",
-                          fontSize: "10px",
-                          fontWeight: "600",
-                          lineHeight: "17px",
-                          letterSpacing: "8%",
-                          textAlign: "left",
-                        }}
-                      >
-                        <FiberManualRecordSharpIcon fontSize="10px" /> Very High
-                        Spread
-                      </Typography>
-                    </Box>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "#4466F2",
-                        fontFamily: "Inter",
-                        fontSize: "12px",
-                        fontWeight: "600",
-                        lineHeight: "15px",
-                        letterSpacing: "8%",
-                        textAlign: "left",
-                        marginTop: "8px",
-                      }}
-                    >
-                      Details <ExpandMoreIcon />
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-              <Box className={classes.card}>
-                <Box className="flex flex-row items-center px-7">
-                  <Box className={classes.imageContainer}>
-                    {/* <FaUserCheck sx={{ fontSize:"80px", color: "#4466F2" }} /> */}
-                    <Image
-                      src="/image/interval.png"
-                      width={"84"}
-                      height={"84"}
-                    ></Image>
-                  </Box>
-                  <Box className={classes.greenBox}>
-                    <Box>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#9D9D9D",
-                          fontFamily: "Inter",
-                          fontSize: "14px",
-                          fontWeight: "400",
-                          lineHeight: "19px",
-                          letterSpacing: "0.08em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Average Post Interval
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          color: "#4466F2",
-                          fontFamily: "Inter",
-                          fontSize: "40px",
-                          fontWeight: "700",
-                          lineHeight: "49px",
-                          letterSpacing: "9%",
-                          textAlign: "left",
-                        }}
-                      >
-                        0.2 %
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#008EAD",
-                          fontFamily: "Inter",
-                          fontSize: "10px",
-                          fontWeight: "600",
-                          lineHeight: "17px",
-                          letterSpacing: "8%",
-                          textAlign: "left",
-                        }}
-                      >
-                        <FiberManualRecordSharpIcon fontSize="12px" /> Average
-                        Post Intervals
-                      </Typography>
-                    </Box>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "#4466F2",
-                        fontFamily: "Inter",
-                        fontSize: "12px",
-                        fontWeight: "600",
-                        lineHeight: "15px",
-                        letterSpacing: "8%",
-                        textAlign: "left",
-                        marginTop: "8px",
-                      }}
-                    >
-                      Details <ExpandMoreIcon />
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-              <Box className={classes.card}>
-                <Box className="flex flex-row items-center px-7">
-                  <Box className={classes.imageContainer}>
-                    {/* <FaUserCheck sx={{ fontSize:"80px", color: "#4466F2" }} /> */}
-                    <Image
-                      src="/image/comment.png"
-                      width={"84"}
-                      height={"84"}
-                    ></Image>
-                  </Box>
-                  <Box className={classes.greenBox}>
-                    <Box>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#9D9D9D",
-                          fontFamily: "Inter",
-                          fontSize: "14px",
-                          fontWeight: "400",
-                          lineHeight: "19px",
-                          letterSpacing: "0.08em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Like/Comment Ratio
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          color: "#4466F2",
-                          fontFamily: "Inter",
-                          fontSize: "40px",
-                          fontWeight: "700",
-                          lineHeight: "49px",
-                          letterSpacing: "9%",
-                          textAlign: "left",
-                        }}
-                      >
-                        7 %
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#008EAD",
-                          fontFamily: "Inter",
-                          fontSize: "10px",
-                          fontWeight: "600",
-                          lineHeight: "17px",
-                          letterSpacing: "8%",
-                          textAlign: "left",
-                        }}
-                      >
-                        <FiberManualRecordSharpIcon fontSize="12px" /> Very High
-                        Balance
-                      </Typography>
-                    </Box>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "#4466F2",
-                        fontFamily: "Inter",
-                        fontSize: "12px",
-                        fontWeight: "600",
-                        lineHeight: "15px",
-                        letterSpacing: "8%",
-                        textAlign: "left",
-                        marginTop: "8px",
-                      }}
-                    >
-                      Details <ExpandMoreIcon />
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
+            
           </Box>
         </Box>
-}
-{
-  overview === 1 && 
-  <Youtube />
-}
-{
-  overview === 2 && 
-  <Tiktokstats />
-}
-{
-  overview === 3 && 
-  <Twitterstats />
-}
-{
-  overview === 4 && 
-  <Pintereststats />
-}
       </Box>
-      <Divider></Divider>
-    </Box>
-  );
-};
+    </div>
+  )
+}
 
-export default ProfileDashboard;
+export default Tiktokstats

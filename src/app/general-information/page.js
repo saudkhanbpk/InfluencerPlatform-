@@ -51,12 +51,12 @@ const GeneralInfo = () => {
 
   }
   return (
-    < Box sx={{ mt: 10 }
-    }>
+    < Box sx={{ mt: 10,mb:10 }}>
+
       <Box sx={{ display: "flex", mt: '20px', justifyContent: 'center' }}>
         <img
           alt="Amplify"
-          src="/image/logo.png"
+          src="/image/logo2.png"
           style={{ maxWidth: '150px', width: '100%' }}
         />
       </Box>
@@ -77,7 +77,7 @@ const GeneralInfo = () => {
             {message}
           </Typography>
           <div >
-            <Typography variant="h4" sx={{ marginTop: '15px', marginBottom: '25px', fontFamily: 'plus jakarta sans', fontSize: '25', color: '#000000' }}>
+            <Typography variant="h4" sx={{ marginTop: '15px', marginBottom: '25px', fontFamily: 'plus jakarta sans', fontSize: '32px', color: '#000000',fontWeight:700,fontFamily:'Plus Jakarta Sans',lineHeight:'48px' }}>
               General Bussiness Information
             </Typography>
 
@@ -162,14 +162,14 @@ const GeneralInfo = () => {
 
 
           </Grid>
-          <Box sx={{ mt: 2, display: 'flex', justifyContent: 'end' }}>
-            <Button sx={{ width: '15%', bgcolor: 'white', color: 'black' }}
+          <Box sx={{ mt: 4, display: 'flex', justifyContent: 'end', }}>
+            <Button sx={{ fontFamily:'inter', color: '#111927',textTransform:'capitalize',fontWeight:600 ,fontSize:'16px',lineHeight:'24px',borderRadius:'16px' }}
               type="reset"
-              variant="contained"
+              
             >
               cancel
             </Button>
-            <Button sx={{ width: '35%', marginLeft: "5px", p: 1 }}
+            <Button sx={{  marginLeft: "5px",  marginLeft: "5px", px: 2,color: '#FFFFFF',backgroundColor:'#2970FF',fontWeight:600 ,fontSize:'16px',lineHeight:'24px',borderRadius:'12px' }}
               type="submit"
               variant="contained"
             >
