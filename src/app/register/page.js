@@ -85,10 +85,10 @@ const Register = () => {
             .then((response) => {
                 console.log(response.data); // Handle the successful response
                 const { email, _id } = response.data.newUser; // Extract email and _id from the response
-                // Store the user email and _id in the local storage
-                localStorage.setItem('userEmail', email);
-                localStorage.setItem('userId', _id);
-                router.push('/email')
+        // Store the user email and _id in the local storage
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userId', _id);
+        router.push('/email')
             })
             .catch((error) => {
                 console.error(error); // Handle the error

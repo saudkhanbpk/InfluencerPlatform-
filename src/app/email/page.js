@@ -6,11 +6,13 @@ import React, { useState, useEffect } from 'react';
 const confirEmail = () => {
     const [userEmail, setUserEmail] = useState('');
 
-  useEffect(() => {
-    // Fetch the user email from local storage on component mount
-    const email = localStorage.getItem('userEmail');
-    setUserEmail(email);
-  }, []);
+    useEffect(() => {
+        // Fetch the user email from local storage on component mount
+        const email = localStorage.getItem('userEmail');
+        console.log('Stored email:', email); // Add this line to see the retrieved value
+        setUserEmail(email); // Set the user email to the state variable
+      }, []);
+//   console.log("email testing",userEmail )
     return (
         <Box>
           <Box
