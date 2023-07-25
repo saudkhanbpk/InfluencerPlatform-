@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { baseUrl } from '../BaseUrl';
 import { useRouter } from 'next/navigation'
+import Image from 'next/image';
 
 const CompanyInfo = () => {
   const router = useRouter()
@@ -51,17 +52,19 @@ const CompanyInfo = () => {
         mt: 10
       }}>
       <Box sx={{ display: "flex", mt: '20px', justifyContent: 'center' }}>
-        <img
+        <Image
           alt="Amplify"
-          src="/image/logo.png"
-          style={{ maxWidth: '150px', width: '100%' }}
+          src="/image/logo2.png"
+          width={125}
+          height={40}
+          
         />
       </Box>
 
       <Box sx={{
         width: '50%', margin: 'auto', boxShadow: '4', borderRadius: '16px', marginTop: '30px',
         backgroundColor: "#ffff",
-        px: 7, py: 5
+        px: 7, py: 5,marginBottom: '30px'
       }}>
 
 
@@ -73,12 +76,12 @@ const CompanyInfo = () => {
           >
             {message}
           </Typography>
-          <div >
-            <Typography variant="h4" sx={{ marginTop: '15px', marginBottom: '25px', fontFamily: 'plus jakarta sans', fontSize: '25', color: '#000000' }}>
+          <Box >
+            <Typography variant="h4" sx={{marginTop: '0px', marginBottom: '25px', fontFamily: 'plus jakarta sans', fontSize: '32px', color: '#000000',fontWeight:700,fontFamily:'Plus Jakarta Sans',lineHeight:'48px'  }}>
               General Bussiness Information
             </Typography>
 
-          </div>
+          </Box>
           <Grid
             container
             spacing={3}
@@ -113,7 +116,7 @@ const CompanyInfo = () => {
             >
               <TextField
                 fullWidth
-                label="company size"
+                label="Company size"
                 name="csize"
                 onChange={(e) => setCompanysize(e.target.value)}
               />
@@ -134,7 +137,7 @@ const CompanyInfo = () => {
               <TextField
                 fullWidth
                 name="message"
-                label='bio'
+                label='Bio'
                 multiline
                 rows={3}
                 onChange={(e) => setBio(e.target.value)}
@@ -144,14 +147,13 @@ const CompanyInfo = () => {
 
 
           </Grid>
-          <Box sx={{ mt: 2, display: 'flex', justifyContent: 'end' }}>
-            <Button sx={{ width: '15%', bgcolor: 'white', color: 'black' }}
+          <Box sx={{ mt: 4, display: 'flex', justifyContent: 'end' }}>
+            <Button sx={{bgcolor: 'white', marginLeft: "5px", p: 1,color: '#000000',fontWeight:600 ,fontSize:'16px',lineHeight:'24px',borderRadius:'12px' }}
               type="reset"
-              variant="contained"
             >
               cancel
             </Button>
-            <Button sx={{ width: '35%', marginLeft: "5px", p: 1 }}
+            <Button sx={{  marginLeft: "5px",  marginLeft: "5px", px: 2,color: '#FFFFFF',backgroundColor:'#2970FF',fontWeight:600 ,fontSize:'16px',lineHeight:'24px',borderRadius:'12px' }}
               type="submit"
               variant="contained"
             >
@@ -161,6 +163,7 @@ const CompanyInfo = () => {
 
         </form>
       </Box>
+
     </Box>
   )
 };

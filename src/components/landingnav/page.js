@@ -21,7 +21,7 @@ const Navbar = () => {
     <Box sx={{flexGrow: '4',backgroundColor:'white',mb:5}}>
       <AppBar >
         <Toolbar>
-        <Image src="/image/logo.png" alt="Logo" width={100} height={100} />
+        <Image src="/image/logo2.png" alt="Logo" width={70} height={40} />
           <Box sx={{flexGrow: '4'}}></Box>
           <Button color="red">Home</Button>
           <Button onClick={handleNavigate} color="inherit">Register</Button>

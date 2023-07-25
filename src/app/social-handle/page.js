@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { baseUrl } from '../BaseUrl';
 import { useRouter } from 'next/navigation'
+import Image from 'next/image';
 
 
 const SocialMedia = () => {
@@ -60,10 +61,12 @@ const SocialMedia = () => {
       mt: 10
     }}>
       <Box sx={{ display: "flex", mt: '20px', justifyContent: 'center' }}>
-        <img
+        <Image
           alt="Amplify"
-          src="/image/logo.png"
-          style={{ maxWidth: '150px', width: '100%' }}
+          src="/image/logo2.png"
+          width={125}
+          height={40}
+          
         />
       </Box>
 
@@ -83,12 +86,12 @@ const SocialMedia = () => {
             {message}
           </Typography>
           <div >
-            <Typography variant="h4" sx={{ marginTop: '15px', marginBottom: '15px', fontFamily: 'Inter', color: "#000000" }}>
+            <Typography variant="h4" sx={{ marginTop: '15px', marginBottom: '15px', fontFamily: 'plus jakarta sans', fontSize: '32px', color: '#000000',fontWeight:700,fontFamily:'Plus Jakarta Sans',lineHeight:'48px' }}>
               Social media Handles
             </Typography>
             <Typography
               color="text.secondary"
-              sx={{ mt: 1, marginBottom: '15px' }}
+              sx={{ mt: 1, marginBottom: '15px',fontSize:'18px',fontWeight:400,lineHeight:"27px",}}
               variant="body1"
             >
               Showcase your Brand and social media presence to interested influencers who may want to work with you
@@ -191,7 +194,7 @@ const SocialMedia = () => {
 
 
           </Grid>
-          <Box sx={{ mt: 2, display: 'flex', justifyContent: 'end' }}>
+          {/* <Box sx={{ mt: 2, display: 'flex', justifyContent: 'end' }}>
             <Button sx={{ width: '15%', bgcolor: 'white', color: 'black' }}
               type="reset"
               variant="contained"
@@ -199,6 +202,20 @@ const SocialMedia = () => {
               cancel
             </Button>
             <Button sx={{ width: '35%', marginLeft: "5px", p: 1 }}
+              type="submit"
+              variant="contained"
+            >
+              Save changes and NEXT
+            </Button>
+          </Box> */}
+
+          <Box sx={{ mt: 4, display: 'flex', justifyContent: 'end' }}>
+            <Button sx={{bgcolor: 'white', marginLeft: "5px", p: 1,color: '#000000',fontWeight:600 ,fontSize:'16px',lineHeight:'24px',borderRadius:'12px' }}
+              type="reset"
+            >
+              cancel
+            </Button>
+            <Button sx={{  marginLeft: "5px",  marginLeft: "5px", p:2,px: 2,color: '#FFFFFF',backgroundColor:'#2970FF',fontWeight:600 ,fontSize:'16px',lineHeight:'24px',borderRadius:'12px' }}
               type="submit"
               variant="contained"
             >

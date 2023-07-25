@@ -1,86 +1,108 @@
-'use client'
-import { Box, Button } from '@mui/material'
-import Image from 'next/image'
-import React from 'react'
+"use client";
+import { Box, Button, Typography } from "@mui/material";
+import Image from "next/image";
+import React from "react";
 
 const Registered = () => {
-    return (
-        <div>
+  return (
+    <div>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          mt: 10,
+        }}
+      >
+        <Box>
+          {/* <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Image
+              alt="Amplify"
+              src="/image/logo2.png"
+              width={125}
+              height={40}
+            />
+          </Box> */}
+
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Image
+              alt="Amplify"
+              src="/image/logo2.png"
+              width={125}
+              height={40}
+            />
+          </Box>
+
+          <Box
+            sx={{
+              width: "350px",
+              margin: "auto",
+              borderRadius: "16px",
+              marginTop: "30px",
+              backgroundColor: "#F9FAFF",
+              justifyContent: "center",
+              justifyItems: "center",
+              p: 5,
+              marginBottom:'40px'
+            }}
+          >
             <Box
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: "center",
-                    mt: 20,
-
-                }}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
             >
-                <div>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: "center",
-                        }}
-                    >
-                        <Image
-                            alt="Amplify"
-                            src="/image/logo.png"
-                            width={125}
-                            height={40}
-                        />
-                    </Box>
- <Box sx={{ width: '100%',margin:'auto',borderRadius:'16px',marginTop:'30px',
-    backgroundColor:"#F9FAFF",
-            px: 7,py:5}}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: "center",
-                        }}
-                    >
-                        <Image
-                            alt="Amplify"
-                            src="/image/register-log.png"
-                            width={135}
-                            height={50}
-                        />
-                    </Box>
-                    <Box
-                        sx={{
-                            color: '#111927',
-                            display: 'flex',
-                            alignItems: "center",
-                            justifyContent: "center",
-                            fontWeight: 'bold',
-                            mt: 3,
-                            fontSize:20
-
-                        }}
-                    >
-                        <p>Registration Successful!</p>
-                    </Box>
-
-                    <Box
-                    sx={{
-                            display: 'flex',
-                            alignItems: "center",
-                            justifyContent: "center",
-                            mt:3,
-                            
-                        }}
-                    >
-                        <Button variant="contained" color="primary">
-                            Launch Dashboard
-                        </Button>
-                    </Box>
-   </Box>
-                </div>
-
+              <Image
+                alt="Amplify"
+                src="/image/register-log.png"
+                width={238}
+                height={238}
+              />
             </Box>
-        </div>
-    )
-}
+            <Box
+              sx={{
+                alignItems: "center",
+                justifyContent: "center",
+                mt: 3,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: "28px",
+                  color: "#000000",
+                  fontWeight: 700,
+                  lineHeight: "33px",
+                  ml:'1px'
+                }}
+              >
+                Registration Successful!
+              </Typography>
+            </Box>
 
-export default Registered
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                mt: 3,
+              }}
+            >
+              <Button variant="contained" sx={{backgroundColor:'#2970FF',height:80,width:'334px',fontSize:'24px',fontWeight:700,borderRadius:'12px'}}>
+                Launch Dashboard
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </div>
+  );
+};
+
+export default Registered;
