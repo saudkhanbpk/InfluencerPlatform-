@@ -9,12 +9,12 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 const MySwal = withReactContent(Swal);
 const Registered = () => {
-  const publishableKey ={publishable_Key}
+  const publishableKey ="pk_test_51MW0sqA2UHtqGNuRS86jXELMgiNsywnlNaLJ1isdCq7yXbfvWKL2FisKTYAVPmBS4XY9EO4m0JRGOIELoiVnDThN00cq9qWeCS"
   // console.log(publishableKey)
     '';
   const [product, setProduct] = useState({
     name: 'Headphone',
-    price: 5,
+    price: 99,
   });
   const priceForStripe = product.price * 100;
 
