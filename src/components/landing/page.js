@@ -34,7 +34,7 @@ const StyledIcon = styled('span')`
 `;
 
 const HomePage = () =>{  
- const router =  useRouter()
+ const router =  useRouter();
   return(
   
   <HeaderContainer>
@@ -45,27 +45,27 @@ const HomePage = () =>{
        <Typography variant="h1" component="h1" sx={{ fontSize: { xs: '2.5rem', md: '3.125rem', lg: '5rem' }, fontWeight: 'bold', color: '#333333', mb: '2rem' }}>
           Welcome to the Influencer Plateform
         </Typography>
-        <div>
+        <Box>
           <Typography variant="body1" sx={{ fontSize: { xs: '1.25rem', lg: '2.5rem' }, color: '#666666' }}>
             Here all You get beyond your expectations.
           </Typography>
-        </div>
-        <div sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: '2rem' }}>
+        </Box>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: '2rem' }}>
           <StyledButton onClick={()=> router.push("/register")} variant="contained" color="primary">
             Get started
           </StyledButton>
           <Typography variant="body1" sx={{ fontSize: { xs: '1.25rem', lg: '2.5rem' }, color: '#666666', mx: '0.5rem' }}>
             or
           </Typography>
-          <StyledButton onClick={()=> router.push("/register")} variant="contained" color="secondary">
-            Contact us
-          </StyledButton>
-        </div>
+          <Button onClick={()=> router.push("/login")} variant="contained" bgcolor="2970FF">
+            Login
+          </Button>
+        </Box>
        </Box> 
        
         <Box sx={{flexGrow:1}}
         className='landimage'>
-        <Image src="/image/landingimage.png" alt="Logo" width={300} height={100} />
+        <Image src="/image/landingimage.png" alt="Logo" width={300} height={450} />
         </Box>
       </ContentContainer>
     

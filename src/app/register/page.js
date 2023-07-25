@@ -216,7 +216,10 @@ const Register = () => {
                         lineHeight: "22px",
                         color: "#2970FF",
                         pl:'4px',pt:'1px'
-                      }}><Link href="/login">Log in</Link></Typography>
+                      }}><Link href="/login" sx={{textDecoration: "none",}}>
+                      Log in
+                      </Link>
+                      </Typography>
                   </Box>
                 </div>
               </Box>
