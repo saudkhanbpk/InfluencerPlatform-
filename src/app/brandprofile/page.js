@@ -132,7 +132,7 @@ const BrandProfile = () => {
     <Navbar/>
     <Box className={classes.container} sx={{ position: "relative" }}>
       <Image
-        src="/cover.png"
+        src="/image/bg.png"
         width={1000}
         height={300}
         alt="Cover Image"

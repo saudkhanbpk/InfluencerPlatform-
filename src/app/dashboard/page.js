@@ -135,7 +135,7 @@ const ProfileDashboard = () => {
         <Navbar />
         <Box className={classes.container} sx={{ position: "relative" }}>
           <Image
-            src="/cover.png"
+            src="/image/bg.png"
             width={1000}
             height={456}
             alt="Cover Image"

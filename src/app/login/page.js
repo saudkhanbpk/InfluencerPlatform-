@@ -1,4 +1,6 @@
 "use client";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   Box,
   Button,
@@ -23,7 +25,9 @@ const Login = () => {
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
     try {
       const response = await axios.post(`${baseUrl}/api/login`, {
@@ -36,13 +40,15 @@ const Login = () => {
       // For example:
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
-
+      toast.success('Login successful!', { autoClose: 4000 });
       // Redirect the user to the dashboard or homepage
       // For example:
       window.location.href = "/dashboard";
     } catch (error) {
       console.error("Signin failed:", error.response.data.msg);
       setError(error.response.data.msg);
+    } finally {
+      setIsLoading(false); // Set loading state to false after API call (whether success or error)
     }
   };
 
@@ -136,7 +142,7 @@ const Login = () => {
                     }}
                   >
                     <Checkbox name="policy" />
-                   <Typography
+                    <Typography
                       variant="body2"
                       sx={{
                         fontSize: "14px",
@@ -146,17 +152,17 @@ const Login = () => {
                         color: "#6C737F",
                       }}
                     >
-                      I have read the 
+                      I have read the
                     </Typography>
                     <Typography
                       variant="body1"
-                     sx={{
+                      sx={{
                         fontSize: "16px",
                         // fontFamily: "Inter",
                         fontWeight: 400,
                         lineHeight: "24px",
                         color: "#2970FF",
-                        pl:'4px'
+                        pl: '4px'
                       }}>Terms and Conditions</Typography>
                   </Box>
                   <Box
@@ -196,9 +202,10 @@ const Login = () => {
                       type="submit"
                       variant="contained"
                       color="primary"
-                      sx={{backgroundColor:'#2970FF',borderRadius:'10px',textDecoration:'none'}}
+                      sx={{ backgroundColor: '#2970FF', borderRadius: '10px', textDecoration: 'none' }}
+                      disabled={isLoading}
                     >
-                      Login
+                      {isLoading ? "Loading..." : "Login"} {/* Display "Loading..." while loading */}
                     </Button>
                   </Box>
 
@@ -208,6 +215,7 @@ const Login = () => {
           </Card>
         </Container>
       </Box>
+      <ToastContainer />
     </>
   );
 };
