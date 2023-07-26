@@ -131,7 +131,9 @@ const BrandProfile = () => {
     <Box sx={{width: "100%"}}>
     <Navbar/>
     <Box className={classes.container} sx={{ position: "relative" }}>
-      <img
+    <Image
+        width={700}
+        height={400}
         src="/image/cover.png"
         alt="Cover Image"
         className={classes.coverImage}
@@ -657,4 +659,4 @@ const BrandProfile = () => {
   );
 };
 
-export default BrandProfile;
+export default BrandProfile;

@@ -2,8 +2,12 @@
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
-
+import { useRouter } from "next/navigation";
 const Registered = () => {
+  const router = useRouter('')
+  const submit = () => {
+    router.push('/brandprofile')
+  }
   return (
     <div>
       <Box
@@ -49,7 +53,7 @@ const Registered = () => {
               justifyContent: "center",
               justifyItems: "center",
               p: 5,
-              marginBottom:'40px'
+              marginBottom: '40px'
             }}
           >
             <Box
@@ -79,7 +83,7 @@ const Registered = () => {
                   color: "#000000",
                   fontWeight: 700,
                   lineHeight: "33px",
-                  ml:'1px'
+                  ml: '1px'
                 }}
               >
                 Registration Successful!
@@ -94,7 +98,7 @@ const Registered = () => {
                 mt: 3,
               }}
             >
-              <Button variant="contained" sx={{backgroundColor:'#2970FF',height:80,width:'334px',fontSize:'24px',fontWeight:700,borderRadius:'12px'}}>
+              <Button onClick={submit} variant="contained" sx={{ backgroundColor: '#2970FF', height: 80, width: '334px', fontSize: '24px', fontWeight: 700, borderRadius: '12px' }}>
                 Launch Dashboard
               </Button>
             </Box>

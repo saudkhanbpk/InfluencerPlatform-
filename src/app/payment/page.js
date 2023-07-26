@@ -65,7 +65,7 @@ function page() {
         label="Pay Now"
         name="Pay With Credit Card"
         billingAddress
-        shippingAddress
+        // shippingAddress
         amount={priceForStripe}
         description={`Your total is $${product.price}`}
         token={payNow}
