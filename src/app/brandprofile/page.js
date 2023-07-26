@@ -33,6 +33,8 @@ import Image from "next/image";
 import PersonAddAltSharpIcon from "@mui/icons-material/PersonAddAltSharp";
 import GroupSharpIcon from "@mui/icons-material/GroupSharp";
 import Jobs from "./jobposted/page";
+import Sidebar from "../sidebar/page";
+import Navbar from "../navbar/page";
 
 const useStyles = makeStyles((theme) => ({
   cardContainer: {
@@ -124,15 +126,17 @@ const BrandProfile = () => {
     setOverview(num);
   };
   return (
+    <Box sx={{display:'flex'}}>
+    <Sidebar/>
+    <Box sx={{width: "100%"}}>
+    <Navbar/>
     <Box className={classes.container} sx={{ position: "relative" }}>
       <img
         src="/image/cover.png"
         alt="Cover Image"
         className={classes.coverImage}
       />
-      <Button
-        variant="small"
-        sx={{
+      <Box sx={{
           borderRadius: "20px",
           color: "black",
           backgroundColor: "#E0E0E0",
@@ -142,10 +146,18 @@ const BrandProfile = () => {
           fontFamily: "Inter",
           fontWeight: "600",
           fontSize: "13px",
+        }}>
+        
+      <Button
+        variant="small"
+        sx={{
+          borderRadius: "20px",
+          backgroundColor: "#E0E0E0",        
         }}
       >
         Change Cover
       </Button>
+      </Box>
       <Box>
         <Box
           sx={{
@@ -273,14 +285,14 @@ const BrandProfile = () => {
           </Box>
         </Box>
       </Box>
-      <Box sx={{  display:"flex", mx: "13px",}}>
+      <Box sx={{  display:"flex", mx: "13px",mt:'10px'}}>
         <Box sx={{mx: "13px", }}>
-          <Typography  className={`${overview === 0 && "youtubestats"} `} onClick={()=>handledata(0)}>
+          <Typography sx={{'&:hover': { cursor: 'pointer'}}} className={`${overview === 0 && "youtubestats"}  `} onClick={()=>handledata(0)}>
             Overview
           </Typography>
         </Box>
           <Box>
-          <Typography  className={`${overview === 1 && "youtubestats"} `} onClick={()=>handledata(1)}>
+          <Typography sx={{'&:hover': { cursor: 'pointer'}}}  className={`${overview === 1 && "youtubestats"}  `} onClick={()=>handledata(1)}>
             Jobs Posted
           </Typography>
           </Box>
@@ -288,7 +300,7 @@ const BrandProfile = () => {
       <Divider></Divider>
       {
   overview === 0 && 
-  <Box sx={{ display: "flex" }}>
+  <Box sx={{ display: "flex",}}>
         <Box
           sx={{ width: "75%", borderRight: "1px solid #F2F4F7", p: 1, pr: 3 }}
         >
@@ -638,7 +650,11 @@ const BrandProfile = () => {
      
       <Divider></Divider>
     </Box>
+
+    </Box>
+
+    </Box>
   );
 };
 
-export default BrandProfile;
+export default BrandProfile;

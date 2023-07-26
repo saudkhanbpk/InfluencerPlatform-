@@ -7,8 +7,12 @@ import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { Route } from "@mui/icons-material";
+import { useRouter } from "next/navigation";
+import {FcCheckmark} from 'react-icons/fc';
 const MySwal = withReactContent(Swal);
 const Registered = () => {
+  const router = useRouter();
   const publishableKey = { publishable_Key }
   // console.log(publishableKey)
   '';
@@ -25,6 +29,10 @@ const Registered = () => {
       time: 4000,
     });
   };
+
+  const submit = () =>{
+    router.push('/register-success')
+  }
   const handleFailure = () => {
     MySwal.fire({
       icon: 'error',
@@ -143,12 +151,14 @@ const Registered = () => {
           <Box>
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
               <Box sx={{ alignItems: 'center' }} >
-                <Image
+                {/* <Image
                   alt="Amplify"
                   src="/image/icon.png"
                   width={16}
                   height={14}
-                />
+                /> */}
+                <FcCheckmark/>
+
               </Box>
               <Typography
                 variant="body2"
@@ -159,12 +169,13 @@ const Registered = () => {
             </Box>
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
               <Box sx={{ alignItems: 'center' }} >
-                <Image
+                {/* <Image
                   alt="Amplify"
                   src="/image/icon.png"
                   width={16}
                   height={14}
-                />
+                /> */}
+                <FcCheckmark/>
               </Box>
               <Typography
                 variant="body2"
@@ -176,12 +187,13 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
               <Box sx={{ alignItems: 'center' }} >
-                <Image
+                {/* <Image
                   alt="Amplify"
                   src="/image/icon.png"
                   width={16}
                   height={14}
-                />
+                /> */}
+                <FcCheckmark/>
               </Box>
               <Typography
                 variant="body2"
@@ -193,12 +205,31 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
               <Box sx={{ alignItems: 'center' }} >
-                <Image
+                {/* <Image
                   alt="Amplify"
                   src="/image/icon.png"
                   width={16}
                   height={14}
-                />
+                /> */}
+              </Box>
+              <FcCheckmark/>
+              <Typography
+                variant="body2"
+                sx={{ fontSize: "14px", ml: 2, fontWeight: 400, lineHeight: '22px', color: '#111927' }}
+              >
+                Access to influencer Analyzer (limited)
+              </Typography>
+            </Box>
+
+            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
+              <Box sx={{ alignItems: 'center' }} >
+                {/* <Image
+                  alt="Amplify"
+                  src="/image/icon.png"
+                  width={16}
+                  height={14}
+                /> */}
+                <FcCheckmark/>
               </Box>
               <Typography
                 variant="body2"
@@ -210,12 +241,13 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
               <Box sx={{ alignItems: 'center' }} >
-                <Image
+                {/* <Image
                   alt="Amplify"
                   src="/image/icon.png"
                   width={16}
                   height={14}
-                />
+                /> */}
+                <FcCheckmark/>
               </Box>
               <Typography
                 variant="body2"
@@ -227,29 +259,13 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
               <Box sx={{ alignItems: 'center' }} >
-                <Image
+                {/* <Image
                   alt="Amplify"
                   src="/image/icon.png"
                   width={16}
                   height={14}
-                />
-              </Box>
-              <Typography
-                variant="body2"
-                sx={{ fontSize: "14px", ml: 2, fontWeight: 400, lineHeight: '22px', color: '#111927' }}
-              >
-                Access to influencer Analyzer (limited)
-              </Typography>
-            </Box>
-
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Box sx={{ alignItems: 'center' }} >
-                <Image
-                  alt="Amplify"
-                  src="/image/icon.png"
-                  width={16}
-                  height={14}
-                />
+                /> */}
+                <FcCheckmark/>
               </Box>
               <Typography
                 variant="body2"
@@ -270,6 +286,7 @@ const Registered = () => {
             }}
           >
             <Button
+              onClick={submit}
               variant="outlined"
               color="primary"
               sx={{
@@ -361,122 +378,17 @@ const Registered = () => {
 
           <Divider sx={{ my: 2 }} />
 
-          {/* <Box>
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Image
-                sx={{}}
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={11}
-              />
-              <Typography
-                variant="body2"
-                sx={{ fontFamily: "plus jakarta sans", fontSize: "14", ml: 2 }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Image
-                sx={{}}
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={11}
-              />
-              <Typography
-                variant="body2"
-                sx={{ fontFamily: "plus jakarta sans", fontSize: "14", ml: 2 }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Image
-                sx={{}}
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={11}
-              />
-              <Typography
-                variant="body2"
-                sx={{ fontFamily: "plus jakarta sans", fontSize: "14", ml: 2 }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Image
-                sx={{}}
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={11}
-              />
-              <Typography
-                variant="body2"
-                sx={{ fontFamily: "plus jakarta sans", fontSize: "14", ml: 2 }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Image
-                sx={{}}
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={11}
-              />
-              <Typography
-                variant="body2"
-                sx={{ fontFamily: "plus jakarta sans", fontSize: "14", ml: 2 }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Image
-                sx={{}}
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={11}
-              />
-              <Typography
-                variant="body2"
-                sx={{ fontFamily: "plus jakarta sans", fontSize: "14", ml: 2 }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Image
-                sx={{}}
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={11}
-              />
-              <Typography
-                variant="body2"
-                sx={{ fontFamily: "plus jakarta sans", fontSize: "14", ml: 2 }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-          </Box> */}
+          
           <Box>
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
               <Box sx={{ alignItems: 'center' }} >
-                <Image
+                {/* <Image
                   alt="Amplify"
                   src="/image/icon.png"
                   width={16}
                   height={14}
-                />
+                /> */}
+                <FcCheckmark/>
               </Box>
               <Typography
                 variant="body2"
@@ -487,29 +399,13 @@ const Registered = () => {
             </Box>
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
               <Box sx={{ alignItems: 'center' }} >
-                <Image
+                {/* <Image
                   alt="Amplify"
                   src="/image/icon.png"
                   width={16}
                   height={14}
-                />
-              </Box>
-              <Typography
-                variant="body2"
-                sx={{ fontSize: "14px", ml: 2, fontWeight: 400, lineHeight: '22px', color: '#111927' }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Box sx={{ alignItems: 'center' }} >
-                <Image
-                  alt="Amplify"
-                  src="/image/icon.png"
-                  width={16}
-                  height={14}
-                />
+                /> */}
+                <FcCheckmark/>
               </Box>
               <Typography
                 variant="body2"
@@ -521,12 +417,13 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
               <Box sx={{ alignItems: 'center' }} >
-                <Image
+                {/* <Image
                   alt="Amplify"
                   src="/image/icon.png"
                   width={16}
                   height={14}
-                />
+                /> */}
+                <FcCheckmark/>
               </Box>
               <Typography
                 variant="body2"
@@ -538,12 +435,13 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
               <Box sx={{ alignItems: 'center' }} >
-                <Image
+                {/* <Image
                   alt="Amplify"
                   src="/image/icon.png"
                   width={16}
                   height={14}
-                />
+                /> */}
+                <FcCheckmark/>
               </Box>
               <Typography
                 variant="body2"
@@ -555,12 +453,13 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
               <Box sx={{ alignItems: 'center' }} >
-                <Image
+                {/* <Image
                   alt="Amplify"
                   src="/image/icon.png"
                   width={16}
                   height={14}
-                />
+                /> */}
+                <FcCheckmark/>
               </Box>
               <Typography
                 variant="body2"
@@ -572,12 +471,31 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
               <Box sx={{ alignItems: 'center' }} >
-                <Image
+                {/* <Image
                   alt="Amplify"
                   src="/image/icon.png"
                   width={16}
                   height={14}
-                />
+                /> */}
+                <FcCheckmark/>
+              </Box>
+              <Typography
+                variant="body2"
+                sx={{ fontSize: "14px", ml: 2, fontWeight: 400, lineHeight: '22px', color: '#111927' }}
+              >
+                Access to influencer Analyzer (full)
+              </Typography>
+            </Box>
+
+            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
+              <Box sx={{ alignItems: 'center' }} >
+                {/* <Image
+                  alt="Amplify"
+                  src="/image/icon.png"
+                  width={16}
+                  height={14}
+                /> */}
+                <FcCheckmark/>
               </Box>
               <Typography
                 variant="body2"

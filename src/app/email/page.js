@@ -113,7 +113,8 @@
 import { Box, Button, Typography } from '@mui/material'
 import Image from 'next/image'
 import React, { useState, useEffect } from 'react'; 
-
+import { baseUrl } from "../BaseUrl";
+import axios from 'axios';
 const confirEmail = () => {
     const [userEmail, setUserEmail] = useState('');
 
@@ -123,6 +124,22 @@ const confirEmail = () => {
         console.log('Stored email:', email); // Add this line to see the retrieved value
         setUserEmail(email); // Set the user email to the state variable
     }, []);
+
+    const handleResendVerification = async () => {
+        try {
+          const response = await axios.post(`${baseUrl}/api/resend_verify`, { userEmail });
+    
+          if (response.status === 200) {
+            // Handle success, you can show a success message or perform any other action
+            console.log('Verification link resent successfully');
+          } else {
+            // Handle error, you can show an error message or perform any other action
+            console.error('Failed to resend verification link');
+          }
+        } catch (error) {
+          console.error('Failed to resend verification link:', error);
+        }
+      };
     
     return (
         <Box>
@@ -200,6 +217,7 @@ const confirEmail = () => {
                         }}
                     >
                         <Button 
+                        onClick={handleResendVerification}
                             variant="contained" 
                             color="primary"  
                             sx={{

@@ -34,6 +34,8 @@ import Youtube from "./youtubestats/page";
 import Tiktokstats from "./tiktokstats/page";
 import Twitterstats from "./twitterstats/page";
 import Pintereststats from "./pinterest/page";
+import Sidebar from "../sidebar/page";
+import Navbar from "../navbar/page";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -127,6 +129,10 @@ const ProfileDashboard = () => {
     setOverview(num)
   }
   return (
+    <Box sx={{display:'flex'}}>
+    <Sidebar/>
+    <Box>
+    <Navbar/>
     <Box className={classes.container} sx={{ position: "relative" }}>
       <img
         src="/image/cover.png"
@@ -1318,6 +1324,8 @@ const ProfileDashboard = () => {
 }
       </Box>
       <Divider></Divider>
+    </Box>
+    </Box>
     </Box>
   );
 };
