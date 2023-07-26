@@ -2,6 +2,7 @@
 import { Box, Button, Typography, Divider } from "@mui/material";
 import Image from "next/image";
 import React from "react";
+import {FcCheckmark} from 'react-icons/fc'
 
 const Registered = () => {
   return (
@@ -97,12 +98,8 @@ const Registered = () => {
           <Box>
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
              <Box sx={{alignItems:'center'}} >
-             <Image
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={14}
-              />
+             {/* <FcCheckmark/> */}
+              <FcCheckmark/>
              </Box>
               <Typography
                 variant="body2"
@@ -113,12 +110,7 @@ const Registered = () => {
             </Box>
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
              <Box sx={{alignItems:'center'}} >
-             <Image
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={14}
-              />
+             <FcCheckmark/>
              </Box>
               <Typography
                 variant="body2"
@@ -130,12 +122,7 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
              <Box sx={{alignItems:'center'}} >
-             <Image
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={14}
-              />
+             <FcCheckmark/>
              </Box>
               <Typography
                 variant="body2"
@@ -147,12 +134,7 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
              <Box sx={{alignItems:'center'}} >
-             <Image
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={14}
-              />
+             <FcCheckmark/>
              </Box>
               <Typography
                 variant="body2"
@@ -164,12 +146,7 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
              <Box sx={{alignItems:'center'}} >
-             <Image
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={14}
-              />
+             <FcCheckmark/>
              </Box>
               <Typography
                 variant="body2"
@@ -181,12 +158,7 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
              <Box sx={{alignItems:'center'}} >
-             <Image
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={14}
-              />
+             <FcCheckmark/>
              </Box>
               <Typography
                 variant="body2"
@@ -198,12 +170,7 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
              <Box sx={{alignItems:'center'}} >
-             <Image
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={14}
-              />
+             <FcCheckmark/>
              </Box>
               <Typography
                 variant="body2"
@@ -425,12 +392,7 @@ const Registered = () => {
           <Box>
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
              <Box sx={{alignItems:'center'}} >
-             <Image
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={14}
-              />
+             <FcCheckmark/>
              </Box>
               <Typography
                 variant="body2"
@@ -441,12 +403,7 @@ const Registered = () => {
             </Box>
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
              <Box sx={{alignItems:'center'}} >
-             <Image
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={14}
-              />
+             <FcCheckmark/>
              </Box>
               <Typography
                 variant="body2"
@@ -458,12 +415,7 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
              <Box sx={{alignItems:'center'}} >
-             <Image
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={14}
-              />
+             <FcCheckmark/>
              </Box>
               <Typography
                 variant="body2"
@@ -475,12 +427,7 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
              <Box sx={{alignItems:'center'}} >
-             <Image
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={14}
-              />
+             <FcCheckmark/>
              </Box>
               <Typography
                 variant="body2"
@@ -492,12 +439,7 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
              <Box sx={{alignItems:'center'}} >
-             <Image
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={14}
-              />
+             <FcCheckmark/>
              </Box>
               <Typography
                 variant="body2"
@@ -509,12 +451,7 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
              <Box sx={{alignItems:'center'}} >
-             <Image
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={14}
-              />
+             <FcCheckmark/>
              </Box>
               <Typography
                 variant="body2"
@@ -526,12 +463,7 @@ const Registered = () => {
 
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
              <Box sx={{alignItems:'center'}} >
-             <Image
-                alt="Amplify"
-                src="/image/icon.png"
-                width={16}
-                height={14}
-              />
+             <FcCheckmark/>
              </Box>
               <Typography
                 variant="body2"

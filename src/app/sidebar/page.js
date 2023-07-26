@@ -102,11 +102,12 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        width: "280px",
+        width: "210px",
         backgroundColor: "#1C2536",
         color: "white",
         height:'1590',
-        padding: 2,
+        padding:2,
+        m:0
       }}
     >
       <Box sx={{ display: "flex" }}>

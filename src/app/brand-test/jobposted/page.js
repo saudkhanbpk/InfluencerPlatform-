@@ -123,7 +123,7 @@ const Jobs = () => {
   return (
     <Box>
       <Box sx={{ display: "flex",mb:'20px'}}>
-        <Box sx={{ borderRight: "1px solid #F2F4F7", p: 1, pr: 3 , width: "100%"}}>
+        <Box sx={{ borderRight: "1px solid #F2F4F7", p: 1, pr: 3 }}>
           <Box sx={{ display: "flex", m: 2 }}>
             <Box>
               <Image
@@ -220,7 +220,7 @@ const Jobs = () => {
             
           </Box>
 
-          <Box sx={{backgroundColor:'white',boxShadow:'1',borderRadius:'10px',ml:1,p: 2,}}>
+          <Box sx={{width: '1300px',backgroundColor:'white',boxShadow:'1',borderRadius:'10px',ml:1,p: 2,}}>
             <Box>
             <Typography
                   
@@ -302,10 +302,33 @@ const Jobs = () => {
      </Box>
             </Box>
           </Box>
+          {/* <Box sx={{ marginBottom: "25px" }}>
+            <Typography
+              variant="body1"
+              sx={{
+                lineHeight: "32px",
+                color: "#6C737F",
+                fontWeight: 500,
+                fontSize: "18px",
+                fontFamily: "Inter",
+                fontFamily: "Inter",
+              }}
+            >
+              Canada Goose is a premium Canadian clothing brand that was founded
+              in 1957. The brand is known for its high-quality and stylish
+              outerwear that is designed to withstand extreme weather
+              conditions. The company initially started as a manufacturer of
+              woolen vests, raincoats, and snowmobile suits for Canadian Rangers
+              and police officers. However, in recent years, Canada Goose has
+              gained widespread popularity as a luxury fashion brand and is now
+              considered a status symbol.
+            </Typography>
+          </Box> */}
         </Box>
       </Box>
-      <Box sx={{ display: "flex",mb:'20px'}}>
-        <Box sx={{ borderRight: "1px solid #F2F4F7", p: 1, pr: 3 , width: "100%"}}>
+
+      <Box sx={{ display: "flex",mb:'20px',mt:'20px' }}>
+        <Box sx={{ borderRight: "1px solid #F2F4F7", p: 1, pr: 3 }}>
           <Box sx={{ display: "flex", m: 2 }}>
             <Box>
               <Image
@@ -402,7 +425,7 @@ const Jobs = () => {
             
           </Box>
 
-          <Box sx={{backgroundColor:'white',boxShadow:'1',borderRadius:'10px',ml:1,p: 2,}}>
+          <Box sx={{width: '1300px',backgroundColor:'white',boxShadow:'1',borderRadius:'10px',ml:1,p: 2,}}>
             <Box>
             <Typography
                   
@@ -484,10 +507,33 @@ const Jobs = () => {
      </Box>
             </Box>
           </Box>
+          {/* <Box sx={{ marginBottom: "25px" }}>
+            <Typography
+              variant="body1"
+              sx={{
+                lineHeight: "32px",
+                color: "#6C737F",
+                fontWeight: 500,
+                fontSize: "18px",
+                fontFamily: "Inter",
+                fontFamily: "Inter",
+              }}
+            >
+              Canada Goose is a premium Canadian clothing brand that was founded
+              in 1957. The brand is known for its high-quality and stylish
+              outerwear that is designed to withstand extreme weather
+              conditions. The company initially started as a manufacturer of
+              woolen vests, raincoats, and snowmobile suits for Canadian Rangers
+              and police officers. However, in recent years, Canada Goose has
+              gained widespread popularity as a luxury fashion brand and is now
+              considered a status symbol.
+            </Typography>
+          </Box> */}
         </Box>
       </Box>
-      <Box sx={{ display: "flex",mb:'20px'}}>
-        <Box sx={{ borderRight: "1px solid #F2F4F7", p: 1, pr: 3 , width: "100%"}}>
+
+      <Box sx={{ display: "flex",mb:'20px',mt:'20px' }}>
+        <Box sx={{ borderRight: "1px solid #F2F4F7", p: 1, pr: 3 }}>
           <Box sx={{ display: "flex", m: 2 }}>
             <Box>
               <Image
@@ -584,88 +630,8 @@ const Jobs = () => {
             
           </Box>
 
-          <Box sx={{backgroundColor:'white',boxShadow:'1',borderRadius:'10px',ml:1,p: 2,}}>
-            <Box>
-            <Typography
-                  
-                  sx={{
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    fontFamily: "Inter",
-                    color: "#111927",
-                    lineHeight: "25px",
-                                  
-                  }}
-                >
-                  Instagram Influencer for a clothing brand who can market our products for a week
-                </Typography>
-            </Box>
-
-            <Box sx={{display:'flex',justifyContent:'space-between'}}>
-            <Box sx={{display:'flex'}}>
-                <Box>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    fontSize: "14px",
-                    fontWeight: 500,
-                    fontFamily: "Inter",
-                    color: "#6C737F",
-                    lineHeight: "20px",
-                    
-                  }}
-                >
-                  Budget • $400- $600 
-            </Typography>
-                </Box>
-                <Box sx={{ml:'30px'}}>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    fontSize: "14px",
-                    fontWeight: 500,
-                    fontFamily: "Inter",
-                    color: "#6C737F",
-                    lineHeight: "20px",
-                    
-                  }}
-                >
-                  Job type • Content creation & Shoutouts
-            </Typography>
-                </Box>
-                <Box sx={{ml:'30px'}}>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    fontSize: "14px",
-                    fontWeight: 500,
-                    fontFamily: "Inter",
-                    color: "#6C737F",
-                    lineHeight: "20px",
-                    
-                  }}
-                >
-                Payment type • Paid
-            </Typography>
-                </Box>
-            </Box>
-      <Box sx={{display:'flex'}}>
-    <Typography variant="caption" sx={{
-                    fontSize: "12px",
-                    fontWeight: 500,
-                    fontFamily: "Inter",
-                    color: "#6C737F",
-                    lineHeight: "19px",
-                    mt:1,mr:2
-                                  
-                  }}>5d Ago</Typography>
-    <Button sx={{color:'#2970FF', fontSize: "14px",
-                    fontWeight: 600,
-                    lineHeight: "24px",
-                    fontFamily: "Inter",backgroundColor:'white',}}>Apply</Button>
-     </Box>
-            </Box>
-          </Box>
+          
+          
         </Box>
       </Box>
     </Box>
