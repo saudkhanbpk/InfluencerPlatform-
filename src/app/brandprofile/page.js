@@ -131,8 +131,10 @@ const BrandProfile = () => {
     <Box sx={{width: "100%"}}>
     <Navbar/>
     <Box className={classes.container} sx={{ position: "relative" }}>
-      <img
-        src="/image/cover.png"
+      <Image
+        src="/cover.png"
+        width={1000}
+        height={300}
         alt="Cover Image"
         className={classes.coverImage}
       />
@@ -167,8 +169,10 @@ const BrandProfile = () => {
           }}
         >
           <Box className={classes.profileImage}>
-            <img
+            <Image
               src="/image/brandprofile.png"
+              width={173}
+              height={173}
               alt="Profile Image"
               className={classes.profileImageImg}
             />
