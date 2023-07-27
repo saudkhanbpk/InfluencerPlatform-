@@ -85,7 +85,7 @@ const Login = () => {
               >
                 <div>
                   <Typography
-                    variant="H6"
+                    variant="h6"
                     sx={{
                       fontSize: "18px",
                       fontFamily: "Plus Jakarta Sans",
@@ -122,18 +122,6 @@ const Login = () => {
                     type="password"
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  {/* <Box
-                    sx={{
-                      mt: 2,
-                      alignItems: "center",
-                      display: "flex",
-                    }}
-                  >
-                    <Checkbox name="policy" />
-                    <Typography color="text.secondary" variant="body2">
-                      I have read the <Link href="#">Terms and Conditions</Link>
-                    </Typography>
-                  </Box> */}
                   <Box
                     sx={{
                       mt: 2,
@@ -165,38 +153,7 @@ const Login = () => {
                         pl: '4px'
                       }}>Terms and Conditions</Typography>
                   </Box>
-                  <Box
-                    sx={{
-                      mt: 2,
-                      alignItems: "center",
-                      display: "flex",
-                    }}
-                  >
-                    <Checkbox name="policy" />
-                    <Typography variant="body2"
-                      sx={{
-                        fontSize: "14px",
-                        // fontFamily: "Inter",
-                        fontWeight: 400,
-                        lineHeight: "22px",
-                        color: "#6C737F",
-                      }}>
-                      I’m not a robot
-                    </Typography>
-                  </Box>
-
-                  {/* <Box sx={{ mt: 2 }}>
-                    <Button
-                      fullWidth
-                      size="large"
-                      type="submit"
-                      variant="contained"
-                      color="primary"
-                    >
-                      Login
-                    </Button>
-                  </Box> */}
-                  <Box sx={{ mt: 2 }}>
+                  <Box sx={{ mt: 7 }}>
                     <Button
                       fullWidth
                       type="submit"

@@ -165,7 +165,7 @@
 //           <Box sx={{ mt: 4, display: 'flex', justifyContent: 'end', }}>
 //             <Button sx={{ fontFamily:'inter', color: '#111927',textTransform:'capitalize',fontWeight:600 ,fontSize:'16px',lineHeight:'24px',borderRadius:'16px' }}
 //               type="reset"
-              
+
 //             >
 //               cancel
 //             </Button>
@@ -201,11 +201,12 @@ const GeneralInfo = () => {
     const [companyname, setCompanyname] = useState('')
     const [companywebsite, setCompanywebsite] = useState('')
     const [companyaddress, setCompanyaddress] = useState('')
-
+    const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setIsLoading(true);
         const data = {
             fname,
             lname,
@@ -232,7 +233,10 @@ const GeneralInfo = () => {
             })
             .catch((error) => {
                 console.error(error); // Handle the error
-                setMessage(error.response.data.message);
+                setMessage(error.response?.data?.message || 'Company info already exists.');
+            })
+            .finally(() => {
+                setIsLoading(false); // Set loading state to false after API call (whether success or error)
             });
 
     }
@@ -265,12 +269,13 @@ const GeneralInfo = () => {
                 }}>
 
                     <form onSubmit={handleSubmit}>
+                        {message}
                         <Typography
                             color="error"
                             sx={{ mt: 1, marginBottom: '15px' }}
                             variant="body1"
                         >
-                            {message}
+
                         </Typography>
                         <div>
                             <Typography variant="h4" sx={{ marginTop: '15px', marginBottom: '25px', fontFamily: 'plus jakarta sans', fontSize: '32px', color: '#000000', fontWeight: 700, fontFamily: 'Plus Jakarta Sans', lineHeight: '48px' }}>
@@ -383,10 +388,11 @@ const GeneralInfo = () => {
                                     borderRadius: '12px',
                                     mb: { xs: 2, md: 0 } // Adjusted margin bottom for mobile and tablet
                                 }}
+                                disabled={isLoading} // Disable the button while loading
                                 type="submit"
                                 variant="contained"
                             >
-                                Save changes and NEXT
+                                {isLoading ? "Loading..." : " Save changes and NEXT"} {/* Display "Loading..." while loading */}
                             </Button>
                         </Box>
 

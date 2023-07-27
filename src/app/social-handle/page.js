@@ -66,7 +66,7 @@
 //           src="/image/logo2.png"
 //           width={125}
 //           height={40}
-          
+
 //         />
 //       </Box>
 
@@ -236,9 +236,10 @@ const SocialMedia = () => {
     const [linkedin, setLinkedin] = useState('');
     const [blog, setBlog] = useState('');
     const [message, setMessage] = useState('');
-
+    const [isLoading, setIsLoading] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         const data = {
             instagram,
             tiktok,
@@ -264,9 +265,12 @@ const SocialMedia = () => {
             localStorage.setItem('token', token);
             router.push('/pricing-plan');
         } catch (error) {
-            console.error(error);
-            setMessage(error.response.data.message);
+            console.error(error); // Handle the error
+            setMessage(error.response?.data?.message || 'Social handle info already exists.');
         }
+        finally {
+            setIsLoading(false); // Set loading state to false after API call (whether success or error)
+        };
     };
 
     return (
@@ -397,10 +401,11 @@ const SocialMedia = () => {
                             </Button>
                             <Button
                                 sx={{ ml: { xs: 0, md: 2 }, p: 2, borderRadius: '12px', bgcolor: '#2970FF', color: '#FFFFFF', fontWeight: 600, width: { xs: '100%', md: 'auto' } }}
+                                disabled={isLoading} // Disable the button while loading
                                 type="submit"
                                 variant="contained"
                             >
-                                Save changes and NEXT
+                                {isLoading ? "Loading..." : " Save changes and NEXT"} {/* Display "Loading..." while loading */}
                             </Button>
                         </Box>
                     </form>
