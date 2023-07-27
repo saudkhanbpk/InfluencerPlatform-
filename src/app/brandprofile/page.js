@@ -237,7 +237,8 @@ generalData();
             >
               <Box>
                 <Typography sx={{ color: "#2970FF", fontWeight: 600 }}>
-                Canada Goose
+                {/* Canada Goose */}
+                {generaldata?.general?.fname}
                 </Typography>
                 <Typography
                   variant="overline"
