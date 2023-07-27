@@ -177,7 +177,9 @@ generalData();
     <Box sx={{width: "100%"}}>
     <Navbar/>
     <Box className={classes.container} sx={{ position: "relative" }}>
-      <img
+    <Image
+        width={700}
+        height={400}
         src="/image/cover.png"
         alt="Cover Image"
         className={classes.coverImage}
@@ -213,8 +215,10 @@ generalData();
           }}
         >
           <Box className={classes.profileImage}>
-            <img
+            <Image
               src="/image/brandprofile.png"
+              width={173}
+              height={173}
               alt="Profile Image"
               className={classes.profileImageImg}
             />

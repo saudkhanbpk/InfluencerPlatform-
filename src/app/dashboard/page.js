@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     width: "100%",
     // margin:'5px',
-    mx: "25px",
+    mx: "5px",
   },
   card: {
     backgroundColor: "white",
@@ -134,7 +134,9 @@ const ProfileDashboard = () => {
     <Box>
     <Navbar/>
     <Box className={classes.container} sx={{ position: "relative" }}>
-      <img
+      <Image
+        width={600}
+        height={400}
         src="/image/cover.png"
         alt="Cover Image"
         className={classes.coverImage}
@@ -662,9 +664,10 @@ const ProfileDashboard = () => {
             gap="16px"
             justifyContent="center"
           >
+          <Box sx={{width:'1050px'}}>
             <Box className={classes.cardContainer}>
               <Box className={classes.card}>
-                <Box className="flex flex-row items-center px-7">
+                <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center px-7">
                   <Box className={classes.imageContainer}>
                     <Image
                       src="/image/grouped.png"
@@ -736,9 +739,9 @@ const ProfileDashboard = () => {
                 </Box>
               </Box>
               <Box className={classes.card}>
-                <Box
+                <Box sx={{display:'flex',mt:3}} 
                   className="flex flex-row items-center px-6"
-                  sx={{ pt: "18px" }}
+                  // sx={{ pt: "18px" }}
                 >
                   <Box className={classes.imageContainer}>
                     {/* <FaUserCheck sx={{ fontSize:"80px", color: "#4466F2" }} /> */}
@@ -783,7 +786,7 @@ const ProfileDashboard = () => {
                 </Box>
               </Box>
               <Box className={classes.card}>
-                <Box className="flex flex-row items-center px-7">
+                <Box sx={{display:'flex',mt:3}}  className="flex flex-row items-center px-7">
                   <Box className={classes.imageContainer}>
                     {/* <FaUserCheck sx={{ fontSize:"80px", color: "#4466F2" }} /> */}
                     <Image
@@ -859,7 +862,7 @@ const ProfileDashboard = () => {
             </Box>
             <Box className={classes.cardContainer}>
               <Box className={classes.card}>
-                <Box className="flex flex-row items-center px-7">
+                <Box sx={{display:'flex',mt:3}}  className="flex flex-row items-center px-7">
                   <Box className={classes.imageContainer}>
                     <Image
                       src="/image/message.png"
@@ -932,7 +935,7 @@ const ProfileDashboard = () => {
                 </Box>
               </Box>
               <Box className={classes.card}>
-                <Box className="flex flex-row items-center px-7">
+                <Box sx={{display:'flex',mt:3}}  className="flex flex-row items-center px-7">
                   <Box className={classes.imageContainer}>
                     {/* <FaUserCheck sx={{ fontSize:"80px", color: "#4466F2" }} /> */}
                     <Image
@@ -1006,7 +1009,7 @@ const ProfileDashboard = () => {
                 </Box>
               </Box>
               <Box className={classes.card}>
-                <Box className="flex flex-row items-center px-7">
+                <Box sx={{display:'flex',mt:3}}  className="flex flex-row items-center px-7">
                   <Box className={classes.imageContainer}>
                     {/* <FaUserCheck sx={{ fontSize:"80px", color: "#4466F2" }} /> */}
                     <Image
@@ -1082,7 +1085,7 @@ const ProfileDashboard = () => {
             </Box>
             <Box className={classes.cardContainer}>
               <Box className={classes.card}>
-                <Box className="flex flex-row items-center px-7">
+                <Box sx={{display:'flex',mt:3}}  className="flex flex-row items-center px-7">
                   <Box className={classes.imageContainer}>
                     <Image
                       src="/image/like.png"
@@ -1155,7 +1158,7 @@ const ProfileDashboard = () => {
                 </Box>
               </Box>
               <Box className={classes.card}>
-                <Box className="flex flex-row items-center px-7">
+                <Box sx={{display:'flex',mt:3}}  className="flex flex-row items-center px-7">
                   <Box className={classes.imageContainer}>
                     {/* <FaUserCheck sx={{ fontSize:"80px", color: "#4466F2" }} /> */}
                     <Image
@@ -1229,7 +1232,7 @@ const ProfileDashboard = () => {
                 </Box>
               </Box>
               <Box className={classes.card}>
-                <Box className="flex flex-row items-center px-7">
+                <Box sx={{display:'flex',mt:3}}  className="flex flex-row items-center px-7">
                   <Box className={classes.imageContainer}>
                     {/* <FaUserCheck sx={{ fontSize:"80px", color: "#4466F2" }} /> */}
                     <Image
@@ -1303,6 +1306,8 @@ const ProfileDashboard = () => {
                 </Box>
               </Box>
             </Box>
+
+          </Box>
           </Box>
         </Box>
 }

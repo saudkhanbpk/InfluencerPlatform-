@@ -23,6 +23,7 @@ function page() {
       title: 'Payment was successful',
       time: 4000,
     });
+    
   };
   const handleFailure = () => {
     MySwal.fire({
