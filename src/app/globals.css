@@ -8,6 +8,7 @@ body {
   /* color: rgb(var(--foreground-rgb)); */
   background-image: url('../../public/image/hero-bg.png');
   background-repeat: no-repeat;
+  margin: 0;
 }
 .MuiAppBar-colorPrimary{
   background-color: white !important;
