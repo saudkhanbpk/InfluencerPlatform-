@@ -549,7 +549,7 @@
 // export default BrandProfile;
 
 "use client";
-import React, { useState } from "react";
+import  {useEffect,React, useState } from "react";
 import { makeStyles } from "@mui/styles";
 import Link from "next/link";
 import { Box, Button, Divider } from "@mui/material";
@@ -585,8 +585,9 @@ import GroupSharpIcon from "@mui/icons-material/GroupSharp";
 import Jobs from "./jobposted/page";
 import Sidebar from "../sidebar/page";
 import Navbar from "../navbar/page";
-// import { useTheme } from '@mui/material/styles';
-import { useTheme } from '@mui/material'; // Import useTheme from Material-UI
+import { useTheme } from '@mui/material';
+import {baseUrl} from "../BaseUrl"
+import axios from "axios";
 
 const styles = {
   coverImageContainer: {
@@ -754,6 +755,50 @@ const BrandProfile = () => {
   const theme = useTheme();
   const classes = useStyles();
   const [overview, setOverview] = useState(0);
+  const [data, setData] = useState([]);
+  const [generaldata, setGeneraldata] = useState([]);
+  const [userId, setUserId] = useState(null);
+ 
+  const getAllData = () => {
+    const storedUserData = JSON.parse(localStorage.getItem('user'));
+
+    // If user data is available in local storage, extract the _id and set the state
+    if (storedUserData) {
+      setUserId(storedUserData._id);
+    }
+   
+    let user = JSON.parse(localStorage.getItem('user'))
+    // console.log("user...", user._id)
+    // Fetch data from the API endpoint
+    const apiUrl = `${baseUrl}/api/social/${user._id}`;
+// console.log(apiUrl)
+axios.post(apiUrl)
+      .then((response) => setData(response.data))
+      .catch((error) => console.error('Error fetching data:', error));
+    // fetch(apiUrl).then((response) => response.json())
+    //   .then((result) => console.log("result", result))
+    //   .catch((error) => console.error('Error fetching data:', error));
+  }
+  const generalData = () => {
+    
+   
+    let user = JSON.parse(localStorage.getItem('user'))
+    // console.log("user...", user._id)
+    // Fetch data from the API endpoint
+    const apiUrl = `${baseUrl}/api/general/${user._id}`;
+// console.log(apiUrl)
+axios.get(apiUrl)
+      .then((response) => setGeneraldata(response.data))
+      .catch((error) => console.error('Error fetching data:', error));
+  }
+  useEffect(() => {
+getAllData();
+generalData();
+  }, []);
+  console.log("user id", userId)
+  console.log("storedUserData", data?.social?.blog)
+  console.log("Generaldata........", generaldata)
+  // console.log("kdfjksdj", baseUrl)
 
   const handledata = (num) => {
     setOverview(num);
@@ -917,11 +962,15 @@ const BrandProfile = () => {
                     Quick Links
                   </Typography>
                   <Box sx={{ display: "flex" }}>
-                    <InstagramIcon sx={{ color: "#FF004F", mx: 1 }} />{" "}
+                    {/* <InstagramIcon sx={{ color: "#FF004F", mx: 1 }} />{" "} */}
+                    <a href={data?.social?.blog} target="_blank" rel="noopener noreferrer">
+        <InstagramIcon sx={{ color: "#FF004F", mx: 1 }} />
+      </a>
                     <FaTiktok sx={{ mx: 1, mt: 2 }} />{" "}
                     <YouTubeIcon sx={{ color: "#FF004F", mx: 1 }} />{" "}
                     <TwitterIcon sx={{ color: "#1DA1F2", mx: 1 }} />{" "}
                     <PinterestIcon sx={{ color: "#EE0505", mx: 1 }} />{" "}
+                    <a href={data.social?.blog}>click me</a>
                   </Box>
                 </Box>
               </Box>
