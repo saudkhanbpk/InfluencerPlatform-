@@ -9,11 +9,11 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { Route } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
-import {FcCheckmark} from 'react-icons/fc';
+import { FcCheckmark } from 'react-icons/fc';
 const MySwal = withReactContent(Swal);
 const Registered = () => {
   const router = useRouter();
-  const publishableKey ="pk_test_51MW0sqA2UHtqGNuRS86jXELMgiNsywnlNaLJ1isdCq7yXbfvWKL2FisKTYAVPmBS4XY9EO4m0JRGOIELoiVnDThN00cq9qWeCS"
+  const publishableKey = "pk_test_51MW0sqA2UHtqGNuRS86jXELMgiNsywnlNaLJ1isdCq7yXbfvWKL2FisKTYAVPmBS4XY9EO4m0JRGOIELoiVnDThN00cq9qWeCS"
   // console.log(publishableKey)
   '';
   const [product, setProduct] = useState({
@@ -28,10 +28,11 @@ const Registered = () => {
       title: 'Payment was successful',
       time: 4000,
     });
+    router.push('/register-success')
   };
 
-  const submit = () =>{
-    router.push('/register-success')
+  const submit = () => {
+
   }
   const handleFailure = () => {
     MySwal.fire({
@@ -157,7 +158,7 @@ const Registered = () => {
                   width={16}
                   height={14}
                 /> */}
-                <FcCheckmark/>
+                <FcCheckmark />
 
               </Box>
               <Typography
@@ -175,7 +176,7 @@ const Registered = () => {
                   width={16}
                   height={14}
                 /> */}
-                <FcCheckmark/>
+                <FcCheckmark />
               </Box>
               <Typography
                 variant="body2"
@@ -193,7 +194,7 @@ const Registered = () => {
                   width={16}
                   height={14}
                 /> */}
-                <FcCheckmark/>
+                <FcCheckmark />
               </Box>
               <Typography
                 variant="body2"
@@ -212,7 +213,7 @@ const Registered = () => {
                   height={14}
                 /> */}
               </Box>
-              <FcCheckmark/>
+              <FcCheckmark />
               <Typography
                 variant="body2"
                 sx={{ fontSize: "14px", ml: 2, fontWeight: 400, lineHeight: '22px', color: '#111927' }}
@@ -229,7 +230,7 @@ const Registered = () => {
                   width={16}
                   height={14}
                 /> */}
-                <FcCheckmark/>
+                <FcCheckmark />
               </Box>
               <Typography
                 variant="body2"
@@ -247,7 +248,7 @@ const Registered = () => {
                   width={16}
                   height={14}
                 /> */}
-                <FcCheckmark/>
+                <FcCheckmark />
               </Box>
               <Typography
                 variant="body2"
@@ -265,7 +266,7 @@ const Registered = () => {
                   width={16}
                   height={14}
                 /> */}
-                <FcCheckmark/>
+                <FcCheckmark />
               </Box>
               <Typography
                 variant="body2"
@@ -378,7 +379,7 @@ const Registered = () => {
 
           <Divider sx={{ my: 2 }} />
 
-          
+
           <Box>
             <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
               <Box sx={{ alignItems: 'center' }} >
@@ -388,7 +389,7 @@ const Registered = () => {
                   width={16}
                   height={14}
                 /> */}
-                <FcCheckmark/>
+                <FcCheckmark />
               </Box>
               <Typography
                 variant="body2"
@@ -405,25 +406,7 @@ const Registered = () => {
                   width={16}
                   height={14}
                 /> */}
-                <FcCheckmark/>
-              </Box>
-              <Typography
-                variant="body2"
-                sx={{ fontSize: "14px", ml: 2, fontWeight: 400, lineHeight: '22px', color: '#111927' }}
-              >
-                Access to influencer Analyzer (full)
-              </Typography>
-            </Box>
-
-            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
-              <Box sx={{ alignItems: 'center' }} >
-                {/* <Image
-                  alt="Amplify"
-                  src="/image/icon.png"
-                  width={16}
-                  height={14}
-                /> */}
-                <FcCheckmark/>
+                <FcCheckmark />
               </Box>
               <Typography
                 variant="body2"
@@ -441,7 +424,7 @@ const Registered = () => {
                   width={16}
                   height={14}
                 /> */}
-                <FcCheckmark/>
+                <FcCheckmark />
               </Box>
               <Typography
                 variant="body2"
@@ -459,7 +442,7 @@ const Registered = () => {
                   width={16}
                   height={14}
                 /> */}
-                <FcCheckmark/>
+                <FcCheckmark />
               </Box>
               <Typography
                 variant="body2"
@@ -477,7 +460,7 @@ const Registered = () => {
                   width={16}
                   height={14}
                 /> */}
-                <FcCheckmark/>
+                <FcCheckmark />
               </Box>
               <Typography
                 variant="body2"
@@ -495,7 +478,25 @@ const Registered = () => {
                   width={16}
                   height={14}
                 /> */}
-                <FcCheckmark/>
+                <FcCheckmark />
+              </Box>
+              <Typography
+                variant="body2"
+                sx={{ fontSize: "14px", ml: 2, fontWeight: 400, lineHeight: '22px', color: '#111927' }}
+              >
+                Access to influencer Analyzer (full)
+              </Typography>
+            </Box>
+
+            <Box sx={{ display: "flex", justifyContent: "between", my: 1 }}>
+              <Box sx={{ alignItems: 'center' }} >
+                {/* <Image
+                  alt="Amplify"
+                  src="/image/icon.png"
+                  width={16}
+                  height={14}
+                /> */}
+                <FcCheckmark />
               </Box>
               <Typography
                 variant="body2"
