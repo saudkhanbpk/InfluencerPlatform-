@@ -87,7 +87,7 @@ const Navbar = () => {
             <NotificationsIcon sx={{fontSize:'30px'}}/>
           </IconButton>
           <IconButton color="inherit">
-            <Image src='/image/baby.png' width={50} height={50} />
+            <Image src='/image/little.png' width={50} height={50} />
           </IconButton>
         </Toolbar>
       </AppBar>
