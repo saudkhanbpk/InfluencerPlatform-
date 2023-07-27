@@ -169,8 +169,10 @@ const BrandProfile = () => {
           }}
         >
           <Box className={classes.profileImage}>
-            <img
+            <Image
               src="/image/brandprofile.png"
+              width={173}
+              height={173}
               alt="Profile Image"
               className={classes.profileImageImg}
             />
