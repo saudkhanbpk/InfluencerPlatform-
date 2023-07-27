@@ -137,7 +137,7 @@ const ProfileDashboard = () => {
       <Image
         width={600}
         height={400}
-        src="/image/cover.png"
+        src="/image/bg.png"
         alt="Cover Image"
         className={classes.coverImage}
       />
