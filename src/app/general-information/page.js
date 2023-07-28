@@ -50,7 +50,6 @@ const GeneralInfo = () => {
             })
             .catch((error) => {
                 console.error(error); // Handle the error
-                setMessage(error.response?.data?.message || 'General info already exists.');
             })
             .finally(() => {
                 setIsLoading(false); // Set loading state to false after API call (whether success or error)
@@ -186,7 +185,7 @@ setUser(user1)
                         <Box sx={{ mt: 4, display: 'flex', justifyContent: { xs: 'center', md: 'flex-end' } }}>
                             <Button
                                 sx={{
-                                    fontFamily: 'inter',
+                                    fontFamily: 'Plus Jakarta Sans',
                                     color: '#111927',
                                     textTransform: 'capitalize',
                                     fontWeight: 600,

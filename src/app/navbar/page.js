@@ -59,7 +59,7 @@ const handleToggleSidebar = () => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-            <Box sx={{zIndex:'3'}}>
+            <Box sx={{zIndex:'3', }}>
               <IconButton onClick={handleToggleSidebar}>
                 {expanded ? <CloseIcon /> : <MenuIcon />}
               </IconButton>

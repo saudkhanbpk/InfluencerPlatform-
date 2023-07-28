@@ -124,15 +124,15 @@ const useStyles = makeStyles((theme) => ({
 const ProfileDashboard = () => {
   const classes = useStyles();
   const [overview , setOverview] = useState(0)
-
+const [expanded, setExpanded] = useState(true)
   const handledata=(num)=>{
     setOverview(num)
   }
   return (
     <Box sx={{display:'flex'}}>
-    <Sidebar/>
-    <Box>
-    <Navbar/>
+    <Sidebar expanded={expanded}/>
+    <Box sx={{ width: "100%" }}>
+    <Navbar expanded={expanded} setExpanded={setExpanded}/>
     <Box className={classes.container} sx={{ position: "relative" }}>
       <Image
         width={600}
