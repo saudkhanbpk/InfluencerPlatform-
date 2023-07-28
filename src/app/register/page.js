@@ -97,8 +97,7 @@ const Register = () => {
             },
         };
 
-        axios
-            .post(`${baseUrl}/api/register`, data, config)
+        axios.post(`${baseUrl}/api/register`, data, config)
             .then((response) => {
                 console.log(response.data);
                 const { email, _id } = response.data.newUser;
