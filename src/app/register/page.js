@@ -150,6 +150,23 @@ const Register = () => {
                             color: "#111927",
                         }}
                     >
+                    <Grid item xs={12}>
+                                    <Link
+                                        color="text.primary"
+                                        href="#"
+                                        sx={{
+                                            alignItems: "center",
+                                            display: "inline-flex",
+                                            color: "#111927",
+                                            textDecoration: "none",
+                                        }}
+                                    >
+                                        <ArrowLeftIcon sx={{ mr: 1 }} />
+                                        <Typography variant="subtitle2" sx={{}}>
+                                            Back
+                                        </Typography>
+                                    </Link>
+                                </Grid>
                         <Typography
                             variant="h4"
                             sx={{
@@ -158,6 +175,7 @@ const Register = () => {
                                 fontWeight: 700,
                                 lineHeight: "38.4px",
                                 color: "#111927",
+                                mt:'20px'
                             }}
                         >
                             Brand account creation
@@ -178,23 +196,7 @@ const Register = () => {
                             }}
                         >
                             <Grid container spacing={2}>
-                                <Grid item xs={12}>
-                                    <Link
-                                        color="text.primary"
-                                        href="#"
-                                        sx={{
-                                            alignItems: "center",
-                                            display: "inline-flex",
-                                            color: "#111927",
-                                            textDecoration: "none",
-                                        }}
-                                    >
-                                        <ArrowLeftIcon sx={{ mr: 1 }} />
-                                        <Typography variant="subtitle2" sx={{}}>
-                                            Back
-                                        </Typography>
-                                    </Link>
-                                </Grid>
+                                
                                 <Grid item xs={12}>
                                     <Typography
                                         variant="h6"
@@ -237,7 +239,7 @@ const Register = () => {
                                                     fontWeight: 400,
                                                     lineHeight: "22px",
                                                     color: "#6C737F",
-                                                    mt: 2,
+                                                   
 
                                                     // Responsive styles
                                                     "@media (max-width: 600px)": {
@@ -255,7 +257,7 @@ const Register = () => {
                                                     lineHeight: "24px",
                                                     color: "#2970FF",
                                                     pl: "4px",
-                                                    mt: 2,
+                                                
 
                                                     // Responsive styles
                                                     "@media (max-width: 600px)": {
