@@ -23,6 +23,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import ReCAPTCHA from "react-google-recaptcha";
 // import useMediaQuery from "@mui/material/useMediaQuery";
+// /
 import { useTheme } from "@mui/material/styles";
 
 const Register = () => {
