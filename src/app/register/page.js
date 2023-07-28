@@ -9,13 +9,13 @@ import {
     Card,
     CardContent,
     Container,
-    Grid,
+    Grid,   
     Link,
     TextField,
     Typography,
     useMediaQuery,
 } from "@mui/material";
-import { baseUrl } from "../BaseUrl";
+// import { baseUrl } from "../BaseUrl";
 import Checkbox from "@mui/material/Checkbox";
 import Header from "../header/page";
 import { useState, useEffect } from "react";
@@ -48,12 +48,12 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsLoading(true);
-        if (!name.trim()) {
-            setNameError("Name is required.");
-            return;
-        } else {
-            setNameError("");
-        }
+        // if (!name.trim()) {
+        //     setNameError("Name is required.");
+        //     return;
+        // } else {
+        //     setNameError("");
+        // }
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email.trim()) {

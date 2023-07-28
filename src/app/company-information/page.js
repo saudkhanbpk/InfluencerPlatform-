@@ -173,7 +173,7 @@
 'use client';
 import { Box, Button, TextField, Typography, Unstable_Grid2 as Grid } from '@mui/material';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { baseUrl } from '../BaseUrl';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -185,16 +185,21 @@ const CompanyInfo = () => {
     const [companysize, setCompanysize] = useState('');
     const [companyfounded, setCompanyfounded] = useState('');
     const [bio, setBio] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState('');
+    const [user,setUser]=useState("")
+
 
     const handelSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         const data = {
             niche,
             budget,
             companysize,
             companyfounded,
             bio,
+            userId:user._id
         };
         const config = {
             headers: {
@@ -209,10 +214,17 @@ const CompanyInfo = () => {
             localStorage.setItem('token', token);
         } catch (error) {
             console.error(error); // Handle the error
-            setMessage(error.response?.data?.message || 'An error occurred.');
+            setMessage(error.response?.data?.message || 'Company info already exists.');
         }
+        finally {
+            setIsLoading(false); // Set loading state to false after API call (whether success or error)
+        };
     };
-
+    useEffect(()=>{
+        let userData = localStorage.getItem('user')
+let user1 = JSON.parse(userData)
+setUser(user1)
+    },[])
     return (
         <Box sx={{ mt: 10 }}>
             <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }}>
@@ -284,7 +296,7 @@ const CompanyInfo = () => {
                                     onChange={(e) => setCompanyfounded(e.target.value)}
                                 />
                             </Grid>
-                            <Grid item xs={12} md={6}>
+                            <Grid item xs={12} md={12}>
                                 <TextField
                                     fullWidth
                                     name="message"
@@ -300,11 +312,13 @@ const CompanyInfo = () => {
                                 Cancel
                             </Button>
                             <Button
-                                sx={{ ml: { xs: 0, md: 2 }, p: 2, borderRadius: '12px', bgcolor: '#2970FF', color: '#FFFFFF', fontWeight: 600, width: { xs: '100%', md: 'auto' } }}
+                                sx={{ ml: { xs: 0, md: 2 }, px: { xs: 1, md: 5 }, p: 2, borderRadius: '12px', bgcolor: '#2970FF', color: '#FFFFFF', fontWeight: 600, }}
+                                disabled={isLoading} // Disable the button while loading
                                 type="submit"
                                 variant="contained"
                             >
-                                Save changes and NEXT
+                                {isLoading ? "Loading..." : " Save changes and NEXT"} {/* Display "Loading..." while loading */}
+
                             </Button>
                         </Box>
 

@@ -8,8 +8,10 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Collapse,Button
+  Collapse, Button, IconButton
 } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import { makeStyles } from "@mui/styles";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import TaskIcon from '@mui/icons-material/Task';
@@ -48,21 +50,25 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
 import DisabledByDefaultOutlinedIcon from '@mui/icons-material/DisabledByDefaultOutlined';
 
-const Sidebar = () => {
-    const [open, setOpen] = React.useState(false);
-    const [customer, setCustomer] = React.useState(false);
-    const [product, setProduct] = React.useState(false);
-    const [orders, setOrders] = React.useState(false);
-    const [invoices, setInvoices] = React.useState(false);
-    const [logistics, setLogistics] = React.useState(false);
-    const [fileuploader, setFileuploader] = React.useState(false);
-    const [academy, setAcademy] = React.useState(false);
-    const [auth, setAuth] = React.useState(false);
-    const [blogs, setBlogs] = React.useState(false);
-    const [joblisting, setJoblisting] = React.useState(false);
-    const [level, setLevel] = React.useState(false);
-    const [socialmedia, setSocialmedia] = React.useState(false);
-    
+const Sidebar = ({expanded}) => {
+  const [open, setOpen] = React.useState(false);
+  const [customer, setCustomer] = React.useState(false);
+  const [product, setProduct] = React.useState(false);
+  const [orders, setOrders] = React.useState(false);
+  const [invoices, setInvoices] = React.useState(false);
+  const [logistics, setLogistics] = React.useState(false);
+  const [fileuploader, setFileuploader] = React.useState(false);
+  const [academy, setAcademy] = React.useState(false);
+  const [auth, setAuth] = React.useState(false);
+  const [blogs, setBlogs] = React.useState(false);
+  const [joblisting, setJoblisting] = React.useState(false);
+  const [level, setLevel] = React.useState(false);
+  const [socialmedia, setSocialmedia] = React.useState(false);
+  // const [expanded, setExpanded] = React.useState(true);
+
+  
+
+
   const handleDropdownCustomers = () => {
     setCustomer(!customer);
   };
@@ -100,17 +106,29 @@ const Sidebar = () => {
     setLevel(!level);
   };
   return (
-    <Box
+    <>
+      
+    
+    <Box  
       sx={{
-        width: "210px",
+        width: expanded ? "210px" : "0px", // Adjust width based on the expanded state
         backgroundColor: "#1C2536",
         color: "white",
-        height:'1590',
-        padding:2,
-        m:0
+        height: "100%",
+        padding: expanded ? "2" : "0",
+        m: 0,
+        overflowX: "hidden",
+        transition: "width 0.2s ease", // Add transition for smooth animation
+        '@media (max-width:490px)':{
+          position:'absolute',
+          zIndex:'1'
+        }
       }}
     >
-      <Box sx={{ display: "flex" }}>
+     
+      <Box>
+      
+      <Box sx={{display:'flex'}}>
         <Avatar
           sx={{
             width: "40",
@@ -125,7 +143,7 @@ const Sidebar = () => {
         >
 
         </Avatar>
-        <Box sx={{m:2}}>
+        <Box sx={{ m: 2 }}>
           <Typography
             variant="h6"
             gutterBottom
@@ -151,7 +169,7 @@ const Sidebar = () => {
             Premium Tier
           </Typography>
         </Box>
-        
+        </Box>
       </Box>
       <List>
         <ListItem
@@ -159,12 +177,12 @@ const Sidebar = () => {
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-            <OtherHousesOutlinedIcon sx={{marginRight:"15px",color: "white" }} />
-          
+          <OtherHousesOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
+
           <ListItemText primary="OverView" />
         </ListItem>
         <ListItem
@@ -172,13 +190,13 @@ const Sidebar = () => {
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-          
-            <AssessmentOutlinedIcon sx={{marginRight:"15px", color: "white" }} />
-          
+
+          <AssessmentOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
+
           <ListItemText primary="Analytics" />
         </ListItem>
         <ListItem
@@ -186,13 +204,13 @@ const Sidebar = () => {
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-          
-            <BrokenImageOutlinedIcon sx={{ marginRight:"15px",color: "white" }} />
-          
+
+          <BrokenImageOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
+
           <ListItemText primary="Ecommerce" />
         </ListItem>
         <ListItem
@@ -200,13 +218,13 @@ const Sidebar = () => {
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-          
-            <CurrencyBitcoinOutlinedIcon sx={{marginRight:"15px", color: "white" }} />
-          
+
+          <CurrencyBitcoinOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
+
           <ListItemText primary="Crypto" />
         </ListItem>
         <Typography variant="overline"
@@ -216,38 +234,38 @@ const Sidebar = () => {
             fontSize: "12px",
             LineHeight: "30px",
             Letter: "0.5px",
-            height:30
+            height: 30
           }} >
           CONCEPTS
-          </Typography>
-          
-          <ListItem ButtonBase onClick={handleDropdownCustomers} sx={{
-            borderRadius: "16px",
-            "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
-            },
-          }}>
-          <GroupOutlinedIcon sx={{marginRight:"15px"}}/>
-          
+        </Typography>
+
+        <ListItem ButtonBase onClick={handleDropdownCustomers} sx={{
+          borderRadius: "16px",
+          "&:hover": {
+            backgroundColor: "#323A4A", cursor: 'pointer'
+          },
+        }}>
+          <GroupOutlinedIcon sx={{ marginRight: "15px" }} />
+
           <ListItemText primary="Customers" />
           {customer ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItem>
 
         <Collapse in={customer} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
               <ListItemText primary="List" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
               <ListItemText primary="Detail" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
@@ -257,25 +275,25 @@ const Sidebar = () => {
         </Collapse>
 
         <ListItem ButtonBase onClick={handleDropdownProduct} sx={{
-            borderRadius: "16px",
-            "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
-            },
-          }}>
-          <LocalMallOutlinedIcon sx={{marginRight:"15px"}}/>
-          
+          borderRadius: "16px",
+          "&:hover": {
+            backgroundColor: "#323A4A", cursor: 'pointer'
+          },
+        }}>
+          <LocalMallOutlinedIcon sx={{ marginRight: "15px" }} />
+
           <ListItemText primary="Products" />
           {product ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItem>
         <Collapse in={product} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
               <ListItemText primary="List" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
@@ -285,112 +303,112 @@ const Sidebar = () => {
         </Collapse>
 
         <ListItem ButtonBase onClick={handleDropdownOrders} sx={{
-            borderRadius: "16px",
-            "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
-            },
-          }}>
-          <ShoppingCartOutlinedIcon sx={{marginRight:"15px"}}/>
-          
+          borderRadius: "16px",
+          "&:hover": {
+            backgroundColor: "#323A4A", cursor: 'pointer'
+          },
+        }}>
+          <ShoppingCartOutlinedIcon sx={{ marginRight: "15px" }} />
+
           <ListItemText primary="Orders" />
           {orders ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItem>
         <Collapse in={orders} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
               <ListItemText primary="List" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
               <ListItemText primary="Detail" />
             </ListItem>
-            
+
           </List>
         </Collapse>
 
         <ListItem ButtonBase onClick={handleDropdownInvoices} sx={{
-            borderRadius: "16px",
-            "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
-            },
-          }}>
-          <ReceiptOutlinedIcon sx={{marginRight:"15px"}}/>
-          
+          borderRadius: "16px",
+          "&:hover": {
+            backgroundColor: "#323A4A", cursor: 'pointer'
+          },
+        }}>
+          <ReceiptOutlinedIcon sx={{ marginRight: "15px" }} />
+
           <ListItemText primary="Invoices" />
           {invoices ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItem>
         <Collapse in={invoices} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
               <ListItemText primary="List" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
               <ListItemText primary="Detail" />
             </ListItem>
-            
+
           </List>
         </Collapse>
 
         <ListItem ButtonBase onClick={handleDropdownLogistics} sx={{
-            borderRadius: "16px",
-            "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
-            },
-          }}>
-          <AirportShuttleOutlinedIcon sx={{marginRight:"15px"}}/>
-          
+          borderRadius: "16px",
+          "&:hover": {
+            backgroundColor: "#323A4A", cursor: 'pointer'
+          },
+        }}>
+          <AirportShuttleOutlinedIcon sx={{ marginRight: "15px" }} />
+
           <ListItemText primary="Logistics" />
           {logistics ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItem>
         <Collapse in={logistics} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
               <ListItemText primary="Dashboard" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
               <ListItemText primary="Fleet" />
             </ListItem>
-            
+
           </List>
         </Collapse>
 
         <ListItem ButtonBase onClick={handleDropdownFileUploader} sx={{
-            borderRadius: "16px",
-            "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
-            },
-          }}>
-          <FileUploadOutlinedIcon sx={{marginRight:"15px"}}/>
-          
+          borderRadius: "16px",
+          "&:hover": {
+            backgroundColor: "#323A4A", cursor: 'pointer'
+          },
+        }}>
+          <FileUploadOutlinedIcon sx={{ marginRight: "15px" }} />
+
           <ListItemText primary="File Uploader" />
           {fileuploader ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItem>
         <Collapse in={fileuploader} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
               <ListItemText primary="Dashboard" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
@@ -401,60 +419,60 @@ const Sidebar = () => {
         </Collapse>
 
         <ListItem ButtonBase onClick={handleDropdownAcademy} sx={{
-            borderRadius: "16px",
-            "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
-            },
-          }}>
-          <SchoolOutlinedIcon sx={{marginRight:"15px"}}/>
-          
+          borderRadius: "16px",
+          "&:hover": {
+            backgroundColor: "#323A4A", cursor: 'pointer'
+          },
+        }}>
+          <SchoolOutlinedIcon sx={{ marginRight: "15px" }} />
+
           <ListItemText primary="Academy" />
           {academy ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItem>
         <Collapse in={academy} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
               <ListItemText primary="Dashboard" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
               <ListItemText primary="Course" />
             </ListItem>
-            
+
           </List>
         </Collapse>
 
         <ListItem ButtonBase onClick={handleDropdownJobListing} sx={{
-            borderRadius: "16px",
-            "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
-            },
-          }}>
-          <FormatListNumberedRtlSharpIcon sx={{marginRight:"15px"}}/>
-          
+          borderRadius: "16px",
+          "&:hover": {
+            backgroundColor: "#323A4A", cursor: 'pointer'
+          },
+        }}>
+          <FormatListNumberedRtlSharpIcon sx={{ marginRight: "15px" }} />
+
           <ListItemText primary="Job Listing" />
           {joblisting ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItem>
         <Collapse in={joblisting} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
               <ListItemText primary="Browse" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
               <ListItemText primary="Detail" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>
@@ -464,52 +482,52 @@ const Sidebar = () => {
         </Collapse>
 
         <ListItem ButtonBase onClick={handleDropdownSocialMedia} sx={{
-            borderRadius: "16px",
-            "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
-            },
-          }}>
-          <ShareSharpIcon sx={{marginRight:"15px"}}/>
-          
+          borderRadius: "16px",
+          "&:hover": {
+            backgroundColor: "#323A4A", cursor: 'pointer'
+          },
+        }}>
+          <ShareSharpIcon sx={{ marginRight: "15px" }} />
+
           <ListItemText primary="Social Media" />
           {socialmedia ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItem>
         <Collapse in={socialmedia} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
-              
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
+
               <ListItemText primary="Profile" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
-              
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
+
               <ListItemText primary="Feed" />
             </ListItem>
           </List>
         </Collapse>
 
         <ListItem ButtonBase onClick={handleDropdownBlogs} sx={{
-            borderRadius: "16px",
-            "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
-            },
-          }}>
-          <ListAltSharpIcon sx={{marginRight:"15px"}}/>
-          
+          borderRadius: "16px",
+          "&:hover": {
+            backgroundColor: "#323A4A", cursor: 'pointer'
+          },
+        }}>
+          <ListAltSharpIcon sx={{ marginRight: "15px" }} />
+
           <ListItemText primary="Blogs" />
           {blogs ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItem>
         <Collapse in={blogs} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
-              
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
+
               <ListItemText primary="Post List" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
-              
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
+
               <ListItemText primary="Post Details" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
-              
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
+
               <ListItemText primary="Post Create" />
             </ListItem>
           </List>
@@ -522,23 +540,23 @@ const Sidebar = () => {
             fontSize: "12px",
             LineHeight: "30px",
             Letter: "0.5px",
-            height:30
+            height: 30
           }} >
           APPS
-          </Typography>
+        </Typography>
 
-          <ListItem
+        <ListItem
           ButtonBase
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-          
-            <LibraryAddCheckSharpIcon sx={{marginRight:"15px", color: "white" }} />
-          
+
+          <LibraryAddCheckSharpIcon sx={{ marginRight: "15px", color: "white" }} />
+
           <ListItemText primary="Kanban" />
         </ListItem>
 
@@ -547,13 +565,13 @@ const Sidebar = () => {
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-          
-            <MailOutlinedIcon sx={{marginRight:"15px", color: "white" }} />
-          
+
+          <MailOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
+
           <ListItemText primary="Mail" />
         </ListItem>
 
@@ -562,13 +580,13 @@ const Sidebar = () => {
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-          
-            <ChatBubbleOutlinedIcon sx={{marginRight:"15px", color: "white" }} />
-          
+
+          <ChatBubbleOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
+
           <ListItemText primary="Chat" />
         </ListItem>
 
@@ -577,13 +595,13 @@ const Sidebar = () => {
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-          
-            <CalendarTodayOutlinedIcon sx={{marginRight:"15px", color: "white" }} />
-          
+
+          <CalendarTodayOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
+
           <ListItemText primary="Calender" />
         </ListItem>
 
@@ -594,51 +612,51 @@ const Sidebar = () => {
             fontSize: "12px",
             LineHeight: "30px",
             Letter: "0.5px",
-            height:30
+            height: 30
           }} >
           PAGES
-          </Typography>
+        </Typography>
 
-          <ListItem ButtonBase onClick={handleDropdownAuth} sx={{
-            borderRadius: "16px",
-            "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
-            },
-          }}>
-          <LockOutlinedIcon sx={{marginRight:"15px"}}/>
-          
+        <ListItem ButtonBase onClick={handleDropdownAuth} sx={{
+          borderRadius: "16px",
+          "&:hover": {
+            backgroundColor: "#323A4A", cursor: 'pointer'
+          },
+        }}>
+          <LockOutlinedIcon sx={{ marginRight: "15px" }} />
+
           <ListItemText primary="Auth" />
           {auth ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItem>
         <Collapse in={auth} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
-              
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
+
               <ListItemText primary="Post List" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
-              
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
+
               <ListItemText primary="Post Details" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
-              
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
+
               <ListItemText primary="Post Create" />
             </ListItem>
           </List>
         </Collapse>
 
-          <ListItem
+        <ListItem
           ButtonBase
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-          
-            <CreditCardOutlinedIcon sx={{marginRight:"15px", color: "white" }} />
-          
+
+          <CreditCardOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
+
           <ListItemText primary="Pricing" />
         </ListItem>
         <ListItem
@@ -646,13 +664,13 @@ const Sidebar = () => {
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-          
-            <LogoutOutlinedIcon sx={{marginRight:"15px", color: "white" }} />
-          
+
+          <LogoutOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
+
           <ListItemText primary="Checkout" />
         </ListItem>
         <ListItem
@@ -660,13 +678,13 @@ const Sidebar = () => {
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-          
-            <CallOutlinedIcon sx={{marginRight:"15px", color: "white" }} />
-          
+
+          <CallOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
+
           <ListItemText primary="Contact" />
         </ListItem>
         <ListItem
@@ -674,13 +692,13 @@ const Sidebar = () => {
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-          
-            <DisabledByDefaultOutlinedIcon sx={{marginRight:"15px", color: "white" }} />
-         
+
+          <DisabledByDefaultOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
+
           <ListItemText primary="Error" />
         </ListItem>
 
@@ -691,51 +709,51 @@ const Sidebar = () => {
             fontSize: "12px",
             LineHeight: "30px",
             Letter: "0.5px",
-            height:30
+            height: 30
           }} >
           MISC
-          </Typography>
+        </Typography>
 
-          <ListItem ButtonBase onClick={handleDropdownLevel} sx={{
-            borderRadius: "16px",
-            "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
-            },
-          }}>
-          <ViewAgendaOutlinedIcon sx={{marginRight:"15px"}}/>
-          
+        <ListItem ButtonBase onClick={handleDropdownLevel} sx={{
+          borderRadius: "16px",
+          "&:hover": {
+            backgroundColor: "#323A4A", cursor: 'pointer'
+          },
+        }}>
+          <ViewAgendaOutlinedIcon sx={{ marginRight: "15px" }} />
+
           <ListItemText primary="Level O" />
           {level ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItem>
         <Collapse in={level} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
-              
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
+
               <ListItemText primary="Post List" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
-              
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
+
               <ListItemText primary="Post Details" />
             </ListItem>
-            <ListItem ButtonBase sx={{paddingLeft: 2}}>
-              
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
+
               <ListItemText primary="Post Create" />
             </ListItem>
           </List>
         </Collapse>
 
-          <ListItem
+        <ListItem
           ButtonBase
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-          
-            <DisabledByDefaultOutlinedIcon sx={{marginRight:"15px", color: "white" }} />
-         
+
+          <DisabledByDefaultOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
+
           <ListItemText primary="Disabled" />
         </ListItem>
 
@@ -744,13 +762,13 @@ const Sidebar = () => {
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-          
-            <CheckBoxOutlineBlankOutlinedIcon sx={{marginRight:"15px", color: "white" }} />
-          
+
+          <CheckBoxOutlineBlankOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
+
           <ListItemText primary="Label" />
         </ListItem>
 
@@ -759,13 +777,13 @@ const Sidebar = () => {
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-          
-            <CheckBoxOutlineBlankOutlinedIcon sx={{marginRight:"15px", color: "white" }} />
-         
+
+          <CheckBoxOutlineBlankOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
+
           <ListItemText primary="Disabled" />
         </ListItem>
 
@@ -774,34 +792,48 @@ const Sidebar = () => {
           sx={{
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "#323A4A",cursor:'pointer'
+              backgroundColor: "#323A4A", cursor: 'pointer'
             },
           }}
         >
-          
-            <LinkOutlinedIcon sx={{marginRight:"15px", color: "white" }} />
-          
-          <ListItemText primary="External Link" /><LaunchIcon/>
+
+          <LinkOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
+
+          <ListItemText primary="External Link" /><LaunchIcon />
         </ListItem>
 
 
       </List>
       <Box
-                    sx={{
-                            display: 'flex',
-                            alignItems: "center",
-                            justifyContent: "center",
-                            textAlign:'center',
-                            mt:2,
-                            mb:2
-                                                        
-                        }}
-                    >
-                        <Button variant="outlined" color="primary" sx={{width:'90%',color:'#F3F4F6',border:'1px solid #F3F4F6',borderRadius:'16px'}}>
-                           <TaskIcon sx={{mr:1}}/>Documentation 
-                        </Button>
-                    </Box>
+        sx={{
+          display: 'flex',
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: 'center',
+          mt: 2,
+          mb: 2
+
+        }}
+      >
+        <Button variant="outlined" color="primary" sx={{ width: '90%', color: '#F3F4F6', border: '1px solid #F3F4F6', borderRadius: '16px' }}>
+          <TaskIcon sx={{ mr: 1 }} />Documentation
+
+        </Button>
+        
+      </Box>
+      <Box
+        sx={{
+          display: { xs: "block", sm: "none" }, // Hide on small screens and show on larger screens
+          textAlign: "center",
+          mt: 2,
+          mb: 2,
+        }}
+      >
+      
+      </Box>
     </Box>
+   
+    </>
   );
 };
 

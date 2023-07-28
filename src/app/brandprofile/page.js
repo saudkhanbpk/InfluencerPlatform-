@@ -761,32 +761,24 @@ const BrandProfile = () => {
  
   const getAllData = () => {
     const storedUserData = JSON.parse(localStorage.getItem('user'));
-
-    // If user data is available in local storage, extract the _id and set the state
     if (storedUserData) {
       setUserId(storedUserData._id);
     }
    
     let user = JSON.parse(localStorage.getItem('user'))
-    // console.log("user...", user._id)
-    // Fetch data from the API endpoint
     const apiUrl = `${baseUrl}/api/social/${user._id}`;
 // console.log(apiUrl)
 axios.post(apiUrl)
       .then((response) => setData(response.data))
       .catch((error) => console.error('Error fetching data:', error));
-    // fetch(apiUrl).then((response) => response.json())
-    //   .then((result) => console.log("result", result))
-    //   .catch((error) => console.error('Error fetching data:', error));
   }
   const generalData = () => {
     
    
     let user = JSON.parse(localStorage.getItem('user'))
-    // console.log("user...", user._id)
-    // Fetch data from the API endpoint
+    
     const apiUrl = `${baseUrl}/api/general/${user._id}`;
-// console.log(apiUrl)
+
 axios.get(apiUrl)
       .then((response) => setGeneraldata(response.data))
       .catch((error) => console.error('Error fetching data:', error));
@@ -876,7 +868,8 @@ generalData();
             >
               <Box>
                 <Typography sx={{ color: "#2970FF", fontWeight: 600 }}>
-                Canada Goose
+                {/* Canada Goose */}
+                {generaldata?.general?.fname}
                 </Typography>
                 <Typography
                   variant="overline"
