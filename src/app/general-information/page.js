@@ -1,12 +1,18 @@
 'use client'
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Button, Switch, TextField, Typography, Unstable_Grid2 as Grid } from '@mui/material';
 import axios from 'axios';
 import { useState } from 'react';
 import { baseUrl } from '../BaseUrl';
 import { useRouter } from 'next/navigation'
 
+
 const GeneralInfo = () => {
+
+let user = JSON.parse(localStorage.getItem('user'))
+console.log("userid ... ...  ..", user._id)
+    
+          
     const router = useRouter()
 
     const [fname, setFname] = useState('')
@@ -19,6 +25,7 @@ const GeneralInfo = () => {
     const [message, setMessage] = useState('');
 
     const handleSubmit = async (e) => {
+        console.log("userId.....", userId)
         e.preventDefault()
         setIsLoading(true);
         const data = {
@@ -27,8 +34,10 @@ const GeneralInfo = () => {
             phone,
             companyname,
             companywebsite,
-            companyaddress
+            companyaddress,
+            userId:userId
         };
+        // return console.log(data)
         const config = {
             headers: {
                 'Content-Type': 'application/json',

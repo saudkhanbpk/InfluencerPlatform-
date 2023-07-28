@@ -189,6 +189,8 @@ const CompanyInfo = () => {
     const [message, setMessage] = useState('');
 
     const handelSubmit = async (e) => {
+        let user = JSON.parse(localStorage.getItem('user'))
+console.log("userid ... ...  ..", user._id)
         e.preventDefault();
         setIsLoading(true);
         const data = {
@@ -197,6 +199,7 @@ const CompanyInfo = () => {
             companysize,
             companyfounded,
             bio,
+            userId:userId
         };
         const config = {
             headers: {

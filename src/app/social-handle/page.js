@@ -226,6 +226,8 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 const SocialMedia = () => {
+    let user = JSON.parse(localStorage.getItem('user'))
+console.log("userid ... ...  ..", user._id)
     const router = useRouter();
     const [instagram, setInstagram] = useState('');
     const [tiktok, setTiktok] = useState('');
@@ -249,6 +251,7 @@ const SocialMedia = () => {
             pinterest,
             linkedin,
             blog,
+            userId:userId
         };
         const config = {
             headers: {
