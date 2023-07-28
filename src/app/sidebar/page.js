@@ -121,7 +121,7 @@ const Sidebar = ({expanded}) => {
         transition: "width 0.2s ease", // Add transition for smooth animation
         '@media (max-width:490px)':{
           position:'absolute',
-          zIndex:'1'
+          zIndex:'3'
         }
       }}
     >
