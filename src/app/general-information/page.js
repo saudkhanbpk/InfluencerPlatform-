@@ -5,15 +5,8 @@ import axios from 'axios';
 import { useState } from 'react';
 import { baseUrl } from '../BaseUrl';
 import { useRouter } from 'next/navigation'
-
-
 const GeneralInfo = () => {
-
-
-    
-          
     const router = useRouter()
-
     const [fname, setFname] = useState('')
     const [lname, setLname] = useState('')
     const [phone, setPhone] = useState('')
