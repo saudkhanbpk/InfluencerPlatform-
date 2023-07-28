@@ -15,7 +15,9 @@ import Menu from '@mui/material/Menu';
 import Image from 'next/image';
 import Button from '@mui/material/Button';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
-
+import { Box } from '@mui/material';
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -38,10 +40,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = () => {
+const Navbar = ({expanded , setExpanded}) => {
   const classes = useStyles();
   const [languageAnchorEl, setLanguageAnchorEl] = React.useState(null);
-
   const handleLanguageClick = (event) => {
     setLanguageAnchorEl(event.currentTarget);
   };
@@ -49,18 +50,27 @@ const Navbar = () => {
   const handleLanguageClose = () => {
     setLanguageAnchorEl(null);
   };
-
+const handleToggleSidebar = () => {
+    setExpanded(!expanded);
+  };
+  
+  
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
+            <Box sx={{zIndex:'3'}}>
+              <IconButton onClick={handleToggleSidebar}>
+                {expanded ? <CloseIcon /> : <MenuIcon />}
+              </IconButton>
+            </Box>
           <IconButton edge="start" className={classes.searchIcon} color="inherit" aria-label="search">
-            <SearchIcon sx={{fontSize:'40px'}}/>
+            <SearchIcon sx={{ fontSize: '40px' }} />
           </IconButton>
           <div className={classes.title}></div>
           <Button
             className={classes.languageButton}
-            startIcon={ <Image src='/image/Flags.png' style={{borderRadius:'100%',marginRight:'2px'}} width={30} height={30} />}
+            startIcon={<Image src='/image/Flags.png' style={{ borderRadius: '100%', marginRight: '2px' }} width={30} height={30} />}
             endIcon={<ArrowDropDownIcon className={classes.dropdownIcon} />}
             onClick={handleLanguageClick}
           >
@@ -81,10 +91,10 @@ const Navbar = () => {
             <MenuItem onClick={handleLanguageClose}>Spanish</MenuItem>
           </Menu>
           <IconButton color="inherit">
-            <PeopleAltOutlinedIcon sx={{fontSize:'30px'}}/>
+            <PeopleAltOutlinedIcon sx={{ fontSize: '30px' }} />
           </IconButton>
           <IconButton color="inherit">
-            <NotificationsIcon sx={{fontSize:'30px'}}/>
+            <NotificationsIcon sx={{ fontSize: '30px' }} />
           </IconButton>
           <IconButton color="inherit">
             <Image src='/image/little.png' width={50} height={50} />

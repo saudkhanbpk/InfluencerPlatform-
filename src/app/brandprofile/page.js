@@ -755,6 +755,7 @@ const BrandProfile = () => {
   const theme = useTheme();
   const classes = useStyles();
   const [overview, setOverview] = useState(0);
+  const [expanded, setExpanded] = useState(true);
   const [data, setData] = useState([]);
   const [generaldata, setGeneraldata] = useState([]);
   const [userId, setUserId] = useState(null);
@@ -803,11 +804,12 @@ generalData();
   const handledata = (num) => {
     setOverview(num);
   };
+  
   return (
     <Box sx={{display:'flex'}}>
-    {/* <Sidebar/> */}
+    <Sidebar expanded={expanded} />
     <Box sx={{width: "100%"}}>
-    <Navbar/>
+    <Navbar expanded={expanded} setExpanded={setExpanded}/>
     <Box className={classes.container} sx={{ position: "relative" }}>
     <Box> 
     <Box>
