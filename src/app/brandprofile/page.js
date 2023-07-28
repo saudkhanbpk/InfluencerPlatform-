@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, React, useState } from "react";
+import  {useEffect,React, useState } from "react";
 import { makeStyles } from "@mui/styles";
 import Link from "next/link";
 import { Box, Button, Divider } from "@mui/material";
@@ -36,7 +36,7 @@ import Jobs from "./jobposted/page";
 import Sidebar from "../sidebar/page";
 import Navbar from "../navbar/page";
 import { useTheme } from '@mui/material';
-import { baseUrl } from "../BaseUrl"
+import {baseUrl} from "../BaseUrl"
 import axios from "axios";
 
 const styles = {
@@ -67,7 +67,7 @@ const styles = {
     display: 'block', // Default display as block
     // marginTop:'1px',
     // borderTopLeftRadius:'1px solid red',
-    paddingLeft: '10px',
+  paddingLeft:'10px',
     '@media (min-width: 600px)': {
       display: 'block', // Change to flex on larger screens
       justifyContent: 'space-between', // Add space between social media links on larger screens
@@ -104,15 +104,15 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width: 600px)': {
       width: '100px', // Adjust width for smaller screens
       height: '100px', // Adjust height for smaller screens
-
+      
     },
   },
   imageclass: {
     '@media (max-width: 600px)': {
       width: '55px', // Adjust width for smaller screens
       height: '55px', // Adjust height for smaller screens
-      marginRight: '0px',
-      marginTop: '17px'
+      marginRight:'0px',
+      marginTop:'17px'
     },
   },
   cardContainer: {
@@ -177,8 +177,8 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "30px",
     overflow: "hidden",
     '@media (max-width: 600px)': {
-      marginLeft: "0px",
-      width: '90px'
+    marginLeft: "0px",
+    width:'90px'
 
     }
   },
@@ -208,470 +208,441 @@ const BrandProfile = () => {
   const [expanded, setExpanded] = useState(true);
   const [data, setData] = useState([]);
   const [generaldata, setGeneraldata] = useState([]);
+  const [companyinformations, setCompanyinformations] = useState([]);
   const [userId, setUserId] = useState(null);
-
+ 
   const getAllData = () => {
     const storedUserData = JSON.parse(localStorage.getItem('user'));
 
-    // If user data is available in local storage, extract the _id and set the state
     if (storedUserData) {
       setUserId(storedUserData._id);
     }
-
+   
     let user = JSON.parse(localStorage.getItem('user'))
-    // console.log("user...", user._id)
-    // Fetch data from the API endpoint
+
     const apiUrl = `${baseUrl}/api/social/${user._id}`;
-    // console.log(apiUrl)
-    axios.post(apiUrl)
+
+axios.post(apiUrl)
       .then((response) => setData(response.data))
       .catch((error) => console.error('Error fetching data:', error));
-    // fetch(apiUrl).then((response) => response.json())
-    //   .then((result) => console.log("result", result))
-    //   .catch((error) => console.error('Error fetching data:', error));
+
   }
   const generalData = () => {
-
-
+    
+   
     let user = JSON.parse(localStorage.getItem('user'))
-    // console.log("user...", user._id)
-    // Fetch data from the API endpoint
+   
     const apiUrl = `${baseUrl}/api/general/${user._id}`;
-    // console.log(apiUrl)
-    axios.get(apiUrl)
+
+axios.get(apiUrl)
       .then((response) => setGeneraldata(response.data))
       .catch((error) => console.error('Error fetching data:', error));
   }
-  useEffect(() => {
-    getAllData();
-    generalData();
-  }, []);
-  console.log("user id", userId)
-  console.log("storedUserData", data?.social?.blog)
-  console.log("Generaldata........", generaldata)
-  // console.log("kdfjksdj", baseUrl)
+  const company_informations = () => {
+    
+   
+    let user = JSON.parse(localStorage.getItem('user'))
+   
+    const apiUrl = `${baseUrl}/api/company/${user._id}`;
 
+axios.get(apiUrl)
+      .then((response) => setCompanyinformations(response.data))
+      .catch((error) => console.error('Error fetching data:', error));
+  }
+  useEffect(() => {
+getAllData();
+generalData();
+company_informations();
+  }, []);
+  // console.log("user id", userId)
+  // console.log("storedUserData", data?.social?.blog)
+  console.log("companyinformations........", companyinformations)
   const handledata = (num) => {
     setOverview(num);
   };
-
+  
   return (
-    <Box sx={{ display: 'flex' }}>
-      <Sidebar expanded={expanded} />
-      <Box sx={{ width: "100%" }}>
-        <Navbar expanded={expanded} setExpanded={setExpanded} />
-        <Box className={classes.container} sx={{ position: "relative" }}>
-          <Box>
-            <Box>
-              <Image
-                width={700}
-                height={400}
-                src="/image/bg.png"
-                alt="Cover Image"
-                className={classes.coverImage}
-              />
-            </Box>
-            <Box sx={{
-              borderRadius: "20px",
-              color: "black",
-              backgroundColor: "#E0E0E0",
-              top: "80%",
-              right: "20px",
-              fontFamily: "Inter",
-              fontWeight: "600",
-              fontSize: "13px",
-              position: "absolute",
+    <Box sx={{display:'flex'}}>
+    <Sidebar expanded={expanded} />
+    <Box sx={{width: "100%"}}>
+    <Navbar expanded={expanded} setExpanded={setExpanded}/>
+    <Box className={classes.container} sx={{ position: "relative" }}>
+    <Box> 
+    <Box>
+    <Image
+        width={700}
+        height={400}
+        src="/image/bg.png"
+        alt="Cover Image"
+        className={classes.coverImage}
+      />
+    </Box>
+      <Box sx={{
+          borderRadius: "20px",
+          color: "black",
+          backgroundColor: "#E0E0E0",
+          top: "80%",
+          right: "20px",
+          fontFamily: "Inter",
+          fontWeight: "600",
+          fontSize: "13px",
+          position: "absolute",
 
-            }}>
+        }}>
+        
+      <Button
+        variant="small"
+        sx={{
+          borderRadius: "20px",
+          backgroundColor: "#E0E0E0",        
+        }}
+      >
+        Change Cover
+      </Button>
+      </Box>
+      <Box>
+        <Box
+          sx={{
+            // border: "2px solid green",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Box className={classes.profileImageContainer}>
+      <Box className={classes.profileImage}>
+        <Image
+          src="/image/brandprofile.png"
+          width={100}
+          height={100}
+          alt="Profile Image"
+          className={classes.imageclass}
+        />
+      </Box>
 
-              <Button
-                variant="small"
-                sx={{
-                  borderRadius: "20px",
-                  backgroundColor: "#E0E0E0",
-                }}
-              >
-                Change Cover
-              </Button>
-            </Box>
-            <Box>
-              <Box
-                sx={{
-                  // border: "2px solid green",
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Box className={classes.profileImageContainer}>
-                  <Box className={classes.profileImage}>
-                    <Image
-                      src="/image/brandprofile.png"
-                      width={100}
-                      height={100}
-                      alt="Profile Image"
-                      className={classes.imageclass}
-                    />
-                  </Box>
-
-                </Box>
-                <Box
-                  sx={{ display: "flex", justifyContent: "space-between" }}
-                  className={classes.profilename}
-                >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      p: 2,
-                      justifyContent: "space-between",
-                      width: "30%",
-                    }}
-                  >
-                    <Box>
-                      <Typography sx={{ color: "#2970FF", fontWeight: 600 }}>
-                        {/* Canada Goose */}
-                        {generaldata?.general?.fname}
-                      </Typography>
-                      <Typography
-                        variant="overline"
-                        sx={{
-                          fontSize: "12px",
-                          fontWeight: 600,
-                          fontFamily: "inter",
-                          color: "#6C737F",
-                          lineHeight: "30px",
-                          pt: 1,
-                          mb: 1,
-                        }}
-                      >
-                        Established since 2010
-                      </Typography>
-
-                      <Box sx={{
-                        display: 'flex',
-                        backgroundColor: "#F9FAFF",
-                        borderRadius: "10px",
-                        padding: '5px', width: '100%', pl: '5px'
-                      }}>
-                        <LocationOnOutlinedIcon
-                          sx={{
-                            pt: '2', fontSize: "18px",
-                            color: "#2970FF",
-                          }}
-                        />
-                        <Typography
-                          sx={{
-                            color: "#2970FF",
-                            backgroundColor: "#F9FAFF",
-                            borderRadius: "10px",
-                            mt: 0,
-                            pl: '12px',
-                            fontSize: "13px",
-                            fontWeight: 400,
-                            fontFamily: "inter",
-                            paddingBottom: '3px'
-                          }}
-                        >
-                          {/* <LocationOnOutlinedIcon
-                    sx={{ mx: 1, fontSize: "18px", mb: 1 }}
-                  /> */}
-                          Toronto Canada
-                        </Typography>
-
-                      </Box>
-                    </Box>
-
-                  </Box>
-
-                  <Box sx={{ display: "flex", mt: 3 }}>
-                    <Box
-                      sx={{
-                        alignItems: "center",
-                        mr: 2,
-                      }}
-                    >
-                      <Button variant="outlined" color="primary">
-                        <FavoriteIcon sx={{ mr: 1 }} /> Favorite
-                      </Button>
-                    </Box>
-                    <Box
-                      sx={{
-                        alignItems: "center",
-                      }}
-                    >
-                      <Button variant="contained" color="primary">
-                        <QuestionAnswerIcon sx={{ mr: 1 }} /> Send Message
-                      </Button>
-                      <Box sx={{ pt: 3, mb: 1, height: "20px", color: "#111927" }}>
-                        <Typography
-                          sx={{
-                            fontSize: "18px",
-                            pb: 1,
-                            width: "111px",
-                            fontWeight: 600,
-                            fontFamily: "inter",
-                            color: "#6C737F",
-                            lineHeight: "21.78px",
-                          }}
-                        >
-                          Quick Links
-                        </Typography>
-                        <Box sx={{ display: "flex" }}>
-                          {/* <InstagramIcon sx={{ color: "#FF004F", mx: 1 }} />{" "} */}
-                          <a href={data?.social?.blog} target="_blank" rel="noopener noreferrer">
-                            <InstagramIcon sx={{ color: "#FF004F", mx: 1 }} />
-                          </a>
-                          <FaTiktok sx={{ mx: 1, mt: 2 }} />{" "}
-                          <YouTubeIcon sx={{ color: "#FF004F", mx: 1 }} />{" "}
-                          <TwitterIcon sx={{ color: "#1DA1F2", mx: 1 }} />{" "}
-                          <PinterestIcon sx={{ color: "#EE0505", mx: 1 }} />{" "}
-                          <a href={data.social?.blog}>click me</a>
-                        </Box>
-                      </Box>
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
-            <Box sx={{ display: "flex", mx: "13px", mt: '10px' }}>
-              <Box sx={{ mx: "13px", }}>
-                <Typography sx={{ '&:hover': { cursor: 'pointer' } }} className={`${overview === 0 && "youtubestats"}  `} onClick={() => handledata(0)}>
-                  Overview
-                </Typography>
-              </Box>
-              <Box>
-                <Typography sx={{ '&:hover': { cursor: 'pointer' } }} className={`${overview === 1 && "youtubestats"}  `} onClick={() => handledata(1)}>
-                  Jobs Posted
-                </Typography>
-              </Box>
-            </Box>
-
-          </Box>
-          <Divider></Divider>
-          {
-            overview === 0 &&
-            <Box sx={{ padding: '20px', '@media (max-width: 600px)': { padding: '10px' } }}>
-              {/* About and Social Media Links */}
-              <Box sx={styles.aboutAndSocialMediaContainer}>
-                {/* About */}
-                <Box sx={styles.aboutContainer}>
-                  <Box sx={{ borderBottom: `1px solid ${theme.palette.divider}`, mb: 2 }}>
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontWeight: 700,
-                        fontSize: '18px',
-                        fontFamily: 'Inter',
-                      }}
-                    >
-                      About
-                    </Typography>
-                  </Box>
-                  <Box sx={{ marginBottom: '25px' }}>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        lineHeight: '32px',
-                        color: '#6C737F',
-                        fontWeight: 500,
-                        fontSize: '18px',
-                        fontFamily: 'Inter',
-                      }}
-                    >
-                      Canada Goose is a premium Canadian clothing brand that was founded in 1957. The brand is known for its high-quality and stylish outerwear that is designed to withstand extreme weather conditions. The company initially started as a manufacturer of woolen vests, raincoats, and snowmobile suits for Canadian Rangers and police officers. However, in recent years, Canada Goose has gained widespread popularity as a luxury fashion brand and is now considered a status symbol.
-                    </Typography>
-                  </Box>
-                  <Divider />
-                  <Box sx={{ display: 'flex', flexDirection: 'column', mt: 2 }}>
-                    <Box sx={{ p: 1, pl: 0, pr: '10px', borderBottom: `1px solid ${theme.palette.divider}` }}>
-                      <Typography
-                        sx={{
-                          color: '#111927',
-                          fontFamily: 'Inter',
-                          fontSize: '16px',
-                          fontWeight: 500,
-                          lineHeight: '25px',
-                          letterSpacing: '0px',
-                          textAlign: 'left',
-                          display: 'flex',
-                          alignItems: 'center',
-                        }}
-                      >
-                        <AccountCircleIcon sx={{ mr: 2 }} /> www.canadagoose.com/shop
-                      </Typography>
-                    </Box>
-
-                    <Box sx={{ p: 1, pl: 0, pr: '10px', borderBottom: `1px solid ${theme.palette.divider}` }}>
-                      <Typography
-                        sx={{
-                          color: '#111927',
-                          fontFamily: 'Inter',
-                          fontSize: '16px',
-                          fontWeight: 500,
-                          lineHeight: '25px',
-                          letterSpacing: '0px',
-                          textAlign: 'left',
-                          display: 'flex',
-                          alignItems: 'center',
-                        }}
-                      >
-                        <PhoneOutlinedIcon sx={{ mr: 2 }} /> +92313524856
-                      </Typography>
-                    </Box>
-
-                    <Box sx={{ p: 1, pl: 0, pr: '10px', borderBottom: `1px solid ${theme.palette.divider}` }}>
-                      <Typography
-                        sx={{
-                          color: '#111927',
-                          fontFamily: 'Inter',
-                          fontSize: '16px',
-                          fontWeight: 500,
-                          lineHeight: '25px',
-                          letterSpacing: '0px',
-                          textAlign: 'left',
-                          display: 'flex',
-                          alignItems: 'center',
-                        }}
-                      >
-                        <HomeOutlinedIcon sx={{ mr: 2 }} /> Toronto, Ontario, Canada
-                      </Typography>
-                    </Box>
-
-                    <Box sx={{ p: 1, pl: 0, pr: '10px', borderBottom: `1px solid ${theme.palette.divider}` }}>
-                      <Typography
-                        sx={{
-                          color: '#111927',
-                          fontFamily: 'Inter',
-                          fontSize: '16px',
-                          fontWeight: 500,
-                          lineHeight: '25px',
-                          letterSpacing: '0px',
-                          textAlign: 'left',
-                          display: 'flex',
-                          alignItems: 'center',
-                        }}
-                      >
-                        <WebIcon sx={{ mr: 2 }} /> katarina.smith@devias.io
-                      </Typography>
-                    </Box>
-
-                    <Box sx={{ p: 1, pl: 0, pr: '10px', borderBottom: `1px solid ${theme.palette.divider}` }}>
-                      <Typography
-                        sx={{
-                          color: '#111927',
-                          fontFamily: 'Inter',
-                          fontSize: '16px',
-                          fontWeight: 500,
-                          lineHeight: '25px',
-                          letterSpacing: '0px',
-                          textAlign: 'left',
-                          display: 'flex',
-                          alignItems: 'center',
-                        }}
-                      >
-                        <BorderHorizontalSharpIcon sx={{ mr: 2 }} /> 25-75
-                      </Typography>
-                    </Box>
-                  </Box>
-                </Box>
-
-                {/* Social Media Links */}
-                <Box sx={styles.socialMediaLinksContainer}>
-                <Box sx={{ my: 2 }}>
-            <Typography
-              variant="H6"
+    </Box>
+          <Box
+            sx={{ display: "flex", justifyContent: "space-between" }}
+            className={classes.profilename}
+          >
+            <Box
               sx={{
-                fontWeight: 700,
-                fontSize: "18px",
-                fontFamily: "Inter",
-                fontFamily: "Plus Jakarta Sans",
+                display: "flex",
+                p: 2,
+                justifyContent: "space-between",
+                width: "30%",
               }}
             >
-              Niche
+              <Box>
+                <Typography sx={{ color: "#2970FF", fontWeight: 600 }}>
+                {/* Canada Goose */}
+                {generaldata?.general?.fname}
+                </Typography>
+                <Typography
+                  variant="overline"
+                  sx={{
+                    fontSize: "12px",
+                    fontWeight: 600,
+                    fontFamily: "inter",
+                    color: "#6C737F",
+                    lineHeight: "30px",
+                    pt: 1,
+                    mb: 1,
+                  }}
+                >
+                  Established since {companyinformations?.company?.companyfounded}
+                </Typography>
+                
+                <Box  sx={{
+                    display:'flex',
+                    backgroundColor: "#F9FAFF",
+                    borderRadius: "10px",
+                    padding:'5px',width:'100%',pl:'5px'
+                  }}>
+                <LocationOnOutlinedIcon
+                    sx={{ pt:'2', fontSize: "18px",
+                    color: "#2970FF",
+                    }}
+                  />
+                <Typography
+                  sx={{
+                    color: "#2970FF",
+                    backgroundColor: "#F9FAFF",
+                    borderRadius: "10px",
+                    mt: 0,
+                    pl:'12px',
+                    fontSize: "13px",
+                    fontWeight: 400,
+                    fontFamily: "inter",
+                    paddingBottom:'3px'
+                  }}
+                >
+                  {/* <LocationOnOutlinedIcon
+                    sx={{ mx: 1, fontSize: "18px", mb: 1 }}
+                  /> */}
+                  {generaldata?.general?.companyaddress}
+                </Typography>
+
+                </Box>
+              </Box>
+              
+            </Box>
+
+            <Box sx={{ display: "flex", mt: 3 }}>
+              <Box
+                sx={{
+                  alignItems: "center",
+                  mr: 2,
+                }}
+              >
+                <Button variant="outlined" color="primary">
+                  <FavoriteIcon sx={{ mr: 1 }} /> Favorite
+                </Button>
+              </Box>
+              <Box
+                sx={{
+                  alignItems: "center",
+                }}
+              >
+                <Button variant="contained" color="primary">
+                  <QuestionAnswerIcon sx={{ mr: 1 }} /> Send Message
+                </Button>
+                <Box sx={{ pt: 3, mb: 1, height: "20px", color: "#111927" }}>
+                  <Typography
+                    sx={{
+                      fontSize: "18px",
+                      pb: 1,
+                      width: "111px",
+                      fontWeight: 600,
+                      fontFamily: "inter",
+                      color: "#6C737F",
+                      lineHeight: "21.78px",
+                    }}
+                  >
+                    Quick Links
+                  </Typography>
+                  <Box sx={{ display: "flex" }}>
+                    {/* <InstagramIcon sx={{ color: "#FF004F", mx: 1 }} />{" "} */}
+                    <a href={data?.social?.blog} target="_blank" rel="noopener noreferrer">
+        <InstagramIcon sx={{ color: "#FF004F", mx: 1 }} />
+      </a>
+      <a href={data?.social?.pinterest} target="_blank" rel="noopener noreferrer">
+                    <FaTiktok sx={{ mx: 1, mt: 2 }} />{" "}
+                    </a>
+                    <a href={data?.social?.pinterest} target="_blank" rel="noopener noreferrer">
+                    <YouTubeIcon sx={{ color: "#FF004F", mx: 1 }} />{" "}
+                    </a>
+                    <a href={data?.social?.pinterest} target="_blank" rel="noopener noreferrer">
+                    <TwitterIcon sx={{ color: "#1DA1F2", mx: 1 }} />{" "}
+                    </a>
+                    <a href={data?.social?.pinterest} target="_blank" rel="noopener noreferrer">
+                    <PinterestIcon sx={{ color: "#EE0505", mx: 1 }} />{" "}
+                    </a>
+          
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+      <Box sx={{  display:"flex", mx: "13px",mt:'10px'}}>
+        <Box sx={{mx: "13px", }}>
+          <Typography sx={{'&:hover': { cursor: 'pointer'}}} className={`${overview === 0 && "youtubestats"}  `} onClick={()=>handledata(0)}>
+            Overview
+          </Typography>
+        </Box>
+          <Box>
+          <Typography sx={{'&:hover': { cursor: 'pointer'}}}  className={`${overview === 1 && "youtubestats"}  `} onClick={()=>handledata(1)}>
+            Jobs Posted
+          </Typography>
+          </Box>
+      </Box>
+    
+    </Box>
+      <Divider></Divider>
+      {
+  overview === 0 && 
+  <Box sx={{ padding: '20px', '@media (max-width: 600px)': { padding: '10px' } }}>
+      {/* About and Social Media Links */}
+      <Box sx={styles.aboutAndSocialMediaContainer}>
+        {/* About */}
+        <Box sx={styles.aboutContainer}>
+          <Box sx={{ borderBottom: `1px solid ${theme.palette.divider}`, mb: 2 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 700,
+                fontSize: '18px',
+                fontFamily: 'Inter',
+              }}
+            >
+              About
+            </Typography>
+          </Box>
+          <Box sx={{ marginBottom: '25px' }}>
+            <Typography
+              variant="body1"
+              sx={{
+                lineHeight: '32px',
+                color: '#6C737F',
+                fontWeight: 500,
+                fontSize: '18px',
+                fontFamily: 'Inter',
+              }}
+            >
+              {companyinformations?.company?.bio}
+            </Typography>
+          </Box>
+          <Divider />
+          <Box sx={{ display: 'flex', flexDirection: 'column', mt: 2 }}>
+        <Box sx={{ p: 1, pl: 0, pr: '10px', borderBottom: `1px solid ${theme.palette.divider}` }}>
+          <Typography
+            sx={{
+              color: '#111927',
+              fontFamily: 'Inter',
+              fontSize: '16px',
+              fontWeight: 500,
+              lineHeight: '25px',
+              letterSpacing: '0px',
+              textAlign: 'left',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <AccountCircleIcon sx={{ mr: 2 }} />{generaldata?.general?.companywebsite}
+          </Typography>
+        </Box>
+
+        <Box sx={{ p: 1, pl: 0, pr: '10px', borderBottom: `1px solid ${theme.palette.divider}` }}>
+          <Typography
+            sx={{
+              color: '#111927',
+              fontFamily: 'Inter',
+              fontSize: '16px',
+              fontWeight: 500,
+              lineHeight: '25px',
+              letterSpacing: '0px',
+              textAlign: 'left',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <PhoneOutlinedIcon sx={{ mr: 2 }} />{generaldata?.general?.phone}
+          </Typography>
+        </Box>
+
+        <Box sx={{ p: 1, pl: 0, pr: '10px', borderBottom: `1px solid ${theme.palette.divider}` }}>
+          <Typography
+            sx={{
+              color: '#111927',
+              fontFamily: 'Inter',
+              fontSize: '16px',
+              fontWeight: 500,
+              lineHeight: '25px',
+              letterSpacing: '0px',
+              textAlign: 'left',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <HomeOutlinedIcon sx={{ mr: 2 }} /> {generaldata?.general?.companyaddress}
+          </Typography>
+        </Box>
+
+        <Box sx={{ p: 1, pl: 0, pr: '10px', borderBottom: `1px solid ${theme.palette.divider}` }}>
+          <Typography
+            sx={{
+              color: '#111927',
+              fontFamily: 'Inter',
+              fontSize: '16px',
+              fontWeight: 500,
+              lineHeight: '25px',
+              letterSpacing: '0px',
+              textAlign: 'left',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <WebIcon sx={{ mr: 2 }} /> katarina.smith@devias.io
+          </Typography>
+        </Box>
+
+        <Box sx={{ p: 1, pl: 0, pr: '10px', borderBottom: `1px solid ${theme.palette.divider}` }}>
+          <Typography
+            sx={{
+              color: '#111927',
+              fontFamily: 'Inter',
+              fontSize: '16px',
+              fontWeight: 500,
+              lineHeight: '25px',
+              letterSpacing: '0px',
+              textAlign: 'left',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <BorderHorizontalSharpIcon sx={{ mr: 2 }} /> {companyinformations?.company?.companysize}
+          </Typography>
+        </Box>
+      </Box>
+        </Box>
+
+        {/* Social Media Links */}
+        <Box sx={styles.socialMediaLinksContainer}>
+          <Box sx={{ my: 2 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 700,
+                fontSize: '18px',
+                fontFamily: 'Inter',
+              }}
+            >
+              Social Media Links
             </Typography>
           </Box>
 
-          <Box
-            sx={{
-              alignItems: "center",
-              justifyContent: "center",
-              mt: 3,
-            }}
-          >
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: "rgba(99, 102, 241, 0.12)",color:'black', width: "100%" }}
-            >
-              Clothing
-            </Button>
+          <Box sx={{ p: 1, pl: 0, pr: '10px', ...styles.socialMediaLink }}>
+            <InstagramIcon sx={{ ...styles.socialMediaIcon, color: '#F90000' }} /> www.instagram.com/therock
           </Box>
-          <Box
-            sx={{
-              alignItems: "center",
-              justifyContent: "center",
-              mt: 3,
-            }}
-          >
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: "rgba(99, 102, 241, 0.12)",color:'black', width: "100%" }}
-            >
-              Men Fashion
-            </Button>
+          <Divider />
+
+          <Box sx={{ p: 1, pl: 0, pr: '10px', ...styles.socialMediaLink }}>
+            <YouTubeIcon sx={{ ...styles.socialMediaIcon, color: '#F90000' }} /> www.youtube.com/therock
           </Box>
-                  <Box sx={{ my: 2 }}>
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontWeight: 700,
-                        fontSize: '18px',
-                        fontFamily: 'Inter',
-                      }}
-                    >
-                      Social Media Links
-                    </Typography>
-                  </Box>
+          <Divider />
 
-                  <Box sx={{ p: 1, pl: 0, pr: '10px', ...styles.socialMediaLink }}>
-                    <InstagramIcon sx={{ ...styles.socialMediaIcon, color: '#F90000' }} /> www.instagram.com/therock
-                  </Box>
-                  <Divider />
+          <Box sx={{ p: 1, pl: 0, pr: '10px', ...styles.socialMediaLink }}>
+            <TwitterIcon sx={{ ...styles.socialMediaIcon, color: '#1DA1F2' }} /> www.twitter.com/therock
+          </Box>
+          <Divider />
 
-                  <Box sx={{ p: 1, pl: 0, pr: '10px', ...styles.socialMediaLink }}>
-                    <YouTubeIcon sx={{ ...styles.socialMediaIcon, color: '#F90000' }} /> www.youtube.com/therock
-                  </Box>
-                  <Divider />
-
-                  <Box sx={{ p: 1, pl: 0, pr: '10px', ...styles.socialMediaLink }}>
-                    <TwitterIcon sx={{ ...styles.socialMediaIcon, color: '#1DA1F2' }} /> www.twitter.com/therock
-                  </Box>
-                  <Divider />
-
-                  <Box sx={{ p: 1, pl: 0, pr: '10px', ...styles.socialMediaLink }}>
-                    <PinterestIcon sx={{ ...styles.socialMediaIcon, color: '#F90000' }} /> www.pinterest.com/therock
-                  </Box>
-                  <Divider />
-
-                </Box>
-
-              </Box>
-
-              {/* ... (rest of the code) ... */}
-            </Box>
-
-          }
-          {
-            overview === 1 && <Jobs />}
-
-          <Divider sx={{ mt: "80px" }}></Divider>
-
-
-          <Divider></Divider>
+          <Box sx={{ p: 1, pl: 0, pr: '10px', ...styles.socialMediaLink }}>
+            <PinterestIcon sx={{ ...styles.socialMediaIcon, color: '#F90000' }} /> www.pinterest.com/therock
+          </Box>
+          <Divider />
+          
         </Box>
-
+        
       </Box>
+
+      {/* ... (rest of the code) ... */}
+    </Box>
+      
+      } 
+      {
+  overview === 1 && <Jobs />}
+
+      <Divider sx={{ mt: "80px" }}></Divider>
+
+     
+      <Divider></Divider>
+    </Box>
+
+    </Box>
 
     </Box>
   );
 };
 
-export default BrandProfile;
+export default BrandProfile;
