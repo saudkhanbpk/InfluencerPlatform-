@@ -195,8 +195,7 @@ import { useRouter } from 'next/navigation'
 
 const GeneralInfo = () => {
 
-let user = JSON.parse(localStorage.getItem('user'))
-console.log("userid ... ...  ..", user._id)
+
     
           
     const router = useRouter()
@@ -207,12 +206,15 @@ console.log("userid ... ...  ..", user._id)
     const [companyname, setCompanyname] = useState('')
     const [companywebsite, setCompanywebsite] = useState('')
     const [companyaddress, setCompanyaddress] = useState('')
+    const [user,setUser]=useState("")
 
     const [message, setMessage] = useState('');
 
-    const handleSubmit = async (e) => {
-        console.log("userId.....", userId)
+    console.log("user :",user)
+
+    const handleSubmit =  (e) => {
         e.preventDefault()
+        // console.log("userId.....", user._id)
         const data = {
             fname,
             lname,
@@ -220,7 +222,7 @@ console.log("userid ... ...  ..", user._id)
             companyname,
             companywebsite,
             companyaddress,
-            userId:userId
+            userId:user._id
         };
         // return console.log(data)
         const config = {
@@ -228,7 +230,7 @@ console.log("userid ... ...  ..", user._id)
                 'Content-Type': 'application/json',
             }
         };
-        const response = await axios.post(`${baseUrl}/api/general_info`, data, config)
+         axios.post(`${baseUrl}/api/general_info`, data, config)
             .then((response) => {
                 router.push('/company-information')
                 console.log(response.data);
@@ -245,6 +247,12 @@ console.log("userid ... ...  ..", user._id)
             });
 
     }
+
+    useEffect(()=>{
+        let userData = localStorage.getItem('user')
+let user1 = JSON.parse(userData)
+setUser(user1)
+    },[])
     return (
         <Box sx={{ mt: 10, mb: 10 }}>
             <Box sx={{ display: "flex", mt: '20px', justifyContent: 'center' }}>

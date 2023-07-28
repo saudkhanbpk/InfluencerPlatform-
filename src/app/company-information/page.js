@@ -173,7 +173,7 @@
 'use client';
 import { Box, Button, TextField, Typography, Unstable_Grid2 as Grid } from '@mui/material';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { baseUrl } from '../BaseUrl';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -186,10 +186,10 @@ const CompanyInfo = () => {
     const [companyfounded, setCompanyfounded] = useState('');
     const [bio, setBio] = useState('');
     const [message, setMessage] = useState('');
+    const [user,setUser]=useState("")
+
 
     const handelSubmit = async (e) => {
-        let user = JSON.parse(localStorage.getItem('user'))
-console.log("userid ... ...  ..", user._id)
         e.preventDefault();
         const data = {
             niche,
@@ -197,7 +197,7 @@ console.log("userid ... ...  ..", user._id)
             companysize,
             companyfounded,
             bio,
-            userId:userId
+            userId:user._id
         };
         const config = {
             headers: {
@@ -215,7 +215,11 @@ console.log("userid ... ...  ..", user._id)
             setMessage(error.response?.data?.message || 'An error occurred.');
         }
     };
-
+    useEffect(()=>{
+        let userData = localStorage.getItem('user')
+let user1 = JSON.parse(userData)
+setUser(user1)
+    },[])
     return (
         <Box sx={{ mt: 10 }}>
             <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }}>

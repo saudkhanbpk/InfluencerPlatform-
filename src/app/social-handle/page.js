@@ -217,7 +217,7 @@
 // export default SocialMedia
 
 'use client'
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Button, TextField, Typography, Grid } from '@mui/material';
 import axios from 'axios';
 import { useState } from 'react';
@@ -226,8 +226,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 const SocialMedia = () => {
-    let user = JSON.parse(localStorage.getItem('user'))
-console.log("userid ... ...  ..", user._id)
+    
     const router = useRouter();
     const [instagram, setInstagram] = useState('');
     const [tiktok, setTiktok] = useState('');
@@ -238,6 +237,8 @@ console.log("userid ... ...  ..", user._id)
     const [linkedin, setLinkedin] = useState('');
     const [blog, setBlog] = useState('');
     const [message, setMessage] = useState('');
+    const [user,setUser]=useState("")
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -250,7 +251,7 @@ console.log("userid ... ...  ..", user._id)
             pinterest,
             linkedin,
             blog,
-            userId:userId
+            userId:user._id
         };
         const config = {
             headers: {
@@ -271,7 +272,11 @@ console.log("userid ... ...  ..", user._id)
             setMessage(error.response.data.message);
         }
     };
-
+    useEffect(()=>{
+        let userData = localStorage.getItem('user')
+let user1 = JSON.parse(userData)
+setUser(user1)
+    },[])
     return (
         <Box sx={{ mt: 10 }}>
             <Box sx={{ display: 'flex', mt: '20px', justifyContent: 'center' }}>
