@@ -121,20 +121,22 @@ const useStyles = makeStyles((theme) => ({
 const BrandProfile = () => {
   const classes = useStyles();
   const [overview, setOverview] = useState(0);
+  const [expanded, setExpanded] = React.useState(true);
 
   const handledata = (num) => {
     setOverview(num);
   };
+  
   return (
     <Box sx={{display:'flex'}}>
-    <Sidebar/>
+    <Sidebar expanded={expanded} />
     <Box sx={{width: "100%"}}>
-    <Navbar/>
+    <Navbar expanded={expanded} setExpanded={setExpanded}/>
     <Box className={classes.container} sx={{ position: "relative" }}>
     <Image
         width={700}
         height={400}
-        src="/image/cover.png"
+        src="/image/bg.png"
         alt="Cover Image"
         className={classes.coverImage}
       />

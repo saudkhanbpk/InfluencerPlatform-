@@ -400,7 +400,7 @@ const SocialMedia = () => {
                                 Cancel
                             </Button>
                             <Button
-                                sx={{ ml: { xs: 0, md: 2 }, p: 2, borderRadius: '12px', bgcolor: '#2970FF', color: '#FFFFFF', fontWeight: 600, width: { xs: '100%', md: 'auto' } }}
+                                sx={{ ml: { xs: 0, md: 2 },px: { xs: 1, md: 4 }, p: 2, borderRadius: '12px', bgcolor: '#2970FF', color: '#FFFFFF', fontWeight: 600, width: { xs: '100%', md: 'auto' } }}
                                 disabled={isLoading} // Disable the button while loading
                                 type="submit"
                                 variant="contained"
