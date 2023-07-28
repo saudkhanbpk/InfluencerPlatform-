@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@mui/styles";
 import Link from "next/link";
 import { Box, Button, Divider } from "@mui/material";
@@ -36,6 +36,9 @@ import Twitterstats from "./twitterstats/page";
 import Pintereststats from "./pinterest/page";
 import Sidebar from "../sidebar/page";
 import Navbar from "../navbar/page";
+import {baseUrl} from "../BaseUrl"
+import axios from "axios";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -124,6 +127,57 @@ const useStyles = makeStyles((theme) => ({
 const ProfileDashboard = () => {
   const classes = useStyles();
   const [overview , setOverview] = useState(0)
+  const [data, setData] = useState([]);
+  const [generaldata, setGeneraldata] = useState([]);
+  const [companyinformations, setCompanyinformations] = useState([]);
+  const [userId, setUserId] = useState(null);
+ 
+  const getAllData = () => {
+    const storedUserData = JSON.parse(localStorage.getItem('user'));
+
+    if (storedUserData) {
+      setUserId(storedUserData._id);
+    }
+   
+    let user = JSON.parse(localStorage.getItem('user'))
+
+    const apiUrl = `${baseUrl}/api/social/${user._id}`;
+
+axios.post(apiUrl)
+      .then((response) => setData(response.data))
+      .catch((error) => console.error('Error fetching data:', error));
+
+  }
+  const generalData = () => {
+    
+   
+    let user = JSON.parse(localStorage.getItem('user'))
+   
+    const apiUrl = `${baseUrl}/api/general/${user._id}`;
+
+axios.get(apiUrl)
+      .then((response) => setGeneraldata(response.data))
+      .catch((error) => console.error('Error fetching data:', error));
+  }
+  const company_informations = () => {
+    
+   
+    let user = JSON.parse(localStorage.getItem('user'))
+   
+    const apiUrl = `${baseUrl}/api/company/${user._id}`;
+
+axios.get(apiUrl)
+      .then((response) => setCompanyinformations(response.data))
+      .catch((error) => console.error('Error fetching data:', error));
+  }
+  useEffect(() => {
+getAllData();
+generalData();
+company_informations();
+  }, []);
+  console.log("data........", data)
+  console.log("generaldata........", generaldata)
+  console.log("companyinformations........", companyinformations)
 
   const handledata=(num)=>{
     setOverview(num)
@@ -186,7 +240,7 @@ const ProfileDashboard = () => {
             >
               <Box sx={{}}>
                 <Typography sx={{ color: "#2970FF", fontWeight: 600 }}>
-                  @therock <VerifiedIcon sx={{ color: "#2970FF" }} />
+                {generaldata?.general?.fname} <VerifiedIcon sx={{ color: "#2970FF" }} />
                 </Typography>
                 <Typography
                   variant="overline"
@@ -217,7 +271,8 @@ const ProfileDashboard = () => {
                   <LocationOnOutlinedIcon
                     sx={{ mx: 1, fontSize: "18px", mb: 1 }}
                   />{" "}
-                  Toronto Canada
+                     {generaldata?.general?.companyaddress}
+
                 </Typography>
               </Box>
               <Box
@@ -281,11 +336,22 @@ const ProfileDashboard = () => {
                     Quick Links
                   </Typography>
                   <Box sx={{ display: "flex" }}>
-                    <InstagramIcon sx={{ color: "#FF004F", mx: 1 }} />{" "}
+                  <a href={data?.social?.blog} target="_blank" rel="noopener noreferrer">
+        <InstagramIcon sx={{ color: "#FF004F", mx: 1 }} />
+      </a>
+      <a href={data?.social?.pinterest} target="_blank" rel="noopener noreferrer">
                     <FaTiktok sx={{ mx: 1, mt: 2 }} />{" "}
+                    </a>
+                    <a href={data?.social?.pinterest} target="_blank" rel="noopener noreferrer">
                     <YouTubeIcon sx={{ color: "#FF004F", mx: 1 }} />{" "}
+                    </a>
+                    <a href={data?.social?.pinterest} target="_blank" rel="noopener noreferrer">
                     <TwitterIcon sx={{ color: "#1DA1F2", mx: 1 }} />{" "}
+                    </a>
+                    <a href={data?.social?.pinterest} target="_blank" rel="noopener noreferrer">
                     <PinterestIcon sx={{ color: "#EE0505", mx: 1 }} />{" "}
+                    </a>
+                    
                   </Box>
                 </Box>
               </Box>
@@ -329,16 +395,7 @@ const ProfileDashboard = () => {
                 fontFamily: "Inter",
               }}
             >
-              Hey there, thanks for checking out my page! I'm a social media
-              influencer who loves to connect with people from all over the
-              world. My passion is to inspire others to live their best lives
-              and to chase their dreams. Through my content, I hope to motivate
-              and uplift my followers, while also sharing my own personal
-              journey and experiences. I'm committed to creating high-quality
-              content that resonates with my followers and promotes products
-              that I genuinely believe in. So, if you're interested in working
-              together, feel free to reach out and let's see what we can create
-              together!
+              {companyinformations?.company?.bio}
             </Typography>
           </Box>
           <Divider></Divider>
@@ -372,7 +429,7 @@ const ProfileDashboard = () => {
                     textAlign: "left",
                   }}
                 >
-                  <LanguageOutlinedIcon sx={{ mr: 2 }} /> www.therock.com
+                  <LanguageOutlinedIcon sx={{ mr: 2 }} /> {generaldata?.general?.companywebsite}
                 </Typography>
               </Box>
               <Divider></Divider>
@@ -389,7 +446,7 @@ const ProfileDashboard = () => {
                     textAlign: "left",
                   }}
                 >
-                  <PhoneOutlinedIcon sx={{ mr: 2 }} /> +92313524856
+                  <PhoneOutlinedIcon sx={{ mr: 2 }} /> {generaldata?.general?.phone}
                 </Typography>
               </Box>
               <Divider></Divider>
@@ -406,7 +463,7 @@ const ProfileDashboard = () => {
                     textAlign: "left",
                   }}
                 >
-                  <HomeOutlinedIcon sx={{ mr: 2 }} /> Toronto, Ontario, Canada
+                  <HomeOutlinedIcon sx={{ mr: 2 }} /> {generaldata?.general?.companyaddress}
                 </Typography>
               </Box>
               <Divider></Divider>
