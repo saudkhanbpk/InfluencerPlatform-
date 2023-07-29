@@ -15,11 +15,11 @@ const GeneralInfo = () => {
     const [companyaddress, setCompanyaddress] = useState('')
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState('');
-    const [user, setUser] = useState("")
+    const [user, setUser]=useState("")
 
     console.log("user :", user)
 
-    const handleSubmit = (e) => {
+    const handleSubmit =(e) => {
         e.preventDefault()
         setIsLoading(true);
         const data = {
