@@ -49,7 +49,7 @@ const GeneralInfo = () => {
                 localStorage.setItem('token', token);
             })
             .catch((error) => {
-                console.error(error); // Handle the error
+                console.error(error); 
             })
             .finally(() => {
                 setIsLoading(false); // Set loading state to false after API call (whether success or error)
