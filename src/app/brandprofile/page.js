@@ -38,6 +38,7 @@ import Navbar from "../navbar/page";
 import { useTheme } from "@mui/material";
 import { baseUrl } from "../BaseUrl";
 import axios from "axios";
+import { Content } from "next/font/google";
 
 const styles = {
   coverImageContainer: {
@@ -72,8 +73,8 @@ const styles = {
       display: "block", // Change to flex on larger screens
       justifyContent: "space-between", // Add space between social media links on larger screens
       width: "30%", // Adjust the width of "Social Media Links" on larger screens
-      borderLeft: '1px solid #F2F4F7',
-    paddingLeft: '20px'
+      borderLeft: "1px solid #F2F4F7",
+      paddingLeft: "20px",
     },
   },
   socialMediaLink: {
@@ -207,57 +208,64 @@ const BrandProfile = () => {
   const classes = useStyles();
   const [overview, setOverview] = useState(0);
   const [data, setData] = useState([]);
-  const [expanded,setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(true);
   const [generaldata, setGeneraldata] = useState([]);
+  const [companyinformations, setCompanyinformations] = useState([]);
   const [userId, setUserId] = useState(null);
 
-  const getAllData = () => {
-    const storedUserData = JSON.parse(localStorage.getItem("user"));
 
-    // If user data is available in local storage, extract the _id and set the state
+  const getAllData = () => {
+    const storedUserData = JSON.parse(localStorage.getItem('user'));
+
     if (storedUserData) {
       setUserId(storedUserData._id);
     }
 
-    let user = JSON.parse(localStorage.getItem("user"));
-    // console.log("user...", user._id)
-    // Fetch data from the API endpoint
+    let user = JSON.parse(localStorage.getItem('user'))
+
     const apiUrl = `${baseUrl}/api/social/${user._id}`;
-    // console.log(apiUrl)
-    axios
-      .post(apiUrl)
+
+    axios.post(apiUrl)
       .then((response) => setData(response.data))
-      .catch((error) => console.error("Error fetching data:", error));
-    // fetch(apiUrl).then((response) => response.json())
-    //   .then((result) => console.log("result", result))
-    //   .catch((error) => console.error('Error fetching data:', error));
-  };
+      .catch((error) => console.error('Error fetching data:', error));
+
+  }
   const generalData = () => {
-    let user = JSON.parse(localStorage.getItem("user"));
-    // console.log("user...", user._id)
-    // Fetch data from the API endpoint
+
+
+    let user = JSON.parse(localStorage.getItem('user'))
+
     const apiUrl = `${baseUrl}/api/general/${user._id}`;
-    // console.log(apiUrl)
-    axios
-      .get(apiUrl)
+
+    axios.get(apiUrl)
       .then((response) => setGeneraldata(response.data))
-      .catch((error) => console.error("Error fetching data:", error));
-  };
+      .catch((error) => console.error('Error fetching data:', error));
+  }
+  const company_informations = () => {
+
+
+    let user = JSON.parse(localStorage.getItem('user'))
+
+    const apiUrl = `${baseUrl}/api/company/${user._id}`;
+
+    axios.get(apiUrl)
+      .then((response) => setCompanyinformations(response.data))
+      .catch((error) => console.error('Error fetching data:', error));
+  }
   useEffect(() => {
     getAllData();
     generalData();
+    company_informations();
   }, []);
-  console.log("user id", userId);
-  console.log("storedUserData", data?.social?.blog);
-  console.log("Generaldata........", generaldata);
-  // console.log("kdfjksdj", baseUrl)
-
+  // console.log("user id", userId)
+  // console.log("storedUserData", data?.social?.blog)
+  console.log("companyinformations........", companyinformations)
   const handledata = (num) => {
     setOverview(num);
-  };
+  };
   return (
     <Box sx={{ display: "flex" }}>
-      <Sidebar expanded={expanded}/>  
+      <Sidebar expanded={expanded} />
       <Box sx={{ width: "100%" }}>
         <Navbar expanded={expanded} setExpanded={setExpanded} />
         <Box className={classes.container} sx={{ position: "relative" }}>
@@ -323,6 +331,7 @@ const BrandProfile = () => {
                     sx={{
                       mt: [0, 2],
                       mr: [1, 0],
+                      justifyContent:'start'
                     }}
                   >
                     <Box sx={{ mr: [6, 0] }}>
@@ -333,6 +342,7 @@ const BrandProfile = () => {
                           fontFamily: "Plus Jakarta Sans",
                           fontSize: "22px",
                           lineHeight: "26.4px",
+                          textAlign: "start"
                         }}
                       >
                         {/* Canada Goose */}
@@ -340,18 +350,19 @@ const BrandProfile = () => {
                       </Typography>
                     </Box>
                     <Typography
-                      variant="overline"
+                     
                       sx={{
                         fontSize: "12px",
                         fontWeight: 600,
                         color: "#6C737F",
                         lineHeight: "30px",
-                        letter:'0.5px',
+                        letter: "0.5px",
+                        textAlign: "start",
                         pt: 1,
                         mb: 1,
                       }}
                     >
-                      Established since 2010
+                      Established since {companyinformations?.company?.companyfounded}
                     </Typography>
 
                     <Box
@@ -361,12 +372,13 @@ const BrandProfile = () => {
                         borderRadius: "10px",
                         padding: "5px",
                         width: "100%",
-                        pl: "5px",
+                        alignItems:"center",
+                        pl: "0px",
                       }}
                     >
                       <LocationOnOutlinedIcon
                         sx={{
-                          pt: "2",
+                          pt: "0",
                           fontSize: "18px",
                           color: "#2970FF",
                         }}
@@ -377,15 +389,16 @@ const BrandProfile = () => {
                           backgroundColor: "#F9FAFF",
                           borderRadius: "10px",
                           mt: 0,
-                          pl: "12px",
+                          pl: "6px",
                           fontSize: "13px",
                           fontWeight: 400,
                           fontFamily: "inter",
-                          paddingBottom: "3px",
-                          lineHeight:'15.73px'
+                          paddingTop: "2px",
+                          lineHeight: "15.73px",
                         }}
                       >
-                        Toronto Canada
+                        {/* Toronto Canada */}
+                        {generaldata?.general?.companyaddress}
                       </Typography>
                     </Box>
                   </Box>
@@ -467,11 +480,22 @@ const BrandProfile = () => {
                           </Typography>
                         </Box>
                         <Box sx={{ display: "flex" }}>
-                          <InstagramIcon sx={{ color: "#FF004F", mx: 1 }} />{" "}
-                          <FaTiktok sx={{ mx: 1, mt: 2 }} />{" "}
-                          <YouTubeIcon sx={{ color: "#FF004F", mx: 1 }} />{" "}
-                          <TwitterIcon sx={{ color: "#1DA1F2", mx: 1 }} />{" "}
-                          <PinterestIcon sx={{ color: "#EE0505", mx: 1 }} />{" "}
+                         <a href={data?.social?.blog} target="_blank" rel="noopener noreferrer"> 
+                         <InstagramIcon sx={{ color: "#FF004F", mx: 1 }} />
+                         </a>
+                          <a href={data?.social?.pinterest} target="_blank" rel="noopener noreferrer">
+                          <FaTiktok sx={{ mx: 1, mt: 2,color:'#000000' }} />
+                          </a>
+                          <a href={data?.social?.pinterest} target="_blank" rel="noopener noreferrer">
+                          <YouTubeIcon sx={{ color: "#FF004F", mx: 1 }} />
+                          </a>
+                          <a href={data?.social?.pinterest} target="_blank" rel="noopener noreferrer">
+                          <TwitterIcon sx={{ color: "#1DA1F2", mx: 1 }} />
+                          </a>
+                          <a href={data?.social?.pinterest} target="_blank" rel="noopener noreferrer">
+                          <PinterestIcon sx={{ color: "#EE0505", mx: 1 }} />
+                          </a>
+
                         </Box>
                       </Box>
                     </Box>
@@ -514,7 +538,6 @@ const BrandProfile = () => {
                 <Box sx={styles.aboutContainer}>
                   <Box
                     sx={{
-                      
                       mb: 2,
                     }}
                   >
@@ -540,7 +563,7 @@ const BrandProfile = () => {
                         fontFamily: "Inter",
                       }}
                     >
-                      Canada Goose is a premium Canadian clothing brand that was
+                      {/* Canada Goose is a premium Canadian clothing brand that was
                       founded in 1957. The brand is known for its high-quality
                       and stylish outerwear that is designed to withstand
                       extreme weather conditions. The company initially started
@@ -548,7 +571,8 @@ const BrandProfile = () => {
                       snowmobile suits for Canadian Rangers and police officers.
                       However, in recent years, Canada Goose has gained
                       widespread popularity as a luxury fashion brand and is now
-                      considered a status symbol.
+                      considered a status symbol. */}
+                      {companyinformations?.company?.bio}
                     </Typography>
                   </Box>
                   <Divider />
@@ -565,7 +589,7 @@ const BrandProfile = () => {
                       <Typography
                         sx={{
                           color: "#111927",
-                          fontFamily: "Inter",
+                          fontFamily: "inter",
                           fontSize: "16px",
                           fontWeight: 500,
                           lineHeight: "25px",
@@ -576,17 +600,17 @@ const BrandProfile = () => {
                         }}
                       >
                         <AccountCircleIcon sx={{ mr: 2 }} />{" "}
-                        www.canadagoose.com/shop
+                        {/* www.canadagoose.com/shop */}
+                        {generaldata?.general?.companywebsite}
                       </Typography>
                     </Box>
-                    <Divider light={true} ></Divider>
+                    <Divider light={true}></Divider>
 
                     <Box
                       sx={{
                         p: 1,
                         pl: 0,
                         pr: "10px",
-                        
                       }}
                     >
                       <Typography
@@ -602,16 +626,17 @@ const BrandProfile = () => {
                           alignItems: "center",
                         }}
                       >
-                        <PhoneOutlinedIcon sx={{ mr: 2 }} /> +92313524856
+                        <PhoneOutlinedIcon sx={{ mr: 2 }} /> 
+                        {/* +92313524856 */}
+                        {generaldata?.general?.phone}
                       </Typography>
                     </Box>
-                    <Divider light={true} ></Divider>
+                    <Divider light={true}></Divider>
                     <Box
                       sx={{
                         p: 1,
                         pl: 0,
                         pr: "10px",
-                        
                       }}
                     >
                       <Typography
@@ -627,23 +652,23 @@ const BrandProfile = () => {
                           alignItems: "center",
                         }}
                       >
-                        <HomeOutlinedIcon sx={{ mr: 2 }} /> Toronto, Ontario,
-                        Canada
+                        <HomeOutlinedIcon sx={{ mr: 2 }} /> 
+                        {/* Toronto, Ontario, Canada */}
+                        {generaldata?.general?.companyaddress}
                       </Typography>
                     </Box>
-                    <Divider light={true} ></Divider>
+                    <Divider light={true}></Divider>
                     <Box
                       sx={{
                         p: 1,
                         pl: 0,
                         pr: "10px",
-                        
                       }}
                     >
                       <Typography
                         sx={{
                           color: "#111927",
-                          fontFamily: "Inter",
+                          fontFamily: "inter",  
                           fontSize: "16px",
                           fontWeight: 500,
                           lineHeight: "25px",
@@ -656,13 +681,12 @@ const BrandProfile = () => {
                         <WebIcon sx={{ mr: 2 }} /> katarina.smith@devias.io
                       </Typography>
                     </Box>
-                    <Divider light={true} ></Divider>
+                    <Divider light={true}></Divider>
                     <Box
                       sx={{
                         p: 1,
                         pl: 0,
                         pr: "10px",
-                        
                       }}
                     >
                       <Typography
@@ -678,10 +702,12 @@ const BrandProfile = () => {
                           alignItems: "center",
                         }}
                       >
-                        <BorderHorizontalSharpIcon sx={{ mr: 2 }} /> 25-75
+                        <BorderHorizontalSharpIcon sx={{ mr: 2 }} /> 
+                        {/* 25-75 */}
+                        {companyinformations?.company?.companysize}
                       </Typography>
                     </Box>
-                    <Divider light={true} ></Divider>
+                    <Divider light={true}></Divider>
                   </Box>
                 </Box>
 
@@ -737,13 +763,13 @@ const BrandProfile = () => {
                       Men Fashion
                     </Button>
                   </Box>
-                  <Box sx={{ my: 2 }}>
+                  <Box sx={{ mb: 2, mt: 4 }}>
                     <Typography
                       variant="h6"
                       sx={{
                         fontWeight: 700,
                         fontSize: "18px",
-                        fontFamily: "Inter",
+                        fontFamily: "Plus Jakarta Sans",
                       }}
                     >
                       Social Media Links
@@ -756,7 +782,17 @@ const BrandProfile = () => {
                     <InstagramIcon
                       sx={{ ...styles.socialMediaIcon, color: "#F90000" }}
                     />{" "}
-                    www.instagram.com/therock
+                    <Typography
+                      sx={{
+                        fontFamily: "inter",
+                        fontWeight: 500,
+                        fontSize: "16px",
+                        lineHeight: "25.12px",
+                        ml: 1,
+                      }}
+                    >
+                      www.instagram.com/therock
+                    </Typography>
                   </Box>
                   <Divider />
 
@@ -766,7 +802,17 @@ const BrandProfile = () => {
                     <YouTubeIcon
                       sx={{ ...styles.socialMediaIcon, color: "#F90000" }}
                     />{" "}
-                    www.youtube.com/therock
+                    <Typography
+                      sx={{
+                        fontFamily: "inter",
+                        fontWeight: 500,
+                        fontSize: "16px",
+                        lineHeight: "25.12px",
+                        ml: 1,
+                      }}
+                    >
+                      www.youtube.com/therock
+                    </Typography>{" "}
                   </Box>
                   <Divider />
 
@@ -776,7 +822,17 @@ const BrandProfile = () => {
                     <TwitterIcon
                       sx={{ ...styles.socialMediaIcon, color: "#1DA1F2" }}
                     />{" "}
-                    www.twitter.com/therock
+                    <Typography
+                      sx={{
+                        fontFamily: "inter",
+                        fontWeight: 500,
+                        fontSize: "16px",
+                        lineHeight: "25.12px",
+                        ml: 1,
+                      }}
+                    >
+                      www.twitter.com/therock
+                    </Typography>{" "}
                   </Box>
                   <Divider />
 
@@ -786,7 +842,17 @@ const BrandProfile = () => {
                     <PinterestIcon
                       sx={{ ...styles.socialMediaIcon, color: "#F90000" }}
                     />{" "}
-                    www.pinterest.com/therock
+                    <Typography
+                      sx={{
+                        fontFamily: "inter",
+                        fontWeight: 500,
+                        fontSize: "16px",
+                        lineHeight: "25.12px",
+                        ml: 1,
+                      }}
+                    >
+                      www.pinterest.com/therock
+                    </Typography>
                   </Box>
                   <Divider />
                 </Box>
