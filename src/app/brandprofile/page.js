@@ -358,8 +358,9 @@ const BrandProfile = () => {
                         lineHeight: "30px",
                         letter: "0.5px",
                         textAlign: "start",
-                        pt: 1,
-                        mb: 1,
+                        pt: [0,0],
+                        mb: [0,0],
+
                       }}
                     >
                       Established since {companyinformations?.company?.companyfounded}
@@ -503,7 +504,7 @@ const BrandProfile = () => {
                 </Box>
               </Box>
             </Box>
-            <Box sx={{ display: "flex", mx: "13px", mt: "10px" }}>
+            <Box sx={{ display: "flex", mx: "13px", mt: "30px" }}>
               <Box sx={{ mx: "13px" }}>
                 <Typography
                   sx={{ color: "#6C737F", "&:hover": { cursor: "pointer" } }}
