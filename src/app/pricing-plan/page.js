@@ -136,6 +136,7 @@ const Registered = () => {
                   fontWeight: "400",
                   fontSize: "14px",
                   color: "#6C737F",
+                  fontFamily:'Plus Jakarta Sans'
                 }}
               >
                 to familiarize yourself with our tools
@@ -371,6 +372,7 @@ const Registered = () => {
                   fontWeight: "400",
                   fontSize: "14px",
                   color: "#6C737F",
+                  fontFamily:'Plus Jakarta Sans'
                 }}
               >
                 to familiarize yourself with our tools

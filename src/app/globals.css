@@ -103,6 +103,9 @@ body {
   }
 Button{
   text-transform: capitalize !important;
+  .css-hip9hq-MuiPaper-root-MuiAppBar-root{
+    box-shadow: none;
+  }
 
 }
 

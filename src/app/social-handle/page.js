@@ -269,7 +269,6 @@ const SocialMedia = () => {
             router.push('/pricing-plan');
         } catch (error) {
             console.error(error); // Handle the error
-            setMessage(error.response?.data?.message || 'Social handle info already exists.');
         }
         finally {
             setIsLoading(false); // Set loading state to false after API call (whether success or error)
@@ -288,7 +287,7 @@ setUser(user1)
 
             <Box
                 sx={{
-                    width: '100%',
+                    width: '693px',
                     margin: 'auto',
                     boxShadow: 4,
                     borderRadius: '16px',
@@ -403,7 +402,7 @@ setUser(user1)
                         </Grid>
 
                         <Box sx={{ mt: 4, display: 'flex', justifyContent: 'flex-end', flexDirection: { xs: 'column', md: 'row' } }}>
-                            <Button sx={{ p: 1, borderRadius: '12px', mb: { xs: 2, md: 0 }, width: { xs: '100%', md: 'auto' } }} type="reset">
+                            <Button sx={{ p: 1, borderRadius: '12px', color:"#111927", mb: { xs: 2, md: 0 }, width: { xs: '100%', md: 'auto' } }} type="reset">
                                 Cancel
                             </Button>
                             <Button
