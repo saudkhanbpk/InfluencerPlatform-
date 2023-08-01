@@ -1,3 +1,4 @@
+'use client'
 import PropTypes from 'prop-types';
 import Camera01Icon from '@untitled-ui/icons-react/build/esm/Camera01';
 import User01Icon from '@untitled-ui/icons-react/build/esm/User01';
@@ -15,8 +16,81 @@ import {
   Typography,
   Unstable_Grid2 as Grid
 } from '@mui/material';
+import { alpha } from '@mui/material/styles';
+import { baseUrl } from '@/app/BaseUrl';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export const AccountGeneralSettings = (props) => {
+  const [userData, setUserData] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [timeZones, setTimeZones] = useState('');
+
+
+  const allUserData = () => {
+    
+   
+    let user = JSON.parse(localStorage.getItem('user'))
+   
+    const apiUrl = `${baseUrl}/api/getuser/${user?._id}`;
+
+axios.post(apiUrl)
+      .then((response) =>{
+         setUserData(response.data?.users[0])
+        // console.log("user dfatra ;",response)
+      })
+      .catch((error) => console.error('Error fetching data:', error));
+  }
+  // const updateUserData = () => {
+    const handleSubmit = (e) => {
+      console.log("ksdgjfgsdhkf")
+      e.preventDefault();
+      const data = {
+        firstName: firstName,
+        lastName:lastName,
+        email: userEmail,
+        timeZones: timeZones,
+    };
+
+console.log("data--------", data)
+    const config = {
+        headers: {
+            "Content-Type": "application/json",
+        },
+    };
+    
+    
+   
+    let user = JSON.parse(localStorage.getItem('user'))
+   console.log("userData", user._id)
+    axios.put(`${baseUrl}/api/update/${user._id}`, data, config)
+            .then((response) => {
+                console.log(response.data);
+                // const { email, _id } = response.data.newUser;
+            })
+            .catch((error) => {
+                console.error(error.response.data.msg);
+                toast.error(error.response.data.msg);
+                setError(error.response.data.msg);
+            })
+  
+    }
+  
+  useEffect(() => {
+
+    allUserData();
+    // updateUserData();
+
+  }, []);
+  useEffect(() => {
+    setFirstName(userData.name)
+    setUserEmail(userData.email)
+   
+
+  }, [userData]);
+  console.log("UserData........", userData)
   const { avatar, email, name } = props;
 
   return (
@@ -126,6 +200,8 @@ export const AccountGeneralSettings = (props) => {
                     margin="normal"
                     name="name"
                     type="text"
+                    onChange={(e)=>setFirstName(e.target.value)}
+                    value={firstName}
                   />
                   <Button
                     color="primary"
@@ -145,6 +221,8 @@ export const AccountGeneralSettings = (props) => {
                     margin="normal"
                     name="name"
                     type="text"
+                    onChange={(e)=>setLastName(e.target.value)}
+                    value={lastName}
                   />
                   <Button
                     color="primary"
@@ -164,6 +242,8 @@ export const AccountGeneralSettings = (props) => {
                     margin="normal"
                     name="name"
                     type="text"
+                    onChange={(e)=>setUserEmail(e.target.value)}
+                    value={userEmail}
                   />
                   <Button
                     color="primary"
@@ -183,6 +263,9 @@ export const AccountGeneralSettings = (props) => {
                     margin="normal"
                     name="name"
                     type="text"
+                    onChange={(e)=>setTimeZones(e.target.value)}
+                    value={timeZones}
+                    
                   />
                   <Button
                     color="primary"
@@ -213,6 +296,7 @@ export const AccountGeneralSettings = (props) => {
 
           type="submit"
           variant="contained"
+          onClick={handleSubmit}
         >
           Save Changes
         </Button>
