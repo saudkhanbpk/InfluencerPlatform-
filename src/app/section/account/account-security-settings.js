@@ -41,7 +41,7 @@ export const AccountSecuritySettings = (props) => {
               xs={12}
               md={4}
             >
-              <Typography variant="h6">
+              <Typography variant="h6" sx={{fontWeight: 'bold', fontFamily: 'Plus Jakarta Sans', fontSize:'18px'}}>
                 Change password
               </Typography>
             </Grid>
@@ -56,18 +56,9 @@ export const AccountSecuritySettings = (props) => {
                 spacing={3}
               >
                 <TextField
-                  disabled={!isEditing}
                   label="Password"
                   type="password"
-                  defaultValue="Thebestpasswordever123#"
-                  sx={{
-                    flexGrow: 1,
-                    ...(!isEditing && {
-                      '& .MuiOutlinedInput-notchedOutline': {
-                        borderStyle: 'dotted'
-                      }
-                    })
-                  }}
+                  fullWidth
                 />
                 <Button onClick={handleEdit}>
                   {isEditing ? 'Save' : 'Edit'}
@@ -78,7 +69,7 @@ export const AccountSecuritySettings = (props) => {
         </CardContent>
       </Card>
       <Card>
-        <CardHeader title="Multi Factor Authentication" />
+        <CardHeader title="Section heading" />
         <CardContent sx={{ pt: 0 }}>
           <Grid
             container
@@ -139,12 +130,7 @@ export const AccountSecuritySettings = (props) => {
                   </Typography>
                   <Box sx={{ mt: 4 }}>
                     <Button
-                      endIcon={(
-                        <SvgIcon>
-                          <ArrowRightIcon />
-                        </SvgIcon>
-                      )}
-                      variant="outlined"
+                      variant="contained"
                     >
                       Set Up
                     </Button>
@@ -202,12 +188,8 @@ export const AccountSecuritySettings = (props) => {
                   </Typography>
                   <Box sx={{ mt: 4 }}>
                     <Button
-                      endIcon={(
-                        <SvgIcon>
-                          <ArrowRightIcon />
-                        </SvgIcon>
-                      )}
-                      variant="outlined"
+                     
+                      variant="contained"
                     >
                       Set Up
                     </Button>
@@ -220,8 +202,7 @@ export const AccountSecuritySettings = (props) => {
       </Card>
       <Card>
         <CardHeader
-          title="Login history"
-          subheader="Your recent login activity"
+          title="Section heading"
         />
         <Scrollbar>
           <Table sx={{ minWidth: 500 }}>

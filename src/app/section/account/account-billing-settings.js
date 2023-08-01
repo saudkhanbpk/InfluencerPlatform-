@@ -38,7 +38,7 @@ const plans = [
     name: 'Standard',
     price: 99
   },
-  
+
 ];
 
 export const AccountBillingSettings = (props) => {
@@ -150,7 +150,7 @@ export const AccountBillingSettings = (props) => {
               justifyContent: 'space-between'
             }}
           >
-            <Typography variant="h6">
+            <Typography  variant="h6" sx={{fontWeight: 'bold', fontFamily: 'Plus Jakarta Sans', fontSize:'18px'}}>
               Billing details
             </Typography>
             <Button
@@ -169,7 +169,8 @@ export const AccountBillingSettings = (props) => {
               border: 1,
               borderColor: 'divider',
               borderRadius: 1,
-              mt: 3
+              mt: 3,
+              fontWeight: 'bold', fontFamily: 'Plus Jakarta Sans', fontSize:'18px'
             }}
           >
             <PropertyList>
@@ -201,7 +202,7 @@ export const AccountBillingSettings = (props) => {
           <Typography
             color="text.secondary"
             variant="body2"
-            sx={{ mt: 3 }}
+            sx={{ mt: 3, fontWeight:'400', fontSize:'14px' }}
           >
             We cannot refund once you purchased a subscription, but you can always
             <Link
@@ -220,8 +221,24 @@ export const AccountBillingSettings = (props) => {
               mt: 3
             }}
           >
-            <Button variant="contained">
-              Update Plan
+            <Button
+              sx={{
+                ml: { xs: 0, md: 2 }, // Adjusted margin left for mobile and tablet
+                px: { xs: 1, md: 4 }, // Adjusted padding for mobile and tablet
+                py: { xs: 1, md: 2 }, // Adjusted padding for mobile and tablet
+                color: '#FFFFFF',
+                backgroundColor: '#2970FF',
+                fontWeight: 600,
+                lineHeight: '24px',
+                borderRadius: '12px',
+
+                mb: { xs: 2, md: 0 } // Adjusted margin bottom for mobile and tablet
+              }}
+
+              type="submit"
+              variant="contained"
+            >
+               Update plan
             </Button>
           </Box>
         </CardContent>

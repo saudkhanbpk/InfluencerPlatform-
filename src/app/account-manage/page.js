@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { subDays, subHours, subMinutes, subMonths } from 'date-fns';
 import { Box, Container, Divider, Stack, Tab, Tabs, Typography } from '@mui/material';
 import { useMockedUser } from 'src/hooks/use-mocked-user';
@@ -11,6 +11,8 @@ import { AccountTeamSettings } from 'src/app/section/account/account-team-settin
 import { AccountSecuritySettings } from 'src/app/section/account/account-security-settings';
 import Sidebar from '../sidebar/page';
 import Navbar from '../navbar/page';
+import axios from 'axios';
+import { baseUrl } from '../BaseUrl';
 
 const now = new Date();
 
@@ -26,6 +28,27 @@ const Page = () => {
   const user = useMockedUser();
   const [currentTab, setCurrentTab] = useState('general');
   const [expanded, setExpanded] = useState(true);
+//   const [userData, setUserData] = useState([]);
+
+
+//   const allUserData = () => {
+    
+   
+//     let user = JSON.parse(localStorage.getItem('user'))
+   
+//     const apiUrl = `${baseUrl}/api/getuser/${user._id}`;
+
+// axios.post(apiUrl)
+//       .then((response) => setUserData(response.data))
+//       .catch((error) => console.error('Error fetching data:', error));
+//   }
+  
+//   useEffect(() => {
+
+//     allUserData();
+
+//   }, []);
+//   console.log("UserData........", userData)
   //   usePageView();
 
   const handleTabsChange = useCallback((event, value) => {
@@ -34,7 +57,7 @@ const Page = () => {
 
   return (
     <>
-      <Box sx={{ display: 'flex' }}>
+      <Box sx={{ display: 'flex', fontFamily:'Plus Jakarta Sans' }}>
         <Sidebar expanded={expanded} />
         <Box sx={{ width: "100%" }}>
           <Navbar expanded={expanded} setExpanded={setExpanded} />
@@ -48,9 +71,9 @@ const Page = () => {
             <Container maxWidth="xl">
               <Stack
                 spacing={3}
-                sx={{ mb: 3 }}
+                sx={{ mb: 3, }}
               >
-                <Typography variant="h4">
+                <Typography variant="h4" sx={{fontWeight: 'bold', fontFamily: 'Plus Jakarta Sans', fontSize:'32px'}}>
                   Account
                 </Typography>
                 <div>
@@ -61,6 +84,7 @@ const Page = () => {
                     textColor="primary"
                     value={currentTab}
                     variant="scrollable"
+                    sx={{textTransform: 'lowercase' }}
                   >
                     {tabs.map((tab) => (
                       <Tab
