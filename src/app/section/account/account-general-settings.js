@@ -35,7 +35,7 @@ export const AccountGeneralSettings = (props) => {
               md={4}
             >
               <Typography variant="h6">
-                Basic details
+                Personal Information
               </Typography>
             </Grid>
             <Grid
@@ -129,15 +129,17 @@ export const AccountGeneralSettings = (props) => {
                   spacing={2}
                 >
                   <TextField
-                    defaultValue={name}
-                    label="Full Name"
-                    sx={{ flexGrow: 1 }}
+                    fullWidth
+                    label="First Name"
+                    margin="normal"
+                    name="name"
+                    type="text"
                   />
                   <Button
-                    color="inherit"
+                    color="primary"
                     size="small"
                   >
-                    Save
+                    Edit
                   </Button>
                 </Stack>
                 <Stack
@@ -146,19 +148,52 @@ export const AccountGeneralSettings = (props) => {
                   spacing={2}
                 >
                   <TextField
-                    defaultValue={email}
-                    disabled
-                    label="Email Address"
-                    required
-                    sx={{
-                      flexGrow: 1,
-                      '& .MuiOutlinedInput-notchedOutline': {
-                        borderStyle: 'dashed'
-                      }
-                    }}
+                    fullWidth
+                    label="Last Name"
+                    margin="normal"
+                    name="name"
+                    type="text"
                   />
                   <Button
-                    color="inherit"
+                    color="primary"
+                    size="small"
+                  >
+                    Edit
+                  </Button>
+                </Stack>
+                <Stack
+                  alignItems="center"
+                  direction="row"
+                  spacing={2}
+                >
+                  <TextField
+                    fullWidth
+                    label="Email address"
+                    margin="normal"
+                    name="name"
+                    type="text"
+                  />
+                  <Button
+                    color="primary"
+                    size="small"
+                  >
+                    Edit
+                  </Button>
+                </Stack>
+                <Stack
+                  alignItems="center"
+                  direction="row"
+                  spacing={2}
+                >
+                  <TextField
+                    fullWidth
+                    label="Timezone"
+                    margin="normal"
+                    name="name"
+                    type="text"
+                  />
+                  <Button
+                    color="primary"
                     size="small"
                   >
                     Edit
@@ -169,110 +204,7 @@ export const AccountGeneralSettings = (props) => {
           </Grid>
         </CardContent>
       </Card>
-      <Card>
-        <CardContent>
-          <Grid
-            container
-            spacing={3}
-          >
-            <Grid
-              xs={12}
-              md={4}
-            >
-              <Typography variant="h6">
-                Public profile
-              </Typography>
-            </Grid>
-            <Grid
-              xs={12}
-              sm={12}
-              md={8}
-            >
-              <Stack
-                divider={<Divider />}
-                spacing={3}
-              >
-                <Stack
-                  alignItems="flex-start"
-                  direction="row"
-                  justifyContent="space-between"
-                  spacing={3}
-                >
-                  <Stack spacing={1}>
-                    <Typography variant="subtitle1">
-                      Make Contact Info Public
-                    </Typography>
-                    <Typography
-                      color="text.secondary"
-                      variant="body2"
-                    >
-                      Means that anyone viewing your profile will be able to see your contacts
-                      details.
-                    </Typography>
-                  </Stack>
-                  <Switch />
-                </Stack>
-                <Stack
-                  alignItems="flex-start"
-                  direction="row"
-                  justifyContent="space-between"
-                  spacing={3}
-                >
-                  <Stack spacing={1}>
-                    <Typography variant="subtitle1">
-                      Available to hire
-                    </Typography>
-                    <Typography
-                      color="text.secondary"
-                      variant="body2"
-                    >
-                      Toggling this will let your teammates know that you are available for
-                      acquiring new projects.
-                    </Typography>
-                  </Stack>
-                  <Switch defaultChecked />
-                </Stack>
-              </Stack>
-            </Grid>
-          </Grid>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardContent>
-          <Grid
-            container
-            spacing={3}
-          >
-            <Grid
-              xs={12}
-              md={4}
-            >
-              <Typography variant="h6">
-                Delete Account
-              </Typography>
-            </Grid>
-            <Grid
-              xs={12}
-              md={8}
-            >
-              <Stack
-                alignItems="flex-start"
-                spacing={3}
-              >
-                <Typography variant="subtitle1">
-                  Delete your account and all of your source data. This is irreversible.
-                </Typography>
-                <Button
-                  color="error"
-                  variant="outlined"
-                >
-                  Delete account
-                </Button>
-              </Stack>
-            </Grid>
-          </Grid>
-        </CardContent>
-      </Card>
+      
     </Stack>
   );
 };
