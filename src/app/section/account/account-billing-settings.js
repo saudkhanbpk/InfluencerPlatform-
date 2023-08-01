@@ -29,21 +29,16 @@ const plans = [
   {
     id: 'startup',
     icon: <AccountPlanIcon name="startup" />,
-    name: 'Startup',
+    name: 'free plan',
     price: 0
   },
   {
     id: 'standard',
     icon: <AccountPlanIcon name="standard" />,
     name: 'Standard',
-    price: 4.99
+    price: 99
   },
-  {
-    id: 'business',
-    icon: <AccountPlanIcon name="business" />,
-    name: 'Business',
-    price: 29.99
-  }
+  
 ];
 
 export const AccountBillingSettings = (props) => {
@@ -159,7 +154,7 @@ export const AccountBillingSettings = (props) => {
               Billing details
             </Typography>
             <Button
-              color="inherit"
+              color="primary"
               startIcon={(
                 <SvgIcon>
                   <Edit02Icon />
@@ -226,7 +221,7 @@ export const AccountBillingSettings = (props) => {
             }}
           >
             <Button variant="contained">
-              Upgrade Plan
+              Update Plan
             </Button>
           </Box>
         </CardContent>
@@ -263,7 +258,7 @@ export const AccountBillingSettings = (props) => {
                   </TableCell>
                   <TableCell align="right">
                     <Link
-                      color="inherit"
+                      color="primary"
                       underline="always"
                       href="#"
                     >
