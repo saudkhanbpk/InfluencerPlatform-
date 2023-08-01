@@ -22,8 +22,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import ReCAPTCHA from "react-google-recaptcha";
-// import useMediaQuery from "@mui/material/useMediaQuery";
-// /
 import { useTheme } from "@mui/material/styles";
 
 const Register = () => {
@@ -49,13 +47,6 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsLoading(true);
-        // if (!name.trim()) {
-        //     setNameError("Name is required.");
-        //     return;
-        // } else {
-        //     setNameError("");
-        // }
-
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email.trim()) {
             setEmailError("Email is required.");

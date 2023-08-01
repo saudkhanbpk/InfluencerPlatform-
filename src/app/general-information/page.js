@@ -15,11 +15,11 @@ const GeneralInfo = () => {
     const [companyaddress, setCompanyaddress] = useState('')
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState('');
-    const [user,setUser]=useState("")
+    const [user, setUser]=useState("")
 
-    console.log("user :",user)
+    console.log("user :", user)
 
-    const handleSubmit =  (e) => {
+    const handleSubmit =(e) => {
         e.preventDefault()
         setIsLoading(true);
         const data = {
@@ -29,7 +29,7 @@ const GeneralInfo = () => {
             companyname,
             companywebsite,
             companyaddress,
-            userId:user._id
+            userId: user._id,
         };
         // return console.log(data)
         const config = {
@@ -37,7 +37,7 @@ const GeneralInfo = () => {
                 'Content-Type': 'application/json',
             }
         };
-         axios.post(`${baseUrl}/api/general_info`, data, config)
+        axios.post(`${baseUrl}/api/general_info`, data, config)
             .then((response) => {
                 router.push('/company-information')
                 console.log(response.data);
@@ -49,19 +49,31 @@ const GeneralInfo = () => {
                 localStorage.setItem('token', token);
             })
             .catch((error) => {
-                console.error(error); // Handle the error
+                console.error(error); 
             })
             .finally(() => {
                 setIsLoading(false); // Set loading state to false after API call (whether success or error)
             });
 
     }
+    useEffect(() => {
+        let userData = localStorage.getItem('user');
+        if (userData) {
+            try {
+                let user1 = JSON.parse(userData);
+                setUser(user1);
+            } catch (error) {
+                console.error('Error parsing user data:', error);
+                setUser(null); // Set user to null in case of parsing error
+            }
+        }
+    }, []);
 
-    useEffect(()=>{
-        let userData = localStorage.getItem('user')
-let user1 = JSON.parse(userData)
-setUser(user1)
-    },[])
+    // useEffect(() => {
+    //     let userData = localStorage.getItem('user')
+    //     let user1 = JSON.parse(userData)
+    //     setUser(user1)
+    // }, [])
     return (
         <Box sx={{ mt: 10, mb: 10 }}>
             <Box sx={{ display: "flex", mt: '20px', justifyContent: 'center' }}>
@@ -208,7 +220,7 @@ setUser(user1)
                                     fontWeight: 600,
                                     lineHeight: '24px',
                                     borderRadius: '12px',
-                                
+
                                     mb: { xs: 2, md: 0 } // Adjusted margin bottom for mobile and tablet
                                 }}
                                 disabled={isLoading} // Disable the button while loading
