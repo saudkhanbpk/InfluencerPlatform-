@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Typography,
@@ -49,6 +49,8 @@ import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
 import DisabledByDefaultOutlinedIcon from '@mui/icons-material/DisabledByDefaultOutlined';
+import {baseUrl} from "../BaseUrl"
+import axios from "axios";
 
 const Sidebar = ({expanded}) => {
   const [open, setOpen] = React.useState(false);
@@ -65,6 +67,27 @@ const Sidebar = ({expanded}) => {
   const [level, setLevel] = React.useState(false);
   const [socialmedia, setSocialmedia] = React.useState(false);
   // const [expanded, setExpanded] = React.useState(true);
+  const [generaldata, setGeneraldata] = React.useState([]);
+
+
+  const generalData = () => {
+    
+   
+    let user = JSON.parse(localStorage.getItem('user'))
+   
+    const apiUrl = `${baseUrl}/api/general/${user._id}`;
+
+axios.get(apiUrl)
+      .then((response) => setGeneraldata(response.data))
+      .catch((error) => console.error('Error fetching data:', error));
+  }
+  
+  useEffect(() => {
+
+generalData();
+
+  }, []);
+  console.log("generaldata........", generaldata)
 
   
 
@@ -155,7 +178,7 @@ const Sidebar = ({expanded}) => {
               fontSize: "18",
             }}
           >
-            Devias
+            {generaldata?.general?.fname}
           </Typography>
           <Typography
             variant="caption"
