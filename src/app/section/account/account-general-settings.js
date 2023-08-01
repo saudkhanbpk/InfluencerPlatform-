@@ -204,7 +204,28 @@ export const AccountGeneralSettings = (props) => {
           </Grid>
         </CardContent>
       </Card>
-      
+      <Box sx={{ display: 'flex', justifyContent: 'end', mt: "20px" }}>
+        <Button
+          sx={{
+            ml: { xs: 0, md: 2 }, // Adjusted margin left for mobile and tablet
+            px: { xs: 1, md: 4 }, // Adjusted padding for mobile and tablet
+            py: { xs: 1, md: 2 }, // Adjusted padding for mobile and tablet
+            color: '#FFFFFF',
+            backgroundColor: '#2970FF',
+            fontWeight: 600,
+            lineHeight: '24px',
+            borderRadius: '12px',
+
+            mb: { xs: 2, md: 0 } // Adjusted margin bottom for mobile and tablet
+          }}
+
+          type="submit"
+          variant="contained"
+        >
+          Save Changes
+        </Button>
+      </Box>
+
     </Stack>
   );
 };
