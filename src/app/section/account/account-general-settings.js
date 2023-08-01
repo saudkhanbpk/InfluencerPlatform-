@@ -15,7 +15,6 @@ import {
   Typography,
   Unstable_Grid2 as Grid
 } from '@mui/material';
-import { alpha } from '@mui/material/styles';
 
 export const AccountGeneralSettings = (props) => {
   const { avatar, email, name } = props;
@@ -34,7 +33,7 @@ export const AccountGeneralSettings = (props) => {
               xs={12}
               md={4}
             >
-              <Typography variant="h6">
+              <Typography variant="h5" sx={{ fontWeight: 'bold', fontFamily: 'Plus Jakarta Sans', fontSize:'18px' }}>
                 Personal Information
               </Typography>
             </Grid>
@@ -48,15 +47,7 @@ export const AccountGeneralSettings = (props) => {
                   direction="row"
                   spacing={2}
                 >
-                  <Box
-                    sx={{
-                      borderColor: 'neutral.300',
-                      borderRadius: '50%',
-                      borderStyle: 'dashed',
-                      borderWidth: 1,
-                      p: '4px'
-                    }}
-                  >
+                  <Box>
                     <Box
                       sx={{
                         borderRadius: '50%',
@@ -65,7 +56,7 @@ export const AccountGeneralSettings = (props) => {
                         position: 'relative'
                       }}
                     >
-                      <Box
+                      {/* <Box
                         sx={{
                           alignItems: 'center',
                           // backgroundColor: (theme) => alpha(theme.palette.neutral[700], 0.5),
@@ -102,12 +93,12 @@ export const AccountGeneralSettings = (props) => {
                             Select
                           </Typography>
                         </Stack>
-                      </Box>
+                      </Box> */}
                       <Avatar
                         src={avatar}
                         sx={{
-                          height: 100,
-                          width: 100
+                          height: 50,
+                          width: 50
                         }}
                       >
                         <SvgIcon>
@@ -117,8 +108,9 @@ export const AccountGeneralSettings = (props) => {
                     </Box>
                   </Box>
                   <Button
-                    color="inherit"
-                    size="small"
+                    color="primary"
+                    // size="small"
+                    sx={{fontSize:'14px', fontWeight:'600'}}
                   >
                     Change
                   </Button>

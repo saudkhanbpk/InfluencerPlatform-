@@ -34,7 +34,7 @@ const Page = () => {
 
   return (
     <>
-      <Box sx={{ display: 'flex' }}>
+      <Box sx={{ display: 'flex', fontFamily:'Plus Jakarta Sans' }}>
         <Sidebar expanded={expanded} />
         <Box sx={{ width: "100%" }}>
           <Navbar expanded={expanded} setExpanded={setExpanded} />
@@ -48,9 +48,9 @@ const Page = () => {
             <Container maxWidth="xl">
               <Stack
                 spacing={3}
-                sx={{ mb: 3 }}
+                sx={{ mb: 3, }}
               >
-                <Typography variant="h4">
+                <Typography variant="h4" sx={{fontWeight: 'bold', fontFamily: 'Plus Jakarta Sans', fontSize:'32px'}}>
                   Account
                 </Typography>
                 <div>
@@ -61,6 +61,7 @@ const Page = () => {
                     textColor="primary"
                     value={currentTab}
                     variant="scrollable"
+                    sx={{textTransform: 'lowercase' }}
                   >
                     {tabs.map((tab) => (
                       <Tab

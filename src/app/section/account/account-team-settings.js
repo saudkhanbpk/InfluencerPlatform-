@@ -38,20 +38,16 @@ export const AccountTeamSettings = (props) => {
             md={4}
           >
             <Stack spacing={1}>
-              <Typography variant="h6">
-                Invite members
+                
+              <Typography variant="h5" sx={{ fontWeight: 'bold', fontFamily: 'Plus Jakarta Sans', fontSize:'18px' }}>
+                Section heading
               </Typography>
-              <Typography
-                color="text.secondary"
-                variant="body2"
-              >
-                You currently pay for 2 Editor Seats.
-              </Typography>
+
             </Stack>
           </Grid>
           <Grid
             xs={12}
-            md={8}
+            md={12}
           >
             <Stack
               alignItems="center"
@@ -81,11 +77,11 @@ export const AccountTeamSettings = (props) => {
         </Grid>
       </CardContent>
       <Scrollbar>
-        <Table sx={{ minWidth: 400 }}>
-          <TableHead>
-            <TableRow>
+        <Table sx={{ minWidth: 400, border:0 }} >
+          <TableHead sx={{backgroundColor:'#F8F9FA'}}>
+            <TableRow >
               <TableCell>
-                Member
+                Date
               </TableCell>
               <TableCell>
                 Role

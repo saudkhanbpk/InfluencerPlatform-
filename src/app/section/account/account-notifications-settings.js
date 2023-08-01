@@ -1,123 +1,257 @@
 import {
-    Card,
-    CardContent,
-    Divider,
-    Stack,
-    Switch,
-    Typography,
-    Unstable_Grid2 as Grid
-  } from '@mui/material';
-  
-  export const AccountNotificationsSettings = () => (
-    <Card>
-      <CardContent>
+  Card,
+  CardContent,
+  Divider,
+  Stack,
+  Switch,
+  Typography,
+  Unstable_Grid2 as Grid
+} from '@mui/material';
+
+export const AccountNotificationsSettings = () => (
+  <Card>
+    <CardContent>
+      <Grid
+        container
+        spacing={3}
+      >
         <Grid
-          container
-          spacing={3}
+          xs={12}
+          md={4}
         >
-          <Grid
-            xs={12}
-            md={4}
-          >
-            <Typography variant="h6">
-              Email
-            </Typography>
-          </Grid>
-          <Grid
-            xs={12}
-            sm={12}
-            md={8}
+          <Typography variant="h6" sx={{fontWeight: 'bold', fontFamily: 'Plus Jakarta Sans', fontSize:'18px'}}>
+            In-App
+          </Typography>
+        </Grid>
+        <Grid
+          xs={12}
+          sm={12}
+          md={8}
+        >
+          <Stack
+            divider={<Divider />}
+            spacing={3}
           >
             <Stack
-              divider={<Divider />}
+              alignItems="flex-start"
+              direction="row"
+              justifyContent="space-between"
               spacing={3}
             >
-              <Stack
-                alignItems="flex-start"
-                direction="row"
-                justifyContent="space-between"
-                spacing={3}
-              >
-                <Stack spacing={1}>
-                  <Typography variant="subtitle1">
-                    Product updates
-                  </Typography>
-                  <Typography
-                    color="text.secondary"
-                    variant="body2"
-                  >
-                    News, announcements, and product updates.
-                  </Typography>
-                </Stack>
-                <Switch defaultChecked />
+              <Stack spacing={1}>
+                <Typography variant="subtitle1">
+                  New messages
+                </Typography>
+                <Typography
+                  color="text.secondary"
+                  variant="body2"
+                >
+                  Lorem ipsum
+                </Typography>
               </Stack>
-              <Stack
-                alignItems="flex-start"
-                direction="row"
-                justifyContent="space-between"
-                spacing={3}
-              >
-                <Stack spacing={1}>
-                  <Typography variant="subtitle1">
-                    Security updates
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                  >
-                    Important notifications about your account security.
-                  </Typography>
-                </Stack>
-                <Switch defaultChecked />
-              </Stack>
+              <Switch defaultChecked />
             </Stack>
-          </Grid>
+            <Stack
+              alignItems="flex-start"
+              direction="row"
+              justifyContent="space-between"
+              spacing={3}
+            >
+              <Stack spacing={1}>
+                <Typography variant="subtitle1">
+                  Job applicants
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                >
+                  Lorem ipsum
+                </Typography>
+              </Stack>
+              <Switch />
+            </Stack>
+            <Stack
+              alignItems="flex-start"
+              direction="row"
+              justifyContent="space-between"
+              spacing={3}
+            >
+              <Stack spacing={1}>
+                <Typography variant="subtitle1">
+                  Influencer signups
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                >
+                  Lorem ipsum
+                </Typography>
+              </Stack>
+              <Switch defaultChecked />
+            </Stack>
+            <Stack
+              alignItems="flex-start"
+              direction="row"
+              justifyContent="space-between"
+              spacing={3}
+            >
+              <Stack spacing={1}>
+                <Typography variant="subtitle1">
+                  Influencer added to database
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                >
+                  Lorem ipsum
+                </Typography>
+              </Stack>
+              <Switch defaultChecked />
+            </Stack>
+            <Stack
+              alignItems="flex-start"
+              direction="row"
+              justifyContent="space-between"
+              spacing={3}
+            >
+              <Stack spacing={1}>
+                <Typography variant="subtitle1">
+                  Membership
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                >
+                  Lorem ipsum
+                </Typography>
+              </Stack>
+              <Switch defaultChecked />
+            </Stack>
+          </Stack>
+
         </Grid>
-        <Divider sx={{ my: 3 }} />
+      </Grid>
+      <Divider sx={{ my: 3 }} />
+      <Grid
+        container
+        spacing={3}
+      >
         <Grid
-          container
-          spacing={3}
+          xs={12}
+          md={4}
         >
-          <Grid
-            xs={12}
-            md={4}
-          >
-            <Typography variant="h6">
-              Phone notifications
-            </Typography>
-          </Grid>
-          <Grid
-            xs={12}
-            sm={12}
-            md={8}
+          <Typography variant="h6" sx={{fontWeight: 'bold', fontFamily: 'Plus Jakarta Sans', fontSize:'18px'}}>
+          E-mail
+          </Typography>
+        </Grid>
+        <Grid
+          xs={12}
+          sm={12}
+          md={8}
+        >
+          <Stack
+            divider={<Divider />}
+            spacing={3}
           >
             <Stack
-              divider={<Divider />}
+              alignItems="flex-start"
+              direction="row"
+              justifyContent="space-between"
               spacing={3}
             >
-              <Stack
-                alignItems="flex-start"
-                direction="row"
-                justifyContent="space-between"
-                spacing={3}
-              >
-                <Stack spacing={1}>
-                  <Typography variant="subtitle1">
-                    Security updates
-                  </Typography>
-                  <Typography
-                    color="text.secondary"
-                    variant="body2"
-                  >
-                    Important notifications about your account security.
-                  </Typography>
-                </Stack>
-                <Switch />
+              <Stack spacing={1}>
+                <Typography variant="subtitle1">
+                  New messages
+                </Typography>
+                <Typography
+                  color="text.secondary"
+                  variant="body2"
+                >
+                  Lorem ipsum
+                </Typography>
               </Stack>
+              <Switch defaultChecked />
             </Stack>
-          </Grid>
+            <Stack
+              alignItems="flex-start"
+              direction="row"
+              justifyContent="space-between"
+              spacing={3}
+            >
+              <Stack spacing={1}>
+                <Typography variant="subtitle1">
+                  Job applicants
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                >
+                  Lorem ipsum
+                </Typography>
+              </Stack>
+              <Switch />
+            </Stack>
+            <Stack
+              alignItems="flex-start"
+              direction="row"
+              justifyContent="space-between"
+              spacing={3}
+            >
+              <Stack spacing={1}>
+                <Typography variant="subtitle1">
+                  Influencer signups
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                >
+                  Lorem ipsum
+                </Typography>
+              </Stack>
+              <Switch defaultChecked />
+            </Stack>
+            <Stack
+              alignItems="flex-start"
+              direction="row"
+              justifyContent="space-between"
+              spacing={3}
+            >
+              <Stack spacing={1}>
+                <Typography variant="subtitle1">
+                  Influencer added to database
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                >
+                  Lorem ipsum
+                </Typography>
+              </Stack>
+              <Switch defaultChecked />
+            </Stack>
+            <Stack
+              alignItems="flex-start"
+              direction="row"
+              justifyContent="space-between"
+              spacing={3}
+            >
+              <Stack spacing={1}>
+                <Typography variant="subtitle1">
+                  Membership
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                >
+                  Lorem ipsum
+                </Typography>
+              </Stack>
+              <Switch defaultChecked />
+            </Stack>
+          </Stack>
+
         </Grid>
-      </CardContent>
-    </Card>
-  );
-  
+      </Grid>
+    </CardContent>
+  </Card>
+);
