@@ -318,23 +318,23 @@ const page = () => {
                             </Box>
 
                             <Box fullWidth sx={{ display: 'flex', justifyContent: 'space-between', mt: '20px' }}>
-                                <Box sx={{ display: 'flex', justifyContent: 'start', }}>
+                                <Box sx={{ display: 'flex',gap:'2rem', justifyContent: 'start', }}>
                                     <Button
                                         startIcon={<SearchIcon />}
-                                        sx={{ px: { xs: 1, md: 6 }, p: 2, borderRadius: '12px', bgcolor: '#2970FF', color: '#FFFFFF', fontWeight: 600, }}
+                                        sx={{ px: { xs: 1, md: 4 }, p: 2, borderRadius: '12px', bgcolor: '#2970FF', color: '#FFFFFF', fontWeight: 600, }}
                                         variant="contained"
                                     >
                                         Search
                                     </Button>
                                     <Button
                                         startIcon={<SaveIcon />}
-                                        sx={{ px: { xs: 1, md: 6 }, p: 2, borderRadius: '12px', fontWeight: 600, }}
+                                        sx={{ px: { xs: 1, md: 4 }, p: 2, borderRadius: '12px', fontWeight: 600, }}
                                         variant="outlined"
                                     >
                                         Save this Search
                                     </Button>
                                 </Box>
-                                <Box sx={{ display: 'flex',gap:'1rem', justifyContent: 'end',  alignItems:"center" }}>
+                                <Box sx={{ display: 'flex',gap:'2rem', justifyContent: 'end',  alignItems:"center" }}>
                                     <Box sx={{ minWidth: 200, }}>
                                         <FormControl fullWidth>
                                             <InputLabel id="demo-simple-select-label">Age</InputLabel>
@@ -352,7 +352,7 @@ const page = () => {
                                         </FormControl>
                                     </Box>
                                     <Button
-                                        sx={{ px: { xs: 1, md: 6 }, p: 2, borderRadius: '12px', bgcolor: '#2970FF', color: '#FFFFFF', fontWeight: 600, }}
+                                        sx={{ px: { xs: 1, md: 4 }, p: 2, borderRadius: '12px', bgcolor: '#2970FF', color: '#FFFFFF', fontWeight: 600, }}
                                         variant="contained"
                                     >
                                         Run this search
