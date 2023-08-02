@@ -72,8 +72,8 @@ const styles = {
       display: "block", // Change to flex on larger screens
       justifyContent: "space-between", // Add space between social media links on larger screens
       width: "30%", // Adjust the width of "Social Media Links" on larger screens
-      borderLeft: '1px solid #F2F4F7',
-    paddingLeft: '20px'
+      borderLeft: "1px solid #F2F4F7",
+      paddingLeft: "20px",
     },
   },
   socialMediaLink: {
@@ -207,7 +207,7 @@ const BrandProfile = () => {
   const classes = useStyles();
   const [overview, setOverview] = useState(0);
   const [data, setData] = useState([]);
-  const [expanded,setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(true);
   const [generaldata, setGeneraldata] = useState([]);
   const [userId, setUserId] = useState(null);
 
@@ -257,7 +257,7 @@ const BrandProfile = () => {
   };
   return (
     <Box sx={{ display: "flex" }}>
-      <Sidebar expanded={expanded}/>  
+      <Sidebar expanded={expanded} />
       <Box sx={{ width: "100%" }}>
         <Navbar expanded={expanded} setExpanded={setExpanded} />
         <Box className={classes.container} sx={{ position: "relative" }}>
@@ -299,9 +299,11 @@ const BrandProfile = () => {
             <Box>
               <Box
                 sx={{
-                  // border: "2px solid green",
-                  display: "flex",
-                  justifyContent: "space-between",
+                  border: "2px solid green",
+                  boxSizing: "border-box",
+                  display: ["block", "flex"],
+
+                  // justifyContent: "space-between",
                 }}
               >
                 <Box
@@ -321,88 +323,128 @@ const BrandProfile = () => {
                   </Box>
                   <Box
                     sx={{
-                      mt: [0, 2],
-                      mr: [1, 0],
+                      display: ["block", "flex"],
                     }}
                   >
-                    <Box sx={{ mr: [6, 0] }}>
-                      <Typography
-                        sx={{
-                          color: "#2970FF",
-                          fontWeight: 700,
-                          fontFamily: "Plus Jakarta Sans",
-                          fontSize: "22px",
-                          lineHeight: "26.4px",
-                        }}
-                      >
-                        {/* Canada Goose */}
-                        {generaldata?.general?.fname}
-                      </Typography>
-                    </Box>
-                    <Typography
-                      variant="overline"
-                      sx={{
-                        fontSize: "12px",
-                        fontWeight: 600,
-                        color: "#6C737F",
-                        lineHeight: "30px",
-                        letter:'0.5px',
-                        pt: 1,
-                        mb: 1,
-                      }}
-                    >
-                      Established since 2010
-                    </Typography>
-
                     <Box
                       sx={{
-                        display: "flex",
-                        backgroundColor: "#F9FAFF",
-                        borderRadius: "10px",
-                        padding: "5px",
-                        width: "100%",
-                        pl: "5px",
+                        mt: [0, 2],
+                        mr: [1, 0],
                       }}
                     >
-                      <LocationOnOutlinedIcon
-                        sx={{
-                          pt: "2",
-                          fontSize: "18px",
-                          color: "#2970FF",
-                        }}
-                      />
+                      <Box sx={{ mr: [6, 0] }}>
+                        <Typography
+                          sx={{
+                            color: "#2970FF",
+                            fontWeight: 700,
+                            fontFamily: "Plus Jakarta Sans",
+                            fontSize: "22px",
+                            lineHeight: "26.4px",
+                          }}
+                        >
+                          {/* Canada Goose */}
+                          {generaldata?.general?.fname}
+                        </Typography>
+                      </Box>
                       <Typography
+                        variant="overline"
                         sx={{
-                          color: "#2970FF",
-                          backgroundColor: "#F9FAFF",
-                          borderRadius: "10px",
-                          mt: 0,
-                          pl: "12px",
-                          fontSize: "13px",
-                          fontWeight: 400,
-                          fontFamily: "inter",
-                          paddingBottom: "3px",
-                          lineHeight:'15.73px'
+                          fontSize: ["9px", "12px"],
+                          fontWeight: 600,
+                          color: "#6C737F",
+                          lineHeight: "30px",
+                          letter: "0.5px",
+                          pt: 1,
+                          mb: 1,
                         }}
                       >
-                        Toronto Canada
+                        SOCIAL MEDIA INFLUENCER
                       </Typography>
+
+                      <Box
+                        sx={{
+                          display: "flex",
+                          backgroundColor: "#F9FAFF",
+                          borderRadius: "10px",
+                          padding: "5px",
+                          width: "100%",
+                          pl: "5px",
+                        }}
+                      >
+                        <LocationOnOutlinedIcon
+                          sx={{
+                            pt: "2",
+                            fontSize: "18px",
+                            color: "#2970FF",
+                          }}
+                        />
+                        <Typography
+                          sx={{
+                            color: "#2970FF",
+                            backgroundColor: "#F9FAFF",
+                            borderRadius: "10px",
+                            mt: 0,
+                            pl: "12px",
+                            fontSize: "13px",
+                            fontWeight: 400,
+                            fontFamily: "inter",
+                            paddingBottom: "3px",
+                            lineHeight: "15.73px",
+                          }}
+                        >
+                          Toronto Canada
+                        </Typography>
+                      </Box>
+                    </Box>
+                    <Box>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          p: [1, 1],
+                          pb: [2, 1],
+                          height: ["23px", "38px"],
+                          width: ["60%", "60%"],
+                          mr: 1,
+                          ml: [1, 5],
+                          border: "2px solid #2970FF",
+                          borderRadius: "10px",
+                          mt:[1,0]
+                        }}
+                      >
+                        <Box sx={{ color: "#2970FF", fontSize: ["14px"] }}>
+                          <Typography sx={{ fontSize: "10px" }}>
+                            Reach
+                          </Typography>
+                          <Typography sx={{ fontWeight: "700" }}>
+                            500K
+                          </Typography>
+                        </Box>
+                        <Box sx={{ ml: 2 }}>
+                          <TimelineIcon
+                            sx={{ color: "#00359E", fontSize: "34px" }}
+                          />
+                        </Box>
+                      </Box>
                     </Box>
                   </Box>
                 </Box>
                 <Box
                   sx={{
                     display: "flex",
+                    border: "1px solid blue",
+                    width: ["100%", "62%"],
+                    justifyContent: "end",
                     flexDirection: ["column", "row"], // Column on mobile, Row on desktop
                     mt: [1, 0],
                     mb: [5, 0],
-                    mr: [4, 0], // Margin top on mobile, no margin on desktop
-                    justifyContent: "space-between", // Space between items
+                    mr: [0, 0], // Margin top on mobile, no margin on desktop
+                    // Space between items
                     alignItems: "center", // Center items horizontally
+                    // width:'100%'
                   }}
                 >
                   {/* Left side content */}
-                  <Box
+                  {/* <Box
                     sx={{
                       display: "flex",
                       flexDirection: "column",
@@ -410,23 +452,40 @@ const BrandProfile = () => {
                       width: ["100%", "30%"], // Full width on mobile, 30% width on desktop
                       p: [0, 2],
                     }}
-                  ></Box>
+                  ></Box> */}
 
                   {/* Right side content */}
                   <Box
                     sx={{
                       display: "flex",
+                      width: "100%",
+                      justifyContent: "end",
                       flexDirection: ["column", "row"], // Column on mobile, Row on desktop
                       alignItems: ["center", "flex-start"], // Center items horizontally on mobile, start on desktop
-                      mt: [13, 0], // Margin top on mobile, no margin on desktop
-                      ml: [-18, 0],
+                      mt: [0, 0], // Margin top on mobile, no margin on desktop
+                      ml: [0, 0],
                     }}
                   >
                     <Box
                       sx={{
+                        width: [100, 90],
+                        display: ["flex"],
+                        mr: [0, 2],
+                        color: "red",
+                        mx: [0, 2],
+                      }}
+                    >
+                      <FavoriteIcon sx={{ fontSize: "35px" }}></FavoriteIcon>
+                      <GroupAddIcon
+                        sx={{ color: "#2970FF", fontSize: "35px", mx: 2 }}
+                      />
+                    </Box>
+                    <Box
+                      sx={{
                         alignItems: "center",
                         mb: [3, 0], // Margin bottom on mobile, no margin on desktop
-                        ml: [-12, 0],
+                        ml: [0, 0],
+                        mt: [2, 0],
                       }}
                     >
                       <Button variant="outlined" color="primary">
@@ -436,11 +495,15 @@ const BrandProfile = () => {
                     <Box
                       sx={{
                         alignItems: "center",
-                        ml: [-9, 2],
+                        ml: [0, 2],
                         width: "190px",
                       }}
                     >
-                      <Button variant="contained" color="primary">
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        sx={{ ml: 2 }}
+                      >
                         <QuestionAnswerIcon sx={{ mr: 1 }} /> Send Message
                       </Button>
                       <Box
@@ -448,7 +511,7 @@ const BrandProfile = () => {
                           pt: 3,
                           height: "20px",
                           color: "#111927",
-                          ml: [-1, 0],
+                          ml: [0, 0],
                         }}
                       >
                         <Box sx={{ ml: [5, 0] }}>
@@ -479,6 +542,7 @@ const BrandProfile = () => {
                 </Box>
               </Box>
             </Box>
+            
             <Box sx={{ display: "flex", mx: "13px", mt: "10px" }}>
               <Box sx={{ mx: "13px" }}>
                 <Typography
@@ -489,15 +553,7 @@ const BrandProfile = () => {
                   Overview
                 </Typography>
               </Box>
-              <Box>
-                <Typography
-                  sx={{ color: "#6C737F", "&:hover": { cursor: "pointer" } }}
-                  className={`${overview === 1 && "youtubestats"}  `}
-                  onClick={() => handledata(1)}
-                >
-                  Jobs Posted
-                </Typography>
-              </Box>
+              
             </Box>
           </Box>
           <Divider></Divider>
@@ -514,7 +570,6 @@ const BrandProfile = () => {
                 <Box sx={styles.aboutContainer}>
                   <Box
                     sx={{
-                      
                       mb: 2,
                     }}
                   >
@@ -579,14 +634,13 @@ const BrandProfile = () => {
                         www.canadagoose.com/shop
                       </Typography>
                     </Box>
-                    <Divider light={true} ></Divider>
+                    <Divider light={true}></Divider>
 
                     <Box
                       sx={{
                         p: 1,
                         pl: 0,
                         pr: "10px",
-                        
                       }}
                     >
                       <Typography
@@ -605,13 +659,12 @@ const BrandProfile = () => {
                         <PhoneOutlinedIcon sx={{ mr: 2 }} /> +92313524856
                       </Typography>
                     </Box>
-                    <Divider light={true} ></Divider>
+                    <Divider light={true}></Divider>
                     <Box
                       sx={{
                         p: 1,
                         pl: 0,
                         pr: "10px",
-                        
                       }}
                     >
                       <Typography
@@ -631,13 +684,12 @@ const BrandProfile = () => {
                         Canada
                       </Typography>
                     </Box>
-                    <Divider light={true} ></Divider>
+                    <Divider light={true}></Divider>
                     <Box
                       sx={{
                         p: 1,
                         pl: 0,
                         pr: "10px",
-                        
                       }}
                     >
                       <Typography
@@ -656,13 +708,12 @@ const BrandProfile = () => {
                         <WebIcon sx={{ mr: 2 }} /> katarina.smith@devias.io
                       </Typography>
                     </Box>
-                    <Divider light={true} ></Divider>
+                    <Divider light={true}></Divider>
                     <Box
                       sx={{
                         p: 1,
                         pl: 0,
                         pr: "10px",
-                        
                       }}
                     >
                       <Typography
@@ -681,7 +732,7 @@ const BrandProfile = () => {
                         <BorderHorizontalSharpIcon sx={{ mr: 2 }} /> 25-75
                       </Typography>
                     </Box>
-                    <Divider light={true} ></Divider>
+                    <Divider light={true}></Divider>
                   </Box>
                 </Box>
 
@@ -795,10 +846,38 @@ const BrandProfile = () => {
               {/* ... (rest of the code) ... */}
             </Box>
           )}
-          {overview === 1 && <Jobs />}
 
           <Divider sx={{ mt: "80px" }}></Divider>
-
+          <Box sx={{ my: 2 }}>
+          <Typography
+            variant="H6"
+            sx={{
+              fontWeight: 700,
+              fontSize: "18px",
+              fontFamily: "Inter",
+              fontFamily: "Plus Jakarta Sans",
+            }}
+          >
+            Stats
+          </Typography>
+        </Box>
+        <Box sx={{ display: ["block","flex"] }}>
+          <Box sx={{ mx: "13px", }}>
+            <Typography  className={`${overview === 0 && "youtubestats"} `} onClick={()=>handledata(0)}>Instagram statistics</Typography>  
+          </Box>
+          <Box sx={{ mx: "13px" }}>
+            <Typography className={`${overview === 1 && "youtubestats"} `}  onClick={()=>handledata(1)}>Youtube statistics</Typography>
+          </Box>
+          <Box sx={{ mx: "13px" }}>
+            <Typography  className={`${overview === 2 && "youtubestats"} `}   onClick={()=>handledata(2)}>tiktok statistics</Typography>
+          </Box>
+          <Box sx={{ mx: "13px" }}>
+            <Typography  className={`${overview === 3 && "youtubestats"} `}  onClick={()=>handledata(3)}>Twitter statistics</Typography>
+          </Box>
+          <Box sx={{ mx: "13px" }}>
+            <Typography  className={`${overview === 4 && "youtubestats"} `}  onClick={()=>handledata(4)}>Pinetrest statistics</Typography>
+          </Box>
+        </Box>
           <Divider></Divider>
         </Box>
       </Box>

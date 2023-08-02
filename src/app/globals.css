@@ -101,20 +101,14 @@ body {
   .css-1jaha6h-MuiTypography-root{
     text-transform: capitalize !important;
   }
-Button{
+
+  Button{
   text-transform: capitalize !important;
+  }
   .css-hip9hq-MuiPaper-root-MuiAppBar-root{
     box-shadow: none;
   }
-
-}
-
-
-
-
-
-
-
+  
   /* Customize these styles based on your design requirements */
 .inputContainer {
   position: relative;
@@ -151,6 +145,6 @@ Button{
   top: 5px;
   left: 10px;
   font-size: 10px;
-  color: #111927;
-  padding: 0 5px;
+  color: hsl(218, 39%, 11%);
+  padding: 5px;
 }

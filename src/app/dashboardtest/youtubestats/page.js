@@ -38,8 +38,7 @@ const useStyles = makeStyles((theme) => ({
       gap: '16px',
       justifyContent: 'start',
 
-    },
-    
+    },  
     card: {
       display: 'flex',
       flexDirection: 'column',
@@ -56,10 +55,6 @@ const useStyles = makeStyles((theme) => ({
         width: 'calc(25% - 16px)',
       },
     },
-    // imageContainer: {
-    //   width: '84px',
-    //   height: '84px',
-    // },
     greenBox: {
       display: 'flex',
       flexDirection: 'column',
@@ -70,39 +65,6 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
       },
     },
-  
-//   cardContainer: {
-//     display: "flex",
-//     width: "100%",
-//     // margin:'5px',
-//     mx: "5px",
-//   },
-//   card: {
-//     backgroundColor: "white",
-//     borderBottom: "4px solid #ddd",
-//     // borderRadius: '8px',
-//     boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-//     padding: "16px",
-//     width: "327px",
-//     height: "190px",
-//     borderRadius: "16px",
-//     marginLeft: "35px",
-//     marginRight: "55px",
-//     marginTop: "35px",
-//   },
-//   greenBox: {
-//     flex: "1",
-//     backgroundColor: "white",
-//     padding: "6px",
-//     borderRadius: "8px",
-//     color: "black",
-//     display: "flex",
-//     flexDirection: "column",
-//   },
-//   imageContainer: {
-//     flexShrink: "0",
-//     paddingRight: "26px",
-//   },
 lineChart: {
 width: "100%",
 height: "auto",
@@ -138,7 +100,6 @@ height: "100%",
 width: "100%",
 objectFit: "cover",
 },
-
 profilename: {
 // position: 'absolute',
 // top: '100%',
@@ -150,86 +111,52 @@ height: 155,
 width: "90%",
 overflow: "hidden",
 },
-
-  // cardContainer: {
-  //   display: "flex",
+  // lineChart: {
   //   width: "100%",
-  //   // margin:'5px',
-  //   mx: "25px",
+  //   height: "auto",
   // },
-  // card: {
-  //   backgroundColor: "white",
-  //   borderBottom: "4px solid #ddd",
-  //   // borderRadius: '8px',
-  //   boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-  //   padding: "16px",
-  //   width: "327px",
-  //   height: "190px",
-  //   borderRadius: "16px",
-  //   marginLeft: "35px",
-  //   marginRight: "55px",
-  //   marginTop: "35px",
+  // container: {
+  //   position: "relative",
+  //   height: 300,
+  //   width: Fullscreen,
+  //   margin: 5,
   // },
-  // greenBox: {
-  //   flex: "1",
-  //   backgroundColor: "white",
-  //   padding: "6px",
-  //   borderRadius: "8px",
-  //   color: "black",
-  //   display: "flex",
-  //   flexDirection: "column",
+  // coverImage: {
+  //   height: "100%",
+  //   width: "100%",
+  //   objectFit: "cover",
+  //   borderTopLeftRadius: "80px",
+  //   borderTopRightRadius: "80px",
   // },
-  // imageContainer: {
-  //   flexShrink: "0",
-  //   paddingRight: "26px",
+  // profileImage: {
+  //   // position: 'absolute',
+  //   // top: '110%',
+  //   // left: '6%',
+  //   // transform: 'translate(-50%, -50%)',
+  //   borderRadius: "50%",
+  //   border: "5px solid primary",
+  //   height: 120,
+  //   width: 120,
+  //   marginTop: "-40px",
+  //   marginLeft: "30px",
+  //   overflow: "hidden",
   // },
-  lineChart: {
-    width: "100%",
-    height: "auto",
-  },
-  container: {
-    position: "relative",
-    height: 300,
-    width: Fullscreen,
-    margin: 5,
-  },
-  coverImage: {
-    height: "100%",
-    width: "100%",
-    objectFit: "cover",
-    borderTopLeftRadius: "80px",
-    borderTopRightRadius: "80px",
-  },
-  profileImage: {
-    // position: 'absolute',
-    // top: '110%',
-    // left: '6%',
-    // transform: 'translate(-50%, -50%)',
-    borderRadius: "50%",
-    border: "5px solid primary",
-    height: 120,
-    width: 120,
-    marginTop: "-40px",
-    marginLeft: "30px",
-    overflow: "hidden",
-  },
-  profileImageImg: {
-    height: "100%",
-    width: "100%",
-    objectFit: "cover",
-  },
-
-  profilename: {
-    // position: 'absolute',
-    // top: '100%',
-    // left: '10%',
-    // transform: 'translate(-50%, -50%)',
-    // borderRadius: '50%',
-    // border: "5px solid black",
-    height: 155,
-    width: "90%",
-    overflow: "hidden",
-  },
+  // profileImageImg: {
+  //   height: "100%",
+  //   width: "100%",
+  //   objectFit: "cover",
+  // },
+  // profilename: {
+  //   // position: 'absolute',
+  //   // top: '100%',
+  //   // left: '10%',
+  //   // transform: 'translate(-50%, -50%)',
+  //   // borderRadius: '50%',
+  //   // border: "5px solid black",
+  //   height: 155,
+  //   width: "90%",
+  //   overflow: "hidden",
+  // },
 }));
 
 
@@ -777,6 +704,7 @@ const Youtube = () => {
                   </Box>
                 </Box>
               </Box>
+
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}}  className="flex flex-row items-center px-7">
                   <Box sx={{mr:4,mt:1}} className={classes.imageContainer}>
@@ -851,6 +779,7 @@ const Youtube = () => {
                   </Box>
                 </Box>
               </Box>
+              
               <Box className={classes.card} >
                 <Box sx={{pt:3,display:'flex',mt:3}} className="flex flex-row items-center px-7">
                   <Box sx={{mr:4,mt:1}} className={classes.imageContainer}>
