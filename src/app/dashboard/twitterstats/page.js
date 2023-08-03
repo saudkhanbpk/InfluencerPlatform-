@@ -45,65 +45,31 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '15px',
+    padding: ['9px','15px'],
     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
     borderRadius: '8px',
-    width: '390px',
-    height: '206px',
+    width: '397px',
+    height: ['155px','226px'],
     '@media (min-width: 600px)': {
       width: 'calc(40% - 10px)',
     },
     '@media (min-width: 900px)': {
-      width: 'calc(25% - 16px)',
+      width: 'calc(26% - 16px)',
     },
   },
-  // imageContainer: {
-  //   width: '84px',
-  //   height: '84px',
-  // },
+  
   greenBox: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: '1px',
+    marginTop: ['5px','1px'],
+    marginLeft: ['6px','0px'],
+
     '& p': {
       margin: '6px',
       textAlign: 'center',
     },
   },
-
-//   cardContainer: {
-//     display: "flex",
-//     width: "100%",
-//     // margin:'5px',
-//     mx: "5px",
-//   },
-//   card: {
-//     backgroundColor: "white",
-//     borderBottom: "4px solid #ddd",
-//     // borderRadius: '8px',
-//     boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-//     padding: "16px",
-//     width: "327px",
-//     height: "190px",
-//     borderRadius: "16px",
-//     marginLeft: "35px",
-//     marginRight: "55px",
-//     marginTop: "35px",
-//   },
-//   greenBox: {
-//     flex: "1",
-//     backgroundColor: "white",
-//     padding: "6px",
-//     borderRadius: "8px",
-//     color: "black",
-//     display: "flex",
-//     flexDirection: "column",
-//   },
-//   imageContainer: {
-//     flexShrink: "0",
-//     paddingRight: "26px",
-//   },
 lineChart: {
 width: "100%",
 height: "auto",
@@ -233,7 +199,6 @@ profilename: {
 },
 }));
 
-
 const Twitterstats = () => {
 
   const classes = useStyles();
@@ -252,7 +217,7 @@ const Twitterstats = () => {
             <Box className={classes.cardContainer}>
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/grouped.png"
                       width={"84"}
@@ -309,7 +274,8 @@ const Twitterstats = () => {
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -326,7 +292,7 @@ const Twitterstats = () => {
               </Box>
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/cardgroup.png"
                       width={"104"}
@@ -373,7 +339,7 @@ const Twitterstats = () => {
 
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/heart.png"
                       width={"84"}
@@ -430,7 +396,8 @@ const Twitterstats = () => {
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -449,7 +416,7 @@ const Twitterstats = () => {
             
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/message.png"
                       width={"84"}
@@ -506,7 +473,8 @@ const Twitterstats = () => {
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -524,7 +492,7 @@ const Twitterstats = () => {
               
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/connect.png"
                       width={"84"}
@@ -581,7 +549,8 @@ const Twitterstats = () => {
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -598,8 +567,8 @@ const Twitterstats = () => {
               </Box>
 
               <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                <Box sx={{pt:[2,3],display:'flex',mt:[0,3],pb:['11px',0]}} className="flex flex-row items-center ">
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/heartsearch.png"
                       width={"84"}
@@ -645,8 +614,8 @@ const Twitterstats = () => {
               </Box>
 
               <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                <Box sx={{pt:[2,3],display:'flex',mt:[0,3],pb:['11px',0]}} className="flex flex-row items-center ">
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/record.png"
                       width={"84"}

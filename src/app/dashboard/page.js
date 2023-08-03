@@ -49,10 +49,10 @@ const styles = {
       maxWidth: "700px", // Limit the maximum width of the image on larger screens
       margin: "0 auto", // Center the image on larger screens
     },
-    coverImage: {
-      width: "100%",
-      height: "auto",
-    },
+    // coverImage: {
+    //   width: "100%",
+    //   height: "auto",
+    // },
     aboutAndSocialMediaContainer: {
       display: "block", // Default display as block
       "@media (min-width: 600px)": {
@@ -99,10 +99,10 @@ const styles = {
     maxWidth: "700px", // Limit the maximum width of the image on larger screens
     margin: "0 auto", // Center the image on larger screens
   },
-  coverImage: {
-    width: "100%",
-    height: "auto",
-  },
+  // coverImage: {
+  //   width: "100%",
+  //   height: "auto",
+  // },
   aboutAndSocialMediaContainer: {
     display: "block", // Default display as block
     "@media (min-width: 600px)": {
@@ -156,94 +156,67 @@ const useStyles = makeStyles((theme) => ({
       height: "173px", // Initial height for larger screens
       borderRadius: "50%",
       overflow: "hidden",
+      px:'10px',
       margin: "0 auto", // Center the image
       "@media (max-width: 600px)": {
-        width: "100px", // Adjust width for smaller screens
-        height: "100px", // Adjust height for smaller screens
+        width: "170px", // Adjust width for smaller screens
+        height: "170px", // Adjust height for smaller screens
+        marginLeft:'15px'
       },
     },
     imageclass: {
       "@media (max-width: 600px)": {
         width: "55px", // Adjust width for smaller screens
         height: "55px", // Adjust height for smaller screens
-        marginRight: "0px",
+        marginRight: "10px",
+        marginLeft:'15px',
         marginTop: "17px",
+
       },
     },
-    cardContainer: {
-      display: "flex",
-      width: "100%",
-      // margin:'5px',
-      mx: "25px",
-    },
-    card: {
-      backgroundColor: "white",
-      borderBottom: "4px solid #ddd",
-      // borderRadius: '8px',
-      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-      padding: "16px",
-      width: "327px",
-      height: "190px",
-      borderRadius: "16px",
-      marginLeft: "35px",
-      marginRight: "55px",
-      marginTop: "35px",
-    },
-    greenBox: {
-      flex: "1",
-      backgroundColor: "white",
-      padding: "6px",
-      borderRadius: "8px",
-      color: "black",
-      display: "flex",
-      flexDirection: "column",
-    },
+    
+    
+    
     imageContainer: {
       flexShrink: "0",
-      paddingRight: "26px",
+      paddingLeft: "20px",
     },
     lineChart: {
       width: "100%",
       height: "auto",
-    },
-    container: {
+      },
+      container: {
       position: "relative",
       height: 300,
       width: Fullscreen,
       margin: 5,
-    },
-    coverImage: {
+      },
+      coverImage: {
       height: "100%",
       width: "100%",
       objectFit: "cover",
-      borderTopLeftRadius: ["2px", "80px"],
-      borderTopRightRadius: ["2px", "80px"],
-    },
-    profileImage: {
-      // position: 'absolute',
-      // top: '110%',
-      // left: '6%',
-      // transform: 'translate(-50%, -50%)',
-      borderRadius: "50%",
-      border: "5px solid primary",
-      height: 120,
-      width: 120,
-      marginTop: "-40px",
-      marginLeft: "30px",
-      overflow: "hidden",
-      zIndex: "1",
-      "@media (max-width: 600px)": {
-        marginLeft: "0px",
-        width: "90px",
+      borderTopLeftRadius: ["20px","80px"],
+      borderTopRightRadius:["20px","80px"],
       },
-    },
+    
     profileImageImg: {
       height: "100%",
       width: "100%",
       objectFit: "cover",
       
     },
-  
+    greenBox: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      marginTop: ['5px','1px'],
+      marginLeft: ['6px','0px'],
+
+      '& p': {
+        margin: '6px',
+        textAlign: 'center',
+      },
+    },
     profilename: {
       // position: 'absolute',
       // top: '100%',
@@ -286,37 +259,19 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '15px',
+    padding: ['9px','15px'],
     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
     borderRadius: '8px',
-    width: '390px',
-    height: '206px',
+    width: '397px',
+    height: ['155px','226px'],
     '@media (min-width: 600px)': {
       width: 'calc(40% - 10px)',
     },
     '@media (min-width: 900px)': {
-      width: 'calc(25% - 16px)',
+      width: 'calc(26% - 16px)',
     },
   },
-  // greenBox: {
-  //   flex: "1",
-  //   backgroundColor: "white",
-  //   padding: "6px",
-  //   borderRadius: "8px",
-  //   color: "black",
-  //   display: "flex",
-  //   flexDirection: "column",
-  // },
-  greenBox: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    marginTop: '1px',
-    '& p': {
-      margin: '6px',
-      textAlign: 'center',
-    },
-  },
+  
   // imageContainer: {
   //   flexShrink: "0",
   //   paddingRight: "26px",
@@ -336,13 +291,7 @@ const useStyles = makeStyles((theme) => ({
     width: Fullscreen,
     margin: 5,
   },
-  coverImage: {
-    height: "100%",
-    width: "100%",
-    objectFit: "cover",
-    borderTopLeftRadius: "80px",
-    borderTopRightRadius: "80px",
-  },
+  
   profileImage: {
     // position: 'absolute',
     // top: '110%',
@@ -350,10 +299,10 @@ const useStyles = makeStyles((theme) => ({
     // transform: 'translate(-50%, -50%)',
     borderRadius: "50%",
     border: "5px solid primary",
-    height: 120,
-    width: 120,
+    // height: 120,
+    // width: 120,
     marginTop: "-40px",
-    marginLeft: "30px",
+    // marginLeft: "30px",
     overflow: "hidden",
     zIndex: '1',
 
@@ -438,7 +387,7 @@ company_informations();
   return (
     <Box sx={{display:'flex'}}>
     <Sidebar/>
-    <Box>
+    <Box sx={{width:'100%'}}>
     <Navbar/>
     <Box className={classes.container} sx={{ position: "relative" }}>
       {/* <Image
@@ -670,7 +619,7 @@ company_informations();
                   }}
                   className={classes.profileImageContainer}
                 >
-                  <Box className={classes.profileImage}>
+                  <Box sx={{marginLeft:['0px','30px']}} className={classes.profileImage}>
                     <Image
                       src="/image/brandprofile.png"
                       width={100}
@@ -763,7 +712,7 @@ company_informations();
                           height: ["23px", "38px"],
                           width: ["60%", "60%"],
                           mr: 1,
-                          ml: [1, 5],
+                          ml: [2, 5],
                           border: "2px solid #2970FF",
                           borderRadius: "10px",
                           mt:[1,0]
@@ -1711,19 +1660,30 @@ company_informations();
           </Typography>
         </Box>
         <Box sx={{ display: ["block","flex"] }}>
-          <Box sx={{ mx: "13px", }}>
+          <Box sx={{ mx: "13px",
+          '&:hover': {
+            cursor: 'pointer',
+          }, }}>
             <Typography  className={`${overview === 0 && "youtubestats"} `} onClick={()=>handledata(0)}>Instagram statistics</Typography>  
           </Box>
-          <Box sx={{ mx: "13px" }}>
+          <Box sx={{ mx: "13px",'&:hover': {
+            cursor: 'pointer',
+          }, }}>
             <Typography className={`${overview === 1 && "youtubestats"} `}  onClick={()=>handledata(1)}>Youtube statistics</Typography>
           </Box>
-          <Box sx={{ mx: "13px" }}>
+          <Box sx={{ mx: "13px",'&:hover': {
+            cursor: 'pointer',
+          }, }}>
             <Typography  className={`${overview === 2 && "youtubestats"} `}   onClick={()=>handledata(2)}>tiktok statistics</Typography>
           </Box>
-          <Box sx={{ mx: "13px" }}>
+          <Box sx={{ mx: "13px" ,'&:hover': {
+            cursor: 'pointer',
+          },}}>
             <Typography  className={`${overview === 3 && "youtubestats"} `}  onClick={()=>handledata(3)}>Twitter statistics</Typography>
           </Box>
-          <Box sx={{ mx: "13px" }}>
+          <Box sx={{ mx: "13px",'&:hover': {
+            cursor: 'pointer',
+          }, }}>
             <Typography  className={`${overview === 4 && "youtubestats"} `}  onClick={()=>handledata(4)}>Pinetrest statistics</Typography>
           </Box>
         </Box>
@@ -1745,7 +1705,7 @@ company_informations();
             <Box className={classes.cardContainer}>
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',2],mt:['25px',3],}} className={classes.imageContainer}>
                     <Image
                       src="/image/grouped.png"
                       width={"84"}
@@ -1802,7 +1762,8 @@ company_informations();
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                       display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -1818,8 +1779,8 @@ company_informations();
                 </Box>
               </Box>
               <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                <Box sx={{display:'flex',mt:3,mb:3}} className="flex flex-row items-center ">
+                  <Box sx={{mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/cardgroup.png"
                       width={"104"}
@@ -1866,7 +1827,7 @@ company_informations();
 
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/heart.png"
                       width={"84"}
@@ -1923,7 +1884,8 @@ company_informations();
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -1942,7 +1904,7 @@ company_informations();
             
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/message.png"
                       width={"84"}
@@ -1999,7 +1961,8 @@ company_informations();
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -2017,7 +1980,7 @@ company_informations();
 
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/connect.png"
                       width={"84"}
@@ -2074,7 +2037,8 @@ company_informations();
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -2092,7 +2056,7 @@ company_informations();
 
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/comment.png"
                       width={"84"}
@@ -2149,7 +2113,8 @@ company_informations();
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -2167,7 +2132,7 @@ company_informations();
 
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}}  className="flex flex-row items-center px-7">
-                  <Box sx={{mr:4,mt:1}} className={classes.imageContainer}>
+                  <Box sx={{ml:2,mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/like.png"
                       width={"84"}
@@ -2209,7 +2174,7 @@ company_informations();
                         sx={{
                           color: "#008EAD",
                          
-                          fontSize: "10px",
+                          fontSize: ["11px","14px"],
                           fontWeight: "600",
                           lineHeight: "17px",
                           letterSpacing: "8%",
@@ -2224,7 +2189,8 @@ company_informations();
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -2241,7 +2207,7 @@ company_informations();
 
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}}  className="flex flex-row items-center px-7">
-                  <Box sx={{mr:4,mt:1}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/clock.png"
                       width={"84"}
@@ -2297,7 +2263,8 @@ company_informations();
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -2313,8 +2280,8 @@ company_informations();
               </Box>
 
               <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:3,mt:3}} className={classes.imageContainer}>
+                <Box sx={{display:'flex',mt:3,mb:3}} className="flex flex-row items-center ">
+                  <Box sx={{mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/reel.png"
                       width={"90"}

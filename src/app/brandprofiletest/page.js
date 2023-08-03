@@ -117,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   cardContainer: {
-    display: "flex",
+    display:['block','flex'],
     width: "100%",
     // margin:'5px',
     mx: "25px",
@@ -557,7 +557,7 @@ const BrandProfile = () => {
             </Box>
           </Box>
           <Divider></Divider>
-          {overview === 0 && (
+          
             <Box
               sx={{
                 padding: "20px",
@@ -845,7 +845,7 @@ const BrandProfile = () => {
 
               {/* ... (rest of the code) ... */}
             </Box>
-          )}
+          
 
           <Divider sx={{ mt: "80px" }}></Divider>
           <Box sx={{ my: 2 }}>
@@ -879,6 +879,362 @@ const BrandProfile = () => {
           </Box>
         </Box>
           <Divider></Divider>
+          {
+  overview === 0 && 
+    
+    <Box sx={{ p: { xs: '5px', sm: '10px', md: '15px' } ,}}>
+      <Box
+        display="flex"
+        flexWrap="wrap"
+        gap={{ xs: '5px', sm: '10px', md: '16px' }}
+        justifyContent="center"
+      >
+        <Box sx={{width: { xs: '100%', sm: '80%', md: '100%' } }}>
+          <Box className={classes.cardContainer}>
+            <Box className={classes.card}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <Box className={classes.imageContainer}>
+                  <Image
+                    src="/image/grouped.png"
+                    width={84}
+                    height={84}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    mt: 3,
+                  }}
+                >
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: '#9D9D9D',
+                      fontSize: '14px',
+                      fontWeight: '400',
+                      lineHeight: '19px',
+                      letterSpacing: '0.08em',
+                      textAlign: 'center',
+                    }}
+                  >
+                    Followers Count
+                  </Typography>
+
+                  <Typography
+                    sx={{
+                      color: '#4466F2',
+                      fontSize: '40px',
+                      fontWeight: '700',
+                      lineHeight: '49px',
+                      letterSpacing: '9%',
+                      textAlign: 'center',
+                      m: '7px',
+                    }}
+                  >
+                    500K
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: '#008EAD',
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      lineHeight: '17px',
+                      letterSpacing: '8%',
+                      textAlign: 'center',
+                    }}
+                  >
+                    <FiberManualRecordSharpIcon fontSize="10px" /> Macro
+                  </Typography>
+                </Box>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#4466F2',
+                    fontSize: '12px',
+                    fontWeight: '600',
+                    lineHeight: '15px',
+                    letterSpacing: '8%',
+                    textAlign: 'center',
+                    mt: 8,
+                  }}
+                >
+                  Details <ExpandMoreIcon />
+                </Typography>
+              </Box>
+            </Box>
+            <Box className={classes.card}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <Box className={classes.imageContainer}>
+                  <Image
+                    src="/image/grouped.png"
+                    width={84}
+                    height={84}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    mt: 3,
+                  }}
+                >
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: '#9D9D9D',
+                      fontSize: '14px',
+                      fontWeight: '400',
+                      lineHeight: '19px',
+                      letterSpacing: '0.08em',
+                      textAlign: 'center',
+                    }}
+                  >
+                    Followers Count
+                  </Typography>
+
+                  <Typography
+                    sx={{
+                      color: '#4466F2',
+                      fontSize: '40px',
+                      fontWeight: '700',
+                      lineHeight: '49px',
+                      letterSpacing: '9%',
+                      textAlign: 'center',
+                      m: '7px',
+                    }}
+                  >
+                    500K
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: '#008EAD',
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      lineHeight: '17px',
+                      letterSpacing: '8%',
+                      textAlign: 'center',
+                    }}
+                  >
+                    <FiberManualRecordSharpIcon fontSize="10px" /> Macro
+                  </Typography>
+                </Box>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#4466F2',
+                    fontSize: '12px',
+                    fontWeight: '600',
+                    lineHeight: '15px',
+                    letterSpacing: '8%',
+                    textAlign: 'center',
+                    mt: 8,
+                  }}
+                >
+                  Details <ExpandMoreIcon />
+                </Typography>
+              </Box>
+            </Box>
+
+            <Box className={classes.card}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <Box className={classes.imageContainer}>
+                  <Image
+                    src="/image/grouped.png"
+                    width={84}
+                    height={84}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    mt: 3,
+                  }}
+                >
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: '#9D9D9D',
+                      fontSize: '14px',
+                      fontWeight: '400',
+                      lineHeight: '19px',
+                      letterSpacing: '0.08em',
+                      textAlign: 'center',
+                    }}
+                  >
+                    Followers Count
+                  </Typography>
+
+                  <Typography
+                    sx={{
+                      color: '#4466F2',
+                      fontSize: '40px',
+                      fontWeight: '700',
+                      lineHeight: '49px',
+                      letterSpacing: '9%',
+                      textAlign: 'center',
+                      m: '7px',
+                    }}
+                  >
+                    500K
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: '#008EAD',
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      lineHeight: '17px',
+                      letterSpacing: '8%',
+                      textAlign: 'center',
+                    }}
+                  >
+                    <FiberManualRecordSharpIcon fontSize="10px" /> Macro
+                  </Typography>
+                </Box>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#4466F2',
+                    fontSize: '12px',
+                    fontWeight: '600',
+                    lineHeight: '15px',
+                    letterSpacing: '8%',
+                    textAlign: 'center',
+                    mt: 8,
+                  }}
+                >
+                  Details <ExpandMoreIcon />
+                </Typography>
+              </Box>
+            </Box>
+
+            <Box className={classes.card}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <Box className={classes.imageContainer}>
+                  <Image
+                    src="/image/grouped.png"
+                    width={84}
+                    height={84}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    mt: 3,
+                  }}
+                >
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: '#9D9D9D',
+                      fontSize: '14px',
+                      fontWeight: '400',
+                      lineHeight: '19px',
+                      letterSpacing: '0.08em',
+                      textAlign: 'center',
+                    }}
+                  >
+                    Followers Count
+                  </Typography>
+
+                  <Typography
+                    sx={{
+                      color: '#4466F2',
+                      fontSize: '40px',
+                      fontWeight: '700',
+                      lineHeight: '49px',
+                      letterSpacing: '9%',
+                      textAlign: 'center',
+                      m: '7px',
+                    }}
+                  >
+                    500K
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: '#008EAD',
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      lineHeight: '17px',
+                      letterSpacing: '8%',
+                      textAlign: 'center',
+                    }}
+                  >
+                    <FiberManualRecordSharpIcon fontSize="10px" /> Macro
+                  </Typography>
+                </Box>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#4466F2',
+                    fontSize: '12px',
+                    fontWeight: '600',
+                    lineHeight: '15px',
+                    letterSpacing: '8%',
+                    textAlign: 'center',
+                    mt: 8,
+                  }}
+                >
+                  Details <ExpandMoreIcon />
+                </Typography>
+              </Box>
+            </Box>
+            {/* Add other card components with similar responsive styles */}
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+}
+{
+  overview === 1 && 
+  {/* <Youtube /> */}
+}
+{
+  overview === 2 && 
+  {/* <Tiktokstats /> */}
+}
+{
+  overview === 3 && 
+  {/* <Twitterstats /> */}
+}
+{
+  overview === 4 && 
+  {/* <Pintereststats /> */}
+}
         </Box>
       </Box>
     </Box>
