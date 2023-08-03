@@ -51,8 +51,10 @@ import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
 import DisabledByDefaultOutlinedIcon from '@mui/icons-material/DisabledByDefaultOutlined';
 import {baseUrl} from "../BaseUrl"
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const Sidebar = ({expanded}) => {
+  const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const [customer, setCustomer] = React.useState(false);
   const [product, setProduct] = React.useState(false);
@@ -134,7 +136,7 @@ generalData();
     
     <Box  
       sx={{
-        width: expanded ? "210px" : "0px", // Adjust width based on the expanded state
+        width: expanded ? "250px" : "0px", // Adjust width based on the expanded state
         backgroundColor: "#1C2536",
         color: "white",
         height: "100%",
@@ -196,6 +198,7 @@ generalData();
       </Box>
       <List>
         <ListItem
+         onClick={() => router.push("/brandprofile")}
           ButtonBase
           sx={{
             borderRadius: "16px",
@@ -249,6 +252,21 @@ generalData();
           <CurrencyBitcoinOutlinedIcon sx={{ marginRight: "15px", color: "white" }} />
 
           <ListItemText primary="Crypto" />
+        </ListItem>
+        <ListItem
+        onClick={() => router.push("/account-manage")}
+          ButtonBase
+          sx={{
+            borderRadius: "16px",
+            "&:hover": {
+              backgroundColor: "#323A4A", cursor: 'pointer'
+            },
+          }}
+        >
+
+          <AccountCircleIcon sx={{ marginRight: "15px", color: "white" }} />
+
+          <ListItemText primary="Account" />
         </ListItem>
         <Typography variant="overline"
           sx={{
@@ -454,7 +472,7 @@ generalData();
         </ListItem>
         <Collapse in={academy} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem ButtonBase sx={{ paddingLeft: 2 }}>
+            <ListItem ButtonBase sx={{ paddingLeft: 2 }} onClick={() => router.push("/finder")}>
               <ListItemIcon>
                 {/* Add an icon for the menu item */}
               </ListItemIcon>

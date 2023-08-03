@@ -1,6 +1,6 @@
 'use client'
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import Camera01Icon from '@untitled-ui/icons-react/build/esm/Camera01';
 import User01Icon from '@untitled-ui/icons-react/build/esm/User01';
 import {
   Avatar,
@@ -16,10 +16,9 @@ import {
   Typography,
   Unstable_Grid2 as Grid
 } from '@mui/material';
-import { alpha } from '@mui/material/styles';
 import { baseUrl } from '@/app/BaseUrl';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+
 
 export const AccountGeneralSettings = (props) => {
   const [userData, setUserData] = useState('');
@@ -29,55 +28,68 @@ export const AccountGeneralSettings = (props) => {
   const [timeZones, setTimeZones] = useState('');
 
 
+  // Create refs for input fields
+  const firstNameRef = useRef(null);
+  const lastNameRef = useRef(null);
+  const userEmailRef = useRef(null);
+  const timeZonesRef = useRef(null);
+
+  const handleEditClick = (ref) => {
+    // Focus on the input field
+    if (ref && ref.current) {
+      ref.current.focus();
+    }
+  };
+
   const allUserData = () => {
-    
-   
+
+
     let user = JSON.parse(localStorage.getItem('user'))
-   
+
     const apiUrl = `${baseUrl}/api/getuser/${user?._id}`;
 
-axios.post(apiUrl)
-      .then((response) =>{
-         setUserData(response.data?.users[0])
+    axios.post(apiUrl)
+      .then((response) => {
+        setUserData(response.data?.users[0])
         // console.log("user dfatra ;",response)
       })
       .catch((error) => console.error('Error fetching data:', error));
   }
   // const updateUserData = () => {
-    const handleSubmit = (e) => {
-      console.log("ksdgjfgsdhkf")
-      e.preventDefault();
-      const data = {
-        firstName: firstName,
-        lastName:lastName,
-        email: userEmail,
-        timeZones: timeZones,
+  const handleSubmit = (e) => {
+    console.log("ksdgjfgsdhkf")
+    e.preventDefault();
+    const data = {
+      firstName: firstName,
+      lastName: lastName,
+      email: userEmail,
+      timeZones: timeZones,
     };
 
-console.log("data--------", data)
+    console.log("data--------", data)
     const config = {
-        headers: {
-            "Content-Type": "application/json",
-        },
+      headers: {
+        "Content-Type": "application/json",
+      },
     };
-    
-    
-   
+
+
+
     let user = JSON.parse(localStorage.getItem('user'))
-   console.log("userData", user._id)
+    console.log("userData", user._id)
     axios.put(`${baseUrl}/api/update/${user._id}`, data, config)
-            .then((response) => {
-                console.log(response.data);
-                // const { email, _id } = response.data.newUser;
-            })
-            .catch((error) => {
-                console.error(error.response.data.msg);
-                toast.error(error.response.data.msg);
-                setError(error.response.data.msg);
-            })
-  
-    }
-  
+      .then((response) => {
+        console.log(response.data);
+        // const { email, _id } = response.data.newUser;
+      })
+      .catch((error) => {
+        console.error(error.response.data.msg);
+        toast.error(error.response.data.msg);
+        setError(error.response.data.msg);
+      })
+
+  }
+
   useEffect(() => {
 
     allUserData();
@@ -109,7 +121,7 @@ console.log("data--------", data)
               xs={12}
               md={4}
             >
-              <Typography variant="h5" sx={{ fontWeight: 'bold', fontFamily: 'Plus Jakarta Sans', fontSize:'18px' }}>
+              <Typography variant="h5" sx={{ fontWeight: 'bold', fontFamily: 'Plus Jakarta Sans', fontSize: '18px' }}>
                 Personal Information
               </Typography>
             </Grid>
@@ -132,44 +144,6 @@ console.log("data--------", data)
                         position: 'relative'
                       }}
                     >
-                      {/* <Box
-                        sx={{
-                          alignItems: 'center',
-                          // backgroundColor: (theme) => alpha(theme.palette.neutral[700], 0.5),
-                          borderRadius: '50%',
-                          color: 'common.white',
-                          cursor: 'pointer',
-                          display: 'flex',
-                          height: '100%',
-                          justifyContent: 'center',
-                          left: 0,
-                          opacity: 0,
-                          position: 'absolute',
-                          top: 0,
-                          width: '100%',
-                          zIndex: 1,
-                          '&:hover': {
-                            opacity: 1
-                          }
-                        }}
-                      >
-                        <Stack
-                          alignItems="center"
-                          direction="row"
-                          spacing={1}
-                        >
-                          <SvgIcon color="inherit">
-                            <Camera01Icon />
-                          </SvgIcon>
-                          <Typography
-                            color="inherit"
-                            variant="subtitle2"
-                            sx={{ fontWeight: 700 }}
-                          >
-                            Select
-                          </Typography>
-                        </Stack>
-                      </Box> */}
                       <Avatar
                         src={avatar}
                         sx={{
@@ -186,7 +160,7 @@ console.log("data--------", data)
                   <Button
                     color="primary"
                     // size="small"
-                    sx={{fontSize:'14px', fontWeight:'600'}}
+                    sx={{ fontSize: '14px', fontWeight: '600' }}
                   >
                     Change
                   </Button>
@@ -202,12 +176,14 @@ console.log("data--------", data)
                     margin="normal"
                     name="name"
                     type="text"
-                    onChange={(e)=>setFirstName(e.target.value)}
+                    inputRef={firstNameRef} // Attach ref to the input field
+                    onChange={(e) => setFirstName(e.target.value)}
                     value={firstName}
                   />
                   <Button
                     color="primary"
                     size="small"
+                    onClick={() => handleEditClick(firstNameRef)} // Call the handler with ref
                   >
                     Edit
                   </Button>
@@ -223,12 +199,14 @@ console.log("data--------", data)
                     margin="normal"
                     name="name"
                     type="text"
-                    onChange={(e)=>setLastName(e.target.value)}
+                    inputRef={lastNameRef} // Attach ref to the input field
+                    onChange={(e) => setLastName(e.target.value)}
                     value={lastName}
                   />
                   <Button
                     color="primary"
                     size="small"
+                    onClick={() => handleEditClick(lastNameRef)} // Call the handler with ref
                   >
                     Edit
                   </Button>
@@ -244,12 +222,14 @@ console.log("data--------", data)
                     margin="normal"
                     name="name"
                     type="text"
-                    onChange={(e)=>setUserEmail(e.target.value)}
+                    inputRef={userEmailRef} // Attach ref to the input field
+                    onChange={(e) => setUserEmail(e.target.value)}
                     value={userEmail}
                   />
                   <Button
                     color="primary"
                     size="small"
+                    onClick={() => handleEditClick(userEmailRef)} // Call the handler with ref
                   >
                     Edit
                   </Button>
@@ -265,13 +245,15 @@ console.log("data--------", data)
                     margin="normal"
                     name="name"
                     type="text"
-                    onChange={(e)=>setTimeZones(e.target.value)}
+                    inputRef={timeZonesRef} // Attach ref to the input field
+                    onChange={(e) => setTimeZones(e.target.value)}
                     value={timeZones}
-                    
+
                   />
                   <Button
                     color="primary"
                     size="small"
+                    onClick={() => handleEditClick(timeZonesRef)} // Call the handler with ref
                   >
                     Edit
                   </Button>

@@ -46,16 +46,16 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '15px',
+    padding: ['9px','15px'],
     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
     borderRadius: '8px',
-    width: '390px',
-    height: '206px',
+    width: '397px',
+    height: ['155px','226px'],
     '@media (min-width: 600px)': {
       width: 'calc(40% - 10px)',
     },
     '@media (min-width: 900px)': {
-      width: 'calc(25% - 16px)',
+      width: 'calc(26% - 16px)',
     },
   },
   // imageContainer: {
@@ -66,7 +66,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: '1px',
+    marginTop: ['5px','1px'],
+    marginLeft: ['6px','0px'],
+
     '& p': {
       margin: '6px',
       textAlign: 'center',
@@ -122,24 +124,24 @@ objectFit: "cover",
 borderTopLeftRadius: "80px",
 borderTopRightRadius: "80px",
 },
-profileImage: {
-// position: 'absolute',
-// top: '110%',
-// left: '6%',
-// transform: 'translate(-50%, -50%)',
-borderRadius: "50%",
-border: "5px solid primary",
-height: 120,
-width: 120,
-marginTop: "-40px",
-marginLeft: "30px",
-overflow: "hidden",
-},
-profileImageImg: {
-height: "100%",
-width: "100%",
-objectFit: "cover",
-},
+// profileImage: {
+// // position: 'absolute',
+// // top: '110%',
+// // left: '6%',
+// // transform: 'translate(-50%, -50%)',
+// borderRadius: "50%",
+// border: "5px solid primary",
+// height: 120,
+// width: 120,
+// marginTop: "-40px",
+// marginLeft: "30px",
+// overflow: "hidden",
+// },
+// profileImageImg: {
+// height: "100%",
+// width: "100%",
+// objectFit: "cover",
+// },
 
 profilename: {
 // position: 'absolute',
@@ -232,6 +234,10 @@ profilename: {
   width: "90%",
   overflow: "hidden",
 },
+imageContainer: {
+  flexShrink: "0",
+  paddingLeft: "20px",
+},
 }));
 
 
@@ -254,7 +260,7 @@ const Pintereststats = () => {
             <Box className={classes.cardContainer}>
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/grouped.png"
                       width={"84"}
@@ -311,7 +317,8 @@ const Pintereststats = () => {
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -328,7 +335,7 @@ const Pintereststats = () => {
               </Box>
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/cardgroup.png"
                       width={"104"}
@@ -375,7 +382,7 @@ const Pintereststats = () => {
 
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/heart.png"
                       width={"84"}
@@ -432,7 +439,8 @@ const Pintereststats = () => {
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -451,7 +459,7 @@ const Pintereststats = () => {
             
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}}className={classes.imageContainer}>
                     <Image
                       src="/image/message.png"
                       width={"84"}
@@ -508,7 +516,8 @@ const Pintereststats = () => {
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -527,7 +536,7 @@ const Pintereststats = () => {
 
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/connect.png"
                       width={"84"}
@@ -584,7 +593,8 @@ const Pintereststats = () => {
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -602,7 +612,7 @@ const Pintereststats = () => {
 
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{ml:3,mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/save.png"
                       width={"84"}
@@ -659,7 +669,8 @@ const Pintereststats = () => {
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -676,8 +687,8 @@ const Pintereststats = () => {
               </Box>
 
               <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                <Box sx={{display:'flex',mt:3,mb:3}} className="flex flex-row items-center ">
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/drum.png"
                       width={"84"}
@@ -722,8 +733,8 @@ const Pintereststats = () => {
                 </Box>
               </Box>
               <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                <Box sx={{display:'flex',mt:3,mb:3}} className="flex flex-row items-center ">
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/pin.png"
                       width={"84"}
@@ -768,8 +779,8 @@ const Pintereststats = () => {
                 </Box>
               </Box>
               <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                <Box sx={{display:'flex',mt:3,mb:3}} className="flex flex-row items-center ">
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/speaker.png"
                       width={"84"}
@@ -815,8 +826,8 @@ const Pintereststats = () => {
               </Box>
 
               <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                <Box sx={{display:'flex',mt:3,mb:3}} className="flex flex-row items-center ">
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/speaker.png"
                       width={"84"}
@@ -860,6 +871,7 @@ const Pintereststats = () => {
                   </Box>
                 </Box>
               </Box>
+              
             
             </Box>
          </Box>
