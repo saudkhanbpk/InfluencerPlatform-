@@ -305,6 +305,8 @@ const useStyles = makeStyles((theme) => ({
     // marginLeft: "30px",
     overflow: "hidden",
     zIndex: '1',
+    px:'15px',
+    py:'1px'
 
   },
   profileImageImg: {
@@ -329,6 +331,7 @@ const useStyles = makeStyles((theme) => ({
 const ProfileDashboard = () => {
   const classes = useStyles();
   const [overview , setOverview] = useState(0)
+  const [expanded, setExpanded] = useState(true)
   const [data, setData] = useState([]);
   const [generaldata, setGeneraldata] = useState([]);
   const [companyinformations, setCompanyinformations] = useState([]);
@@ -386,9 +389,9 @@ company_informations();
   }
   return (
     <Box sx={{display:'flex'}}>
-    <Sidebar/>
-    <Box sx={{width:'100%'}}>
-    <Navbar/>
+    <Sidebar expanded={expanded}/>
+    <Box sx={{width:'100%'}}> 
+    <Navbar expanded={expanded} setExpanded={setExpanded}/>
     <Box className={classes.container} sx={{ position: "relative" }}>
       {/* <Image
         width={600}
