@@ -86,7 +86,9 @@ console.log("data--------", data)
   }, []);
   useEffect(() => {
     setFirstName(userData.name)
+    setLastName(userData.lastName)
     setUserEmail(userData.email)
+    setTimeZones(userData.timeZones)
    
 
   }, [userData]);

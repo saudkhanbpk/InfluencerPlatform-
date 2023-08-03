@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import numeral from 'numeral';
 import { format } from 'date-fns';
@@ -24,6 +24,8 @@ import {
 import { PropertyList } from 'src/components/property-list';
 import { PropertyListItem } from 'src/components/property-list-item';
 import { AccountPlanIcon } from './account-plan-icon';
+import { baseUrl } from '@/app/BaseUrl';
+import axios from 'axios';
 
 const plans = [
   {
@@ -42,9 +44,19 @@ const plans = [
 ];
 
 export const AccountBillingSettings = (props) => {
-  const { plan: currentPlan = 'standard', invoices = [] } = props;
+  const { plan: currentPlan = 'standard', invoices = [] ,data} = props;
   const [selectedPlan, setSelectedPlan] = useState(currentPlan);
+  const [firstName, setFirstName] = useState('');
+  const [cardNumber, setCardNumber] = useState('');
+  const [country, setCountry] = useState('');
+  console.log("userdsdsd", data)
+  console.log("cardHolderName", data.cardHolderName)
+  useEffect(() => {
+    setFirstName(data.cardHolderName)
+    setCardNumber(data.cardNumber)
+    setCountry(data.country)
 
+  }, []);
   return (
     <Stack
       spacing={4}
@@ -178,19 +190,19 @@ export const AccountBillingSettings = (props) => {
                 align="horizontal"
                 divider
                 label="Billing name"
-                value="John Doe"
+                value={firstName}
               />
               <PropertyListItem
                 align="horizontal"
                 divider
                 label="Card number"
-                value="**** 1111"
+                value={cardNumber}
               />
               <PropertyListItem
                 align="horizontal"
                 divider
                 label="Country"
-                value="Germany"
+                value={country}
               />
               <PropertyListItem
                 align="horizontal"
