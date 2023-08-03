@@ -44,16 +44,16 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '15px',
+      padding: ['9px','15px'],
       boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
       borderRadius: '8px',
-      width: '390px',
-      height: '206px',
+      width: '397px',
+      height: ['155px','226px'],
       '@media (min-width: 600px)': {
         width: 'calc(40% - 10px)',
       },
       '@media (min-width: 900px)': {
-        width: 'calc(25% - 16px)',
+        width: 'calc(26% - 16px)',
       },
     },
     // imageContainer: {
@@ -64,7 +64,9 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      marginTop: '1px',
+      marginTop: ['5px','1px'],
+      marginLeft: ['6px','0px'],
+
       '& p': {
         margin: '6px',
         textAlign: 'center',
@@ -120,24 +122,24 @@ objectFit: "cover",
 borderTopLeftRadius: "80px",
 borderTopRightRadius: "80px",
 },
-profileImage: {
-// position: 'absolute',
-// top: '110%',
-// left: '6%',
-// transform: 'translate(-50%, -50%)',
-borderRadius: "50%",
-border: "5px solid primary",
-height: 120,
-width: 120,
-marginTop: "-40px",
-marginLeft: "30px",
-overflow: "hidden",
-},
-profileImageImg: {
-height: "100%",
-width: "100%",
-objectFit: "cover",
-},
+// profileImage: {
+// // position: 'absolute',
+// // top: '110%',
+// // left: '6%',
+// // transform: 'translate(-50%, -50%)',
+// borderRadius: "50%",
+// border: "5px solid primary",
+// height: 120,
+// width: 120,
+// marginTop: "-40px",
+// marginLeft: "30px",
+// overflow: "hidden",
+// },
+// profileImageImg: {
+// height: "100%",
+// width: "100%",
+// objectFit: "cover",
+// },
 
 profilename: {
 // position: 'absolute',
@@ -254,7 +256,7 @@ const Youtube = () => {
             <Box className={classes.cardContainer}>
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/grouped.png"
                       width={"84"}
@@ -297,7 +299,7 @@ const Youtube = () => {
                         sx={{
                           color: "#008EAD",
                          
-                          fontSize: "14px",
+                          fontSize: ["11px","14px"],
                           fontWeight: "600",
                           lineHeight: "17px",
                           letterSpacing: "8%",
@@ -307,32 +309,41 @@ const Youtube = () => {
                         <FiberManualRecordSharpIcon fontSize="10px" /> Macro
                       </Typography>
                     </Box>
+                    <Box sx={{
+                        alignItems:'center',
+                       display:'flex',
+                       textAlign: "left",
+
+
+                    }}>
                     <Typography
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
                         letterSpacing: "8%",
+                        display:'flex',
+                       alignItems:'center',
                         textAlign: "left",
                         marginTop: "8px",
-                        alignContent:'baseline'
                       }}
                     >
                       Details <ExpandMoreIcon />
                     </Typography>
+
+                    </Box>
                   </Box>
                 </Box>
               </Box>
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{ml:2,mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{ml:2,mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/graph.png"
-                      width={"104"}
-                      height={"84"}
+                      width={84}
+                      height={70}
                     ></Image>
                   </Box>
                   <Box className={classes.greenBox}>
@@ -371,22 +382,22 @@ const Youtube = () => {
                         sx={{
                           color: "#008EAD",
                          
-                          fontSize: "14px",
+                          fontSize: ["11px","14px"],
                           fontWeight: "600",
                           lineHeight: "17px",
                           letterSpacing: "8%",
                           textAlign: "left",
                         }}
                       >
-                        <FiberManualRecordSharpIcon fontSize="10px" /> High
-                        Average Views
+                        <FiberManualRecordSharpIcon fontSize="10px" /> High Average Views
                       </Typography>
                     </Box>
                     <Typography
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -401,10 +412,9 @@ const Youtube = () => {
                   </Box>
                 </Box>
               </Box>
-
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{ml:2,mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{ml:2,mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/heart.png"
                       width={"84"}
@@ -447,7 +457,7 @@ const Youtube = () => {
                         sx={{
                           color: "#008EAD",
                          
-                          fontSize: "14px",
+                          fontSize: ["11px","14px"],
                           fontWeight: "600",
                           lineHeight: "17px",
                           letterSpacing: "8%",
@@ -461,7 +471,8 @@ const Youtube = () => {
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -476,11 +487,9 @@ const Youtube = () => {
                   </Box>
                 </Box>
               </Box>
-              
-            
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{ml:2,mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{ml:2,mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/one.png"
                       width={"84"}
@@ -523,7 +532,7 @@ const Youtube = () => {
                         sx={{
                           color: "#08DCA9",
                          
-                          fontSize: "14px",
+                          fontSize: ["11px","14px"],
                           fontWeight: "600",
                           lineHeight: "17px",
                           letterSpacing: "8%",
@@ -537,7 +546,8 @@ const Youtube = () => {
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -551,11 +561,10 @@ const Youtube = () => {
                     </Typography>
                   </Box>
                 </Box>
-              </Box>
-              
+              </Box>         
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{ ml:2,mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{ml:2,mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/hearteye.png"
                       width={"110"}
@@ -598,7 +607,7 @@ const Youtube = () => {
                         sx={{
                           color: "#08DCA9",
                          
-                          fontSize: "14px",
+                          fontSize:["11px","14px"],
                           fontWeight: "600",
                           lineHeight: "17px",
                           letterSpacing: "8%",
@@ -612,7 +621,8 @@ const Youtube = () => {
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -630,7 +640,7 @@ const Youtube = () => {
 
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{ml:2,mr:5,mt:3}} className={classes.imageContainer}>
+                  <Box sx={{ml:2,mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/commenteye.png"
                       width={"84"}
@@ -673,7 +683,7 @@ const Youtube = () => {
                         sx={{
                           color: "#08DCA9",
                          
-                          fontSize: "14px",
+                          fontSize: ["11px","14px"],
                           fontWeight: "600",
                           lineHeight: "17px",
                           letterSpacing: "8%",
@@ -687,7 +697,8 @@ const Youtube = () => {
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -701,12 +712,11 @@ const Youtube = () => {
                     </Typography>
                   </Box>
                 </Box>
-              </Box>
-            
+              </Box>          
             
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}}  className="flex flex-row items-center px-7">
-                  <Box sx={{mr:4,mt:1}} className={classes.imageContainer}>
+                  <Box sx={{ml:2,mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     <Image
                       src="/image/like.png"
                       width={"84"}
@@ -748,7 +758,7 @@ const Youtube = () => {
                         sx={{
                           color: "#008EAD",
                          
-                          fontSize: "10px",
+                          fontSize: ["11px","14px"],
                           fontWeight: "600",
                           lineHeight: "17px",
                           letterSpacing: "8%",
@@ -763,7 +773,8 @@ const Youtube = () => {
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -779,7 +790,7 @@ const Youtube = () => {
               </Box>
               <Box className={classes.card}>
                 <Box sx={{display:'flex',mt:3}}  className="flex flex-row items-center px-7">
-                  <Box sx={{mr:4,mt:1}} className={classes.imageContainer}>
+                  <Box sx={{ml:2,mr:['7px',5],mt:['25px',3]}} className={classes.imageContainer}>
                     {/* <FaUserCheck sx={{ fontSize:"80px", color: "#4466F2" }} /> */}
                     <Image
                       src="/image/connect.png"
@@ -822,7 +833,7 @@ const Youtube = () => {
                         sx={{
                           color: "#008EAD",
                          
-                          fontSize: "10px",
+                          fontSize: ["11px","14px"],
                           fontWeight: "600",
                           lineHeight: "17px",
                           letterSpacing: "8%",
@@ -837,7 +848,8 @@ const Youtube = () => {
                       variant="body1"
                       sx={{
                         color: "#4466F2",
-                       
+                        display:'flex',
+                       alignItems:'center',
                         fontSize: "12px",
                         fontWeight: "600",
                         lineHeight: "15px",
@@ -852,8 +864,8 @@ const Youtube = () => {
                 </Box>
               </Box>
               <Box className={classes.card} >
-                <Box sx={{pt:3,display:'flex',mt:3}} className="flex flex-row items-center px-7">
-                  <Box sx={{mr:4,mt:1}} className={classes.imageContainer}>
+                <Box sx={{pt:[2,3],display:'flex',mt:[0,3],pb:['11px',0]}}  className="flex flex-row items-center px-7">
+                  <Box sx={{ml:2,mr:['7px',5],mt:['15px',3]}} className={classes.imageContainer}>
                     {/* <FaUserCheck sx={{ fontSize:"80px", color: "#4466F2" }} /> */}
                     <Image
                       src="/image/stateye.png"
@@ -896,12 +908,11 @@ const Youtube = () => {
                     
                   </Box>
                 </Box>
-              </Box>
-            
+              </Box>     
             
               <Box className={classes.card} >
-                <Box sx={{pt:3,display:'flex',mt:3}}  className="flex flex-row items-center px-7">
-                  <Box sx={{mr:4,mt:1}} className={classes.imageContainer}>
+                <Box sx={{pt:[2,3],display:'flex',mt:[0,3],pb:['11px',0]}}  className="flex flex-row items-center px-7">
+                  <Box sx={{ml:2,mr:['7px',5],mt:['15px',3]}} className={classes.imageContainer}>
                     {/* <FaUserCheck sx={{ fontSize:"80px", color: "#4466F2" }} /> */}
                     <Image
                       src="/image/one.png"
