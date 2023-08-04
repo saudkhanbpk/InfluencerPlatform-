@@ -1,6 +1,6 @@
 "use client";
 import { Box, Button, Typography, Divider, Grid } from "@mui/material";
-import { publishable_Key } from '../BaseUrl';
+import { baseUrl, publishable_Key } from '../BaseUrl';
 import Image from "next/image";
 import React, { useState } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
@@ -41,6 +41,35 @@ const Registered = () => {
       time: 4000,
     });
   };
+  const billingDetails= async(token)=>{
+    console.log("ksdgjfgsdhkf")
+    const data = {
+      cardNumber: token.card.last4,
+      cardHolderName:token.card.name,
+      country: token.card.country,
+      zipCde: token.card.address_zip,
+  };
+let payload={billingDetails:data}
+console.log("data--------", payload)
+  const config = {
+      headers: {
+          "Content-Type": "application/json",
+      },
+  };
+  let user = JSON.parse(localStorage.getItem('user'))
+   console.log("userData", user._id)
+    axios.put(`${baseUrl}/api/updateBillingDetails/${user._id}`, payload, config)
+            .then((response) => {
+                console.log("ser response", response.data);
+                // const { email, _id } = response.data.newUser;
+            })
+            .catch((error) => {
+                console.error(error.response.data.msg);
+                toast.error(error.response.data.msg);
+                setError(error.response.data.msg);
+            })
+
+  }
   const payNow = async token => {
     try {
       const response = await axios({
@@ -53,12 +82,14 @@ const Registered = () => {
       });
       if (response.status === 200) {
         handleSuccess();
+        await  billingDetails(token)
       }
     } catch (error) {
       handleFailure();
       console.log(error);
     }
   };
+
   return (
     <Box>
       <Box
