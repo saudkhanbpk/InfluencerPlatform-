@@ -9,31 +9,20 @@ const Registered = () => {
     router.push('/brandprofile')
   }
   return (
-    <div>
+    <Box sx={{
+      backgroundImage: "url('/image/hero-bg.png')",
+      backgroundSize: 'cover', // Adjust the background size as needed
+      backgroundPosition: 'center', // Adjust the background position as needed
+      py: 10
+    }}>
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          mt: 10,
         }}
       >
         <Box>
-          {/* <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Image
-              alt="Amplify"
-              src="/image/logo2.png"
-              width={125}
-              height={40}
-            />
-          </Box> */}
-
           <Box sx={{ display: "flex", justifyContent: "center" }}>
             <Image
               alt="Amplify"
@@ -45,15 +34,14 @@ const Registered = () => {
 
           <Box
             sx={{
-              width: "350px",
+              width: "100%", // Make the container take full width
+              maxWidth: "350px", // Add a max width
               margin: "auto",
               borderRadius: "16px",
               marginTop: "30px",
               backgroundColor: "#F9FAFF",
               justifyContent: "center",
               justifyItems: "center",
-              p: 5,
-              marginBottom: '40px'
             }}
           >
             <Box
@@ -80,10 +68,15 @@ const Registered = () => {
               <Typography
                 sx={{
                   fontSize: "28px",
+                  alignItems: 'center',
+                  textAlign: 'center',
                   color: "#000000",
                   fontWeight: 700,
-                  lineHeight: "33px",
-                  ml: '1px'
+                  // lineHeight: "33px",
+                  ml: '1px',
+                  "@media (max-width:490px)": {
+                    fontSize: '20px'
+                  }
                 }}
               >
                 Registration Successful!
@@ -98,14 +91,30 @@ const Registered = () => {
                 mt: 3,
               }}
             >
-              <Button onClick={submit} variant="contained" sx={{ backgroundColor: '#2970FF', height: 80, width: '334px', fontSize: '24px', fontWeight: 700, borderRadius: '12px' }}>
+              <Button
+                onClick={submit}
+                variant="contained"
+                sx={{
+                  backgroundColor: '#2970FF',
+                  height: '12vh', // Adjust the button height based on viewport height
+                  width: '80vw', // Adjust the button width based on viewport width
+                  fontSize: '4vw', // Adjust font size based on viewport width
+                  fontWeight: 700,
+                  borderRadius: '12px',
+                  '@media (min-width:600px)': {
+                    height: 80, // Set fixed height for screens wider than 600px
+                    width: '334px',
+                    fontSize: '24px',
+                  },
+                }}
+              >
                 Launch Dashboard
               </Button>
             </Box>
           </Box>
         </Box>
       </Box>
-    </div>
+    </Box>
   );
 };
 

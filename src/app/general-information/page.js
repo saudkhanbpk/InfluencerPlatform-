@@ -15,11 +15,11 @@ const GeneralInfo = () => {
     const [companyaddress, setCompanyaddress] = useState('')
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState('');
-    const [user, setUser]=useState("")
+    const [user, setUser] = useState("")
 
     console.log("user :", user)
 
-    const handleSubmit =(e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         setIsLoading(true);
         const data = {
@@ -49,7 +49,7 @@ const GeneralInfo = () => {
                 localStorage.setItem('token', token);
             })
             .catch((error) => {
-                console.error(error); 
+                console.error(error);
             })
             .finally(() => {
                 setIsLoading(false); // Set loading state to false after API call (whether success or error)
@@ -75,8 +75,13 @@ const GeneralInfo = () => {
     //     setUser(user1)
     // }, [])
     return (
-        <Box sx={{ mt: 10, mb: 10 }}>
-            <Box sx={{ display: "flex", mt: '20px', justifyContent: 'center' }}>
+        <Box sx={{
+            backgroundImage: "url('/image/hero-bg.png')",
+            backgroundSize: 'cover', // Adjust the background size as needed
+            backgroundPosition: 'center', // Adjust the background position as needed
+            py: 4
+        }}>
+            <Box sx={{ display: "flex", justifyContent: 'center' }}>
                 <img
                     alt="Amplify"
                     src="/image/logo2.png"
@@ -103,13 +108,12 @@ const GeneralInfo = () => {
                 }}>
 
                     <form onSubmit={handleSubmit}>
-                        {message}
                         <Typography
-                            color="error"
                             sx={{ mt: 1, marginBottom: '15px' }}
                             variant="body1"
+                            color="green"
                         >
-
+                            {message}
                         </Typography>
                         <div>
                             <Typography variant="h4" sx={{ marginTop: '15px', marginBottom: '25px', fontFamily: 'plus jakarta sans', fontSize: '32px', color: '#000000', fontWeight: 700, fontFamily: 'Plus Jakarta Sans', lineHeight: '48px' }}>
@@ -194,40 +198,18 @@ const GeneralInfo = () => {
                                 />
                             </Grid>
                         </Grid>
-                        <Box sx={{ mt: 4, display: 'flex', justifyContent: { xs: 'center', md: 'flex-end' } }}>
-                            <Button
-                                sx={{
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    color: '#111927',
-                                    textTransform: 'capitalize',
-                                    fontWeight: 600,
-                                    fontSize: '16px',
-                                    lineHeight: '24px',
-                                    borderRadius: '16px',
-                                    mb: { xs: 2, md: 0 } // Adjusted margin bottom for mobile and tablet
-                                }}
-                                type="reset"
-                            >
+                        <Box sx={{ mt: 4, display: 'flex', justifyContent: 'flex-end', flexDirection: { xs: 'column', md: 'row' } }}>
+                            <Button sx={{ p: 1, borderRadius: '12px', color: '#111927', mb: { xs: 2, md: 0 }, width: { xs: '100%', md: 'auto' } }} type="reset">
                                 Cancel
                             </Button>
                             <Button
-                                sx={{
-                                    ml: { xs: 0, md: 2 }, // Adjusted margin left for mobile and tablet
-                                    px: { xs: 1, md: 5 }, // Adjusted padding for mobile and tablet
-                                    py: { xs: 1, md: 2 }, // Adjusted padding for mobile and tablet
-                                    color: '#FFFFFF',
-                                    backgroundColor: '#2970FF',
-                                    fontWeight: 600,
-                                    lineHeight: '24px',
-                                    borderRadius: '12px',
-
-                                    mb: { xs: 2, md: 0 } // Adjusted margin bottom for mobile and tablet
-                                }}
+                                sx={{ ml: { xs: 0, md: 2 }, px: { xs: 1, md: 5 }, p: 2, borderRadius: '12px', bgcolor: '#2970FF', color: '#FFFFFF', fontWeight: 600, }}
                                 disabled={isLoading} // Disable the button while loading
                                 type="submit"
                                 variant="contained"
                             >
                                 {isLoading ? "Loading..." : " Save changes and NEXT"} {/* Display "Loading..." while loading */}
+
                             </Button>
                         </Box>
 
