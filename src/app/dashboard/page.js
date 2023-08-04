@@ -186,7 +186,7 @@ company_informations();
   return (
     <Box sx={{display:'flex'}}>
     <Sidebar expanded={expanded}/>
-    <Box>
+    <Box sx={{width:'100%'}}>
     <Navbar expanded={expanded} setExpanded={setExpanded}/>
     <Box className={classes.container} sx={{ position: "relative" }}>
       <Image
