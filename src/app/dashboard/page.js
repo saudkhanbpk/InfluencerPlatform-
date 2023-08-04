@@ -10,11 +10,12 @@ import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import WebIcon from "@mui/icons-material/Web";
 import BorderHorizontalSharpIcon from "@mui/icons-material/BorderHorizontalSharp";
-
+import FacebookIcon from '@mui/icons-material/Facebook';
+import GroupAddOutlinedIcon from '@mui/icons-material/GroupAddOutlined';
 import TimelineIcon from "@mui/icons-material/Timeline";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import VerifiedIcon from '@mui/icons-material/Verified';
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import VerifiedIcon from "@mui/icons-material/Verified";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import YouTubeIcon from "@mui/icons-material/YouTube";
@@ -39,60 +40,11 @@ import Twitterstats from "./twitterstats/page";
 import Pintereststats from "./pinterest/page";
 import Sidebar from "../sidebar/page";
 import Navbar from "../navbar/page";
-import {baseUrl} from "../BaseUrl"
+import { baseUrl } from "../BaseUrl";
 import axios from "axios";
+import InstaStats from "./instastats/page";
 
 const styles = {
-    coverImageContainer: {
-      borderRadius: "20px",
-      width: "100%",
-      maxWidth: "700px", // Limit the maximum width of the image on larger screens
-      margin: "0 auto", // Center the image on larger screens
-    },
-    // coverImage: {
-    //   width: "100%",
-    //   height: "auto",
-    // },
-    aboutAndSocialMediaContainer: {
-      display: "block", // Default display as block
-      "@media (min-width: 600px)": {
-        display: "flex", // Change to flex on larger screens
-        justifyContent: "space-between", // Add space between "About" and "Social Media Links" on larger screens
-      },
-    },
-    aboutContainer: {
-      marginBottom: "25px",
-      "@media (min-width: 600px)": {
-        width: "70%", // Adjust the width of "About" on larger screens
-      },
-    },
-    socialMediaLinksContainer: {
-      display: "block", // Default display as block
-      // marginTop:'1px',
-      // borderTopLeftRadius:'1px solid red',
-      paddingLeft: "10px",
-      "@media (min-width: 600px)": {
-        display: "block", // Change to flex on larger screens
-        justifyContent: "space-between", // Add space between social media links on larger screens
-        width: "30%", // Adjust the width of "Social Media Links" on larger screens
-        borderLeft: "1px solid #F2F4F7",
-        paddingLeft: "20px",
-      },
-    },
-    socialMediaLink: {
-      color: "#111927",
-      fontFamily: "Inter",
-      fontSize: "16px",
-      fontWeight: 500,
-      lineHeight: "25px",
-      letterSpacing: "0px",
-      textAlign: "left",
-      display: "flex",
-      alignItems: "center",
-    },
-    socialMediaIcon: {
-      marginRight: "2px",
-    },
   coverImageContainer: {
     borderRadius: "20px",
     width: "100%",
@@ -114,6 +66,9 @@ const styles = {
     marginBottom: "25px",
     "@media (min-width: 600px)": {
       width: "70%", // Adjust the width of "About" on larger screens
+      paddingRight:'25px',
+      paddingTop:'20px',
+      paddingLeft:'10px'
     },
   },
   socialMediaLinksContainer: {
@@ -126,9 +81,60 @@ const styles = {
       justifyContent: "space-between", // Add space between social media links on larger screens
       width: "30%", // Adjust the width of "Social Media Links" on larger screens
       borderLeft: "1px solid #F2F4F7",
-      paddingLeft: "20px",
+      paddingLeft: "40px",
+      paddingTop:'12px'
     },
   },
+  socialMediaLink: {
+    color: "#111927",
+    fontFamily: "Inter",
+    fontSize: "16px",
+    fontWeight: 500,
+    lineHeight: "25px",
+    letterSpacing: "0px",
+    textAlign: "left",
+    display: "flex",
+    alignItems: "center",
+  },
+  socialMediaIcon: {
+    marginRight: "2px",
+  },
+  coverImageContainer: {
+    borderRadius: "20px",
+    width: "100%",
+    maxWidth: "700px", // Limit the maximum width of the image on larger screens
+    margin: "0 auto", // Center the image on larger screens
+  },
+  // coverImage: {
+  //   width: "100%",
+  //   height: "auto",
+  // },
+  aboutAndSocialMediaContainer: {
+    display: "block", // Default display as block
+    "@media (min-width: 600px)": {
+      display: "flex", // Change to flex on larger screens
+      justifyContent: "space-between", // Add space between "About" and "Social Media Links" on larger screens
+    },
+  },
+  // aboutContainer: {
+  //   marginBottom: "25px",
+  //   "@media (min-width: 600px)": {
+  //     width: "70%", // Adjust the width of "About" on larger screens
+  //   },
+  // },
+  // socialMediaLinksContainer: {
+  //   display: "block", // Default display as block
+  //   // marginTop:'1px',
+  //   // borderTopLeftRadius:'1px solid red',
+  //   paddingLeft: "10px",
+  //   "@media (min-width: 600px)": {
+  //     display: "block", // Change to flex on larger screens
+  //     justifyContent: "space-between", // Add space between social media links on larger screens
+  //     width: "30%", // Adjust the width of "Social Media Links" on larger screens
+  //     borderLeft: "1px solid #F2F4F7",
+  //     paddingLeft: "20px",
+  //   },
+  // },
   socialMediaLink: {
     color: "#111927",
     fontFamily: "Inter",
@@ -146,89 +152,93 @@ const styles = {
 };
 
 const useStyles = makeStyles((theme) => ({
-    profileImageContainer: {
-      // width:'auto',
+  profileImageContainer: {
+    // width:'auto',
+    textAlign: "center",
+    marginBottom: 2, // Add some spacing at the bottom
+  },
+  profileImage: {
+    width: "173px", // Initial width for larger screens
+    height: "173px", // Initial height for larger screens
+    borderRadius: "50%",
+    overflow: "hidden",
+    px: "10px",
+    margin: "0 auto", // Center the image
+    "@media (max-width: 600px)": {
+      width: "170px", // Adjust width for smaller screens
+      height: "170px", // Adjust height for smaller screens
+      marginLeft: "15px",
+    },
+  },
+  imageclass: {
+    "@media (max-width: 600px)": {
+      width: "55px", // Adjust width for smaller screens
+      height: "55px", // Adjust height for smaller screens
+      marginRight: "10px",
+      marginLeft: "15px",
+      marginTop: "17px",
+    },
+  },
+
+  imageContainer: {
+    flexShrink: "0",
+    paddingLeft: "20px",
+  },
+  lineChart: {
+    width: "100%",
+    height: "auto",
+  },
+  container: {
+    position: "relative",
+    height: 300,
+    width: Fullscreen,
+    margin: 5,
+    paddingLeft:'25px',
+    paddingRight:'25px',
+    "@media (max-width: 600px)": {
+      // marginLeft: "0px",
+      // width: "90px",
+      paddingLeft:'1px',
+      paddingRight:'1px',
+    },
+  },
+  coverImage: {
+    height: "100%",
+    width: "100%",
+    objectFit: "cover",
+    borderTopLeftRadius: ["20px", "80px"],
+    borderTopRightRadius: ["20px", "80px"],
+  },
+
+  profileImageImg: {
+    height: "100%",
+    width: "100%",
+    objectFit: "cover",
+  },
+  greenBox: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginTop: ["5px", "1px"],
+    marginLeft: ["6px", "0px"],
+
+    "& p": {
+      margin: "6px",
       textAlign: "center",
-      marginBottom: 2, // Add some spacing at the bottom
     },
-    profileImage: {
-      width: "173px", // Initial width for larger screens
-      height: "173px", // Initial height for larger screens
-      borderRadius: "50%",
-      overflow: "hidden",
-      px:'10px',
-      margin: "0 auto", // Center the image
-      "@media (max-width: 600px)": {
-        width: "170px", // Adjust width for smaller screens
-        height: "170px", // Adjust height for smaller screens
-        marginLeft:'15px'
-      },
-    },
-    imageclass: {
-      "@media (max-width: 600px)": {
-        width: "55px", // Adjust width for smaller screens
-        height: "55px", // Adjust height for smaller screens
-        marginRight: "10px",
-        marginLeft:'15px',
-        marginTop: "17px",
+  },
+  profilename: {
+    // position: 'absolute',
+    // top: '100%',
+    // left: '10%',
+    // transform: 'translate(-50%, -50%)',
+    // borderRadius: '50%',
+    // border: "5px solid black",
+    height: 155,
+    width: "90%",
+    overflow: "hidden",
+  },
 
-      },
-    },
-    
-    
-    
-    imageContainer: {
-      flexShrink: "0",
-      paddingLeft: "20px",
-    },
-    lineChart: {
-      width: "100%",
-      height: "auto",
-      },
-      container: {
-      position: "relative",
-      height: 300,
-      width: Fullscreen,
-      margin: 5,
-      },
-      coverImage: {
-      height: "100%",
-      width: "100%",
-      objectFit: "cover",
-      borderTopLeftRadius: ["20px","80px"],
-      borderTopRightRadius:["20px","80px"],
-      },
-    
-    profileImageImg: {
-      height: "100%",
-      width: "100%",
-      objectFit: "cover",
-      
-    },
-    greenBox: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      marginTop: ['5px','1px'],
-      marginLeft: ['6px','0px'],
-
-      '& p': {
-        margin: '6px',
-        textAlign: 'center',
-      },
-    },
-    profilename: {
-      // position: 'absolute',
-      // top: '100%',
-      // left: '10%',
-      // transform: 'translate(-50%, -50%)',
-      // borderRadius: '50%',
-      // border: "5px solid black",
-      height: 155,
-      width: "90%",
-      overflow: "hidden",
-    },
-  
   // cardContainer: {
   //   display: "flex",
   //   width: "100%",
@@ -236,12 +246,11 @@ const useStyles = makeStyles((theme) => ({
   //   mx: "5px",
   // },
   cardContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '16px',
-    justifyContent: 'start',
-
-  },  
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "40px",
+    justifyContent: "start",
+  },
   // card: {
   //   backgroundColor: "white",
   //   borderBottom: "4px solid #ddd",
@@ -256,22 +265,22 @@ const useStyles = makeStyles((theme) => ({
   //   marginTop: "35px",
   // },
   card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: ['9px','15px'],
-    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-    borderRadius: '8px',
-    width: '397px',
-    height: ['155px','226px'],
-    '@media (min-width: 600px)': {
-      width: 'calc(40% - 10px)',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: ["9px", "15px"],
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+    borderRadius: "8px",
+    width: "397px",
+    height: ["155px", "226px"],
+    "@media (min-width: 600px)": {
+      width: "calc(40% - 10px)",
     },
-    '@media (min-width: 900px)': {
-      width: 'calc(26% - 16px)',
+    "@media (min-width: 900px)": {
+      width: "calc(26% - 16px)",
     },
   },
-  
+
   // imageContainer: {
   //   flexShrink: "0",
   //   paddingRight: "26px",
@@ -284,14 +293,9 @@ const useStyles = makeStyles((theme) => ({
   lineChart: {
     width: "100%",
     height: "auto",
-    },
-  container: {
-    position: "relative",
-    height: 300,
-    width: Fullscreen,
-    margin: 5,
   },
   
+
   profileImage: {
     // position: 'absolute',
     // top: '110%',
@@ -304,10 +308,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "-40px",
     // marginLeft: "30px",
     overflow: "hidden",
-    zIndex: '1',
-    px:'15px',
-    py:'1px'
-
+    zIndex: "1",
+    px: "15px",
+    py: "1px",
   },
   profileImageImg: {
     height: "100%",
@@ -330,70 +333,68 @@ const useStyles = makeStyles((theme) => ({
 
 const ProfileDashboard = () => {
   const classes = useStyles();
-  const [overview , setOverview] = useState(0)
-  const [expanded, setExpanded] = useState(true)
+  const [overview, setOverview] = useState(0);
+  const [expanded, setExpanded] = useState(true);
   const [data, setData] = useState([]);
   const [generaldata, setGeneraldata] = useState([]);
   const [companyinformations, setCompanyinformations] = useState([]);
   const [userId, setUserId] = useState(null);
- 
+
   const getAllData = () => {
-    const storedUserData = JSON.parse(localStorage.getItem('user'));
+    const storedUserData = JSON.parse(localStorage.getItem("user"));
 
     if (storedUserData) {
       setUserId(storedUserData._id);
     }
-   
-    let user = JSON.parse(localStorage.getItem('user'))
+
+    let user = JSON.parse(localStorage.getItem("user"));
 
     const apiUrl = `${baseUrl}/api/social/${user._id}`;
 
-axios.post(apiUrl)
+    axios
+      .post(apiUrl)
       .then((response) => setData(response.data))
-      .catch((error) => console.error('Error fetching data:', error));
-
-  }
+      .catch((error) => console.error("Error fetching data:", error));
+  };
   const generalData = () => {
-    
-   
-    let user = JSON.parse(localStorage.getItem('user'))
-   
+    let user = JSON.parse(localStorage.getItem("user"));
+
     const apiUrl = `${baseUrl}/api/general/${user._id}`;
 
-axios.get(apiUrl)
+    axios
+      .get(apiUrl)
       .then((response) => setGeneraldata(response.data))
-      .catch((error) => console.error('Error fetching data:', error));
-  }
+      .catch((error) => console.error("Error fetching data:", error));
+  };
   const company_informations = () => {
-    
-   
-    let user = JSON.parse(localStorage.getItem('user'))
-   
+    let user = JSON.parse(localStorage.getItem("user"));
+
     const apiUrl = `${baseUrl}/api/company/${user._id}`;
 
-axios.get(apiUrl)
+    axios
+      .get(apiUrl)
       .then((response) => setCompanyinformations(response.data))
-      .catch((error) => console.error('Error fetching data:', error));
-  }
+      .catch((error) => console.error("Error fetching data:", error));
+  };
   useEffect(() => {
-getAllData();
-generalData();
-company_informations();
+    getAllData();
+    generalData();
+    company_informations();
   }, []);
-  console.log("data........", data)
-  console.log("generaldata........", generaldata)
-  console.log("companyinformations........", companyinformations)
+  console.log("data........", data);
+  console.log("generaldata........", generaldata);
+  console.log("companyinformations........", companyinformations);
 
-  const handledata=(num)=>{
-    setOverview(num)
-  }
+  const handledata = (num) => {
+    setOverview(num);
+  };
   return (
-    <Box sx={{display:'flex'}}>
-    <Sidebar expanded={expanded}/>
-    <Box sx={{width:'100%'}}> 
-    <Navbar expanded={expanded} setExpanded={setExpanded}/>
-    <Box className={classes.container} sx={{ position: "relative" }}>
-      {/* <Image
+    <Box sx={{ display: "flex" }}>
+      <Sidebar expanded={expanded} />
+      <Box sx={{ width: "100%" }}>
+        <Navbar expanded={expanded} setExpanded={setExpanded} />
+        <Box className={classes.container} sx={{ position: "relative" }}>
+          {/* <Image
         width={600}
         height={400}
         src="/image/bg.png"
@@ -572,7 +573,7 @@ company_informations();
       </Box>
           </Box> */}
           <Box>
-            <Box sx={{ position: "relative" }}> 
+            <Box sx={{ position: "relative" }}>
               <Image
                 width={700}
                 height={400}
@@ -606,7 +607,7 @@ company_informations();
               </Box>
             </Box>
 
-            <Box>
+            <Box sx={{pt:[0,1]}}>
               <Box
                 sx={{
                   // border: "2px solid green",
@@ -622,7 +623,10 @@ company_informations();
                   }}
                   className={classes.profileImageContainer}
                 >
-                  <Box sx={{marginLeft:['0px','30px']}} className={classes.profileImage}>
+                  <Box
+                    sx={{ marginLeft: ["0px", "30px"], px: 1 }}
+                    className={classes.profileImage}
+                  >
                     <Image
                       src="/image/brandprofile.png"
                       width={100}
@@ -652,12 +656,13 @@ company_informations();
                             lineHeight: "26.4px",
                           }}
                         >
-                          {/* Canada Goose */}
-                          {generaldata?.general?.fname}
+                          {/* Canada Goose */}  
+                          {generaldata?.general?.fname}<VerifiedIcon sx={{color:'#2ECC71'}}/>
                         </Typography>
                       </Box>
                       <Typography
                         variant="overline"
+                        noWrap
                         sx={{
                           fontSize: ["9px", "12px"],
                           fontWeight: 600,
@@ -666,6 +671,8 @@ company_informations();
                           letter: "0.5px",
                           pt: 1,
                           mb: 1,
+                          width: "max-content",
+                          // textWrap:'no-wrap'
                         }}
                       >
                         SOCIAL MEDIA INFLUENCER
@@ -715,10 +722,10 @@ company_informations();
                           height: ["23px", "38px"],
                           width: ["60%", "60%"],
                           mr: 1,
-                          ml: [2, 5],
+                          ml: [0, 5],
                           border: "2px solid #2970FF",
                           borderRadius: "10px",
-                          mt:[1,0]
+                          mt: [1, 0],
                         }}
                       >
                         <Box sx={{ color: "#2970FF", fontSize: ["14px"] }}>
@@ -798,8 +805,8 @@ company_informations();
                         mt: [2, 0],
                       }}
                     >
-                      <Button variant="outlined" color="primary">
-                        <FavoriteIcon sx={{ mr: 1 }} /> Favorite
+                      <Button variant="outlined" color="primary" sx={{borderRadius:'10px'}}>
+                        <GroupAddOutlinedIcon  sx={{ mr: 1 ,fontSize:'22px'}} /> Invite to Project
                       </Button>
                     </Box>
                     <Box
@@ -812,9 +819,9 @@ company_informations();
                       <Button
                         variant="contained"
                         color="primary"
-                        sx={{ ml: 2 }}
+                        sx={{ ml: 2,borderRadius:'10px'}}
                       >
-                        <QuestionAnswerIcon sx={{ mr: 1 }} /> Send Message
+                        <QuestionAnswerIcon sx={{ mr: 1 ,fontSize:'22px'}} /> Send Message
                       </Button>
                       <Box
                         sx={{
@@ -852,243 +859,483 @@ company_informations();
                 </Box>
               </Box>
             </Box>
-            <Box sx={{ display: "flex", mx: "13px", mt: "10px" }}>
-              <Box sx={{ mx: "13px", }}>
+            <Box sx={{ display: "flex", mx: "0px", mt: "10px" }}>
+              <Box sx={{ mx: "13px" }}>
                 <Typography
-                  sx={{ color: "#2970FF",borderBottom:'1px solid #2970FF',pb:"7px" , "&:hover": { cursor: "pointer" } }}
-                  
+                  sx={{
+                    color: "#2970FF",
+                    borderBottom: "1px solid #2970FF",
+                    pb: "7px",
+                    "&:hover": { cursor: "pointer" },
+                  }}
                 >
                   Overview
                 </Typography>
               </Box>
-              
             </Box>
-          </Box>
-      <Divider></Divider>
-      {/* <Box sx={{ display: "flex" }}>
-        <Box
-          sx={{ width: "75%", borderRight: "1px solid #F2F4F7", p: 1, pr: 3 }}
-        >
-          <Box sx={{ my: 2 }}>
-            <Typography
-              variant="H6"
-              sx={{
-                fontWeight: 700,
-                fontSize: "18px",
-                fontFamily: "Inter",
-                fontFamily: "Plus Jakarta Sans",
-              }}
-            >
-              Biography
-            </Typography>
-          </Box>
-          <Box sx={{ marginBottom: "25px" }}>
-            <Typography
-              variant="body1"
-              sx={{
-                lineHeight: "32px",
-                color: "#6C737F",
-                fontWeight: 500,
-                fontSize: "18px",
-                fontFamily: "Inter",
-                fontFamily: "Inter",
-              }}
-            >
-              {companyinformations?.company?.bio}
-            </Typography>
           </Box>
           <Divider></Divider>
-          <Box sx={{ display: "flex", marginTop: "30px" }}>
-            <Box sx={{ width: "50%", pt: "5", pr: "60px" }}>
-              <Box sx={{ p: 1, pl: 0, pr: "10px" }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <AccountCircleIcon sx={{ mr: 2 }} /> The Rock
-                </Typography>
-              </Box>
-              <Divider></Divider>
-              <Box sx={{ p: 1, pl: 0, mr: "10px" }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <LanguageOutlinedIcon sx={{ mr: 2 }} /> {generaldata?.general?.companywebsite}
-                </Typography>
-              </Box>
-              <Divider></Divider>
-
-              <Box sx={{ p: 1, pl: 0 }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <PhoneOutlinedIcon sx={{ mr: 2 }} /> {generaldata?.general?.phone}
-                </Typography>
-              </Box>
-              <Divider></Divider>
-
-              <Box sx={{ p: 1, pl: 0 }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <HomeOutlinedIcon sx={{ mr: 2 }} /> {generaldata?.general?.companyaddress}
-                </Typography>
-              </Box>
-              <Divider></Divider>
-            </Box>
-
-            <Divider></Divider>
-
-            <Box sx={{ width: "50%", pr: "60px" }}>
-              <Box sx={{ p: 1, pl: 0 }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <LanguageOutlinedIcon sx={{ mr: 2 }} /> Languages:
-                  English/Arabic
-                </Typography>
-              </Box>
-              <Divider></Divider>
-
-              <Box sx={{ p: 1, pl: 0 }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <MaleOutlinedIcon sx={{ mr: 2 }} /> Gender: Male
-                </Typography>
-              </Box>
-              <Divider></Divider>
-
-              <Box sx={{ p: 1, pl: 0 }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <EightteenMpOutlinedIcon sx={{ mr: 2 }} /> Age: 52
-                </Typography>
-              </Box>
-              <Divider></Divider>
-
-              <Box sx={{ p: 1, pl: 0 }}>
-                <Typography
-                  sx={{
-                    color: "#111927",
-                    fontFamily: "Inter",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "25px",
-                    letterSpacing: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  <SouthAmericaIcon sx={{ mr: 2 }} /> Ethnicity: Asian
-                </Typography>
-              </Box>
-              <Divider></Divider>
-            </Box>
-          </Box>
-        </Box>
-        <Divider></Divider>
-        <Box sx={{ width: "25%", pl: 3, p: 1, pr: 3 }}>
-          <Box sx={{ my: 2 }}>
-            <Typography
-              variant="H6"
-              sx={{
-                fontWeight: 700,
-                fontSize: "18px",
-                fontFamily: "Inter",
-                fontFamily: "Plus Jakarta Sans",
-              }}
-            >
-              Niche
-            </Typography>
-          </Box>
+          
 
           <Box
             sx={{
-              alignItems: "center",
-              justifyContent: "center",
-              mt: 3,
+              padding: "20px",
+              "@media (max-width: 600px)": { padding: "10px" },
             }}
           >
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: "rgba(99, 102, 241, 0.12)",color:'black', width: "100%" }}
-            >
-              Clothing
-            </Button>
-          </Box>
-          <Box
-            sx={{
-              alignItems: "center",
-              justifyContent: "center",
-              mt: 3,
-            }}
-          >
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: "rgba(99, 102, 241, 0.12)",color:'black', width: "100%" }}
-            >
-              Men Fashion
-            </Button>
-          </Box>
+            {/* About and Social Media Links */}
+            <Box sx={styles.aboutAndSocialMediaContainer}>
+              {/* About */}
+              <Box sx={styles.aboutContainer}>
+                <Box
+                  sx={{
+                    mb: 2,
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: "18px",
+                      fontFamily: "Plus Jakarta Sans",
+                      lineHeight:'21.6px',
+                      color:'#111927'
+                    }}
+                  >
+                    Biography
+                  </Typography>
+                </Box>
+                <Box sx={{ marginBottom: "25px",pr:3 }}>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      lineHeight: "32px",
+                      color: "#6C737F",
+                      fontWeight: 500,
+                      fontSize: "18px",
+                      // fontFamily: "Inter",
+                        textAlign:'justify'
+                      // textAlign:'justify'
+                    }}
+                  >
+                    Hey there, thanks for checking out my page! I'm a social
+                    media influencer who loves to connect with people from all
+                    over the world. My passion is to inspire others to live
+                    their best lives and to chase their dreams. Through my
+                    content, I hope to motivate and uplift my followers, while
+                    also sharing my own personal journey and experiences. I'm
+                    committed to creating high-quality content that resonates
+                    with my followers and promotes products that I genuinely
+                    believe in. So, if you're interested in working together,
+                    feel free to reach out and let's see what we can create
+                    together!
+                    {/* {companyinformations?.company?.bio} */}
+                  </Typography>
+                </Box>
+                <Divider />
+                <Box sx={{ display: ["block", "flex"], gap: "15px",pl:['8px',0] }}>
+                   <Box
+                    sx={{
+                      width: ["100%", "45%"],
+                      display: "flex",
+                      flexDirection: "column",
+                      mt: 2,
+                    }}
+                   >
+                    <Box
+                      sx={{
+                        p: 1,
+                        pl: 0,
+                        pr: "10px",
+                        // borderBottom: `1px solid ${theme.palette.divider}`,
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          color: "#111927",
+                          fontFamily: "inter",
+                          fontSize: "16px",
+                          fontWeight: 500,
+                          lineHeight: "25px",
+                          letterSpacing: "0px",
+                          textAlign: "left",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <AccountCircleIcon sx={{ mr: 2,color:'#6C737F' }} /> The Rock
+                        {/* {generaldata?.general?.companywebsite} */}
+                      </Typography>
+                    </Box>
 
-          <Box sx={{ marginTop: "20px" }}>
-            <Box sx={{ my: 2 }}>
+                    <Divider light={true}></Divider>
+
+                    <Box
+                      sx={{
+                        p: 1,
+                        pl: 0,
+                        pr: "10px",
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          color: "#111927",
+                          fontFamily: "Inter",
+                          fontSize: "16px",
+                          fontWeight: 500,
+                          lineHeight: "25px",
+                          letterSpacing: "0px",
+                          textAlign: "left",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <LanguageOutlinedIcon sx={{ mr: 2,color:'#6C737F' }} /> www.therock.com
+                        {/* {generaldata?.general?.phone} */}
+                      </Typography>
+                    </Box>
+                    <Divider light={true}></Divider>
+                    <Box
+                      sx={{
+                        p: 1,
+                        pl: 0,
+                        pr: "10px",
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          color: "#111927",
+                          fontFamily: "Inter",
+                          fontSize: "16px",
+                          fontWeight: 500,
+                          lineHeight: "25px",
+                          letterSpacing: "0px",
+                          textAlign: "left",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <PhoneOutlinedIcon sx={{ mr: 2,color:'#6C737F' }} /> phone
+                        {/* {generaldata?.general?.companyaddress} */}
+                      </Typography>
+                    </Box>
+                    <Divider light={true}></Divider>
+                    <Box
+                      sx={{
+                        p: 1,
+                        pl: 0,
+                        pr: "10px",
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          color: "#111927",
+                          fontFamily: "inter",
+                          fontSize: "16px",
+                          fontWeight: 500,
+                          lineHeight: "25px",
+                          letterSpacing: "0px",
+                          textAlign: "left",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <HomeOutlinedIcon sx={{ mr: 2,color:'#6C737F' }} /> Toronto ,Canada
+                      </Typography>
+                    </Box>
+                    
+                    <Divider light={true}></Divider>
+                   </Box>
+                   <Box
+                    sx={{
+                      width: ["100%", "45%"],
+                      mx: [0, 7],
+                      display: "flex",
+                      flexDirection: "column",
+                      mt: 2,
+                    }}
+                   >
+                    <Box
+                      sx={{
+                        p: 1,
+                        pl: 0,
+                        pr: "10px",
+                        // borderBottom: `1px solid ${theme.palette.divider}`,
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          color: "#111927",
+                          fontFamily: "inter",
+                          fontSize: "16px",
+                          fontWeight: 500,
+                          lineHeight: "25px",
+                          letterSpacing: "0px",
+                          textAlign: "left",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                       
+                        <LanguageOutlinedIcon sx={{ mr: 2,color:'#6C737F' }} /> Languages:
+                   English/Arabic
+                        {/* {generaldata?.general?.companywebsite} */}
+                      </Typography>
+                    </Box>
+
+                    <Divider light={true}></Divider>
+
+                    <Box
+                      sx={{
+                        p: 1,
+                        pl: 0,
+                        pr: "10px",
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          color: "#111927",
+                          fontFamily: "Inter",
+                          fontSize: "16px",
+                          fontWeight: 500,
+                          lineHeight: "25px",
+                          letterSpacing: "0px",
+                          textAlign: "left",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <MaleOutlinedIcon sx={{ mr: 2,color:'#6C737F' }} /> Gender: Male
+                
+                        {/* {generaldata?.general?.phone} */}
+                      </Typography>
+                    </Box>
+                    <Divider light={true}></Divider>
+                    <Box
+                      sx={{
+                        p: 1,
+                        pl: 0,
+                        pr: "10px",
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          color: "#111927",
+                          fontFamily: "Inter",
+                          fontSize: "16px",
+                          fontWeight: 500,
+                          lineHeight: "25px",
+                          letterSpacing: "0px",
+                          textAlign: "left",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <EightteenMpOutlinedIcon sx={{ mr: 2,color:'#6C737F' }} /> Age: 52
+                        {/* {generaldata?.general?.companyaddress} */}
+                      </Typography>
+                    </Box>
+                    <Divider light={true}></Divider>
+                    <Box
+                      sx={{
+                        p: 1,
+                        pl: 0,
+                        pr: "10px",
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          color: "#111927",
+                          fontFamily: "inter",
+                          fontSize: "16px",
+                          fontWeight: 500,
+                          lineHeight: "25px",
+                          letterSpacing: "0px",
+                          textAlign: "left",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <SouthAmericaIcon sx={{ mr: 2,color:'#6C737F'}} /> Ethnicity: Asian
+                      </Typography>
+                    </Box>
+                    <Divider light={true}></Divider>
+                    
+                  </Box>
+                </Box>
+              </Box>
+
+              {/* Social Media Links */}
+              <Box sx={styles.socialMediaLinksContainer}>
+                <Box sx={{ my: 2 }}>
+                  <Typography
+                    variant="H6"
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: "18px",
+                      // fontFamily: "Inter",
+                      fontFamily: "Plus Jakarta Sans",
+                    }}
+                  >
+                    Niche
+                  </Typography>
+                </Box>
+
+                <Box
+                  sx={{
+                    alignItems: "center",
+                    justifyContent: "center",
+                    mt: 3,
+                  }}
+                >
+                  <Button
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "rgba(99, 102, 241, 0.12)",
+                      color: "#312E81",
+                      width: "100%",
+                    }}
+                  >
+                    Clothing
+                  </Button>
+                </Box>
+                <Box
+                  sx={{
+                    alignItems: "center",
+                    justifyContent: "center",
+                    mt: 3,
+                  }}
+                >
+                  <Button
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "rgba(99, 102, 241, 0.12)",
+                      color: "#312E81",
+                      width: "100%",
+                    }}
+                  >
+                    Men Fashion
+                  </Button>
+                </Box>
+                <Box sx={{ mb: 2, mt: 4 }}>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: "18px",
+                      fontFamily: "Plus Jakarta Sans",
+                    }}
+                  >
+                    Social Media Links
+                  </Typography>
+                </Box>
+                <Box
+                    sx={{mt:1,mb:1, p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
+                  >
+                    <FacebookIcon
+                      sx={{ ...styles.socialMediaIcon, color: "#1777F2" }}
+                    />{" "}
+                    <Typography
+                      sx={{
+                        fontFamily: "inter",
+                        fontWeight: 500,
+                        fontSize: "16px",
+                        lineHeight: "25.12px",
+                        ml: 1,
+                      }}
+                    >
+                      www.facebook.com/therock
+                    </Typography>
+                  </Box>
+                  <Divider />
+                <Box
+                  sx={{mt:1,mb:1, p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
+                >
+                  <InstagramIcon
+                    sx={{ ...styles.socialMediaIcon, color: "#F90000" }}
+                  />{" "}
+                  <Typography
+                    sx={{
+                      fontFamily: "inter",
+                      fontWeight: 500,
+                      fontSize: "16px",
+                      lineHeight: "25.12px",
+                      ml: 1,
+                    }}
+                  >
+                    www.instagram.com/therock
+                  </Typography>
+                </Box>
+                <Divider />
+
+                <Box
+                  sx={{mt:1,mb:1, p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
+                >
+                  <YouTubeIcon
+                    sx={{ ...styles.socialMediaIcon, color: "#F90000" }}
+                  />{" "}
+                  <Typography
+                    sx={{
+                      fontFamily: "inter",
+                      fontWeight: 500,
+                      fontSize: "16px",
+                      lineHeight: "25.12px",
+                      ml: 1,
+                    }}
+                  >
+                    www.youtube.com/therock
+                  </Typography>{" "}
+                </Box>
+                <Divider />
+
+                <Box
+                  sx={{mt:1,mb:1, p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
+                >
+                  <TwitterIcon
+                    sx={{ ...styles.socialMediaIcon, color: "#1DA1F2" }}
+                  />{" "}
+                  <Typography
+                    sx={{
+                      fontFamily: "inter",
+                      fontWeight: 500,
+                      fontSize: "16px",
+                      lineHeight: "25.12px",
+                      ml: 1,
+                    }}
+                  >
+                    www.twitter.com/therock
+                  </Typography>{" "}
+                </Box>
+                <Divider />
+
+                <Box
+                  sx={{mt:1,mb:1, p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
+                >
+                  <PinterestIcon
+                    sx={{ ...styles.socialMediaIcon, color: "#F90000" }}
+                  />{" "}
+                  <Typography
+                    sx={{
+                      fontFamily: "inter",
+                      fontWeight: 500,
+                      fontSize: "16px",
+                      lineHeight: "25.12px",
+                      ml: 1,
+                    }}
+                  >
+                    www.pinterest.com/therock
+                  </Typography>
+                </Box>
+                <Divider />
+              </Box>
+            </Box>
+
+            {/* ... (rest of the code) ... */}
+          </Box>
+          <Divider sx={{ mt: "20px" }}></Divider>
+
+          <Box sx={{pl:'12px'}}>
+            <Box sx={{ my: 2,pl:2 }}>
               <Typography
                 variant="H6"
                 sx={{
@@ -1098,1262 +1345,99 @@ company_informations();
                   fontFamily: "Plus Jakarta Sans",
                 }}
               >
-                Social Media links
+                Stats
               </Typography>
             </Box>
-            <Box sx={{ p: 1, pl: 0, pr: "10px" }}>
-              <Typography
+            <Box sx={{ display: ["block", "flex"] }}>
+              <Box
                 sx={{
-                  color: "#111927",
-                  fontFamily: "Inter",
-                  fontSize: "16px",
-                  fontWeight: 500,
-                  lineHeight: "25px",
-                  letterSpacing: "0px",
-                  textAlign: "left",
+                  mx: "13px",
+                  "&:hover": {
+                    cursor: "pointer",
+                  },
                 }}
               >
-                <InstagramIcon sx={{ mr: 2, color: "#F90000" }} />{" "}
-                www.instagram.com/therock
-              </Typography>
-            </Box>
-            <Divider></Divider>
-
-            <Box sx={{ p: 1, pl: 0, pr: "10px" }}>
-              <Typography
+                <Typography
+                  className={`${overview === 0 && "youtubestats"} `}
+                  onClick={() => handledata(0)}
+                >
+                  Instagram statistics
+                </Typography>
+              </Box>
+              <Box
                 sx={{
-                  color: "#111927",
-                  fontFamily: "Inter",
-                  fontSize: "16px",
-                  fontWeight: 500,
-                  lineHeight: "25px",
-                  letterSpacing: "0px",
-                  textAlign: "left",
+                  mx: "13px",
+                  "&:hover": {
+                    cursor: "pointer",
+                  },
                 }}
               >
-                <YouTubeIcon sx={{ mr: 2, color: "#F90000" }} />{" "}
-                www.youtube.com/therock
-              </Typography>
-            </Box>
-            <Divider></Divider>
-
-            <Box sx={{ p: 1, pl: 0, pr: "10px" }}>
-              <Typography
+                <Typography
+                  className={`${overview === 1 && "youtubestats"} `}
+                  onClick={() => handledata(1)}
+                >
+                  Youtube statistics
+                </Typography>
+              </Box>
+              <Box
                 sx={{
-                  color: "#111927",
-                  fontFamily: "Inter",
-                  fontSize: "16px",
-                  fontWeight: 500,
-                  lineHeight: "25px",
-                  letterSpacing: "0px",
-                  textAlign: "left",
+                  mx: "13px",
+                  "&:hover": {
+                    cursor: "pointer",
+                  },
                 }}
               >
-                <TwitterIcon sx={{ mr: 2, color: "#1DA1F2" }} />{" "}
-                www.twitter.com/therock
-              </Typography>
-            </Box>
-            <Divider></Divider>
-
-            <Box sx={{ p: 1, pl: 0, pr: "10px" }}>
-              <Typography
+                <Typography
+                  className={`${overview === 2 && "youtubestats"} `}
+                  onClick={() => handledata(2)}
+                >
+                  tiktok statistics
+                </Typography>
+              </Box>
+              <Box
                 sx={{
-                  color: "#111927",
-                  fontFamily: "Inter",
-                  fontSize: "16px",
-                  fontWeight: 500,
-                  lineHeight: "25px",
-                  letterSpacing: "0px",
-                  textAlign: "left",
+                  mx: "13px",
+                  "&:hover": {
+                    cursor: "pointer",
+                  },
                 }}
               >
-                <PinterestIcon sx={{ mr: 2, color: "#F90000" }} />{" "}
-                www.pinterest.com/therock
-              </Typography>
+                <Typography
+                  className={`${overview === 3 && "youtubestats"} `}
+                  onClick={() => handledata(3)}
+                >
+                  Twitter statistics
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  mx: "13px",
+                  "&:hover": {
+                    cursor: "pointer",
+                  },
+                }}
+              >
+                <Typography
+                  className={`${overview === 4 && "youtubestats"} `}
+                  onClick={() => handledata(4)}
+                >
+                  Pinetrest statistics
+                </Typography>
+              </Box>
             </Box>
+
             <Divider></Divider>
+
+            {overview === 0 && ( <InstaStats/>
+            )}
+            {overview === 1 && <Youtube />}
+            {overview === 2 && <Tiktokstats />}
+            {overview === 3 && <Twitterstats />}
+            {overview === 4 && <Pintereststats />}
           </Box>
-        </Box>
-      </Box> */}
-
-      <Box
-              sx={{
-                padding: "20px",
-                "@media (max-width: 600px)": { padding: "10px" },
-              }}
-            >
-              {/* About and Social Media Links */}
-              <Box sx={styles.aboutAndSocialMediaContainer}>
-                {/* About */}
-                <Box sx={styles.aboutContainer}>
-                  <Box
-                    sx={{
-                      mb: 2,
-                    }}
-                  >
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontWeight: 700,
-                        fontSize: "18px",
-                        fontFamily: "Inter",
-                      }}
-                    >
-                      About
-                    </Typography>
-                  </Box>
-                  <Box sx={{ marginBottom: "25px" }}>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        lineHeight: "32px",
-                        color: "#6C737F",
-                        fontWeight: 500,
-                        fontSize: "18px",
-                        fontFamily: "Inter",
-                      }}
-                    >
-                      Canada Goose is a premium Canadian clothing brand that was
-                      founded in 1957. The brand is known for its high-quality
-                      and stylish outerwear that is designed to withstand
-                      extreme weather conditions. The company initially started
-                      as a manufacturer of woolen vests, raincoats, and
-                      snowmobile suits for Canadian Rangers and police officers.
-                      However, in recent years, Canada Goose has gained
-                      widespread popularity as a luxury fashion brand and is now
-                      considered a status symbol.
-                      {/* {companyinformations?.company?.bio} */}
-                    </Typography>
-                  </Box>
-                  <Divider />
-<Box sx={{display: ["block","flex"],gap:'15px'}}>
-                  <Box sx={{ width:["100%","45%"],display: "flex", flexDirection: "column", mt: 2 }}>
-                    <Box
-                      sx={{
-                        p: 1,
-                        pl: 0,
-                        pr: "10px",
-                        // borderBottom: `1px solid ${theme.palette.divider}`,
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          color: "#111927",
-                          fontFamily: "inter",
-                          fontSize: "16px",
-                          fontWeight: 500,
-                          lineHeight: "25px",
-                          letterSpacing: "0px",
-                          textAlign: "left",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <AccountCircleIcon sx={{ mr: 2 }} />{" "}
-                        www.canadagoose.com/shop
-                        {/* {generaldata?.general?.companywebsite} */}
-                      </Typography>
-                    </Box>
-                    
-                    <Divider light={true}></Divider>
-
-                    <Box
-                      sx={{
-                        p: 1,
-                        pl: 0,
-                        pr: "10px",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          color: "#111927",
-                          fontFamily: "Inter",
-                          fontSize: "16px",
-                          fontWeight: 500,
-                          lineHeight: "25px",
-                          letterSpacing: "0px",
-                          textAlign: "left",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <PhoneOutlinedIcon sx={{ mr: 2 }} /> 
-                        +92313524856
-                        {/* {generaldata?.general?.phone} */}
-                      </Typography>
-                    </Box>
-                    <Divider light={true}></Divider>
-                    <Box
-                      sx={{
-                        p: 1,
-                        pl: 0,
-                        pr: "10px",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          color: "#111927",
-                          fontFamily: "Inter",
-                          fontSize: "16px",
-                          fontWeight: 500,
-                          lineHeight: "25px",
-                          letterSpacing: "0px",
-                          textAlign: "left",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <HomeOutlinedIcon sx={{ mr: 2 }} /> 
-                        Toronto, Ontario, Canada
-                        {/* {generaldata?.general?.companyaddress} */}
-                      </Typography>
-                    </Box>
-                    <Divider light={true}></Divider>
-                    <Box
-                      sx={{
-                        p: 1,
-                        pl: 0,
-                        pr: "10px",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          color: "#111927",
-                          fontFamily: "inter",  
-                          fontSize: "16px",
-                          fontWeight: 500,
-                          lineHeight: "25px",
-                          letterSpacing: "0px",
-                          textAlign: "left",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <WebIcon sx={{ mr: 2 }} /> katarina.smith@devias.io
-                      </Typography>
-                    </Box>
-                    <Divider light={true}></Divider>
-                    <Box
-                      sx={{
-                        p: 1,
-                        pl: 0,
-                        pr: "10px",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          color: "#111927",
-                          fontFamily: "Inter",
-                          fontSize: "16px",
-                          fontWeight: 500,
-                          lineHeight: "25px",
-                          letterSpacing: "0px",
-                          textAlign: "left",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <BorderHorizontalSharpIcon sx={{ mr: 2 }} /> 
-                        25-75
-                        {/* {companyinformations?.company?.companysize} */}
-                      </Typography>
-                    </Box>
-                    <Divider light={true}></Divider>
-                  </Box>
-                  <Box sx={{width:["100%","45%"],mx:[0,7], display: "flex", flexDirection: "column", mt: 2 }}>
-                    <Box
-                      sx={{
-                        p: 1,
-                        pl: 0,
-                        pr: "10px",
-                        // borderBottom: `1px solid ${theme.palette.divider}`,
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          color: "#111927",
-                          fontFamily: "inter",
-                          fontSize: "16px",
-                          fontWeight: 500,
-                          lineHeight: "25px",
-                          letterSpacing: "0px",
-                          textAlign: "left",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <AccountCircleIcon sx={{ mr: 2 }} />{" "}
-                        www.canadagoose.com/shop
-                        {/* {generaldata?.general?.companywebsite} */}
-                      </Typography>
-                    </Box>
-                    
-                    <Divider light={true}></Divider>
-
-                    <Box
-                      sx={{
-                        p: 1,
-                        pl: 0,
-                        pr: "10px",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          color: "#111927",
-                          fontFamily: "Inter",
-                          fontSize: "16px",
-                          fontWeight: 500,
-                          lineHeight: "25px",
-                          letterSpacing: "0px",
-                          textAlign: "left",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <PhoneOutlinedIcon sx={{ mr: 2 }} /> 
-                        +92313524856
-                        {/* {generaldata?.general?.phone} */}
-                      </Typography>
-                    </Box>
-                    <Divider light={true}></Divider>
-                    <Box
-                      sx={{
-                        p: 1,
-                        pl: 0,
-                        pr: "10px",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          color: "#111927",
-                          fontFamily: "Inter",
-                          fontSize: "16px",
-                          fontWeight: 500,
-                          lineHeight: "25px",
-                          letterSpacing: "0px",
-                          textAlign: "left",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <HomeOutlinedIcon sx={{ mr: 2 }} /> 
-                        Toronto, Ontario, Canada
-                        {/* {generaldata?.general?.companyaddress} */}
-                      </Typography>
-                    </Box>
-                    <Divider light={true}></Divider>
-                    <Box
-                      sx={{
-                        p: 1,
-                        pl: 0,
-                        pr: "10px",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          color: "#111927",
-                          fontFamily: "inter",  
-                          fontSize: "16px",
-                          fontWeight: 500,
-                          lineHeight: "25px",
-                          letterSpacing: "0px",
-                          textAlign: "left",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <WebIcon sx={{ mr: 2 }} /> katarina.smith@devias.io
-                      </Typography>
-                    </Box>
-                    <Divider light={true}></Divider>
-                    <Box
-                      sx={{
-                        p: 1,
-                        pl: 0,
-                        pr: "10px",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          color: "#111927",
-                          fontFamily: "Inter",
-                          fontSize: "16px",
-                          fontWeight: 500,
-                          lineHeight: "25px",
-                          letterSpacing: "0px",
-                          textAlign: "left",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <BorderHorizontalSharpIcon sx={{ mr: 2 }} /> 
-                        25-75
-                        {/* {companyinformations?.company?.companysize} */}
-                      </Typography>
-                    </Box>
-                    <Divider light={true}></Divider>
-                  </Box>
-
-</Box>
-                </Box>
-
-                {/* Social Media Links */}
-                <Box sx={styles.socialMediaLinksContainer}>
-                  <Box sx={{ my: 2 }}>
-                    <Typography
-                      variant="H6"
-                      sx={{
-                        fontWeight: 700,
-                        fontSize: "18px",
-                        fontFamily: "Inter",
-                        fontFamily: "Plus Jakarta Sans",
-                      }}
-                    >
-                      Niche
-                    </Typography>
-                  </Box>
-
-                  <Box
-                    sx={{
-                      alignItems: "center",
-                      justifyContent: "center",
-                      mt: 3,
-                    }}
-                  >
-                    <Button
-                      variant="contained"
-                      sx={{
-                        backgroundColor: "rgba(99, 102, 241, 0.12)",
-                        color: "#312E81",
-                        width: "100%",
-                      }}
-                    >
-                      Clothing
-                    </Button>
-                  </Box>
-                  <Box
-                    sx={{
-                      alignItems: "center",
-                      justifyContent: "center",
-                      mt: 3,
-                    }}
-                  >
-                    <Button
-                      variant="contained"
-                      sx={{
-                        backgroundColor: "rgba(99, 102, 241, 0.12)",
-                        color: "#312E81",
-                        width: "100%",
-                      }}
-                    >
-                      Men Fashion
-                    </Button>
-                  </Box>
-                  <Box sx={{ mb: 2, mt: 4 }}>
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontWeight: 700,
-                        fontSize: "18px",
-                        fontFamily: "Plus Jakarta Sans",
-                      }}
-                    >
-                      Social Media Links
-                    </Typography>
-                  </Box>
-
-                  <Box
-                    sx={{ p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
-                  >
-                    <InstagramIcon
-                      sx={{ ...styles.socialMediaIcon, color: "#F90000" }}
-                    />{" "}
-                    <Typography
-                      sx={{
-                        fontFamily: "inter",
-                        fontWeight: 500,
-                        fontSize: "16px",
-                        lineHeight: "25.12px",
-                        ml: 1,
-                      }}
-                    >
-                      www.instagram.com/therock
-                    </Typography>
-                  </Box>
-                  <Divider />
-
-                  <Box
-                    sx={{ p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
-                  >
-                    <YouTubeIcon
-                      sx={{ ...styles.socialMediaIcon, color: "#F90000" }}
-                    />{" "}
-                    <Typography
-                      sx={{
-                        fontFamily: "inter",
-                        fontWeight: 500,
-                        fontSize: "16px",
-                        lineHeight: "25.12px",
-                        ml: 1,
-                      }}
-                    >
-                      www.youtube.com/therock
-                    </Typography>{" "}
-                  </Box>
-                  <Divider />
-
-                  <Box
-                    sx={{ p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
-                  >
-                    <TwitterIcon
-                      sx={{ ...styles.socialMediaIcon, color: "#1DA1F2" }}
-                    />{" "}
-                    <Typography
-                      sx={{
-                        fontFamily: "inter",
-                        fontWeight: 500,
-                        fontSize: "16px",
-                        lineHeight: "25.12px",
-                        ml: 1,
-                      }}
-                    >
-                      www.twitter.com/therock
-                    </Typography>{" "}
-                  </Box>
-                  <Divider />
-
-                  <Box
-                    sx={{ p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
-                  >
-                    <PinterestIcon
-                      sx={{ ...styles.socialMediaIcon, color: "#F90000" }}
-                    />{" "}
-                    <Typography
-                      sx={{
-                        fontFamily: "inter",
-                        fontWeight: 500,
-                        fontSize: "16px",
-                        lineHeight: "25.12px",
-                        ml: 1,
-                      }}
-                    >
-                      www.pinterest.com/therock
-                    </Typography>
-                  </Box>
-                  <Divider />
-                </Box>
-              </Box>
-
-              {/* ... (rest of the code) ... */}
-            </Box>
-      <Divider sx={{ mt: "80px" }}></Divider>
-
-      <Box sx={{}}>
-        <Box sx={{ my: 2 }}>
-          <Typography
-            variant="H6"
-            sx={{
-              fontWeight: 700,
-              fontSize: "18px",
-              fontFamily: "Inter",
-              fontFamily: "Plus Jakarta Sans",
-            }}
-          >
-            Stats
-          </Typography>
-        </Box>
-        <Box sx={{ display: ["block","flex"] }}>
-          <Box sx={{ mx: "13px",
-          '&:hover': {
-            cursor: 'pointer',
-          }, }}>
-            <Typography  className={`${overview === 0 && "youtubestats"} `} onClick={()=>handledata(0)}>Instagram statistics</Typography>  
-          </Box>
-          <Box sx={{ mx: "13px",'&:hover': {
-            cursor: 'pointer',
-          }, }}>
-            <Typography className={`${overview === 1 && "youtubestats"} `}  onClick={()=>handledata(1)}>Youtube statistics</Typography>
-          </Box>
-          <Box sx={{ mx: "13px",'&:hover': {
-            cursor: 'pointer',
-          }, }}>
-            <Typography  className={`${overview === 2 && "youtubestats"} `}   onClick={()=>handledata(2)}>tiktok statistics</Typography>
-          </Box>
-          <Box sx={{ mx: "13px" ,'&:hover': {
-            cursor: 'pointer',
-          },}}>
-            <Typography  className={`${overview === 3 && "youtubestats"} `}  onClick={()=>handledata(3)}>Twitter statistics</Typography>
-          </Box>
-          <Box sx={{ mx: "13px",'&:hover': {
-            cursor: 'pointer',
-          }, }}>
-            <Typography  className={`${overview === 4 && "youtubestats"} `}  onClick={()=>handledata(4)}>Pinetrest statistics</Typography>
-          </Box>
-        </Box>
-
-        <Divider></Divider>
-
-{
-  overview === 0 && 
-  <Box>
-    <Box sx={{ p: { xs: '5px', sm: '10px', md: '15px' } }}>
-      <Box
-        display="flex"
-        flexWrap="wrap"
-        gap={{ xs: '5px', sm: '10px', md: '16px' }}
-        justifyContent="center"
-      >
-         <Box sx={{ width: { xs: '80%', sm: '90%', md: '100%' } }}>
-          
-            <Box className={classes.cardContainer}>
-              <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:['7px',2],mt:['25px',3],}} className={classes.imageContainer}>
-                    <Image
-                      src="/image/grouped.png"
-                      width={"84"}
-                      height={"84"}
-                    ></Image>
-                  </Box>
-                  <Box className={classes.greenBox}>
-                    <Box>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#9D9D9D",
-                         
-                          fontSize: "14px",
-                          fontWeight: "400",
-                          lineHeight: "19px",
-                          letterSpacing: "0.08em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Followers Count
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          color: "#4466F2",
-                         
-                          fontSize: "40px",
-                          fontWeight: "700",
-                          lineHeight: "49px",
-                          letterSpacing: "9%",
-                          textAlign: "left",
-                          m:'7px'
-                        }}
-                      >
-                        500K
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#008EAD",
-                         
-                          fontSize: "14px",
-                          fontWeight: "600",
-                          lineHeight: "17px",
-                          letterSpacing: "8%",
-                          textAlign: "left",
-                        }}
-                      >
-                        <FiberManualRecordSharpIcon fontSize="10px" /> Macro
-                      </Typography>
-                    </Box>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "#4466F2",
-                       display:'flex',
-                       alignItems:'center',
-                        fontSize: "12px",
-                        fontWeight: "600",
-                        lineHeight: "15px",
-                        letterSpacing: "8%",
-                        textAlign: "left",
-                        marginTop: "8px",
-                        alignContent:'baseline'
-                      }}
-                    >
-                      Details <ExpandMoreIcon />
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-              <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3,mb:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
-                    <Image
-                      src="/image/cardgroup.png"
-                      width={"104"}
-                      height={"84"}
-                    ></Image>
-                  </Box>
-                  <Box className={classes.greenBox}>
-                    <Box sx={{mt:'13px'}}>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#9D9D9D",
-                         
-                          fontSize: "14px",
-                          fontWeight: "400",
-                          lineHeight: "19px",
-                          letterSpacing: "0.08em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Followers Count
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          color: "#4466F2",
-                         
-                          fontSize: "40px",
-                          fontWeight: "700",
-                          lineHeight: "49px",
-                          letterSpacing: "9%",
-                          textAlign: "left",
-                          m:'7px',mt:9
-                        }}
-                      >
-                        1k
-                      </Typography>
-                      
-                    </Box>
-                    
-                  </Box>
-                </Box>
-              </Box>
-
-              <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
-                    <Image
-                      src="/image/heart.png"
-                      width={"84"}
-                      height={"84"}
-                    ></Image>
-                  </Box>
-                  <Box className={classes.greenBox}>
-                    <Box>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#9D9D9D",
-                         
-                          fontSize: "14px",
-                          fontWeight: "400",
-                          lineHeight: "19px",
-                          letterSpacing: "0.08em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Average Likes
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          color: "#4466F2",
-                         
-                          fontSize: "40px",
-                          fontWeight: "700",
-                          lineHeight: "49px",
-                          letterSpacing: "9%",
-                          textAlign: "left",
-                          m:'7px'
-                        }}
-                      >
-                        5 %
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#008EAD",
-                         
-                          fontSize: "14px",
-                          fontWeight: "600",
-                          lineHeight: "17px",
-                          letterSpacing: "8%",
-                          textAlign: "left",
-                        }}
-                      >
-                        <FiberManualRecordSharpIcon fontSize="10px" /> High Average Likes
-                      </Typography>
-                    </Box>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "#4466F2",
-                        display:'flex',
-                       alignItems:'center',
-                        fontSize: "12px",
-                        fontWeight: "600",
-                        lineHeight: "15px",
-                        letterSpacing: "8%",
-                        textAlign: "left",
-                        marginTop: "8px",
-                        alignContent:'baseline'
-                      }}
-                    >
-                      Details <ExpandMoreIcon />
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-              
-            
-              <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
-                    <Image
-                      src="/image/message.png"
-                      width={"84"}
-                      height={"84"}
-                    ></Image>
-                  </Box>
-                  <Box className={classes.greenBox}>
-                    <Box>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#9D9D9D",
-                         
-                          fontSize: "14px",
-                          fontWeight: "400",
-                          lineHeight: "19px",
-                          letterSpacing: "0.08em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Average Comments
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          color: "#4466F2",
-                         
-                          fontSize: "40px",
-                          fontWeight: "700",
-                          lineHeight: "49px",
-                          letterSpacing: "9%",
-                          textAlign: "left",
-                          m:'7px'
-                        }}
-                      >
-                        45
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#08DCA9",
-                         
-                          fontSize: "14px",
-                          fontWeight: "600",
-                          lineHeight: "17px",
-                          letterSpacing: "8%",
-                          textAlign: "left",
-                        }}
-                      >
-                        <FiberManualRecordSharpIcon fontSize="10px" /> Very High Average Comment
-                      </Typography>
-                    </Box>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "#4466F2",
-                        display:'flex',
-                       alignItems:'center',
-                        fontSize: "12px",
-                        fontWeight: "600",
-                        lineHeight: "15px",
-                        letterSpacing: "8%",
-                        textAlign: "left",
-                        marginTop: "8px",
-                        alignContent:'baseline'
-                      }}
-                    >
-                      Details <ExpandMoreIcon />
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-
-              <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
-                    <Image
-                      src="/image/connect.png"
-                      width={"84"}
-                      height={"84"}
-                    ></Image>
-                  </Box>
-                  <Box className={classes.greenBox}>
-                    <Box>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#9D9D9D",
-                         
-                          fontSize: "14px",
-                          fontWeight: "400",
-                          lineHeight: "19px",
-                          letterSpacing: "0.08em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Engagement Rate
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          color: "#4466F2",
-                         
-                          fontSize: "40px",
-                          fontWeight: "700",
-                          lineHeight: "49px",
-                          letterSpacing: "9%",
-                          textAlign: "left",
-                          m:'7px'
-                        }}
-                      >
-                        2.5%
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#08DCA9",
-                         
-                          fontSize: "14px",
-                          fontWeight: "600",
-                          lineHeight: "17px",
-                          letterSpacing: "8%",
-                          textAlign: "left",
-                        }}
-                      >
-                        <FiberManualRecordSharpIcon fontSize="10px" /> Average Engagement rate
-                      </Typography>
-                    </Box>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "#4466F2",
-                        display:'flex',
-                       alignItems:'center',
-                        fontSize: "12px",
-                        fontWeight: "600",
-                        lineHeight: "15px",
-                        letterSpacing: "8%",
-                        textAlign: "left",
-                        marginTop: "8px",
-                        alignContent:'baseline'
-                      }}
-                    >
-                      Details <ExpandMoreIcon />
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-
-              <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
-                    <Image
-                      src="/image/comment.png"
-                      width={"84"}
-                      height={"84"}
-                    ></Image>
-                  </Box>
-                  <Box className={classes.greenBox}>
-                    <Box>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#9D9D9D",
-                         
-                          fontSize: "14px",
-                          fontWeight: "400",
-                          lineHeight: "19px",
-                          letterSpacing: "0.08em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Like/Comment ratio
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          color: "#4466F2",
-                         
-                          fontSize: "40px",
-                          fontWeight: "700",
-                          lineHeight: "49px",
-                          letterSpacing: "9%",
-                          textAlign: "left",
-                          m:'7px'
-                        }}
-                      >
-                        7%
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#08DCA9",
-                         
-                          fontSize: "14px",
-                          fontWeight: "600",
-                          lineHeight: "17px",
-                          letterSpacing: "8%",
-                          textAlign: "left",
-                        }}
-                      >
-                        <FiberManualRecordSharpIcon fontSize="10px" /> very High Balance
-                      </Typography>
-                    </Box>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "#4466F2",
-                        display:'flex',
-                       alignItems:'center',
-                        fontSize: "12px",
-                        fontWeight: "600",
-                        lineHeight: "15px",
-                        letterSpacing: "8%",
-                        textAlign: "left",
-                        marginTop: "8px",
-                        alignContent:'baseline'
-                      }}
-                    >
-                      Details <ExpandMoreIcon />
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-
-              <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3}}  className="flex flex-row items-center px-7">
-                  <Box sx={{ml:2,mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
-                    <Image
-                      src="/image/like.png"
-                      width={"84"}
-                      height={"84"}
-                    ></Image>
-                  </Box>
-                  <Box className={classes.greenBox}>
-                    <Box>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#9D9D9D",
-                         
-                          fontSize: "14px",
-                          fontWeight: "400",
-                          lineHeight: "19px",
-                          letterSpacing: "0.08em",
-                          textAlign: "left",
-                        }}
-                      >
-                       View /Subscriber rate
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          color: "#4466F2",
-                         
-                          fontSize: "40px",
-                          fontWeight: "700",
-                          lineHeight: "49px",
-                          letterSpacing: "9%",
-                          textAlign: "left",
-                        }}
-                      >
-                        5 %
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#008EAD",
-                         
-                          fontSize: ["11px","14px"],
-                          fontWeight: "600",
-                          lineHeight: "17px",
-                          letterSpacing: "8%",
-                          textAlign: "left",
-                        }}
-                      >
-                        <FiberManualRecordSharpIcon fontSize="10px" /> Low view to
-                        Subscriber rate
-                      </Typography>
-                    </Box>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "#4466F2",
-                        display:'flex',
-                       alignItems:'center',
-                        fontSize: "12px",
-                        fontWeight: "600",
-                        lineHeight: "15px",
-                        letterSpacing: "8%",
-                        textAlign: "left",
-                        marginTop: "8px",
-                      }}
-                    >
-                      Details <ExpandMoreIcon />
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-
-              <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3}}  className="flex flex-row items-center px-7">
-                  <Box sx={{mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
-                    <Image
-                      src="/image/clock.png"
-                      width={"84"}
-                      height={"84"}
-                    ></Image>
-                  </Box>
-                  <Box className={classes.greenBox}>
-                    <Box>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#9D9D9D",
-                         
-                          fontSize: "14px",
-                          fontWeight: "400",
-                          lineHeight: "19px",
-                          letterSpacing: "0.08em",
-                          textAlign: "left",
-                        }}
-                      >
-                       Average Post Intervals
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          color: "#4466F2",
-                         
-                          fontSize: "40px",
-                          fontWeight: "700",
-                          lineHeight: "49px",
-                          letterSpacing: "9%",
-                          textAlign: "left",
-                        }}
-                      >
-                        0.2%
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#008EAD",
-                         
-                          fontSize: "10px",
-                          fontWeight: "600",
-                          lineHeight: "17px",
-                          letterSpacing: "8%",
-                          textAlign: "left",
-                        }}
-                      >
-                        <FiberManualRecordSharpIcon fontSize="10px" /> Average Post Interval
-                      </Typography>
-                    </Box>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "#4466F2",
-                        display:'flex',
-                       alignItems:'center',
-                        fontSize: "12px",
-                        fontWeight: "600",
-                        lineHeight: "15px",
-                        letterSpacing: "8%",
-                        textAlign: "left",
-                        marginTop: "8px",
-                      }}
-                    >
-                      Details <ExpandMoreIcon />
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-
-              <Box className={classes.card}>
-                <Box sx={{display:'flex',mt:3,mb:3}} className="flex flex-row items-center ">
-                  <Box sx={{mr:['7px',2],mt:['25px',3]}} className={classes.imageContainer}>
-                    <Image
-                      src="/image/reel.png"
-                      width={"90"}
-                      height={"84"}
-                    ></Image>
-                  </Box>
-                  <Box className={classes.greenBox}>
-                    <Box sx={{mt:'13px'}}>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#9D9D9D",                        
-                          fontSize: "14px",
-                          fontWeight: "400",
-                          lineHeight: "19px",
-                          letterSpacing: "0.08em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Reels Count
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          color: "#4466F2",
-                         
-                          fontSize: "40px",
-                          fontWeight: "700",
-                          lineHeight: "49px",
-                          letterSpacing: "9%",
-                          textAlign: "left",
-                          m:'7px',
-                        }}
-                      >
-                        3.2 M
-                      </Typography>
-                      
-                    </Box>
-                    
-                  </Box>
-                </Box>
-              </Box>
-            
-            </Box>
-         </Box>
+          <Divider></Divider>
         </Box>
       </Box>
-    </Box>
-}
-{
-  overview === 1 && 
-  <Youtube />
-}
-{
-  overview === 2 && 
-  <Tiktokstats />
-}
-{
-  overview === 3 && 
-  <Twitterstats />
-}
-{
-  overview === 4 && 
-  <Pintereststats />
-}
-      </Box>
-      <Divider></Divider>
-    </Box>
-    </Box>
     </Box>
   );
 };

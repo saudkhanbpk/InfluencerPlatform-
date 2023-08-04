@@ -29,6 +29,7 @@ import MaleOutlinedIcon from "@mui/icons-material/MaleOutlined";
 import EightteenMpOutlinedIcon from "@mui/icons-material/EightteenMpOutlined";
 import SouthAmericaIcon from "@mui/icons-material/SouthAmerica";
 import WebIcon from "@mui/icons-material/Web";
+import FacebookIcon from '@mui/icons-material/Facebook';
 import Image from "next/image";
 import PersonAddAltSharpIcon from "@mui/icons-material/PersonAddAltSharp";
 import GroupSharpIcon from "@mui/icons-material/GroupSharp";
@@ -59,9 +60,13 @@ const styles = {
     },
   },
   aboutContainer: {
-    marginBottom: "25px",
+    marginBottom: "25px", 
     "@media (min-width: 600px)": {
       width: "70%", // Adjust the width of "About" on larger screens
+      paddingRight:'25px',
+      paddingTop:'20px',
+      paddingLeft:'10px'
+
     },
   },
   socialMediaLinksContainer: {
@@ -74,7 +79,9 @@ const styles = {
       justifyContent: "space-between", // Add space between social media links on larger screens
       width: "30%", // Adjust the width of "Social Media Links" on larger screens
       borderLeft: "1px solid #F2F4F7",
-      paddingLeft: "20px",
+      paddingLeft: "40px",
+      paddingTop:'12px'
+  
     },
   },
   socialMediaLink: {
@@ -158,6 +165,14 @@ const useStyles = makeStyles((theme) => ({
     height: 300,
     width: Fullscreen,
     margin: 5,
+    paddingLeft:'25px',
+    paddingRight:'25px',
+    "@media (max-width: 600px)": {
+      // marginLeft: "0px",
+      // width: "90px",
+      paddingLeft:'1px',
+      paddingRight:'1px',
+    },
   },
   coverImage: {
     height: "100%",
@@ -329,7 +344,7 @@ const BrandProfile = () => {
                   </Box>
                   <Box
                     sx={{
-                      mt: [0, 2],
+                      mt: [0, 6],
                       mr: [1, 0],
                       justifyContent:'start'
                     }}
@@ -416,7 +431,7 @@ const BrandProfile = () => {
                   }}
                 >
                   {/* Left side content */}
-                  <Box
+                  {/* <Box
                     sx={{
                       display: "flex",
                       flexDirection: "column",
@@ -424,7 +439,7 @@ const BrandProfile = () => {
                       width: ["100%", "30%"], // Full width on mobile, 30% width on desktop
                       p: [0, 2],
                     }}
-                  ></Box>
+                  ></Box> */}
 
                   {/* Right side content */}
                   <Box
@@ -443,8 +458,8 @@ const BrandProfile = () => {
                         ml: [-12, 0],
                       }}
                     >
-                      <Button variant="outlined" color="primary">
-                        <FavoriteIcon sx={{ mr: 1 }} /> Favorite
+                      <Button variant="outlined" color="primary" sx={{borderRadius:'10px'}}>
+                        <FavoriteIcon sx={{ mr: 1,fontSize:'22px' }} /> Favorite
                       </Button>
                     </Box>
                     <Box
@@ -454,8 +469,8 @@ const BrandProfile = () => {
                         width: "190px",
                       }}
                     >
-                      <Button variant="contained" color="primary">
-                        <QuestionAnswerIcon sx={{ mr: 1 }} /> Send Message
+                      <Button variant="contained" color="primary" sx={{borderRadius:'10px'}}>
+                        <QuestionAnswerIcon sx={{ mr: 1,fontSize:'20px' }} /> Send Message
                       </Button>
                       <Box
                         sx={{
@@ -504,7 +519,7 @@ const BrandProfile = () => {
                 </Box>
               </Box>
             </Box>
-            <Box sx={{ display: "flex", mx: "13px", mt: "30px" }}>
+            <Box sx={{ display: "flex", mx: "0px", mt: "30px" }}>
               <Box sx={{ mx: "13px" }}>
                 <Typography
                   sx={{ color: "#6C737F", "&:hover": { cursor: "pointer" } }}
@@ -529,7 +544,7 @@ const BrandProfile = () => {
           {overview === 0 && (
             <Box
               sx={{
-                padding: "20px",
+                padding: "0px",
                 "@media (max-width: 600px)": { padding: "10px" },
               }}
             >
@@ -553,7 +568,7 @@ const BrandProfile = () => {
                       About
                     </Typography>
                   </Box>
-                  <Box sx={{ marginBottom: "25px" }}>
+                  <Box sx={{ marginBottom: "25px",pr:3 }}>
                     <Typography
                       variant="body1"
                       sx={{
@@ -561,10 +576,11 @@ const BrandProfile = () => {
                         color: "#6C737F",
                         fontWeight: 500,
                         fontSize: "18px",
-                        fontFamily: "Inter",
+                        // fontFamily: "Inter",
+                        textAlign:'justify'
                       }}
                     >
-                      {/* Canada Goose is a premium Canadian clothing brand that was
+                      Canada Goose is a premium Canadian clothing brand that was
                       founded in 1957. The brand is known for its high-quality
                       and stylish outerwear that is designed to withstand
                       extreme weather conditions. The company initially started
@@ -572,13 +588,13 @@ const BrandProfile = () => {
                       snowmobile suits for Canadian Rangers and police officers.
                       However, in recent years, Canada Goose has gained
                       widespread popularity as a luxury fashion brand and is now
-                      considered a status symbol. */}
+                      considered a status symbol.
                       {companyinformations?.company?.bio}
                     </Typography>
                   </Box>
-                  <Divider />
+                  <Divider sx={{width:'103%'}}/>
 
-                  <Box sx={{ display: "flex", flexDirection: "column", mt: 2 }}>
+                  <Box sx={{ display: "flex", flexDirection: "column", mt: 2,width:["100%","60%"],pl:['8px',0] }}>
                     <Box
                       sx={{
                         p: 1,
@@ -600,7 +616,7 @@ const BrandProfile = () => {
                           alignItems: "center",
                         }}
                       >
-                        <AccountCircleIcon sx={{ mr: 2 }} />{" "}
+                        <AccountCircleIcon sx={{ mr: 8,color:'#6C737F'}} />{" "}
                         {/* www.canadagoose.com/shop */}
                         {generaldata?.general?.companywebsite}
                       </Typography>
@@ -627,7 +643,7 @@ const BrandProfile = () => {
                           alignItems: "center",
                         }}
                       >
-                        <PhoneOutlinedIcon sx={{ mr: 2 }} /> 
+                        <PhoneOutlinedIcon sx={{ mr: 2,color:'#6C737F' }} /> 
                         {/* +92313524856 */}
                         {generaldata?.general?.phone}
                       </Typography>
@@ -653,7 +669,7 @@ const BrandProfile = () => {
                           alignItems: "center",
                         }}
                       >
-                        <HomeOutlinedIcon sx={{ mr: 2 }} /> 
+                        <HomeOutlinedIcon sx={{ mr: 2,color:'#6C737F'  }} /> 
                         {/* Toronto, Ontario, Canada */}
                         {generaldata?.general?.companyaddress}
                       </Typography>
@@ -679,7 +695,7 @@ const BrandProfile = () => {
                           alignItems: "center",
                         }}
                       >
-                        <WebIcon sx={{ mr: 2 }} /> katarina.smith@devias.io
+                        <WebIcon sx={{ mr: 2,color:'#6C737F'  }} /> katarina.smith@devias.io
                       </Typography>
                     </Box>
                     <Divider light={true}></Divider>
@@ -703,7 +719,7 @@ const BrandProfile = () => {
                           alignItems: "center",
                         }}
                       >
-                        <BorderHorizontalSharpIcon sx={{ mr: 2 }} /> 
+                        <BorderHorizontalSharpIcon sx={{ mr: 2,color:'#6C737F'  }} /> 
                         {/* 25-75 */}
                         {companyinformations?.company?.companysize}
                       </Typography>
@@ -713,14 +729,14 @@ const BrandProfile = () => {
                 </Box>
 
                 {/* Social Media Links */}
-                <Box sx={styles.socialMediaLinksContainer}>
+                <Box sx={{...styles.socialMediaLinksContainer}} >
                   <Box sx={{ my: 2 }}>
                     <Typography
                       variant="H6"
                       sx={{
                         fontWeight: 700,
                         fontSize: "18px",
-                        fontFamily: "Inter",
+                        // fontFamily: "Inter",
                         fontFamily: "Plus Jakarta Sans",
                       }}
                     >
@@ -764,6 +780,7 @@ const BrandProfile = () => {
                       Men Fashion
                     </Button>
                   </Box>
+
                   <Box sx={{ mb: 2, mt: 4 }}>
                     <Typography
                       variant="h6"
@@ -771,14 +788,35 @@ const BrandProfile = () => {
                         fontWeight: 700,
                         fontSize: "18px",
                         fontFamily: "Plus Jakarta Sans",
+                        lineHeight:'22px'
                       }}
                     >
                       Social Media Links
                     </Typography>
                   </Box>
+                  
+                  <Box
+                    sx={{mt:1,mb:1, p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
+                  >
+                    <FacebookIcon
+                      sx={{ ...styles.socialMediaIcon, color: "#1777F2" }}
+                    />{" "}
+                    <Typography
+                      sx={{
+                        fontFamily: "inter",
+                        fontWeight: 500,
+                        fontSize: "16px",
+                        lineHeight: "25.12px",
+                        ml: 1,
+                      }}
+                    >
+                      www.facebook.com/therock
+                    </Typography>
+                  </Box>
+                  <Divider />
 
                   <Box
-                    sx={{ p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
+                    sx={{mt:1,mb:1, p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
                   >
                     <InstagramIcon
                       sx={{ ...styles.socialMediaIcon, color: "#F90000" }}
@@ -798,7 +836,7 @@ const BrandProfile = () => {
                   <Divider />
 
                   <Box
-                    sx={{ p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
+                    sx={{ mt:1,mb:1,p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
                   >
                     <YouTubeIcon
                       sx={{ ...styles.socialMediaIcon, color: "#F90000" }}
@@ -818,7 +856,7 @@ const BrandProfile = () => {
                   <Divider />
 
                   <Box
-                    sx={{ p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
+                    sx={{mt:1,mb:1, p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
                   >
                     <TwitterIcon
                       sx={{ ...styles.socialMediaIcon, color: "#1DA1F2" }}
@@ -838,7 +876,7 @@ const BrandProfile = () => {
                   <Divider />
 
                   <Box
-                    sx={{ p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
+                    sx={{mt:1,mb:1, p: 1, pl: 0, pr: "10px", ...styles.socialMediaLink }}
                   >
                     <PinterestIcon
                       sx={{ ...styles.socialMediaIcon, color: "#F90000" }}
