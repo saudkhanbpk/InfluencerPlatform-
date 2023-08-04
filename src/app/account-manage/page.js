@@ -28,6 +28,28 @@ const Page = () => {
   const user = useMockedUser();
   const [currentTab, setCurrentTab] = useState('general');
   const [expanded, setExpanded] = useState(true);
+  const [userData, setUserData] = useState('');
+
+  const allUserData = () => {
+    
+   
+    let user = JSON.parse(localStorage.getItem('user'))
+   
+    const apiUrl = `${baseUrl}/api/getuser/${user?._id}`;
+
+axios.post(apiUrl)
+      .then((response) =>{
+         setUserData(response.data?.users[0])
+        // console.log("user dfatra ;",response)
+      })
+      .catch((error) => console.error('Error fetching data:', error));
+  }
+  useEffect(() => {
+
+    allUserData();
+
+  }, []);
+  console.log("userdata2222", userData)
 //   const [userData, setUserData] = useState([]);
 
 
@@ -57,7 +79,7 @@ const Page = () => {
 
   return (
     <>
-      <Box sx={{ display: 'flex', fontFamily:'Plus Jakarta Sans' }}>
+      <Box sx={{ display: 'flex',  fontFamily:'Plus Jakarta Sans' }}>
         <Sidebar expanded={expanded} />
         <Box sx={{ width: "100%" }}>
           <Navbar expanded={expanded} setExpanded={setExpanded} />
@@ -65,7 +87,8 @@ const Page = () => {
             component="main"
             sx={{
               flexGrow: 1,
-              py: 8
+              py: 8,
+              paddingX:'25px',
             }}
           >
             <Container maxWidth="xl">
@@ -124,6 +147,7 @@ const Page = () => {
                       createdAt: subMonths(now, 3).getTime()
                     }
                   ]}
+                  data={userData?.billingDetails.length > 0 && userData?.billingDetails[0]}
                 />
               )}
               {currentTab === 'team' && (

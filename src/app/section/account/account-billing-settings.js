@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import numeral from 'numeral';
 import { format } from 'date-fns';
@@ -19,11 +19,14 @@ import {
   TableHead,
   TableRow,
   Typography,
-  Unstable_Grid2 as Grid
+  Unstable_Grid2 as Grid,
+  TextField
 } from '@mui/material';
 import { PropertyList } from 'src/components/property-list';
 import { PropertyListItem } from 'src/components/property-list-item';
 import { AccountPlanIcon } from './account-plan-icon';
+import { baseUrl } from '@/app/BaseUrl';
+import axios from 'axios';
 
 const plans = [
   {
@@ -42,9 +45,29 @@ const plans = [
 ];
 
 export const AccountBillingSettings = (props) => {
-  const { plan: currentPlan = 'standard', invoices = [] } = props;
+  const { plan: currentPlan = 'standard', invoices = [], data } = props;
   const [selectedPlan, setSelectedPlan] = useState(currentPlan);
+  const [firstName, setFirstName] = useState('');
+  const [cardNumber, setCardNumber] = useState('');
+  const [country, setCountry] = useState('');
 
+  const firstNameRef = useRef(null);
+
+  const handleEditClick = (ref) => {
+    // Focus on the input field
+    if (ref && ref.current) {
+      ref.current.focus();
+    }
+  };
+
+  console.log("userdsdsd", data)
+  console.log("cardHolderName", data.cardHolderName)
+  useEffect(() => {
+    setFirstName(data.cardHolderName)
+    setCardNumber(data.cardNumber)
+    setCountry(data.country)
+
+  }, []);
   return (
     <Stack
       spacing={4}
@@ -150,10 +173,11 @@ export const AccountBillingSettings = (props) => {
               justifyContent: 'space-between'
             }}
           >
-            <Typography  variant="h6" sx={{fontWeight: 'bold', fontFamily: 'Plus Jakarta Sans', fontSize:'18px'}}>
+            <Typography variant="h6" sx={{ fontWeight: 'bold', fontFamily: 'Plus Jakarta Sans', fontSize: '18px' }}>
               Billing details
             </Typography>
             <Button
+              onClick={() => handleEditClick(firstNameRef)}
               color="primary"
               startIcon={(
                 <SvgIcon>
@@ -170,39 +194,87 @@ export const AccountBillingSettings = (props) => {
               borderColor: 'divider',
               borderRadius: 1,
               mt: 3,
-              fontWeight: 'bold', fontFamily: 'Plus Jakarta Sans', fontSize:'18px'
+              fontWeight: 'bold', fontFamily: 'Plus Jakarta Sans', fontSize: '18px'
             }}
           >
             <PropertyList>
-              <PropertyListItem
-                align="horizontal"
-                divider
-                label="Billing name"
-                value="John Doe"
-              />
-              <PropertyListItem
+              <Box sx={{ display: 'flex', alignItems: 'center', }}>
+                <PropertyListItem
+                  align="horizontal"
+                  divider
+                  label="Billing name"
+                />
+                <TextField
+                  sx={{
+                    // mr: '600px',
+                  }}
+                  fullWidth
+                  size='small'
+                  value={firstName}
+                  inputRef={firstNameRef}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', }}>
+                <PropertyListItem
+                  align="horizontal"
+                  divider
+                  label="Card number"
+                />
+                <TextField
+                  sx={{
+                    // mr: '600px',
+                  }}
+                  fullWidth
+                  size='small'
+                  value={cardNumber}
+                  onChange={(e) => setCardNumber(e.target.value)}
+                />
+              </Box>
+              {/* <PropertyListItem
                 align="horizontal"
                 divider
                 label="Card number"
-                value="**** 1111"
-              />
-              <PropertyListItem
-                align="horizontal"
-                divider
-                label="Country"
-                value="Germany"
-              />
-              <PropertyListItem
-                align="horizontal"
-                label="Zip / Postal code"
-                value="667123"
-              />
+                value={cardNumber}
+              /> */}
+
+              <Box sx={{ display: 'flex', alignItems: 'center', }}>
+                <PropertyListItem
+                  align="horizontal"
+                  divider
+                  label="Country"
+                />
+                <TextField
+                  sx={{
+                    // mr: '600px',
+                  }}
+                  fullWidth
+                  size='small'
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                />
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', }}>
+                <PropertyListItem
+                  align="horizontal"
+                  divider
+                  label="Postal"
+                />
+                <TextField
+                  sx={{
+                    // mr: '600px',
+                  }}
+                  fullWidth
+                  size='small'
+                // value={country}
+                />
+              </Box>
             </PropertyList>
           </Box>
           <Typography
             color="text.secondary"
             variant="body2"
-            sx={{ mt: 3, fontWeight:'400', fontSize:'14px' }}
+            sx={{ mt: 3, fontWeight: '400', fontSize: '14px' }}
           >
             We cannot refund once you purchased a subscription, but you can always
             <Link
@@ -238,7 +310,7 @@ export const AccountBillingSettings = (props) => {
               type="submit"
               variant="contained"
             >
-               Update plan
+              Update plan
             </Button>
           </Box>
         </CardContent>

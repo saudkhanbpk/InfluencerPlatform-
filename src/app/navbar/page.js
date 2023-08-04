@@ -15,10 +15,9 @@ import Menu from '@mui/material/Menu';
 import Image from 'next/image';
 import Button from '@mui/material/Button';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
-import { Box, Divider, Typography } from '@mui/material';
+import { Box, Divider, Typography, Grid } from '@mui/material';
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-
 
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
@@ -27,7 +26,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SettingsIcon from '@mui/icons-material/Settings';
-// import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const useStyles = makeStyles((theme) => ({
@@ -80,67 +78,82 @@ const Navbar = ({ expanded, setExpanded }) => {
   };
 
   return (
-    <div className={classes.root}>
+    <Box className={classes.root} sx={{paddingX:'25px',}}>
       <AppBar position="static">
         <Toolbar>
-          <Box sx={{ zIndex: '3', }}>
-            <IconButton onClick={handleToggleSidebar}>
-              {expanded ? <CloseIcon /> : <MenuIcon />}
-            </IconButton>
-          </Box>
-          <IconButton edge="start" className={classes.searchIcon} color="inherit" aria-label="search">
-            <SearchIcon sx={{ fontSize: '40px' }} />
-          </IconButton>
-          <div className={classes.title}></div>
-          <Button
-            className={classes.languageButton}
-            startIcon={<Image src='/image/Flags.png' style={{ borderRadius: '100%', marginRight: '2px' }} width={30} height={30} />}
-            endIcon={<ArrowDropDownIcon className={classes.dropdownIcon} />}
-            onClick={handleLanguageClick}
-          >
-            English
-          </Button>
-          <Menu
-            anchorEl={languageAnchorEl}
-            open={Boolean(languageAnchorEl)}
-            onClose={handleLanguageClose}
-            elevation={0}
-            getContentAnchorEl={null}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
-            }}
-          >
-            <MenuItem onClick={handleLanguageClose}>English</MenuItem>
-            <MenuItem onClick={handleLanguageClose}>Spanish</MenuItem>
-          </Menu>
-          <IconButton color="inherit">
-            <PeopleAltOutlinedIcon sx={{ fontSize: '30px' }} />
-          </IconButton>
-          <IconButton color="inherit">
-            <NotificationsIcon sx={{ fontSize: '30px' }} />
-          </IconButton>
-          <IconButton color="inherit" onClick={handleOpenPopup}>
-            <Image src='/image/little.png' width={50} height={50} />
-          </IconButton>
+          <Grid container alignItems="center">
+            <Box sx={{ display:'flex', justifyContent:'center', gap:'1rem', alignItems:'center'}}>
+            <Grid item>
+              <IconButton onClick={handleToggleSidebar} sx={{zIndex:'3', width:'24px', height:'24px'}}>
+                {expanded ? <CloseIcon /> : <MenuIcon />}
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <IconButton edge="start" className={classes.searchIcon} color="inherit" aria-label="search">
+                <SearchIcon sx={{ width:'30px', height:'30px' }} />
+              </IconButton>
+            </Grid>
+            </Box>
+            <Grid item xs />
+            <Grid item>
+              <Button
+              // sx={{width:'24px', height:'24px'}}
+                className={classes.languageButton}
+                startIcon={<Image src='/image/Flags.png' style={{ borderRadius: '100%', marginRight: '2px' }} width={24} height={24} />}
+                endIcon={<ArrowDropDownIcon className={classes.dropdownIcon} />}
+                onClick={handleLanguageClick}
+              >
+                English
+              </Button>
+              <Menu
+                anchorEl={languageAnchorEl}
+                open={Boolean(languageAnchorEl)}
+                onClose={handleLanguageClose}
+                elevation={0}
+                getContentAnchorEl={null}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+              >
+                <MenuItem onClick={handleLanguageClose}>English</MenuItem>
+                <MenuItem onClick={handleLanguageClose}>Spanish</MenuItem>
+              </Menu>
+            </Grid>
+            <Grid item>
+              <IconButton color="inherit">
+                <PeopleAltOutlinedIcon sx={{ width:'24px', height:'24px' }} />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <IconButton color="inherit">
+                <NotificationsIcon sx={{ width:'24px', height:'24px' }} />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <IconButton color="inherit" onClick={handleOpenPopup}>
+                <Image src='/image/little.png' width={40} height={40} />
+              </IconButton>
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
 
       {/* Profile Popup */}
-      <Dialog open={popupOpen} onClose={handleClosePopup}  PaperProps={{
-          sx: {
-            position: 'fixed',
-            top: '30px', // Adjust the top position as per your requirement
-            right: '0px', // Adjust the left position as per your requirement
-            minWidth: '200px', // Adjust the width as per your requirement
-          },
-        }}>
+      <Dialog open={popupOpen} onClose={handleClosePopup} PaperProps={{
+        sx: {
+          position: 'fixed',
+          top: '30px', // Adjust the top position as per your requirement
+          right: '0px', // Adjust the left position as per your requirement
+          minWidth: '200px', // Adjust the width as per your requirement
+        },
+      }}>
         <DialogContent>
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <Box sx={{alignItems:'start'}}>
-          <Typography variant="subtitle1">{userInfo.name}</Typography>
-            <Typography variant="body2">{userInfo.email}</Typography>
-          </Box>
+            <Box sx={{ alignItems: 'start' }}>
+              <Typography variant="subtitle1">{userInfo.name}</Typography>
+              <Typography variant="body2">{userInfo.email}</Typography>
+            </Box>
             <Divider sx={{ my: 2, width: '100%' }} />
             <List>
               <ListItem button>
@@ -165,9 +178,9 @@ const Navbar = ({ expanded, setExpanded }) => {
           </Box>
         </DialogContent>
       </Dialog>
-    </div>
-
+    </Box>
   );
 };
 
 export default Navbar;
+

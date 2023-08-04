@@ -98,8 +98,10 @@ export const AccountGeneralSettings = (props) => {
   }, []);
   useEffect(() => {
     setFirstName(userData.name)
+    setLastName(userData.lastName)
     setUserEmail(userData.email)
-
+    setTimeZones(userData.timeZones)
+   
 
   }, [userData]);
   console.log("UserData........", userData)
