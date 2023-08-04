@@ -151,20 +151,8 @@ axios.post(apiUrl)
               )}
               {currentTab === 'team' && (
                 <AccountTeamSettings
-                  members={[
-                    {
-                      avatar: '/public/image/little.png',
-                      email: 'cao.yu@devias.io',
-                      name: 'Cao Yu',
-                      role: 'Owner'
-                    },
-                    {
-                      avatar: '/assets/avatars/avatar-siegbert-gottfried.png',
-                      email: 'siegbert.gottfried@devias.io',
-                      name: 'Siegbert Gottfried',
-                      role: 'Standard'
-                    }
-                  ]}
+                  members={userData?.members}
+                  teamMeamber={userData?.members.length > 0 && userData?.members[0]}
                 />
               )}
               {currentTab === 'notifications' && <AccountNotificationsSettings />}

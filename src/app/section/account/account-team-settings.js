@@ -1,3 +1,5 @@
+'use client'
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import DotsHorizontalIcon from '@untitled-ui/icons-react/build/esm/DotsHorizontal';
 import Mail01Icon from '@untitled-ui/icons-react/build/esm/Mail01';
@@ -22,9 +24,40 @@ import {
 } from '@mui/material';
 import { Scrollbar } from 'src/components/scrollbar';
 import { SeverityPill } from 'src/components/severity-pill';
+import { baseUrl } from '@/app/BaseUrl';
+import axios from 'axios';
 
 export const AccountTeamSettings = (props) => {
-  const { members } = props;
+  const [userEmail, setUserEmail] = useState('');
+  const { members,teamMeamber } = props;
+  console.log("ksdgjfgsdhkf22",teamMeamber)
+  const SendInvite= ()=>{
+    
+    const data = {
+      email: userEmail
+  };
+let payload={members:data}
+console.log("data--------", payload)
+  const config = {
+      headers: {
+          "Content-Type": "application/json",
+      },
+  };
+  let user = JSON.parse(localStorage.getItem('user'))
+   console.log("userData", user._id)
+    axios.put(`${baseUrl}/api/updateMembers/${user._id}`, payload, config)
+            .then((response) => {
+                console.log("ser response", response.data);
+                // const { email, _id } = response.data.newUser;
+                setUserEmail('')
+            })
+            .catch((error) => {
+                console.error(error.response.data.msg);
+                toast.error(error.response.data.msg);
+                setError(error.response.data.msg);
+            })
+
+  }
 
   return (
     <Card>
@@ -68,8 +101,10 @@ export const AccountTeamSettings = (props) => {
                 name="email"
                 sx={{ flexGrow: 1 }}
                 type="email"
+                onChange={(e) => setUserEmail(e.target.value)}
+                value={userEmail}
               />
-              <Button variant="contained">
+              <Button variant="contained" onClick={SendInvite}>
                 Send Invite
               </Button>
             </Stack>

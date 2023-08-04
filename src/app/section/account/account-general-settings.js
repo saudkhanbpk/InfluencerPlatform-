@@ -23,6 +23,7 @@ import axios from 'axios';
 export const AccountGeneralSettings = (props) => {
   const [userData, setUserData] = useState('');
   const [firstName, setFirstName] = useState('');
+  const [imageFile, setImageFile] = useState(null);
   const [lastName, setLastName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [timeZones, setTimeZones] = useState('');
@@ -101,12 +102,13 @@ export const AccountGeneralSettings = (props) => {
     setLastName(userData.lastName)
     setUserEmail(userData.email)
     setTimeZones(userData.timeZones)
+    
    
 
   }, [userData]);
   console.log("UserData........", userData)
   const { avatar, email, name } = props;
-
+  console.log("image", imageFile)
   return (
     <Stack
       spacing={4}
@@ -157,13 +159,25 @@ export const AccountGeneralSettings = (props) => {
                       </Avatar>
                     </Box>
                   </Box>
-                  <Button
+                  <input
+                  
+        type="file"
+        
+        onChange={(e) => setImageFile(e.target.files[0])}
+        
+      />
+                  {/* <Button
+                
                     color="primary"
                     // size="small"
                     sx={{ fontSize: '14px', fontWeight: '600' }}
+                    // onClick={(e) => setIMageFile(e.target.files[0])}
+                    
                   >
+
                     Change
-                  </Button>
+                  </Button> */}
+                 
                 </Stack>
                 <Stack
                   alignItems="center"

@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -29,6 +29,8 @@ import ListItemText from '@mui/material/ListItemText';
 import SettingsIcon from '@mui/icons-material/Settings';
 // import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import axios from 'axios';
+import { baseUrl } from '../BaseUrl';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,6 +58,27 @@ const Navbar = ({ expanded, setExpanded }) => {
   const classes = useStyles();
   const [languageAnchorEl, setLanguageAnchorEl] = React.useState(null);
   const [popupOpen, setPopupOpen] = useState(false);
+  const [userData, setUserData] = React.useState([]);
+
+
+  const getAllUserData = () => {
+    
+   
+    let user = JSON.parse(localStorage.getItem('user'))
+   
+    const apiUrl = `${baseUrl}/api/getuser/${user._id}`;
+
+axios.post(apiUrl)
+      .then((response) => setUserData(response.data))
+      .catch((error) => console.error('Error fetching data:', error));
+  }
+  
+  useEffect(() => {
+
+getAllUserData();
+
+  }, []);
+  console.log("userData........", userData)
 
   const handleLanguageClick = (event) => {
     setLanguageAnchorEl(event.currentTarget);
