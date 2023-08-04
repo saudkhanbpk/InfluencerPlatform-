@@ -580,15 +580,7 @@ const BrandProfile = () => {
                         textAlign:'justify'
                       }}
                     >
-                      Canada Goose is a premium Canadian clothing brand that was
-                      founded in 1957. The brand is known for its high-quality
-                      and stylish outerwear that is designed to withstand
-                      extreme weather conditions. The company initially started
-                      as a manufacturer of woolen vests, raincoats, and
-                      snowmobile suits for Canadian Rangers and police officers.
-                      However, in recent years, Canada Goose has gained
-                      widespread popularity as a luxury fashion brand and is now
-                      considered a status symbol.
+                      
                       {companyinformations?.company?.bio}
                     </Typography>
                   </Box>
@@ -616,7 +608,7 @@ const BrandProfile = () => {
                           alignItems: "center",
                         }}
                       >
-                        <AccountCircleIcon sx={{ mr: 8,color:'#6C737F'}} />{" "}
+                        <AccountCircleIcon sx={{ mr: 2,color:'#6C737F'}} />{" "}
                         {/* www.canadagoose.com/shop */}
                         {generaldata?.general?.companywebsite}
                       </Typography>

@@ -56,7 +56,7 @@ const Navbar = ({ expanded, setExpanded }) => {
   const classes = useStyles();
   const [languageAnchorEl, setLanguageAnchorEl] = React.useState(null);
   const [popupOpen, setPopupOpen] = useState(false);
-  const [userData, setUserData] = React.useState([]);
+  const [userData, setUserData] = React.useState('');
 
 
   const getAllUserData = () => {
@@ -76,6 +76,7 @@ axios.post(apiUrl)
 getAllUserData();
 
   }, []);
+  // console.log("newdata", userData?.users[0].firstName)
   console.log("userData........", userData)
 
   const handleLanguageClick = (event) => {
@@ -174,8 +175,8 @@ getAllUserData();
         <DialogContent>
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Box sx={{ alignItems: 'start' }}>
-              <Typography variant="subtitle1">{userInfo.name}</Typography>
-              <Typography variant="body2">{userInfo.email}</Typography>
+              <Typography variant="subtitle1">{userData && userData?.users.length > 0 && userData?.users[0].firstName}</Typography>
+              <Typography variant="body2">{userData && userData?.users.length > 0 && userData?.users[0].email}</Typography>
             </Box>
             <Divider sx={{ my: 2, width: '100%' }} />
             <List>
