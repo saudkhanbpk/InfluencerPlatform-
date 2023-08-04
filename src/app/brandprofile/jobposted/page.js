@@ -18,10 +18,12 @@ const Jobs = () => {
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Box sx={{ borderBottom: `1px solid ${theme.palette.divider}`, pb: 2 }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Box sx={{ mr: 2 }}>
+            <Box sx={{ mr: 2,mb:6 }}>
               <Image src="/image/brandprofile.png" width={35} height={35} />
             </Box>
-            <Box>
+           
+           <Box>
+           <Box>
               <Typography
                 variant="h6"
                 sx={{
@@ -36,9 +38,9 @@ const Jobs = () => {
               <Typography
                 variant="body2"
                 sx={{
-                  fontSize: '12px',
-                  fontWeight: 600,
-                  fontFamily: 'Inter',
+                  fontSize: '14px',
+                  fontWeight: 400,
+                  // fontFamily: 'Inter',
                   color: '#6C737F',
                   lineHeight: '22px',
                   pt: 0,
@@ -47,20 +49,19 @@ const Jobs = () => {
               >
                 Established since 2010
               </Typography>
+              
             </Box>
-          </Box>
-
           <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
             <Box sx={{ mr: 2 }}>
-              <PeopleOutlinedIcon sx={{ fontSize: '28px' }} />
+              <PeopleOutlinedIcon sx={{ fontSize: '28px',color:'#6C737F' }} />
             </Box>
             <Box>
               <Typography
                 variant="overline"
                 sx={{
-                  fontSize: '14px',
+                  fontSize: '12px',
                   fontWeight: 600,
-                  fontFamily: 'Inter',
+                  // fontFamily: 'Inter',
                   color: '#6C737F',
                   lineHeight: '30px',
                 }}
@@ -70,7 +71,7 @@ const Jobs = () => {
             </Box>
 
             <Box sx={{ ml: 3 }}>
-              <VerifiedOutlinedIcon />
+              <VerifiedOutlinedIcon sx={{color:'#6C737F'}} />
             </Box>
 
             <Box sx={{ ml: 2 }}>
@@ -79,7 +80,7 @@ const Jobs = () => {
                 sx={{
                   fontSize: '12px',
                   fontWeight: 600,
-                  fontFamily: 'Inter',
+                  // fontFamily: 'Inter',
                   color: '#15B79E',
                   lineHeight: '30px',
                 }}
@@ -88,16 +89,21 @@ const Jobs = () => {
               </Typography>
             </Box>
           </Box>
+
+           </Box> 
+            
+          </Box>
+
         </Box>
 
         <Box sx={{ backgroundColor: 'white', boxShadow: '1', borderRadius: '10px', mt: 2 }}>
           <Box sx={{ padding: '16px' }}>
             <Typography
-              variant="subtitle1"
+              // variant="subtitle1"
               sx={{
                 fontSize: '16px',
                 fontWeight: 500,
-                fontFamily: 'Inter',
+                // fontFamily: 'Inter',
                 color: '#111927',
                 lineHeight: '25px',
               }}
@@ -106,8 +112,8 @@ const Jobs = () => {
             </Typography>
           </Box>
 
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '16px' }}>
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', px: '16px',pb:2 }}>
+            <Box sx={{ display: ['flex','block'], flexDirection: 'column' }}>
               <Typography
                 variant="caption"
                 sx={{
@@ -117,6 +123,7 @@ const Jobs = () => {
                   color: '#6C737F',
                   lineHeight: '20px',
                   mb: 1,
+                  mr:2
                 }}
               >
                 Budget • $400- $600
@@ -130,6 +137,8 @@ const Jobs = () => {
                   color: '#6C737F',
                   lineHeight: '20px',
                   mb: 1,
+                  mx:[0,2]
+
                 }}
               >
                 Job type • Content creation & Shoutouts
@@ -142,6 +151,7 @@ const Jobs = () => {
                   fontFamily: 'Inter',
                   color: '#6C737F',
                   lineHeight: '20px',
+                  mx:[0,2]
                 }}
               >
                 Payment type • Paid

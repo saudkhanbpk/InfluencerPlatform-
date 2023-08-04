@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   cardContainer: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '16px',
+    gap: '40px',
     justifyContent: 'start',
 
   },
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
       width: 'calc(40% - 10px)',
     },
     '@media (min-width: 900px)': {
-      width: 'calc(26% - 16px)',
+      width: 'calc(30% - 16px)',
     },
   },
   // imageContainer: {
@@ -423,7 +423,7 @@ const Pintereststats = () => {
                       <Typography
                         variant="body1"
                         sx={{
-                          color: "#008EAD",
+                          color: "#08DCA9",
                          
                           fontSize: "14px",
                           fontWeight: "600",
@@ -500,7 +500,7 @@ const Pintereststats = () => {
                       <Typography
                         variant="body1"
                         sx={{
-                          color: "#08DCA9",
+                          color: "#008EAD",
                          
                           fontSize: "14px",
                           fontWeight: "600",
@@ -653,7 +653,7 @@ const Pintereststats = () => {
                       <Typography
                         variant="body1"
                         sx={{
-                          color: "#08DCA9",
+                          color: "#008EAD",
                          
                           fontSize: "14px",
                           fontWeight: "600",

@@ -79,7 +79,7 @@ axios.post(apiUrl)
 
   return (
     <>
-      <Box sx={{ display: 'flex', fontFamily:'Plus Jakarta Sans' }}>
+      <Box sx={{ display: 'flex',  fontFamily:'Plus Jakarta Sans' }}>
         <Sidebar expanded={expanded} />
         <Box sx={{ width: "100%" }}>
           <Navbar expanded={expanded} setExpanded={setExpanded} />
@@ -87,7 +87,8 @@ axios.post(apiUrl)
             component="main"
             sx={{
               flexGrow: 1,
-              py: 8
+              py: 8,
+              paddingX:'25px',
             }}
           >
             <Container maxWidth="xl">

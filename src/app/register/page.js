@@ -124,122 +124,230 @@ const Register = () => {
 
     return (
         <>
-            <Header />
             <Box
                 sx={{
                     backgroundColor: (theme) =>
                         theme.palette.mode === "dark" ? "neutral.800" : "neutral.100",
                     p: 0,
+                    backgroundImage: "url('/image/hero-bg.png')",
+                    backgroundSize: 'cover', // Adjust the background size as needed
+                    backgroundPosition: 'center', // Adjust the background position as needed
                 }}
             >
-                <Container maxWidth="xs">
-                    <Box
-                        sx={{
-                            fontSize: 25,
-                            pb: 4,
-                            fontWeight: "bold",
-                            color: "#111927",
-                        }}
-                    >
-                        <Grid item xs={12}>
-                            <Link
-                                color="text.primary"
-                                href="#"
+                <Header />
+                <Box>
+                    <Container maxWidth="xs">
+                        <Box
+                            sx={{
+                                fontSize: 25,
+                                pb: 4,
+                                fontWeight: "bold",
+                                color: "#111927",
+                            }}
+                        >
+                            <Grid item xs={12}>
+                                <Link
+                                    color="text.primary"
+                                    href="#"
+                                    sx={{
+                                        alignItems: "center",
+                                        display: "inline-flex",
+                                        color: "#111927",
+                                        textDecoration: "none",
+                                    }}
+                                >
+                                    <ArrowLeftIcon sx={{ mr: 1 }} />
+                                    <Typography variant="subtitle2" sx={{}}>
+                                        Back
+                                    </Typography>
+                                </Link>
+                            </Grid>
+                            <Typography
+                                variant="h4"
                                 sx={{
-                                    alignItems: "center",
-                                    display: "inline-flex",
+                                    fontSize: "32px",
+                                    fontFamily: "Plus Jakarta Sans",
+                                    fontWeight: 700,
+                                    lineHeight: "38.4px",
                                     color: "#111927",
-                                    textDecoration: "none",
+                                    mt: '20px'
                                 }}
                             >
-                                <ArrowLeftIcon sx={{ mr: 1 }} />
-                                <Typography variant="subtitle2" sx={{}}>
-                                    Back
-                                </Typography>
-                            </Link>
-                        </Grid>
-                        <Typography
-                            variant="h4"
+                                Brand account creation
+                            </Typography>
+                        </Box>
+                        <Card
                             sx={{
-                                fontSize: "32px",
-                                fontFamily: "Plus Jakarta Sans",
-                                fontWeight: 700,
-                                lineHeight: "38.4px",
-                                color: "#111927",
-                                mt: '20px'
+                                borderRadius: "16px",
+                                boxShadow: 2,
                             }}
                         >
-                            Brand account creation
-                        </Typography>
-                    </Box>
-                    <Card
-                        sx={{
-                            borderRadius: "16px",
-                            boxShadow: 2,
-                        }}
-                    >
-                        <CardContent
-                            sx={{
-                                display: "flex",
-                                flexDirection: "column",
-                                minHeight: 400,
-                                p: 4,
-                            }}
-                        >
-                            <Grid container spacing={2}>
+                            <CardContent
+                                sx={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    minHeight: 400,
+                                    p: 4,
+                                }}
+                            >
+                                <Grid container spacing={2}>
 
-                                <Grid item xs={12}>
-                                    <Typography
-                                        variant="h6"
-                                        sx={{
-                                            fontSize: "18px",
-                                            fontFamily: "Plus Jakarta Sans",
-                                            fontWeight: 700,
-                                            lineHeight: "21.6px",
-                                            color: "#111927",
-                                        }}
-                                    >
-                                        Register
-                                    </Typography>
-                                    <Box
-                                        sx={{
-                                            // alignItems: "center",
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            marginBottom: "5px",
+                                    <Grid item xs={12}>
+                                        <Typography
+                                            variant="h6"
+                                            sx={{
+                                                fontSize: "18px",
+                                                fontFamily: "Plus Jakarta Sans",
+                                                fontWeight: 700,
+                                                lineHeight: "21.6px",
+                                                color: "#111927",
+                                            }}
+                                        >
+                                            Register
+                                        </Typography>
+                                        <Box
+                                            sx={{
+                                                // alignItems: "center",
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                marginBottom: "5px",
 
-                                            // Responsive styles
-                                            "@media (max-width: 600px)": {
-                                                alignItems: "start",
-                                                display: "block",
-                                            },
-                                        }}
-                                    >
-                                        <Box sx={{
-                                            "@media (max-width: 600px)": {
-                                                display: 'block',
+                                                // Responsive styles
+                                                "@media (max-width: 600px)": {
+                                                    alignItems: "start",
+                                                    display: "block",
+                                                },
+                                            }}
+                                        >
+                                            <Box sx={{
+                                                "@media (max-width: 600px)": {
+                                                    display: 'block',
+                                                    alignItems: 'center'
+                                                },
+                                                display: 'flex',
                                                 alignItems: 'center'
-                                            },
-                                            display: 'flex',
-                                            alignItems: 'center'
-                                        }}>
-                                            <Typography
-                                                variant="body2"
-                                                sx={{
-                                                    fontSize: "14px",
-                                                    fontWeight: 400,
-                                                    lineHeight: "22px",
-                                                    color: "#6C737F",
+                                            }}>
+                                                <Typography
+                                                    variant="body2"
+                                                    sx={{
+                                                        fontSize: "14px",
+                                                        fontWeight: 400,
+                                                        lineHeight: "22px",
+                                                        color: "#6C737F",
 
 
-                                                    // Responsive styles
-                                                    "@media (max-width: 600px)": {
-                                                        textAlign: "left",
-                                                    },
-                                                }}
-                                            >
-                                                Already have an account?
+                                                        // Responsive styles
+                                                        "@media (max-width: 600px)": {
+                                                            textAlign: "left",
+                                                        },
+                                                    }}
+                                                >
+                                                    Already have an account?
+                                                </Typography>
+                                                <Typography
+                                                    variant="body1"
+                                                    sx={{
+                                                        fontSize: "16px",
+                                                        fontWeight: 400,
+                                                        lineHeight: "24px",
+                                                        color: "#2970FF",
+                                                        pl: "4px",
+
+
+                                                        // Responsive styles
+                                                        "@media (max-width: 600px)": {
+                                                            textAlign: "left",
+                                                            paddingLeft: "0", // Remove padding on the left side
+                                                            marginTop: "8px", // Increase the top margin for better spacing
+                                                        },
+                                                    }}
+                                                >
+                                                    <Link href="/login" sx={{ textDecoration: "none" }}>
+                                                        Log in
+                                                    </Link>
+                                                </Typography>
+                                            </Box>
+                                        </Box>
+                                    </Grid>
+                                </Grid>
+                                <Box sx={{ flexGrow: 1 }}>
+                                    <form onSubmit={handleSubmit}>
+                                        {error && <p style={{ color: "red" }}>{error}</p>}
+                                        <TextField
+                                            fullWidth
+                                            label="Username"
+                                            margin="normal"
+                                            name="name"
+                                            type="text"
+                                            onChange={(e) => setName(e.target.value)}
+                                        />
+                                        {nameError && (
+                                            <Typography sx={{ color: "red" }}>{nameError}</Typography>
+                                        )}
+                                        <TextField
+                                            fullWidth
+                                            label="Email Address"
+                                            margin="normal"
+                                            name="email"
+                                            type="email"
+                                            onChange={(e) => setEmail(e.target.value)}
+                                        />
+                                        {emailError && (
+                                            <Typography sx={{ color: "red" }}>{emailError}</Typography>
+                                        )}
+                                        <TextField
+                                            fullWidth
+                                            label="Password"
+                                            margin="normal"
+                                            name="password"
+                                            type="password"
+                                            onChange={(e) => setPassword(e.target.value)}
+                                        />
+                                        {passwordError && (
+                                            <Typography color="error" variant="body2">
+                                                {passwordError}
                                             </Typography>
+                                        )}
+                                        <TextField
+                                            fullWidth
+                                            label="Confirm Password"
+                                            margin="normal"
+                                            name="password"
+                                            type="password"
+                                            onChange={(e) => setConfirmPassword(e.target.value)}
+                                        />
+                                        <Box
+                                            sx={{
+                                                mt: 2,
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                "@media(max-width:490px)": {
+                                                    display: 'block',
+                                                    alignItems: 'center'
+                                                },
+                                            }}
+                                        >
+                                            <Box sx={{
+                                                "@media(max-width:490px)": {
+                                                    display: 'flex',
+                                                    alignItems: 'center'
+                                                },
+                                                display: 'flex',
+                                                alignItems: 'center'
+                                            }}>
+                                                <Checkbox name="policy" />
+                                                <Typography
+                                                    variant="body2"
+                                                    sx={{
+                                                        fontSize: "14px",
+                                                        fontWeight: 400,
+                                                        lineHeight: "22px",
+                                                        color: "#6C737F",
+                                                    }}
+                                                >
+                                                    I have read the
+                                                </Typography>
+                                            </Box>
                                             <Typography
                                                 variant="body1"
                                                 sx={{
@@ -248,151 +356,48 @@ const Register = () => {
                                                     lineHeight: "24px",
                                                     color: "#2970FF",
                                                     pl: "4px",
-
-
-                                                    // Responsive styles
-                                                    "@media (max-width: 600px)": {
-                                                        textAlign: "left",
-                                                        paddingLeft: "0", // Remove padding on the left side
-                                                        marginTop: "8px", // Increase the top margin for better spacing
-                                                    },
                                                 }}
                                             >
-                                                <Link href="/login" sx={{ textDecoration: "none" }}>
-                                                    Log in
+                                                <Link href="#" sx={{ textDecoration: "none" }}>
+                                                    Terms and Conditions
                                                 </Link>
                                             </Typography>
                                         </Box>
-                                    </Box>
-                                </Grid>
-                            </Grid>
-                            <Box sx={{ flexGrow: 1 }}>
-                                <form onSubmit={handleSubmit}>
-                                    {error && <p style={{ color: "red" }}>{error}</p>}
-                                    <TextField
-                                        fullWidth
-                                        label="Username"
-                                        margin="normal"
-                                        name="name"
-                                        type="text"
-                                        onChange={(e) => setName(e.target.value)}
-                                    />
-                                    {nameError && (
-                                        <Typography sx={{ color: "red" }}>{nameError}</Typography>
-                                    )}
-                                    <TextField
-                                        fullWidth
-                                        label="Email Address"
-                                        margin="normal"
-                                        name="email"
-                                        type="email"
-                                        onChange={(e) => setEmail(e.target.value)}
-                                    />
-                                    {emailError && (
-                                        <Typography sx={{ color: "red" }}>{emailError}</Typography>
-                                    )}
-                                    <TextField
-                                        fullWidth
-                                        label="Password"
-                                        margin="normal"
-                                        name="password"
-                                        type="password"
-                                        onChange={(e) => setPassword(e.target.value)}
-                                    />
-                                    {passwordError && (
-                                        <Typography color="error" variant="body2">
-                                            {passwordError}
-                                        </Typography>
-                                    )}
-                                    <TextField
-                                        fullWidth
-                                        label="Confirm Password"
-                                        margin="normal"
-                                        name="password"
-                                        type="password"
-                                        onChange={(e) => setConfirmPassword(e.target.value)}
-                                    />
-                                    <Box
-                                        sx={{
-                                            mt: 2,
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            "@media(max-width:490px)": {
-                                                display: 'block',
-                                                alignItems: 'center'
-                                            },
-                                        }}
-                                    >
-                                        <Box sx={{
-                                            "@media(max-width:490px)": {
-                                                display: 'flex',
-                                                alignItems: 'center'
-                                            },
-                                            display: 'flex',
-                                            alignItems: 'center'
-                                        }}>
-                                            <Checkbox name="policy" />
-                                            <Typography
-                                                variant="body2"
-                                                sx={{
-                                                    fontSize: "14px",
-                                                    fontWeight: 400,
-                                                    lineHeight: "22px",
-                                                    color: "#6C737F",
-                                                }}
-                                            >
-                                                I have read the
-                                            </Typography>
+                                        <Box
+                                            sx={{
+                                                mt: 2,
+                                                transform: "scale(0.77)",
+                                                transformOrigin: "0 0",
+                                            }}
+                                        >
+                                            <ReCAPTCHA
+                                                sitekey="6LdKOUAnAAAAACtgTJzWt5yXL1mZ4ym08LXtODgw"
+                                                onChange={onChange}
+                                            // size={isMobile ? "compact" : "normal"}
+                                            />
                                         </Box>
-                                        <Typography
-                                            variant="body1"
-                                            sx={{
-                                                fontSize: "16px",
-                                                fontWeight: 400,
-                                                lineHeight: "24px",
-                                                color: "#2970FF",
-                                                pl: "4px",
-                                            }}
-                                        >
-                                            <Link href="#" sx={{ textDecoration: "none" }}>
-                                                Terms and Conditions
-                                            </Link>
-                                        </Typography>
-                                    </Box>
-                                    <Box
-                                        sx={{
-                                            mt: 2,
-                                            transform: "scale(0.77)",
-                                            transformOrigin: "0 0",
-                                        }}
-                                    >
-                                        <ReCAPTCHA
-                                            sitekey="6LdKOUAnAAAAACtgTJzWt5yXL1mZ4ym08LXtODgw"
-                                            onChange={onChange}
-                                        // size={isMobile ? "compact" : "normal"}
-                                        />
-                                    </Box>
-                                    <Box sx={{ mt: 2 }}>
-                                        <Button
-                                            fullWidth
-                                            type="submit"
-                                            variant="contained"
-                                            color="primary"
-                                            sx={{
-                                                backgroundColor: "#2970FF",
-                                                borderRadius: "10px",
-                                                textDecoration: "none",
-                                            }}
-                                            disabled={isLoading} // Disable the button while loading
-                                        >
-                                            {isLoading ? "Loading..." : "Register"} {/* Display "Loading..." while loading */}
-                                        </Button>
-                                    </Box>
-                                </form>
-                            </Box>
-                        </CardContent>
-                    </Card>
-                </Container>
+                                        <Box sx={{ mt: 2 }}>
+                                            <Button
+                                                fullWidth
+                                                type="submit"
+                                                variant="contained"
+                                                color="primary"
+                                                sx={{
+                                                    backgroundColor: "#2970FF",
+                                                    borderRadius: "10px",
+                                                    textDecoration: "none",
+                                                }}
+                                                disabled={isLoading} // Disable the button while loading
+                                            >
+                                                {isLoading ? "Loading..." : "Register"} {/* Display "Loading..." while loading */}
+                                            </Button>
+                                        </Box>
+                                    </form>
+                                </Box>
+                            </CardContent>
+                        </Card>
+                    </Container>
+                </Box>
             </Box>
             <ToastContainer />
         </>

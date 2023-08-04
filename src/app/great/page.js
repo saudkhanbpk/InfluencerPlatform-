@@ -201,13 +201,20 @@ const Greate = () => {
     }
 
     return (
-        <Box>
+        <Box
+            sx={{
+                backgroundImage: "url('/image/hero-bg.png')",
+                backgroundSize: 'cover', // Adjust the background size as needed
+                backgroundPosition: 'center', // Adjust the background position as needed
+                py: 13
+            }}
+        >
             <Box
                 sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    mt: 10,
+                    // mt: 10,
                 }}
             >
                 <Box
@@ -303,7 +310,7 @@ const Greate = () => {
                                 flexDirection: 'column', // Default to column layout for mobile
                                 '@media (min-width: 600px)': {
                                     flexDirection: 'row', // Change to row layout for desktop and tablet
-                                //    pl:'10px'
+                                    //    pl:'10px'
                                 },
                             }}
                         >
