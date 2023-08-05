@@ -27,13 +27,14 @@ export const AccountGeneralSettings = (props) => {
   const [lastName, setLastName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [timeZones, setTimeZones] = useState('');
-
+  const [previewImage, setPreviewImage] = useState(null);
 
   // Create refs for input fields
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
   const userEmailRef = useRef(null);
   const timeZonesRef = useRef(null);
+  const inputRef = useRef(null);
 
   const handleEditClick = (ref) => {
     // Focus on the input field
@@ -56,6 +57,30 @@ export const AccountGeneralSettings = (props) => {
       })
       .catch((error) => console.error('Error fetching data:', error));
   }
+  const uploadImage= async ()=>{
+    // console.log("ksdgjfgsdhkf")
+    const formData = new FormData();
+  formData.append('image', imageFile);
+  console.log('image', imageFile);
+
+  let user = JSON.parse(localStorage.getItem('user'));
+
+  try {
+    const response = await axios.put(
+      `${baseUrl}/api/updateProfile/${user._id}`,
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    );
+    console.log('Response data:', response.data);
+  } catch (error) {
+    console.error(error.response.data.msg);
+    setError(error.response.data.msg);
+  }
+};
   // const updateUserData = () => {
   const handleSubmit = (e) => {
     console.log("ksdgjfgsdhkf")
@@ -94,9 +119,17 @@ export const AccountGeneralSettings = (props) => {
   useEffect(() => {
 
     allUserData();
-    // updateUserData();
+    // uploadImage()
+    // uploadImage();
 
   }, []);
+  useEffect(() => {
+
+    // allUserData();
+     uploadImage()
+    // uploadImage();
+
+  }, [imageFile]);
   useEffect(() => {
     setFirstName(userData.name)
     setLastName(userData.lastName)
@@ -106,6 +139,11 @@ export const AccountGeneralSettings = (props) => {
    
 
   }, [userData]);
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImageFile(file);
+    setPreviewImage(URL.createObjectURL(file));
+  };
   console.log("UserData........", userData)
   const { avatar, email, name } = props;
   console.log("image", imageFile)
@@ -146,26 +184,50 @@ export const AccountGeneralSettings = (props) => {
                         position: 'relative'
                       }}
                     >
-                      <Avatar
-                        src={avatar}
-                        sx={{
-                          height: 50,
-                          width: 50
-                        }}
-                      >
-                        <SvgIcon>
-                          <User01Icon />
-                        </SvgIcon>
-                      </Avatar>
+                     {previewImage ? (
+  <Avatar
+    src={previewImage}
+    sx={{
+      height: 50,
+      width: 50
+    }}
+  >
+    <SvgIcon>
+      <User01Icon />
+    </SvgIcon>
+  </Avatar>
+) : (
+  <Avatar
+    src={userData.image || avatar}
+    sx={{
+      height: 50,
+      width: 50
+    }}
+  >
+    <SvgIcon>
+      <User01Icon />
+    </SvgIcon>
+  </Avatar>
+)}
                     </Box>
                   </Box>
-                  <input
-                  
+                  <label htmlFor="fileInput">
+        <Button
+          color="primary"
+          sx={{ fontSize: '14px', fontWeight: '600' }}
+          onClick={() => inputRef.current.click()}
+        >
+          Change
+        </Button>
+      </label>
+      <input
+        id="fileInput"
         type="file"
-        
-        onChange={(e) => setImageFile(e.target.files[0])}
-        
+        ref={inputRef}
+        style={{ display: 'none' }}
+        onChange={handleImageChange}
       />
+      
                   {/* <Button
                 
                     color="primary"
